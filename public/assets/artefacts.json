@@ -1,0 +1,195 @@
+[
+  {
+    "name": "Venator dagger",
+    "digsite": "Kharid-et",
+    "hotspot": "Venator remains",
+    "level": 5,
+    "chronotes": 206,
+    "xp": 305.1,
+    "materials": [
+      ["Third-age iron", 16],
+      ["Zarosian insignia", 12]
+    ],
+    "collections": ["Zarosian I", "Museum - Zarosian I"]
+  },
+  {
+    "name": "Venator light crossbow",
+    "digsite": "Kharid-et",
+    "hotspot": "Venator remains",
+    "level": 5,
+    "chronotes": 206,
+    "xp": 305.1,
+    "materials": [
+      ["Third-age iron", 12],
+      ["Zarosian insignia", 16]
+    ],
+    "collections": ["Zarosian I", "Museum - Zarosian I"]
+  },
+  {
+    "name": "Legionary gladius",
+    "digsite": "Kharid-et",
+    "hotspot": "Legionary remains",
+    "level": 12,
+    "chronotes": 220,
+    "xp": 430.8,
+    "materials": [
+      ["Third-age iron", 10],
+      ["Zarosian insignia", 6],
+      ["Imperial steel", 12]
+    ],
+    "collections": ["Zarosian I", "Museum - Zarosian I"]
+  },
+  {
+    "name": "Legionary square shield",
+    "digsite": "Kharid-et",
+    "hotspot": "Legionary remains",
+    "level": 12,
+    "chronotes": 220,
+    "xp": 430.8,
+    "materials": [
+      ["Third-age iron", 8],
+      ["Zarosian insignia", 8],
+      ["Imperial steel", 12]
+    ],
+    "collections": ["Zarosian I", "Museum - Zarosian I"]
+  },
+  {
+    "name": "Primis Elementis standard",
+    "digsite": "Kharid-et",
+    "hotspot": "Legionary remains",
+    "level": 12,
+    "chronotes": 220,
+    "xp": 430.8,
+    "materials": [
+      ["Samite silk", 16],
+      ["Third age iron", 12]
+    ],
+    "collections": ["Zarosian I", "Museum - Zarosian I"]
+  },
+  {
+    "name": "Zaros effigy",
+    "digsite": "Kharid-et",
+    "hotspot": "Castra debris",
+    "level": 17,
+    "chronotes": 244,
+    "xp": 520.5,
+    "materials": [
+      ["Samite silk", 8],
+      ["White oak", 10],
+      ["Zarosian insignia", 12]
+    ],
+    "collections": ["Zarosian I", "Museum - Zarosian I"]
+  },
+  {
+    "name": "Zarosian training dummy",
+    "digsite": "Kharid-et",
+    "hotspot": "Castra debris",
+    "level": 17,
+    "chronotes": 244,
+    "xp": 520.5,
+    "materials": [
+      ["White oak", 14],
+      ["Third age iron", 16]
+    ],
+    "collections": ["Zarosian I", "Museum - Zarosian I"],
+    "otherUses": ["Unlocking Katarina (student) as a researcher."]
+  },
+  {
+    "name": "Hookah pipe",
+    "digsite": "Infernal Source",
+    "hotspot": "Lodge bar storage"
+  },
+  {
+    "name": "Legatus Maximus figurine",
+    "digsite": "Kharid-et",
+    "hotspot": "Administratum debris",
+    "level": 25,
+    "chronotes": 274,
+    "xp": 664.1,
+    "materials": [
+      ["Ancient vis", 10],
+      ["Goldrune", 8],
+      ["Zarosian insignia", 14]
+    ],
+    "collections": [
+      "Zarosian I",
+      "Museum - Zarosian I",
+      "Showy Fings",
+      "Magic Man"
+    ]
+  },
+  {
+    "name": "'Solem in Umbra' painting",
+    "digsite": "Kharid-et",
+    "hotspot": "Administratum debris",
+    "level": 25,
+    "chronotes": 274,
+    "xp": 664.1,
+    "materials": [
+      ["Samite silk", 8],
+      ["Tyrian purple", 14],
+      ["White oak", 10]
+    ],
+    "collections": [
+      "Zarosian I",
+      "Museum - Zarosian I",
+      "Imperial Impressionism"
+    ]
+  },
+  {
+    "name": "Ancient timepiece",
+    "digsite": "Kharid-et",
+    "hotspot": "Praesidio remains",
+    "level": 47,
+    "chronotes": 416,
+    "xp": 1423.3,
+    "materials": [
+      ["Third-age iron", 16],
+      ["Goldrune", 18],
+      ["Ancient vis", 12]
+    ],
+
+    "collections": [
+      "Zarosian I",
+      "Museum - Zarosian I",
+      "Blingy Fings",
+      "Magic Man"
+    ],
+    "mysteries": ["Time Served"]
+  },
+  {
+    "name": "Legatus pendant",
+    "digsite": "Kharid-et",
+    "hotspot": "Praesidio remains",
+    "level": 47,
+    "chronotes": 416,
+    "xp": 1423.3,
+    "materials": [
+      ["Third-age iron", 16],
+      ["Goldrune", 18],
+      ["Ancient vis", 12]
+    ],
+    "otherMaterials": [["Dragonstone", 1]],
+    "collections": ["Blingy Fings", "Zarosian II", "Museum - Zarosian II"],
+    "otherUses": ["Adding to toolbelt to pass barriers in Kharid-et digsite."]
+  },
+  {
+    "name": "Pontifex signet ring",
+    "digsite": "Kharid-et",
+    "hotspot": "Carcerem debris",
+    "level": 58,
+    "chronotes": 508,
+    "xp": 2193.3,
+    "materials": [
+      ["Third-age iron", 16],
+      ["Goldrune", 18],
+      ["Ancient vis", 22]
+    ],
+    "otherMaterials": [["Dragonstone", 1]],
+    "collections": ["Blingy Fings", "Zarosian II", "Museum - Zarosian II"],
+    "otherUses": [
+      "Adding to toolbelt to pass barriers in Kharid-et digsite.",
+      "Upgrading to the Pontifex observation ring after Azzanadra's quest."
+    ]
+  }
+]
