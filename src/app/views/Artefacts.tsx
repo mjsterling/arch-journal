@@ -17,7 +17,7 @@ export default function Artefacts() {
     searchQuery,
     handleSearch,
     clearSearch,
-  } = useLazySearch(artefacts);
+  } = useLazySearch<Artefact>(artefacts);
 
   const artefactsWithHotspots = useMemo<{ [key: string]: Artefact[] }>(() => {
     const _artefactsWithHotspots: { [key: string]: Artefact[] } = {};

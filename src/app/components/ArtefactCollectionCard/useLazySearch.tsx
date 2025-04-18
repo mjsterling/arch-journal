@@ -1,16 +1,16 @@
 import { useMemo, useState } from 'react';
 
-export default function useLazySearch(data: { [key: string]: string }[]) {
+export default function useLazySearch<T extends { name: string }>(data: T[]) {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const searchTerms = useMemo(() => {
     const _searchTerms: { [key: string]: string } = {};
-    data.forEach((datum: { [key: string]: string }) => {
+    data.forEach((datum: T) => {
       _searchTerms[datum.name] = JSON.stringify(datum).toLowerCase();
     });
     return _searchTerms;
   }, [data, searchQuery]);
 
-  const filteredData = useMemo<{ [key: string]: string }[]>(
+  const filteredData = useMemo<T[]>(
     () => data.filter((datum) => searchTerms[datum.name].includes(searchQuery)),
     [data, searchTerms, searchQuery]
   );
