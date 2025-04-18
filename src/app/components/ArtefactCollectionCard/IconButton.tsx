@@ -17,7 +17,7 @@ export default function ArtefactButton({
   image: string;
   status: ArtefactStates;
 }) {
-  const { createContextMenu, goToArtefact } = useGlobalState();
+  const { createContextMenu, goToArtefact, wiki } = useGlobalState();
   const handleClick = () => {
     const newArtefact = { ...artefact };
     switch (artefact.collections[collection]) {
@@ -78,17 +78,12 @@ export default function ArtefactButton({
       ],
       [
         {
-          label: 'Go to Artefact',
+          label: 'View in Artefacts',
           callback: () => goToArtefact(artefact.name),
         },
         {
-          label: 'View on Wiki',
-          callback: () => {
-            window.open(
-              `https://runescape.wiki/w/${collection.replace(/ /g, '_')}`,
-              '_blank'
-            );
-          },
+          label: 'Wiki: ' + artefact.name,
+          callback: () => wiki(artefact.name),
         },
       ],
     ]);
@@ -100,16 +95,16 @@ export default function ArtefactButton({
       onContextMenu={handleContextMenu}
       className={[
         'flex flex-col gap-1 items-center justify-center',
-        'border-2 border-white rounded-lg h-full p-2',
-        'cursor-pointer transition-all duration-200 gap-1',
+        'border-2 border-orange-100 rounded-lg h-full p-2',
+        'transition-all duration-200 gap-1',
         status === 'Not Found'
-          ? 'bg-gray-500 hover:bg-orange-500'
+          ? 'bg-gray-500 hover:bg-orange-700 cursor-pointer'
           : status === 'Damaged'
-          ? 'bg-orange-500 hover:bg-yellow-500'
+          ? 'bg-orange-700 hover:bg-yellow-600 cursor-pointer'
           : status === 'Restored'
-          ? 'bg-yellow-500 hover:bg-green-500'
+          ? 'bg-yellow-600 hover:bg-green-700 cursor-pointer'
           : status === 'Completed'
-          ? 'bg-green-500'
+          ? 'bg-green-700 cursor-help'
           : '',
       ].join(' ')}
       title={`${collection} - ${collector} - ${status}`}

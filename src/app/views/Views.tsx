@@ -3,17 +3,19 @@ import ArtefactProvider from '../data/ArtefactProvider';
 import { Screens, useGlobalState } from '../data/GlobalStateProvider';
 import Artefacts from './Artefacts';
 import Collections from './Collections';
-import Materials from './Materials';
+import MaterialStorage from './MaterialStorage';
+import Planner from './Planner';
 
 export default function Views() {
   const { screen } = useGlobalState();
   return (
     <ArtefactProvider>
       <Header />
-      <div className="h-full w-full">
+      <div className="h-full w-full p-6 md:px-12 lg:px-16">
         {screen === Screens.Artefacts && <Artefacts />}
         {screen === Screens.Collections && <Collections />}
-        {screen === Screens.Materials && <Materials />}
+        {screen === Screens.MaterialStorage && <MaterialStorage />}
+        {screen === Screens.Planner && <Planner />}
       </div>
     </ArtefactProvider>
   );

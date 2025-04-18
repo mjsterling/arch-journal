@@ -1,23 +1,22 @@
 import { ArtefactStates } from '../../data/Artefact';
-import { Artefact } from '../../data/ArtefactProvider';
+import { Artefact, useArtefacts } from '../../data/ArtefactProvider';
 import { useGlobalState } from '../../data/GlobalStateProvider';
 
-export default function CollectorButton({
+export default function CollectionButton({
   artefact,
-  setArtefact,
   collection,
   collector,
   image,
   status,
 }: {
   artefact: Artefact;
-  setArtefact: (artefact: Artefact) => void;
   collection: string;
   collector: string;
   image: string;
   status: ArtefactStates;
 }) {
-  const { createContextMenu, goToCollection, wiki } = useGlobalState();
+  const { createContextMenu, goToArtefact, wiki } = useGlobalState();
+  const { setArtefact } = useArtefacts();
   const handleClick = () => {
     const newArtefact = { ...artefact };
     switch (artefact.collections[collection]) {
@@ -78,18 +77,18 @@ export default function CollectorButton({
       ],
       [
         {
-          label: 'View in Collections',
-          callback: () => goToCollection(collection),
+          label: 'View in Artefacts',
+          callback: () => goToArtefact(artefact.name),
         },
       ],
       [
         {
-          label: 'Wiki: ' + collection,
-          callback: () => wiki(collection),
+          label: 'Wiki: ' + artefact.name,
+          callback: () => wiki(artefact.name),
         },
         {
-          label: 'Wiki: ' + collector,
-          callback: () => wiki(collector),
+          label: 'Wiki: ' + artefact.hotspot,
+          callback: () => wiki(artefact.hotspot),
         },
       ],
     ]);
@@ -101,24 +100,24 @@ export default function CollectorButton({
       onContextMenu={handleContextMenu}
       className={[
         'flex flex-col gap-1 items-center justify-center',
-        'border-2 border-white rounded-lg h-full p-2',
-        'cursor-pointer transition-all duration-200 gap-1',
+        'border-2 border-orange-100 rounded-lg h-full p-2',
+        'transition-all duration-200 gap-1',
         status === 'Not Found'
-          ? 'bg-gray-500 hover:bg-orange-500'
+          ? 'bg-gray-500 hover:bg-orange-600 cursor-pointer'
           : status === 'Damaged'
-          ? 'bg-orange-500 hover:bg-yellow-500'
+          ? 'bg-orange-700 hover:bg-yellow-500 cursor-pointer'
           : status === 'Restored'
-          ? 'bg-yellow-500 hover:bg-green-500'
+          ? 'bg-yellow-600 hover:bg-green-500 cursor-pointer'
           : status === 'Completed'
-          ? 'bg-green-500'
+          ? 'bg-green-800 cursor-help'
           : '',
       ].join(' ')}
-      title={`${collection} - ${collector} - ${status}`}
+      title={`${artefact.name} - ${artefact.hotspot} - ${status}`}
     >
       <img
         src={image}
         alt={collection}
-        className="h-8 w-8 object-contain transition-all"
+        className="h-8 w-8 xl:h-9 xl:w-9 object-contain transition-all"
       />
     </button>
   );

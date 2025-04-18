@@ -4,7 +4,7 @@ import Views from './views/Views';
 
 export default function Home() {
   return (
-    <div className="h-full min-h-screen w-full bg-gray-600">
+    <div className="h-full min-h-screen w-full bg-gray-900">
       <GlobalStateProvider>
         <Views />
       </GlobalStateProvider>

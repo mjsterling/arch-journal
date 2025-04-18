@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import artefactData from './artefacts.json';
+import artefactDataRaw from './artefacts.json';
 import { useContext } from 'react';
 import { ArtefactStates } from './Artefact';
 import { CollectionNames } from './Collections';
@@ -15,7 +15,9 @@ export enum Screens {
 export type Artefact = {
   name: string;
   image: string;
+  hotspot: string;
   collections: { [P in CollectionNames]: ArtefactStates };
+  otherUses: { [key: string]: ArtefactStates };
   level: number;
   xp: number;
   chronotes: number;
@@ -26,7 +28,8 @@ export type Artefact = {
 const artefactContext = createContext<{
   artefacts: Artefact[];
   setArtefact: (artefact: Artefact) => void;
-}>({ artefacts: [], setArtefact: () => {} });
+  isComplete: (artefact: Artefact) => boolean;
+}>({ artefacts: [], setArtefact: () => {}, isComplete: () => false });
 
 export default function ArtefactProvider({
   children,
@@ -37,23 +40,36 @@ export default function ArtefactProvider({
   const [loading, setLoading] = useState<boolean>(false);
   const importArtefacts = () => {
     setLoading(true);
-    setArtefacts(
-      artefactData.map((artefact) => {
+    const artefactData = artefactDataRaw as unknown as Artefact[];
+    const artefactState = localStorage.getItem('arch-journal-artefacts');
+    let artefactStateParsed: Array<{
+      name: string;
+      collections: { [key: string]: ArtefactStates };
+    }> | null = null;
+    if (artefactState) {
+      artefactStateParsed = JSON.parse(artefactState);
+    }
+    for (const artefact of artefactData) {
+      const foundArtefact = artefactStateParsed?.find(
+        (_artefact) => _artefact.name === artefact.name
+      );
+      if (foundArtefact) {
+        artefact.collections = foundArtefact.collections;
+      } else {
         const collections: { [P in CollectionNames]: ArtefactStates } = {};
-        for (const collection of artefact.collections as string[]) {
+        for (const collection of artefact.collections as unknown as string[]) {
           collections[collection] = ArtefactStates.NotFound;
         }
-        return {
-          ...artefact,
-          digsite: artefact.digsite as DigsiteNames,
-          collections,
-          image:
-            '/assets/artefacts/' + artefact.name.replace(/ /g, '_') + '.png',
-        };
-      })
-    );
+        artefact.collections = collections;
+      }
+      artefact.image =
+        '/assets/artefacts/' + artefact.name.replace(/[ \/]/g, '_') + '.png';
+    }
+    setArtefacts(artefactData);
+
     setLoading(false);
   };
+
   useEffect(importArtefacts, []);
   const setArtefact = (newArtefact: Artefact) => {
     const index = artefacts.findIndex((a) => a.name === newArtefact.name);
@@ -65,8 +81,26 @@ export default function ArtefactProvider({
     setArtefacts(newArtefacts);
   };
 
+  const saveArtefactState = () => {
+    const artefactState = artefacts.map((artefact) => ({
+      name: artefact.name,
+      collections: artefact.collections,
+      otherUses: artefact.otherUses,
+    }));
+    localStorage.setItem(
+      'arch-journal-artefacts',
+      JSON.stringify(artefactState)
+    );
+  };
+  useEffect(saveArtefactState, [artefacts]);
+
+  const isComplete = (artefact: Artefact) =>
+    Object.values(artefact.collections).every(
+      (status) => status === 'Completed'
+    );
+
   return (
-    <artefactContext.Provider value={{ artefacts, setArtefact }}>
+    <artefactContext.Provider value={{ artefacts, setArtefact, isComplete }}>
       {loading ? null : children}
     </artefactContext.Provider>
   );
@@ -79,5 +113,3 @@ export const useArtefacts = () => {
   }
   return context;
 };
-
-type SetState<T> = React.Dispatch<React.SetStateAction<T>>;

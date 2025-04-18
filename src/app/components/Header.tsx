@@ -6,26 +6,11 @@ export default function Header() {
 
   return (
     <div className="w-full h-48 flex flex-col gap-8 pt-8 justify-center items-center">
-      <h1 className="text-3xl">Archaeology Journal</h1>
-      <div className="flex gap-4">
+      <h1 className="text-3xl text-orange-100">Archaeology Journal</h1>
+      <div className="grid grid-cols-2 gap-2 sm:flex justify-center items-center content-center sm:gap-4 pb-8">
         {Object.values(Screens).map((label) => (
           <MenuButton key={label} label={label} />
         ))}
-      </div>
-      <div className="flex gap-4">
-        <button
-          className={[
-            'rounded-md border-2 border-white px-5 py-1 cursor-pointer',
-            'bg-transparent text-white',
-            'transition-colors ease-in-out',
-            'hover:bg-white hover:text-gray-950',
-          ].join(' ')}
-          onClick={() => setShowCompleted(!showCompleted)}
-        >
-          {showCompleted
-            ? `Hide Completed ${screen}`
-            : `Show Completed ${screen}`}
-        </button>
       </div>
     </div>
   );

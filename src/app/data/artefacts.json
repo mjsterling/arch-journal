@@ -1438,6 +1438,50 @@
     "collections": ["Museum - Zarosian II", "Hat Hoarder", "Zarosian II"]
   },
   {
+    "name": "Thorobshuun battle standard",
+    "digsite": "Warforge",
+    "hotspot": "Goblin dorm debris",
+    "level": 83,
+    "chronotes": 684,
+    "xp": 8166.7,
+    "materials": {
+      "Mark of the Kyzaj": 16,
+      "Malachite green": 22,
+      "White oak": 16,
+      "Samite silk": 20
+    },
+    "collections": ["Museum - Bandosian I", "Green Gobbo Goodies I"]
+  },
+  {
+    "name": "Yurkolgokh stink grenade",
+    "digsite": "Warforge",
+    "hotspot": "Goblin dorm debris",
+    "level": 83,
+    "chronotes": 684,
+    "xp": 8166.7,
+    "materials": {
+      "Yu'biusk clay": 38,
+      "Vulcanised rubber": 36,
+      "Weapon poison (3)": 1
+    },
+    "collections": ["Museum - Bandosian I", "Green Gobbo Goodies I"]
+  },
+  {
+    "name": "Dominarian device",
+    "digsite": "Everlight",
+    "hotspot": "Oikos fishing hut remnants",
+    "level": 84,
+    "chronotes": 686,
+    "xp": 8555.6,
+    "materials": {
+      "Everlight silvthril": 30,
+      "Keramos": 22,
+      "Third-age iron": 22,
+      "Clockwork": 1
+    },
+    "collections": ["Museum - Saradominist III", "Saradominist III"]
+  },
+  {
     "name": "Fishing trident",
     "digsite": "Everlight",
     "hotspot": "Oikos fishing hut remnants",
@@ -1445,7 +1489,6 @@
     "chronotes": 686,
     "xp": 8555.6,
     "materials": {
-      "Fishing trident (damaged)": 1,
       "Star of Saradomin": 22,
       "Third Age iron": 30,
       "Goldrune": 22
