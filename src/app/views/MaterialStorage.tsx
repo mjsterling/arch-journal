@@ -94,7 +94,7 @@ const MaterialStorageInput = ({
   material: Materials;
   amount: number;
 }) => {
-  const { createContextMenu, updateMaterialStorage } = useGlobalState();
+  const { createContextMenu, updateMaterialStorage, wiki } = useGlobalState();
   return (
     <div
       key={material}
@@ -110,20 +110,15 @@ const MaterialStorageInput = ({
             [
               {
                 label: 'Wiki: ' + material,
-                callback: () =>
-                  window.open(
-                    `https://runescape.wiki/w/${material.replace(/ /g, '_')}`,
-                    '_blank'
-                  ),
+                callback: () => wiki(material.replace(/ /g, '_')),
               },
               {
                 label: 'Wiki: Material cache locations',
                 callback: () =>
-                  window.open(
-                    `https://runescape.wiki/w/Material_cache_(${material
+                  wiki(
+                    `Material_cache_(${material
                       .toLowerCase()
-                      .replace(/ /g, '_')})#Locations`,
-                    '_blank'
+                      .replace(/ /g, '_')})#Locations`
                   ),
               },
             ],

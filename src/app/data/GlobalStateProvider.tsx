@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 export enum Screens {
   Artefacts = 'Artefacts',
@@ -180,15 +180,15 @@ export default function GlobalStateProvider({
 
   const [materialStorage, setMaterialStorage] = useState<{
     [P in Materials]: number;
-  }>(() => {
+  }>({ ...emptyMaterialStorage });
+  useEffect(() => {
     const materialStorageState = window.localStorage.getItem(
       'arch-journal-materialStorage'
     );
     if (materialStorageState) {
-      return JSON.parse(materialStorageState);
+      setMaterialStorage(JSON.parse(materialStorageState));
     }
-    return { ...emptyMaterialStorage };
-  });
+  }, []);
 
   const updateMaterialStorage = (material: Materials, amount: number) => {
     setMaterialStorage((prev) => ({
