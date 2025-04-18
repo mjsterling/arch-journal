@@ -5,6 +5,7 @@ import { useArtefacts } from '../data/ArtefactProvider';
 import { ArtefactStates } from '../data/Artefact';
 import CollectionButton from '../components/ArtefactCollectionCard/CollectionButton';
 import { useGlobalState } from '../data/GlobalStateProvider';
+import { Materials } from '../data/Materials';
 
 export default function Planner() {
   const { artefacts } = useArtefacts();
@@ -250,12 +251,13 @@ export default function Planner() {
                       'w-full text-right font-bold',
                       !materialStorage.hasOwnProperty(material.name)
                         ? 'text-yellow-500'
-                        : materialStorage[material.name] < material.amount
+                        : materialStorage[material.name as Materials] <
+                          material.amount
                         ? 'text-red-500'
                         : 'text-green-500',
                     ].join(' ')}
                   >
-                    {materialStorage[material.name]}
+                    {materialStorage[material.name as Materials]}
                     {materialStorage.hasOwnProperty(material.name) ? ' / ' : ''}
                     {material.amount}
                   </span>
@@ -383,12 +385,13 @@ export default function Planner() {
                       'w-full text-right font-bold',
                       !materialStorage.hasOwnProperty(material.name)
                         ? 'text-yellow-500'
-                        : materialStorage[material.name] < material.amount
+                        : materialStorage[material.name as Materials] <
+                          material.amount
                         ? 'text-red-500'
                         : 'text-green-500',
                     ].join(' ')}
                   >
-                    {materialStorage[material.name]}
+                    {materialStorage[material.name as Materials]}
                     {materialStorage.hasOwnProperty(material.name) ? ' / ' : ''}
                     {material.amount}
                   </span>
