@@ -181,7 +181,7 @@ export default function GlobalStateProvider({
   const [materialStorage, setMaterialStorage] = useState<{
     [P in Materials]: number;
   }>(() => {
-    const materialStorageState = localStorage.getItem(
+    const materialStorageState = window.localStorage.getItem(
       'arch-journal-materialStorage'
     );
     if (materialStorageState) {
@@ -195,7 +195,7 @@ export default function GlobalStateProvider({
       ...prev,
       [material]: amount,
     }));
-    localStorage.setItem(
+    window.localStorage.setItem(
       'arch-journal-materialStorage',
       JSON.stringify({
         ...materialStorage,
