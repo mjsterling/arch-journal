@@ -1,3 +1,4 @@
+'use client';
 import React, { createContext, useState } from 'react';
 
 export enum Screens {
@@ -180,7 +181,7 @@ export default function GlobalStateProvider({
   const [materialStorage, setMaterialStorage] = useState<{
     [P in Materials]: number;
   }>(() => {
-    const materialStorageState = window.localStorage.getItem(
+    const materialStorageState = localStorage.getItem(
       'arch-journal-materialStorage'
     );
     if (materialStorageState) {
@@ -194,7 +195,7 @@ export default function GlobalStateProvider({
       ...prev,
       [material]: amount,
     }));
-    window.localStorage.setItem(
+    localStorage.setItem(
       'arch-journal-materialStorage',
       JSON.stringify({
         ...materialStorage,
