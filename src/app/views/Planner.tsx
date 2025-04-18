@@ -62,7 +62,7 @@ export default function Planner() {
   const selectedCollectionMaterials = useMemo(() => {
     if (!selectedCollectionData) return null;
     const materials = Object.entries(selectedCollectionData.artefacts).reduce(
-      (acc, [_, artefact]) => {
+      (acc, [, artefact]) => {
         Object.entries(artefact.materials).forEach(([material, amount]) => {
           if (
             (mode === 'first' &&

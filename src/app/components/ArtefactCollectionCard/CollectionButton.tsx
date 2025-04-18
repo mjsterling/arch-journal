@@ -5,7 +5,6 @@ import { useGlobalState } from '../../data/GlobalStateProvider';
 export default function CollectionButton({
   artefact,
   collection,
-  collector,
   image,
   status,
 }: {

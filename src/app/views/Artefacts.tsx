@@ -1,7 +1,7 @@
 import { Artefact, useArtefacts } from '../data/ArtefactProvider';
 import ArtefactCard from '../components/ArtefactCollectionCard/ArtefactCard';
 import { useGlobalState } from '../data/GlobalStateProvider';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { ArtefactStates } from '../data/Artefact';
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import useLazySearch from '../components/ArtefactCollectionCard/useLazySearch';
@@ -155,7 +155,7 @@ export default function Artefacts() {
         {searchQuery && filteredArtefacts.length === 0 && (
           <div className="flex flex-col gap-4 items-center justify-center">
             <p className="text-orange-100 text-lg">
-              No artefacts found for "{searchQuery}"
+              No artefacts found for &quot;{searchQuery}&quot;
             </p>
           </div>
         )}

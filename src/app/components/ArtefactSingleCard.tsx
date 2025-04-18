@@ -1,5 +1,4 @@
 import { Artefact } from '../data/ArtefactProvider';
-import { useGlobalState } from '../data/GlobalStateProvider';
 
 export default function ArtefactSingleCard({
   artefact,

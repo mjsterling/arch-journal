@@ -10,7 +10,7 @@ export enum Screens {
 type ContextMenuItems = Array<
   Array<{
     label: string;
-    callback?: Function;
+    callback?: () => void;
   }>
 >;
 

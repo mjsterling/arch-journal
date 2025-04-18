@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { DigsiteNames, Digsites } from '../../data/Digsites';
 import { Collections } from '../../data/Collections';
 import { Artefact, useArtefacts } from '../../data/ArtefactProvider';
@@ -6,7 +6,6 @@ import CollectorButton from './ArtefactButton';
 import { useGlobalState } from '@/app/data/GlobalStateProvider';
 import { ArtefactStates } from '@/app/data/Artefact';
 import LevelSiteDisplay from './LevelSiteDisplay';
-import useHideCard from './useHideCard';
 
 export default function ArtefactCard(props: {
   artefact: Artefact;
@@ -24,7 +23,7 @@ export default function ArtefactCard(props: {
 
   const isComplete = useMemo(
     () => artefactIsComplete(artefact),
-    [artefact.collections, artefactIsComplete]
+    [artefact, artefactIsComplete]
   );
 
   const markAllAsCompleted = () => {

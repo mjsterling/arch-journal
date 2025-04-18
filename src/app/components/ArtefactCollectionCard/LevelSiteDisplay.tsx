@@ -1,11 +1,7 @@
-import { useGlobalState } from '@/app/data/GlobalStateProvider';
-import { MouseEvent } from 'react';
-
 export default function LevelSiteDisplay({
   className = '',
   level,
   site,
-  icon,
 }: {
   className?: string;
   icon?: string;

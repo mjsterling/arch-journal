@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGlobalState } from '../data/GlobalStateProvider';
 
 export default function ContextMenu() {
