@@ -41,7 +41,7 @@ export default function ArtefactProvider({
   const importArtefacts = () => {
     setLoading(true);
     const artefactData = artefactDataRaw as unknown as Artefact[];
-    const artefactState = localStorage.getItem('arch-journal-artefacts');
+    const artefactState = window.localStorage.getItem('arch-journal-artefacts');
     let artefactStateParsed: Array<{
       name: string;
       collections: { [key: string]: ArtefactStates };
@@ -87,7 +87,7 @@ export default function ArtefactProvider({
       collections: artefact.collections,
       otherUses: artefact.otherUses,
     }));
-    localStorage.setItem(
+    window.localStorage.setItem(
       'arch-journal-artefacts',
       JSON.stringify(artefactState)
     );
