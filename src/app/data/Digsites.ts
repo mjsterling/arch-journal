@@ -11,42 +11,42 @@ export enum DigsiteNames {
 
 export const Digsites: DigsiteInfo = {
   [DigsiteNames.Daemonheim]: {
-    icon: '/assets/digsites/Daemonheim.png',
+    icon: '/assets/digsites/Daemonheim_digsite.png',
     backgroundColor: '#1e2F3AFF',
     url: 'https://runescape.wiki/w/Daemonheim_Dig_Site',
   },
   [DigsiteNames.Everlight]: {
-    icon: '/assets/digsites/Everlight.png',
+    icon: '/assets/digsites/Everlight_digsite.png',
     backgroundColor: '#0845A655',
     url: 'https://runescape.wiki/w/Everlight_Dig_Site',
   },
   [DigsiteNames.KharidEt]: {
-    icon: '/assets/digsites/Kharid-et.png',
+    icon: '/assets/digsites/Kharid-et_digsite.png',
     backgroundColor: '#5F398655',
     url: 'https://runescape.wiki/w/Kharid-et_Dig_Site',
   },
   [DigsiteNames.InfernalSource]: {
-    icon: '/assets/digsites/Infernal_Source.png',
+    icon: '/assets/digsites/Infernal_Source_digsite.png',
     backgroundColor: '#98010055',
     url: 'https://runescape.wiki/w/Infernal_Source_Dig_Site',
   },
   [DigsiteNames.Warforge]: {
-    icon: '/assets/digsites/Warforge.png',
+    icon: '/assets/digsites/Warforge_digsite.png',
     backgroundColor: '#407d0a55',
     url: 'https://runescape.wiki/w/Warforge_Dig_Site',
   },
   [DigsiteNames.Senntisten]: {
-    icon: '/assets/digsites/Senntisten.png',
+    icon: '/assets/digsites/Senntisten_digsite.png',
     backgroundColor: '#3a09b555',
     url: 'https://runescape.wiki/w/Senntisten_Dig_Site',
   },
   [DigsiteNames.Stormguard]: {
-    icon: '/assets/digsites/Stormguard_Citadel.png',
+    icon: '/assets/digsites/Stormguard_Citadel_digsite.png',
     backgroundColor: '#cfa71755',
     url: 'https://runescape.wiki/w/Stormguard_Dig_Site',
   },
   [DigsiteNames.Orthen]: {
-    icon: '/assets/digsites/Orthen.png',
+    icon: '/assets/digsites/Orthen_digsite.png',
     backgroundColor: '#85380155',
     url: 'https://runescape.wiki/w/Orthen_Dig_Site',
   },
