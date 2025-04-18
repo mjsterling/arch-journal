@@ -27,6 +27,7 @@ type GlobalStateContext = {
   clearContextMenu: () => void;
   goToCollection: (collection: string) => void;
   goToArtefact: (artefact: string) => void;
+  goToPlanner: (collection: string) => void;
   showCompleted: boolean;
   setShowCompleted: SetState<boolean>;
   wiki: (query: string) => void;
@@ -34,6 +35,8 @@ type GlobalStateContext = {
     [P in Materials]: number;
   };
   updateMaterialStorage: (material: Materials, amount: number) => void;
+  activeCollection: string;
+  setActiveCollection: (collection: string) => void;
 };
 
 const emptyMaterialStorage = {
@@ -98,11 +101,14 @@ const globalStateContext = createContext<GlobalStateContext>({
   clearContextMenu: () => {},
   goToCollection: () => {},
   goToArtefact: () => {},
+  goToPlanner: () => {},
   showCompleted: false,
   setShowCompleted: () => {},
   wiki: () => {},
   materialStorage: { ...emptyMaterialStorage },
   updateMaterialStorage: () => {},
+  activeCollection: '',
+  setActiveCollection: () => {},
 });
 
 export default function GlobalStateProvider({
@@ -170,6 +176,11 @@ export default function GlobalStateProvider({
       }
     }, 500);
   };
+  const [activeCollection, setActiveCollection] = useState<string>('');
+  const goToPlanner = (collection: string) => {
+    setScreen(Screens.Planner);
+    setActiveCollection(collection);
+  };
 
   const wiki = (query: string) => {
     window.open(
@@ -206,6 +217,9 @@ export default function GlobalStateProvider({
   return (
     <globalStateContext.Provider
       value={{
+        goToPlanner,
+        activeCollection,
+        setActiveCollection,
         screen,
         setScreen,
         showCompleted,

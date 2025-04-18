@@ -10,7 +10,7 @@ import { useGlobalState } from '@/app/data/GlobalStateProvider';
 
 export default function CollectionCard(collection: Collection) {
   const { setArtefact } = useArtefacts();
-  const { createContextMenu, wiki } = useGlobalState();
+  const { createContextMenu, wiki, goToPlanner } = useGlobalState();
   const digsiteName = useMemo(() => {
     if (!collection.artefacts?.[0]?.digsite) return null;
     return collection.artefacts[0].digsite;
@@ -70,6 +70,12 @@ export default function CollectionCard(collection: Collection) {
                   label: 'Mark all as Completed',
                   callback: markAllAsCompleted,
                 },
+            {
+              label: 'Open in Planner',
+              callback: () => {
+                goToPlanner(collection.name);
+              },
+            },
           ],
           [
             {

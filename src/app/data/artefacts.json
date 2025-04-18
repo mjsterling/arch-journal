@@ -994,7 +994,7 @@
     "chronotes": 602,
     "xp": 4666.7,
     "materials": {
-      "Third Age iron": 36,
+      "Third-age iron": 36,
       "White oak": 30,
       "Clockwork": 1
     },
@@ -1079,7 +1079,7 @@
     "xp": 5600,
     "materials": {
       "Imperial steel": 20,
-      "Third Age iron": 20,
+      "Third-age iron": 20,
       "Goldrune": 28
     },
     "collections": ["Museum - Zarosian II", "Hitty Fings", "Zarosian II"]
@@ -1403,7 +1403,7 @@
     "chronotes": 666,
     "xp": 7388.9,
     "materials": {
-      "Third Age iron": 20,
+      "Third-age iron": 20,
       "Ancient vis": 20,
       "Goldrune": 32
     },
@@ -1490,7 +1490,7 @@
     "xp": 8555.6,
     "materials": {
       "Star of Saradomin": 22,
-      "Third Age iron": 30,
+      "Third-age iron": 30,
       "Goldrune": 22
     },
     "collections": [
@@ -1687,7 +1687,7 @@
     "materials": {
       "'Torment' metal sculpture (damaged)": 1,
       "Eye of Dagon": 20,
-      "Third Age iron": 20,
+      "Third-age iron": 20,
       "Hellfire metal": 38
     },
     "collections": ["Museum - Zamorakian III", "Zamorakian III"]
@@ -1765,7 +1765,7 @@
       "Prototype gravimeter (damaged)": 1,
       "Quintessence": 34,
       "Leather scraps": 20,
-      "Third Age iron": 26
+      "Third-age iron": 26
     },
     "collections": ["Museum - Armadylean II", "Armadylean II"]
   },
@@ -1829,7 +1829,7 @@
     "chronotes": 760,
     "xp": 12500,
     "materials": {
-      "Third Age iron": 52,
+      "Third-age iron": 52,
       "Zarosian insignia": 30
     },
     "collections": ["Museum - Zarosian III", "Zarosian III"]
@@ -1842,7 +1842,7 @@
     "chronotes": 760,
     "xp": 12500,
     "materials": {
-      "Third Age iron": 16,
+      "Third-age iron": 16,
       "Imperial steel": 36,
       "Zarosian insignia": 30
     },
@@ -1975,7 +1975,7 @@
     "xp": 15833.3,
     "materials": {
       "Mark of the Kyzaj": 20,
-      "Third Age iron": 26,
+      "Third-age iron": 26,
       "Leather scraps": 22,
       "White oak": 20
     },
@@ -1991,7 +1991,7 @@
     "materials": {
       "Warforged bronze": 32,
       "Mark of the Kyzaj": 26,
-      "Third Age iron": 30
+      "Third-age iron": 30
     },
     "collections": ["Museum - Bandosian II", "Green Gobbo Goodies II"],
     "otherUses": [
@@ -2046,7 +2046,7 @@
     "xp": 16666.7,
     "materials": {
       "Hellfire metal": 44,
-      "Third Age iron": 26,
+      "Third-age iron": 26,
       "Leather scraps": 20
     },
     "collections": ["Museum - Zamorakian III", "Zamorakian III"]
@@ -2340,7 +2340,7 @@
     "xp": 23333.3,
     "materials": {
       "Warforged bronze": 44,
-      "Third Age iron": 34,
+      "Third-age iron": 34,
       "Eye of Dagon": 20
     },
     "collections": [
@@ -2358,7 +2358,7 @@
     "xp": 23333.3,
     "materials": {
       "Warforged bronze": 44,
-      "Third Age iron": 34,
+      "Third-age iron": 34,
       "Star of Saradomin": 20
     },
     "collections": [
@@ -2377,7 +2377,7 @@
     "materials": {
       "Eye of Dagon": 24,
       "Chaotic brimstone": 30,
-      "Third Age iron": 44
+      "Third-age iron": 44
     },
     "collections": ["Museum - Zamorakian III", "Zamorakian III"]
   },
@@ -2391,7 +2391,7 @@
     "materials": {
       "Hellfire metal": 48,
       "Eye of Dagon": 30,
-      "Third Age iron": 20
+      "Third-age iron": 20
     },
     "collections": ["Museum - Zamorakian III", "Zamorakian III"]
   },
@@ -2903,7 +2903,7 @@
     "xp": 38333.3,
     "materials": {
       "Vulcanised rubber": 42,
-      "Third Age iron": 44,
+      "Third-age iron": 44,
       "Fossilised bone": 40
     },
     "collections": ["Museum - Bandosian III", "Red Rum Relics III"]
@@ -2960,7 +2960,7 @@
     "materials": {
       "Hellfire metal": 50,
       "Eye of Dagon": 40,
-      "Third Age iron": 40
+      "Third-age iron": 40
     },
     "collections": ["Museum - Zamorakian IV", "Zamorakian IV"]
   },

@@ -9,13 +9,17 @@ import { Materials } from '../data/Materials';
 
 export default function Planner() {
   const { artefacts } = useArtefacts();
-  const { materialStorage, wiki, createContextMenu } = useGlobalState();
-  const [selectedCollection, setSelectedCollection] = useState<string | null>(
-    null
-  );
+  const {
+    materialStorage,
+    wiki,
+    createContextMenu,
+    activeCollection,
+    setActiveCollection,
+  } = useGlobalState();
+
   const [mode, setMode] = useState<'first' | 'recurring'>('first');
   const [numberOfRecurringCompletions, setNumberOfRecurringCompletions] =
-    useState<number>(0);
+    useState<number>(1);
   const collections = useMemo(
     () =>
       CollectionData.map((collection) => {
@@ -35,12 +39,10 @@ export default function Planner() {
   );
   const selectedCollectionData = useMemo(
     () =>
-      selectedCollection
-        ? collections.find(
-            (collection) => collection.name === selectedCollection
-          )
+      activeCollection
+        ? collections.find((collection) => collection.name === activeCollection)
         : null,
-    [selectedCollection, collections]
+    [activeCollection, collections]
   );
   const selectedCollectionIsComplete = useMemo(() => {
     if (!selectedCollectionData) return false;
@@ -53,12 +55,12 @@ export default function Planner() {
   }, [selectedCollectionData]);
 
   useEffect(() => {
-    if (selectedCollection && selectedCollectionIsComplete) {
+    if (activeCollection && selectedCollectionIsComplete) {
       setMode('recurring');
-    } else if (selectedCollection && !selectedCollectionIsComplete) {
+    } else if (activeCollection && !selectedCollectionIsComplete) {
       setMode('first');
     }
-  }, [selectedCollection, selectedCollectionIsComplete]);
+  }, [activeCollection, selectedCollectionIsComplete]);
 
   const selectedCollectionMaterials = useMemo(() => {
     if (!selectedCollectionData) return null;
@@ -98,7 +100,7 @@ export default function Planner() {
   return (
     <div className="flex flex-col gap-8 text-orange-100 w-full max-w-[1000px] mx-auto">
       <div className="flex flex-col gap-4 w-full">
-        {selectedCollection ? (
+        {activeCollection ? (
           <div className="flex flex-row gap-4 justify-center items-center">
             <button
               className="invisible pointer-events-none"
@@ -106,10 +108,10 @@ export default function Planner() {
             >
               <ArrowUturnLeftIcon className="h-8 w-8 text-orange-100" />
             </button>
-            <h2 className="text-2xl mx-auto">{selectedCollection} </h2>
+            <h2 className="text-2xl mx-auto">{activeCollection} </h2>
             <button
               className="cursor-pointer"
-              onClick={() => setSelectedCollection(null)}
+              onClick={() => setActiveCollection('')}
             >
               <ArrowUturnLeftIcon className="h-8 w-8 text-orange-100" />
             </button>
@@ -120,7 +122,7 @@ export default function Planner() {
             <select
               className="text-xl bg-gray-800 text-orange-100 p-2 rounded-md cursor-pointer"
               onChange={(e) => {
-                setSelectedCollection(e.target.value);
+                setActiveCollection(e.target.value);
               }}
               value=""
             >
@@ -312,15 +314,7 @@ export default function Planner() {
                     .sort(([name1], [name2]) => (name1 > name2 ? 1 : -1))
                     .map(([material, amount]) => (
                       <div
-                        className={[
-                          'flex flex-col gap-1',
-                          artefact.collections[selectedCollectionData.name] ===
-                            ArtefactStates.Restored ||
-                          artefact.collections[selectedCollectionData.name] ===
-                            ArtefactStates.Completed
-                            ? 'opacity-20'
-                            : '',
-                        ].join(' ')}
+                        className={'flex flex-col gap-1'}
                         key={`${artefact.name}_${material}`}
                       >
                         <div className="flex justify-center items-center">
