@@ -1,0 +1,3130 @@
+[
+  {
+    "name": "Venator dagger",
+    "digsite": "Kharid-et",
+    "hotspot": "Venator remains",
+    "level": 5,
+    "chronotes": 206,
+    "xp": 305.1,
+    "materials": {
+      "Third-age iron": 16,
+      "Zarosian insignia": 12
+    },
+    "collections": ["Museum - Zarosian I", "Zarosian I"]
+  },
+  {
+    "name": "Venator light crossbow",
+    "digsite": "Kharid-et",
+    "hotspot": "Venator remains",
+    "level": 5,
+    "chronotes": 206,
+    "xp": 305.1,
+    "materials": {
+      "Third-age iron": 12,
+      "Zarosian insignia": 16
+    },
+    "collections": ["Museum - Zarosian I", "Zarosian I"]
+  },
+  {
+    "name": "Legionary gladius",
+    "digsite": "Kharid-et",
+    "hotspot": "Legionary remains",
+    "level": 12,
+    "chronotes": 220,
+    "xp": 430.8,
+    "materials": {
+      "Third-age iron": 10,
+      "Zarosian insignia": 6,
+      "Imperial steel": 12
+    },
+    "collections": ["Museum - Zarosian I", "Zarosian I"]
+  },
+  {
+    "name": "Legionary square shield",
+    "digsite": "Kharid-et",
+    "hotspot": "Legionary remains",
+    "level": 12,
+    "chronotes": 220,
+    "xp": 430.8,
+    "materials": {
+      "Third-age iron": 8,
+      "Zarosian insignia": 8,
+      "Imperial steel": 12
+    },
+    "collections": ["Museum - Zarosian I", "Zarosian I"]
+  },
+  {
+    "name": "Primis Elementis standard",
+    "digsite": "Kharid-et",
+    "hotspot": "Legionary remains",
+    "level": 12,
+    "chronotes": 220,
+    "xp": 430.8,
+    "materials": {
+      "Samite silk": 16,
+      "Third-age iron": 12
+    },
+    "collections": ["Museum - Zarosian I", "Zarosian I"]
+  },
+  {
+    "name": "Zaros effigy",
+    "digsite": "Kharid-et",
+    "hotspot": "Castra debris",
+    "level": 17,
+    "chronotes": 244,
+    "xp": 520.5,
+    "materials": {
+      "Samite silk": 8,
+      "White oak": 10,
+      "Zarosian insignia": 12
+    },
+    "collections": ["Museum - Zarosian I", "Zarosian I"]
+  },
+  {
+    "name": "Zarosian training dummy",
+    "digsite": "Kharid-et",
+    "hotspot": "Castra debris",
+    "level": 17,
+    "chronotes": 244,
+    "xp": 520.5,
+    "materials": {
+      "White oak": 14,
+      "Third-age iron": 16
+    },
+    "collections": ["Museum - Zarosian I", "Zarosian I"],
+    "otherUses": ["Unlocking Katarina (student) as a researcher."]
+  },
+  {
+    "name": "Hookah pipe",
+    "digsite": "Infernal Source",
+    "hotspot": "Lodge bar storage",
+    "level": 20,
+    "chronotes": 250,
+    "xp": 574.4,
+    "materials": {
+      "Third-age iron": 10,
+      "Goldrune": 12,
+      "Orthenglass": 8
+    },
+    "collections": ["Museum - Zamorakian I", "Smoky Fings", "Zamorakian I"]
+  },
+  {
+    "name": "Opulent wine goblet",
+    "digsite": "Infernal Source",
+    "hotspot": "Lodge bar storage",
+    "level": 20,
+    "chronotes": 250,
+    "xp": 574.4,
+    "materials": {
+      "Third-age iron": 14,
+      "Goldrune": 16
+    },
+    "collections": ["Museum - Zamorakian I", "Smoky Fings", "Zamorakian I"],
+    "otherUses": ["Unlocking Dorian (student) as a researcher."]
+  },
+  {
+    "name": "Crest of Dagon",
+    "digsite": "Infernal Source",
+    "hotspot": "Lodge art storage",
+    "otherSources": [
+      ["Star Lodge cellar chest", "Damaged"],
+      ["Star Lodge cellar chest", "Restored"]
+    ],
+    "level": 24,
+    "chronotes": 272,
+    "xp": 646.2,
+    "materials": {
+      "Goldrune": 14,
+      "Orthenglass": 18
+    },
+    "collections": [
+      "Museum - Zamorakian I",
+      "Zamorakian I",
+      "Showy Fings",
+      "Knowledge is Power"
+    ],
+    "mysteries": [
+      ["Eyes in Their Stars", "Eyes in Their Stars", "Eyes in Their Stars"]
+    ]
+  },
+  {
+    "name": "'Disorder' painting",
+    "digsite": "Infernal Source",
+    "hotspot": "Lodge art storage",
+    "level": 24,
+    "chronotes": 272,
+    "xp": 646.2,
+    "materials": {
+      "Samite silk": 6,
+      "White oak": 6,
+      "Vellum": 6,
+      "Cadmium red": 14
+    },
+    "collections": [
+      "Museum - Zamorakian I",
+      "Zamorakian I",
+      "Anarchic Abstraction"
+    ]
+  },
+  {
+    "name": "Legatus Maximus figurine",
+    "digsite": "Kharid-et",
+    "hotspot": "Administratum debris",
+    "level": 25,
+    "chronotes": 274,
+    "xp": 664.1,
+    "materials": {
+      "Ancient vis": 10,
+      "Goldrune": 8,
+      "Zarosian insignia": 14
+    },
+    "collections": [
+      "Museum - Zarosian I",
+      "Zarosian I",
+      "Showy Fings",
+      "Magic Man"
+    ]
+  },
+  {
+    "name": "'Solem in Umbra' painting",
+    "digsite": "Kharid-et",
+    "hotspot": "Administratum debris",
+    "level": 25,
+    "chronotes": 274,
+    "xp": 664.1,
+    "materials": {
+      "Samite silk": 8,
+      "Tyrian purple": 14,
+      "White oak": 10
+    },
+    "collections": [
+      "Museum - Zarosian I",
+      "Zarosian I",
+      "Imperial Impressionism"
+    ]
+  },
+  {
+    "name": "Imp mask",
+    "digsite": "Infernal Source",
+    "hotspot": "Cultist footlocker",
+    "level": 29,
+    "chronotes": 282,
+    "xp": 735.9,
+    "materials": {
+      "Leather scraps": 10,
+      "Chaotic brimstone": 10,
+      "Demonhide": 12
+    },
+    "collections": ["Museum - Zamorakian I", "Hat Problem", "Zamorakian I"]
+  },
+  {
+    "name": "Lesser demon mask",
+    "digsite": "Infernal Source",
+    "hotspot": "Cultist footlocker",
+    "level": 29,
+    "chronotes": 282,
+    "xp": 735.9,
+    "materials": {
+      "Leather scraps": 6,
+      "Chaotic brimstone": 8,
+      "Demonhide": 12,
+      "Cadmium red": 6
+    },
+    "collections": ["Museum - Zamorakian I", "Hat Hoarder", "Zamorakian I"]
+  },
+  {
+    "name": "Greater demon mask",
+    "digsite": "Infernal Source",
+    "hotspot": "Cultist footlocker",
+    "level": 29,
+    "chronotes": 282,
+    "xp": 735.9,
+    "materials": {
+      "Leather scraps": 6,
+      "Chaotic brimstone": 8,
+      "Demonhide": 12,
+      "Tyrian purple": 6
+    },
+    "collections": ["Museum - Zamorakian I", "Hat Hoarder", "Zamorakian I"],
+    "otherUses": [
+      "Completing the How Do You Do, Fellow Demon achievement (not consumed)."
+    ]
+  },
+  {
+    "name": "Order of Dis robes",
+    "digsite": "Infernal Source",
+    "hotspot": "Sacrificial altar",
+    "level": 36,
+    "chronotes": 352,
+    "xp": 861.5,
+    "materials": {
+      "Samite silk": 16,
+      "Cadmium red": 10,
+      "Eye of Dagon": 14
+    },
+    "collections": ["Museum - Zamorakian I", "Zamorakian I"]
+  },
+  {
+    "name": "Ritual dagger",
+    "digsite": "Infernal Source",
+    "hotspot": "Sacrificial altar",
+    "level": 36,
+    "chronotes": 352,
+    "xp": 861.5,
+    "materials": {
+      "Goldrune": 16,
+      "Hellfire metal": 24,
+      "Ruby": 1
+    },
+    "collections": ["Museum - Zamorakian I", "Magic Man", "Zamorakian I"]
+  },
+  {
+    "name": "'Frying pan'",
+    "digsite": "Everlight",
+    "hotspot": "Prodromoi remains",
+    "otherSources": ["Statue of Hebe", "Damaged"],
+    "level": 42,
+    "chronotes": 392,
+    "xp": 1073.3,
+    "materials": {
+      "Third-age iron": 20,
+      "White marble": 24
+    },
+    "collections": ["Museum - Saradominist I", "Saradominist I"],
+    "mysteries": ["Fallen Angels"]
+  },
+  {
+    "name": "Hallowed lantern",
+    "digsite": "Everlight",
+    "hotspot": "Prodromoi remains",
+    "level": 42,
+    "chronotes": 392,
+    "xp": 1073.3,
+    "materials": {
+      "Third-age iron": 20,
+      "Keramos": 24,
+      "White candle": 1
+    },
+    "collections": ["Museum - Saradominist I", "Saradominist I"],
+    "otherUses": [
+      "Restoring the Statue of Hebe for the No Secrets Left to Steal achievement, a 'Frying pan' (damaged) and some materials.",
+      "Using it on the top of the lighthouse will award a hallowed lantern, which can be used on the statue of Hebe for a book that awards 50,000 Archaeology experience. (Requires 105 Archaeology)"
+    ]
+  },
+  {
+    "name": "Branding iron",
+    "digsite": "Infernal Source",
+    "hotspot": "Dis dungeon debris",
+    "level": 45,
+    "chronotes": 412,
+    "xp": 1283.3,
+    "materials": {
+      "Third-age iron": 14,
+      "Eye of Dagon": 12,
+      "Hellfire metal": 20
+    },
+    "collections": ["Museum - Zamorakian II", "Zamorakian II"]
+  },
+  {
+    "name": "Manacles",
+    "digsite": "Infernal Source",
+    "hotspot": "Dis dungeon debris",
+    "level": 45,
+    "chronotes": 412,
+    "xp": 1283.3,
+    "materials": {
+      "Third-age iron": 14,
+      "Chaotic brimstone": 18,
+      "Eye of Dagon": 14
+    },
+    "collections": ["Museum - Zamorakian II", "Zamorakian II"]
+  },
+  {
+    "name": "Ancient timepiece",
+    "digsite": "Kharid-et",
+    "hotspot": "Praesidio remains",
+    "level": 47,
+    "chronotes": 416,
+    "xp": 1423.3,
+    "materials": {
+      "Third-age iron": 16,
+      "Goldrune": 18,
+      "Ancient vis": 12
+    },
+    "collections": [
+      "Museum - Zarosian I",
+      "Zarosian I",
+      "Blingy Fings",
+      "Magic Man"
+    ],
+    "otherUses": ["Completing the Time Served mystery"]
+  },
+  {
+    "name": "Legatus pendant",
+    "digsite": "Kharid-et",
+    "hotspot": "Praesidio remains",
+    "level": 47,
+    "chronotes": 416,
+    "xp": 1423.3,
+    "materials": {
+      "Third-age iron": 16,
+      "Goldrune": 18,
+      "Ancient vis": 12,
+      "Dragonstone": 1
+    },
+    "collections": ["Museum - Zarosian II", "Blingy Fings", "Zarosian II"],
+    "otherUses": ["Adding to toolbelt to pass barriers in Kharid-et digsite."]
+  },
+  {
+    "name": "Ceremonial unicorn ornament",
+    "digsite": "Everlight",
+    "hotspot": "Monoceros remains",
+    "level": 48,
+    "chronotes": 418,
+    "xp": 1493.3,
+    "materials": {
+      "Keramos": 26,
+      "Cobalt blue": 20
+    },
+    "collections": ["Museum - Saradominist I", "Saradominist I"],
+    "otherUses": ["Unlocking Eduardo (student) as a researcher."]
+  },
+  {
+    "name": "Ceremonial unicorn saddle",
+    "digsite": "Everlight",
+    "hotspot": "Monoceros remains",
+    "level": 48,
+    "chronotes": 418,
+    "xp": 1493.3,
+    "materials": {
+      "Leather scraps": 24,
+      "Cobalt blue": 22
+    },
+    "collections": ["Museum - Saradominist I", "Saradominist I"]
+  },
+
+  {
+    "name": "Everlight harp",
+    "digsite": "Everlight",
+    "hotspot": "Amphitheatre debris",
+    "level": 51,
+    "chronotes": 466,
+    "xp": 1703.3,
+    "materials": {
+      "Everlight silvthril": 30,
+      "White oak": 22
+    },
+    "collections": [
+      "Museum - Saradominist I",
+      "Saradominist I",
+      "Wise Am the Music Man"
+    ],
+    "otherUses": [
+      "Restoring the Statue of Mesomedes for the No Secrets Left to Steal achievement and the Hand of Glory (Everlight"
+    ]
+  },
+  {
+    "name": "Everlight trumpet",
+    "digsite": "Everlight",
+    "hotspot": "Amphitheatre debris",
+    "level": 51,
+    "chronotes": 466,
+    "xp": 1703.3,
+    "materials": {
+      "Everlight silvthril": 28,
+      "Goldrune": 24
+    },
+    "collections": [
+      "Museum - Saradominist I",
+      "Saradominist I",
+      "Wise Am the Music Man",
+      "Smoky Fings"
+    ],
+    "otherUses": ["That Old Black Magic quest"]
+  },
+  {
+    "name": "Everlight violin",
+    "digsite": "Everlight",
+    "hotspot": "Amphitheatre debris",
+    "level": 51,
+    "chronotes": 466,
+    "xp": 1703.3,
+    "materials": {
+      "Star of Saradomin": 16,
+      "White oak": 20,
+      "Samite silk": 16
+    },
+    "collections": [
+      "Museum - Saradominist I",
+      "Saradominist I",
+      "Wise Am the Music Man"
+    ]
+  },
+  {
+    "name": "Folded-arm figurine (female)",
+    "digsite": "Everlight",
+    "hotspot": "Ceramics studio debris",
+    "level": 56,
+    "chronotes": 490,
+    "xp": 2053.3,
+    "materials": {
+      "White marble": 30,
+      "Goldrune": 24
+    },
+    "collections": ["Museum - Saradominist I", "Saradominist I"]
+  },
+  {
+    "name": "Folded-arm figurine (male)",
+    "digsite": "Everlight",
+    "hotspot": "Ceramics studio debris",
+    "level": 56,
+    "chronotes": 490,
+    "xp": 2053.3,
+    "materials": {
+      "White marble": 30,
+      "Goldrune": 24
+    },
+    "collections": ["Museum - Saradominist I", "Saradominist I"]
+  },
+  {
+    "name": "'Incite Fear' spell scroll",
+    "digsite": "Kharid-et",
+    "hotspot": "Carcerem debris",
+    "level": 58,
+    "chronotes": 508,
+    "xp": 2193.3,
+    "materials": {
+      "Vellum": 20,
+      "Ancient vis": 18,
+      "Blood of Orcus": 18
+    },
+    "collections": [
+      "Museum - Zarosian II",
+      "Zarosian II",
+      "Magic Man",
+      "Imperial Sorcery"
+    ],
+    "mysteries": ["Vault of Shadows"]
+  },
+  {
+    "name": "Pontifex signet ring",
+    "digsite": "Kharid-et",
+    "hotspot": "Carcerem debris",
+    "level": 58,
+    "chronotes": 508,
+    "xp": 2193.3,
+    "materials": {
+      "Third-age iron": 16,
+      "Goldrune": 18,
+      "Ancient vis": 22,
+      "Dragonstone": 1
+    },
+    "collections": ["Museum - Zarosian II", "Blingy Fings", "Zarosian II"],
+    "otherUses": [
+      "Adding to toolbelt to pass barriers in Kharid-et digsite.",
+      "Upgrading to the Pontifex observation ring after Azzanadra's quest."
+    ]
+  },
+  {
+    "name": "Apex cap",
+    "digsite": "Senntisten",
+    "hotspot": "Ministry remains",
+    "level": 60,
+    "chronotes": 540,
+    "xp": 2193.3,
+    "materials": {
+      "Samite silk": 28,
+      "Leather scraps": 12,
+      "Ancient vis": 20
+    },
+    "collections": ["Museum - Zarosian V", "Religious Iconography"]
+  },
+  {
+    "name": "Curse tablet",
+    "digsite": "Senntisten",
+    "hotspot": "Ministry remains",
+    "level": 60,
+    "chronotes": 540,
+    "xp": 2333.3,
+    "materials": {
+      "Imperial steel": 16,
+      "Zarosian insignia": 12,
+      "Soapstone": 20,
+      "Blood of Orcus": 12
+    },
+    "collections": ["Museum - Zarosian V", "Imperial Sorcery"]
+  },
+  {
+    "name": "Funerary urn of shadow",
+    "digsite": "Senntisten",
+    "hotspot": "Ministry remains",
+    "level": 60,
+    "chronotes": 540,
+    "xp": 2333.3,
+    "materials": {
+      "Soapstone": 26,
+      "Tyrian purple": 14,
+      "Ancient vis": 20
+    },
+    "collections": ["Museum - Zarosian V", "Urns of the Empire"],
+    "mysteries": ["Secrets of the Inquisition"]
+  },
+  {
+    "name": "Dominion discus",
+    "digsite": "Everlight",
+    "hotspot": "Stadio debris",
+    "level": 61,
+    "chronotes": 556,
+    "xp": 2566.7,
+    "materials": {
+      "Keramos": 34,
+      "Star of Saradomin": 28
+    },
+    "collections": ["Museum - Saradominist II", "Saradominist II"]
+  },
+  {
+    "name": "Dominion javelin",
+    "digsite": "Everlight",
+    "hotspot": "Stadio debris",
+    "level": 61,
+    "chronotes": 556,
+    "xp": 2566.7,
+    "materials": {
+      "Keramos": 32,
+      "Third-age iron": 30
+    },
+    "collections": ["Museum - Saradominist II", "Saradominist II"]
+  },
+  {
+    "name": "Dominion pelte shield",
+    "digsite": "Everlight",
+    "hotspot": "Stadio debris",
+    "level": 61,
+    "chronotes": 556,
+    "xp": 2566.7,
+    "materials": {
+      "Star of Saradomin": 34,
+      "Samite silk": 28
+    },
+    "collections": ["Museum - Saradominist II", "Saradominist II"]
+  },
+  {
+    "name": "Infula robes",
+    "digsite": "Senntisten",
+    "hotspot": "Cathedral debris",
+    "level": 62,
+    "chronotes": 558,
+    "xp": 2800,
+    "materials": {
+      "Samite silk": 26,
+      "Leather scraps": 12,
+      "Goldrune": 12,
+      "Tyrian purple": 12
+    },
+    "collections": ["Museum - Zarosian V", "Religious Iconography"]
+  },
+  {
+    "name": "Funerary urn of smoke",
+    "digsite": "Senntisten",
+    "hotspot": "Cathedral debris",
+    "level": 62,
+    "chronotes": 558,
+    "xp": 2800,
+    "materials": {
+      "Soapstone": 26,
+      "Tyrian purple": 14,
+      "Ancient vis": 20
+    },
+    "collections": ["Museum - Zarosian V", "Urns of the Empire"],
+    "mysteries": ["Secrets of the Inquisition"]
+  },
+  {
+    "name": "Hand of the Ancients",
+    "digsite": "Senntisten",
+    "hotspot": "Cathedral debris",
+    "level": 62,
+    "chronotes": 558,
+    "xp": 2800,
+    "materials": {
+      "Blood of Orcus": 12,
+      "White oak": 18,
+      "Ancient vis": 14,
+      "Goldrune": 18
+    },
+    "collections": ["Museum - Zarosian V", "Imperial Sorcery"]
+  },
+  {
+    "name": "Decorative amphora",
+    "digsite": "Senntisten",
+    "hotspot": "Marketplace debris",
+    "level": 63,
+    "chronotes": 560,
+    "xp": 3033.3,
+    "materials": {
+      "Tyrian purple": 16,
+      "Ancient vis": 18,
+      "Soapstone": 28
+    },
+    "collections": ["Museum - Zarosian V", "Entertaining the Masses"]
+  },
+  {
+    "name": "Funerary urn of ice",
+    "digsite": "Senntisten",
+    "hotspot": "Marketplace debris",
+    "level": 63,
+    "chronotes": 560,
+    "xp": 3033.3,
+    "materials": {
+      "Soapstone": 28,
+      "Tyrian purple": 14,
+      "Ancient vis": 20
+    },
+    "collections": ["Museum - Zarosian VI", "Urns of the Empire"],
+    "mysteries": ["Secrets of the Inquisition"]
+  },
+  {
+    "name": "Loarnab rod",
+    "digsite": "Senntisten",
+    "hotspot": "Marketplace debris",
+    "level": 63,
+    "chronotes": 560,
+    "xp": 3033.3,
+    "materials": {
+      "White oak": 28,
+      "Blood of Orcus": 16,
+      "Imperial steel": 18
+    },
+    "collections": ["Museum - Zarosian VI", "Religious Iconography"]
+  },
+  {
+    "name": "Inquisitor's ceremonial armour",
+    "digsite": "Senntisten",
+    "hotspot": "Inquisitor remains",
+    "level": 64,
+    "chronotes": 562,
+    "xp": 3266.7,
+    "materials": {
+      "Leather scraps": 14,
+      "Samite silk": 30,
+      "Tyrian purple": 18
+    },
+    "collections": ["Museum - Zarosian VI", "Finery of the Inquisition"]
+  },
+  {
+    "name": "Inquisitor's ceremonial mask",
+    "digsite": "Senntisten",
+    "hotspot": "Inquisitor remains",
+    "level": 64,
+    "chronotes": 562,
+    "xp": 3266.7,
+    "materials": {
+      "Ancient vis": 14,
+      "Leather scraps": 12,
+      "Blood of Orcus": 14,
+      "Samite silk": 22
+    },
+    "collections": ["Museum - Zarosian VI", "Finery of the Inquisition"]
+  },
+  {
+    "name": "Inquisitor's seal",
+    "digsite": "Senntisten",
+    "hotspot": "Inquisitor remains",
+    "level": 64,
+    "chronotes": 562,
+    "xp": 3266.7,
+    "materials": {
+      "Tyrian purple": 14,
+      "Zarosian insignia": 20,
+      "Ancient vis": 14,
+      "Goldrune": 14
+    },
+    "collections": ["Museum - Zarosian VI", "Finery of the Inquisition"]
+  },
+  {
+    "name": "'The Lake of Fire' painting",
+    "digsite": "Infernal Source",
+    "hotspot": "Infernal art",
+    "level": 65,
+    "chronotes": 578,
+    "xp": 3500,
+    "materials": {
+      "Samite silk": 10,
+      "White oak": 10,
+      "Vellum": 10,
+      "Cadmium red": 34
+    },
+    "collections": [
+      "Museum - Zamorakian II",
+      "Zamorakian II",
+      "Anarchic Abstraction"
+    ]
+  },
+  {
+    "name": "'Lust' metal sculpture",
+    "digsite": "Infernal Source",
+    "hotspot": "Infernal art",
+    "level": 65,
+    "chronotes": 578,
+    "xp": 3500,
+    "materials": {
+      "Third-age iron": 16,
+      "Eye of Dagon": 24,
+      "Goldrune": 24,
+      "Ruby": 1
+    },
+    "collections": ["Museum - Zamorakian II", "Showy Fings", "Zamorakian II"]
+  },
+  {
+    "name": "Gladiator helmet",
+    "digsite": "Senntisten",
+    "hotspot": "Gladiator remains",
+    "level": 66,
+    "chronotes": 580,
+    "xp": 3773.3,
+    "materials": {
+      "Imperial steel": 30,
+      "Blood of Orcus": 16,
+      "Leather scraps": 18
+    },
+    "collections": ["Museum - Zarosian VII", "Entertaining the Masses"]
+  },
+  {
+    "name": "Gladiator sword",
+    "digsite": "Senntisten",
+    "hotspot": "Gladiator remains",
+    "level": 66,
+    "chronotes": 580,
+    "xp": 3773.3,
+    "materials": {
+      "Imperial steel": 30,
+      "Goldrune": 18,
+      "Zarosian insignia": 16
+    },
+    "collections": ["Museum - Zarosian VII", "Entertaining the Masses"]
+  },
+  {
+    "name": "Funerary urn of blood",
+    "digsite": "Senntisten",
+    "hotspot": "Gladiator remains",
+    "level": 66,
+    "chronotes": 580,
+    "xp": 3773.3,
+    "materials": {
+      "Soapstone": 30,
+      "Tyrian purple": 14,
+      "Blood of Orcus": 20
+    },
+    "collections": ["Museum - Zarosian VII", "Urns of the Empire"],
+    "otherUses": ["Completing the Secrets of the Inquisition mystery."]
+  },
+  {
+    "name": "Funerary urn of miasma",
+    "digsite": "Senntisten",
+    "hotspot": "Citizen remains",
+    "level": 67,
+    "chronotes": 582,
+    "xp": 3966.7,
+    "materials": {
+      "Soapstone": 30,
+      "Tyrian purple": 14,
+      "Ancient vis": 20
+    },
+    "collections": ["Museum - Zarosian VII", "Urns of the Empire"]
+  },
+  {
+    "name": "Model chariot",
+    "digsite": "Senntisten",
+    "hotspot": "Citizen remains",
+    "level": 67,
+    "chronotes": 582,
+    "xp": 3966.7,
+    "materials": {
+      "Vellum": 12,
+      "Imperial steel": 18,
+      "Goldrune": 20,
+      "Zarosian insignia": 14
+    },
+    "collections": ["Museum - Zarosian VII", "Entertaining the Masses"]
+  },
+  {
+    "name": "'The Serpent's Fall' carving",
+    "digsite": "Senntisten",
+    "hotspot": "Citizen remains",
+    "level": 67,
+    "chronotes": 582,
+    "xp": 3966.7,
+    "materials": {
+      "Vellum": 16,
+      "Tyrian purple": 24,
+      "Blood of Orcus": 12,
+      "White oak": 12
+    },
+    "collections": ["Museum - Zarosian VII", "Religious Iconography"]
+  },
+  {
+    "name": "Chaos star",
+    "digsite": "Infernal Source",
+    "hotspot": "Shakroth remains",
+    "level": 68,
+    "chronotes": 584,
+    "xp": 4200,
+    "materials": {
+      "Chaotic brimstone": 28,
+      "Hellfire metal": 36
+    },
+    "collections": ["Museum - Zamorakian II", "Zamorakian II"],
+    "otherUses": [
+      "Accessing the Hydra portal in the Infernal Source achievement (not consumed, but required every time and can be added to tool belt).",
+      "Creating an Abyssal Gatestone with the chaotic gatestone.",
+      "Three are used in the recipe for an Enchantment of dispelling."
+    ]
+  },
+  {
+    "name": "Spiked dog collar",
+    "digsite": "Infernal Source",
+    "hotspot": "Shakroth remains",
+    "level": 68,
+    "chronotes": 584,
+    "xp": 4200,
+    "materials": {
+      "Third-age iron": 24,
+      "Leather scraps": 24,
+      "Chaotic brimstone": 16
+    },
+    "collections": ["Museum - Zamorakian II", "Zamorakian II"],
+    "otherUses": ["Used for the Who's a Bad Boy? achievement (not consumed)."]
+  },
+  {
+    "name": "Bronze Dominion medal",
+    "digsite": "Everlight",
+    "hotspot": "Dominion Games podium",
+    "level": 69,
+    "chronotes": 572,
+    "xp": 4433.3,
+    "materials": {
+      "Everlight silvthril": 36,
+      "Star of Saradomin": 26,
+      "Bronze bar": 1
+    },
+    "collections": [
+      "Museum - Saradominist II",
+      "Saradominist II",
+      "Blingy Fings"
+    ]
+  },
+  {
+    "name": "Silver Dominion medal",
+    "digsite": "Everlight",
+    "hotspot": "Dominion Games podium",
+    "level": 69,
+    "chronotes": 572,
+    "xp": 4433.3,
+    "materials": {
+      "Everlight silvthril": 36,
+      "Star of Saradomin": 26,
+      "Silver bar": 1
+    },
+    "collections": [
+      "Museum - Saradominist II",
+      "Saradominist II",
+      "Blingy Fings"
+    ]
+  },
+  {
+    "name": "Dominion torch",
+    "digsite": "Everlight",
+    "hotspot": "Dominion Games podium",
+    "level": 69,
+    "chronotes": 572,
+    "xp": 4433.3,
+    "materials": {
+      "Goldrune": 12,
+      "Orthenglass": 12,
+      "Everlight silvthril": 20,
+      "Star of Saradomin": 18
+    },
+    "collections": [
+      "Museum - Saradominist II",
+      "Saradominist II",
+      "Smoky Fings"
+    ],
+    "otherUses": [
+      "Restoring the statue of Padosan and getting the gold Dominion medal.",
+      "Opening a door in the Acropolis for the Hallowed Be... mystery."
+    ]
+  },
+  {
+    "name": "Ikovian gerege",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Ikovian memorial",
+    "level": 70,
+    "chronotes": 602,
+    "xp": 4666.7,
+    "materials": {
+      "Third-age iron": 36,
+      "Wings of War": 30
+    },
+    "collections": [
+      "Museum - Armadylean I",
+      "Armadylean I",
+      "Knowledge is Power"
+    ],
+    "otherUses": [
+      "Accessing the Stormguard Citadel (not consumed, but required every time and can be added to tool belt)."
+    ]
+  },
+  {
+    "name": "Toy glider",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Ikovian memorial",
+    "level": 70,
+    "chronotes": 602,
+    "xp": 4666.7,
+    "materials": {
+      "Stormguard steel": 36,
+      "White oak": 30
+    },
+    "collections": ["Museum - Armadylean I", "Armadylean I"]
+  },
+  {
+    "name": "Toy war golem",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Ikovian memorial",
+    "level": 70,
+    "chronotes": 602,
+    "xp": 4666.7,
+    "materials": {
+      "Third Age iron": 36,
+      "White oak": 30,
+      "Clockwork": 1
+    },
+    "collections": ["Museum - Armadylean I", "Armadylean I"]
+  },
+  {
+    "name": "Decorative vase",
+    "digsite": "Everlight",
+    "hotspot": "Oikos studio debris",
+    "level": 72,
+    "chronotes": 606,
+    "xp": 5133.3,
+    "materials": {
+      "White marble": 36,
+      "Cobalt blue": 30
+    },
+    "collections": ["Museum - Saradominist II", "Saradominist II"]
+  },
+  {
+    "name": "Kantharos cup",
+    "digsite": "Everlight",
+    "hotspot": "Oikos studio debris",
+    "level": 72,
+    "chronotes": 606,
+    "xp": 5133.3,
+    "materials": {
+      "Everlight silvthril": 30,
+      "Orthenglass": 36,
+      "Sapphire": 1
+    },
+    "collections": ["Museum - Saradominist II", "Saradominist II"],
+    "otherUses": [
+      "Creating the Cup of Nectar at the top of the Everlight lighthouse (level 105 Archaeology required)."
+    ]
+  },
+  {
+    "name": "Patera bowl",
+    "digsite": "Everlight",
+    "hotspot": "Oikos studio debris",
+    "level": 72,
+    "chronotes": 606,
+    "xp": 5133.3,
+    "materials": {
+      "Keramos": 36,
+      "Goldrune": 30,
+      "Sapphire": 1
+    },
+    "collections": ["Museum - Saradominist II", "Saradominist II"]
+  },
+  {
+    "name": "Castle gatestone",
+    "digsite": "Daemonheim",
+    "hotspot": "Castle hall rubble",
+    "level": 73,
+    "chronotes": 622,
+    "xp": 5366.7,
+    "materials": {
+      "Orgone": 36,
+      "Orthenglass": 32
+    },
+    "collections": ["Museum - Dragonkin V", "Dragonkin V"]
+  },
+  {
+    "name": "Engraved ring of kinship",
+    "digsite": "Daemonheim",
+    "hotspot": "Castle hall rubble",
+    "level": 73,
+    "chronotes": 622,
+    "xp": 5366.7,
+    "materials": {
+      "Goldrune": 28,
+      "Dragon metal": 40
+    },
+    "collections": ["Museum - Dragonkin V", "Dragonkin V"]
+  },
+  {
+    "name": "Ceremonial mace",
+    "digsite": "Kharid-et",
+    "hotspot": "Kharid-et chapel debris",
+    "level": 74,
+    "chronotes": 624,
+    "xp": 5600,
+    "materials": {
+      "Imperial steel": 20,
+      "Third Age iron": 20,
+      "Goldrune": 28
+    },
+    "collections": ["Museum - Zarosian II", "Hitty Fings", "Zarosian II"]
+  },
+  {
+    "name": "Pontifex Maximus figurine",
+    "digsite": "Kharid-et",
+    "hotspot": "Kharid-et chapel debris",
+    "level": 74,
+    "chronotes": 624,
+    "xp": 5600,
+    "materials": {
+      "Zarosian insignia": 24,
+      "Ancient vis": 16,
+      "Goldrune": 28,
+      "Dragonstone": 1
+    },
+    "collections": ["Museum - Zarosian II", "Showy Fings", "Zarosian II"]
+  },
+  {
+    "name": "'Consensus ad Idem' painting",
+    "digsite": "Kharid-et",
+    "hotspot": "Kharid-et chapel debris",
+    "level": 74,
+    "chronotes": 624,
+    "xp": 5600,
+    "materials": {
+      "White oak": 10,
+      "Samite silk": 10,
+      "Tyrian purple": 50
+    },
+    "collections": [
+      "Museum - Zarosian II",
+      "Zarosian II",
+      "Imperial Impressionism"
+    ]
+  },
+  {
+    "name": "Avian song-egg player",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Keshik ger",
+    "level": 76,
+    "chronotes": 628,
+    "xp": 6066.7,
+    "materials": {
+      "Stormguard steel": 36,
+      "Armadylean yellow": 32,
+      "Diamond": 1
+    },
+    "collections": [
+      "Museum - Armadylean I",
+      "Armadylean I",
+      "Wise Am the Music Man"
+    ]
+  },
+  {
+    "name": "Keshik drum",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Keshik ger",
+    "level": 76,
+    "chronotes": 628,
+    "xp": 6066.7,
+    "materials": {
+      "Wings of War": 16,
+      "Animal furs": 16,
+      "White oak": 20,
+      "Leather scraps": 16
+    },
+    "collections": [
+      "Museum - Armadylean I",
+      "Armadylean I",
+      "Wise Am the Music Man"
+    ]
+  },
+  {
+    "name": "Morin khuur",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Keshik ger",
+    "level": 76,
+    "chronotes": 628,
+    "xp": 6066.7,
+    "materials": {
+      "Armadylean yellow": 36,
+      "White oak": 32
+    },
+    "collections": [
+      "Museum - Armadylean I",
+      "Armadylean I",
+      "Wise Am the Music Man"
+    ]
+  },
+  {
+    "name": "Ekeleshuun blinder mask",
+    "digsite": "Warforge",
+    "hotspot": "Gladiatorial goblin remains",
+    "level": 76,
+    "chronotes": 628,
+    "xp": 6066.7,
+    "materials": {
+      "Vulcanised rubber": 24,
+      "Malachite green": 20,
+      "Vellum": 24
+    },
+    "collections": [
+      "Museum - Bandosian I",
+      "Green Gobbo Goodies I",
+      "Hat Problem"
+    ]
+  },
+  {
+    "name": "Narogoshuun 'Hob-da-Gob' ball",
+    "digsite": "Warforge",
+    "hotspot": "Gladiatorial goblin remains",
+    "level": 76,
+    "chronotes": 628,
+    "xp": 6066.7,
+    "materials": {
+      "Vulcanised rubber": 36,
+      "Mark of the Kyzaj": 32
+    },
+    "collections": ["Museum - Bandosian I", "Green Gobbo Goodies I"]
+  },
+  {
+    "name": "Rekeshuun war tether",
+    "digsite": "Warforge",
+    "hotspot": "Gladiatorial goblin remains",
+    "level": 76,
+    "chronotes": 628,
+    "xp": 6066.7,
+    "materials": {
+      "Warforged bronze": 20,
+      "Vulcanised rubber": 22,
+      "Leather scraps": 26
+    },
+    "collections": ["Museum - Bandosian I", "Green Gobbo Goodies I"]
+  },
+  {
+    "name": "Exploratory totem",
+    "digsite": "Daemonheim",
+    "hotspot": "Tunnelling equipment repository",
+    "level": 77,
+    "chronotes": 644,
+    "xp": 6300,
+    "materials": {
+      "Dragon metal": 34,
+      "Compass rose": 36
+    },
+    "collections": ["Museum - Dragonkin V", "Dragonkin V"]
+  },
+  {
+    "name": "Excavator portal mine",
+    "digsite": "Daemonheim",
+    "hotspot": "Tunnelling equipment repository",
+    "level": 77,
+    "chronotes": 644,
+    "xp": 5366.7,
+    "materials": {
+      "Orgone": 36,
+      "Orthenglass": 34
+    },
+    "collections": ["Museum - Dragonkin V", "Dragonkin V"]
+  },
+  {
+    "name": "Storage totem",
+    "digsite": "Daemonheim",
+    "hotspot": "Botanical reserve",
+    "level": 78,
+    "chronotes": 646,
+    "xp": 6533.3,
+    "materials": {
+      "Dragon metal": 36,
+      "Compass rose": 34
+    },
+    "collections": ["Museum - Dragonkin VI", "Dragonkin VI"]
+  },
+  {
+    "name": "Plant seed satchel",
+    "digsite": "Daemonheim",
+    "hotspot": "Botanical reserve",
+    "level": 78,
+    "chronotes": 646,
+    "xp": 6533.3,
+    "materials": {
+      "Felt": 28,
+      "Carbon black": 28,
+      "Compass rose": 14
+    },
+    "collections": ["Museum - Dragonkin VI", "Dragonkin VI"]
+  },
+  {
+    "name": "Snuff box",
+    "digsite": "Daemonheim",
+    "hotspot": "Botanical reserve",
+    "level": 78,
+    "chronotes": 646,
+    "xp": 6533.3,
+    "materials": {
+      "Soapstone": 20,
+      "Carbon black": 30,
+      "Felt": 20
+    },
+    "collections": ["Museum - Dragonkin VI", "Dragonkin VI"]
+  },
+  {
+    "name": "Aviansie dreamcoat",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Tailory debris",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Armadylean yellow": 20,
+      "Samite silk": 30,
+      "Animal furs": 22
+    },
+    "collections": ["Museum - Armadylean I", "Armadylean I"],
+    "otherUses": ["Trading with Armadyl for the Ring of Solomon relic."]
+  },
+  {
+    "name": "Ceremonial plume",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Tailory debris",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Armadylean yellow": 38,
+      "Goldrune": 34
+    },
+    "collections": ["Museum - Armadylean I", "Showy Fings", "Armadylean I"]
+  },
+  {
+    "name": "Peacocking parasol",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Tailory debris",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Armadylean yellow": 22,
+      "Samite silk": 30,
+      "White oak": 20
+    },
+    "collections": ["Museum - Armadylean I", "Armadylean I"]
+  },
+  {
+    "name": "Ogre Kyzaj axe",
+    "digsite": "Warforge",
+    "hotspot": "Crucible stands debris",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Warforged bronze": 28,
+      "Mark of the Kyzaj": 20,
+      "Fossilised bone": 24
+    },
+    "collections": ["Museum - Bandosian I", "Red Rum Relics I"]
+  },
+  {
+    "name": "Ork cleaver sword",
+    "digsite": "Warforge",
+    "hotspot": "Crucible stands debris",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Warforged bronze": 36,
+      "Fossilised bone": 36
+    },
+    "collections": ["Museum - Bandosian I", "Red Rum Relics I"],
+    "otherUses": ["Two are used in the recipe for an Enchantment of savagery."]
+  },
+  {
+    "name": "Larupia trophy",
+    "digsite": "Infernal Source",
+    "hotspot": "Animal trophies",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Cadmium red": 18,
+      "Animal furs": 28,
+      "Orthenglass": 26
+    },
+    "collections": ["Museum - Zamorakian II", "Zamorakian II"]
+  },
+  {
+    "name": "Lion trophy",
+    "digsite": "Infernal Source",
+    "hotspot": "Animal trophies",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Cadmium red": 18,
+      "Animal furs": 28,
+      "White oak": 26
+    },
+    "collections": ["Museum - Zamorakian II", "Zamorakian II"]
+  },
+  {
+    "name": "She-wolf trophy",
+    "digsite": "Infernal Source",
+    "hotspot": "Animal trophies",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Chaotic brimstone": 26,
+      "Cadmium red": 18,
+      "Animal furs": 28
+    },
+    "collections": ["Museum - Zamorakian II", "Zamorakian II"]
+  },
+  {
+    "name": "Pontifex censer",
+    "digsite": "Kharid-et",
+    "hotspot": "Pontifex remains",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Third Age iron": 20,
+      "Ancient vis": 20,
+      "Goldrune": 32
+    },
+    "collections": ["Museum - Zarosian II", "Smoky Fings", "Zarosian II"]
+  },
+  {
+    "name": "Pontifex crozier",
+    "digsite": "Kharid-et",
+    "hotspot": "Pontifex remains",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Imperial steel": 20,
+      "Zarosian insignia": 20,
+      "Goldrune": 32
+    },
+    "collections": ["Museum - Zarosian II", "Hitty Fings", "Zarosian II"]
+  },
+  {
+    "name": "Pontifex mitre",
+    "digsite": "Kharid-et",
+    "hotspot": "Pontifex remains",
+    "level": 81,
+    "chronotes": 666,
+    "xp": 7388.9,
+    "materials": {
+      "Samite silk": 32,
+      "Ancient vis": 20,
+      "Zarosian insignia": 20
+    },
+    "collections": ["Museum - Zarosian II", "Hat Hoarder", "Zarosian II"]
+  },
+  {
+    "name": "Fishing trident",
+    "digsite": "Everlight",
+    "hotspot": "Oikos fishing hut remnants",
+    "level": 84,
+    "chronotes": 686,
+    "xp": 8555.6,
+    "materials": {
+      "Fishing trident (damaged)": 1,
+      "Star of Saradomin": 22,
+      "Third Age iron": 30,
+      "Goldrune": 22
+    },
+    "collections": [
+      "Museum - Saradominist III",
+      "Saradominist III",
+      "Hitty Fings"
+    ]
+  },
+  {
+    "name": "Hawkeye lens multi-vision scope",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Weapons research debris",
+    "level": 85,
+    "chronotes": 688,
+    "xp": 8944.4,
+    "materials": {
+      "Hawkeye lens multi-vision scope (damaged)": 1,
+      "Stormguard steel": 40,
+      "Orthenglass": 34
+    },
+    "collections": ["Museum - Armadylean II", "Armadylean II"]
+  },
+  {
+    "name": "Talon-3 razor wing",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Weapons research debris",
+    "level": 85,
+    "chronotes": 688,
+    "xp": 8944.4,
+    "materials": {
+      "Talon-3 razor wing (damaged)": 1,
+      "Aetherium alloy": 40,
+      "Wings of War": 34,
+      "Rope": 1
+    },
+    "collections": ["Museum - Armadylean II", "Armadylean II"]
+  },
+  {
+    "name": "'Exsanguinate' spell scroll",
+    "digsite": "Kharid-et",
+    "hotspot": "Orcus altar",
+    "level": 86,
+    "chronotes": 704,
+    "xp": 9333.3,
+    "materials": {
+      "'Exsanguinate' spell scroll (damaged)": 1,
+      "Vellum": 40,
+      "Blood of Orcus": 36
+    },
+    "collections": [
+      "Museum - Zarosian III",
+      "Zarosian III",
+      "Magic Man",
+      "Imperial Sorcery"
+    ],
+    "otherUses": [
+      "Accessing the blood door in Kharid-et while standing near the dial."
+    ]
+  },
+  {
+    "name": "Necromantic focus",
+    "digsite": "Kharid-et",
+    "hotspot": "Orcus altar",
+    "level": 86,
+    "chronotes": 704,
+    "xp": 9333.3,
+    "materials": {
+      "Necromantic focus (damaged)": 1,
+      "Imperial steel": 20,
+      "Blood of Orcus": 26,
+      "Ancient vis": 30
+    },
+    "collections": [
+      "Museum - Zarosian III",
+      "Zarosian III",
+      "Knowledge is Power",
+      "Imperial Sorcery"
+    ],
+    "otherUses": [
+      "One is used in the recipe for an Enchantment of affliction.",
+      "One is used during the Tomes of the Warlock quest."
+    ]
+  },
+  {
+    "name": "Spent summoning charm",
+    "digsite": "Daemonheim",
+    "hotspot": "Communal space",
+    "level": 87,
+    "chronotes": 706,
+    "xp": 9722.2,
+    "materials": {
+      "Spent summoning charm (damaged)": 1,
+      "Orgone": 46,
+      "Felt": 30
+    },
+    "collections": ["Museum - Dragonkin VI", "Dragonkin VI"]
+  },
+  {
+    "name": "'Friendship bracelet'",
+    "digsite": "Daemonheim",
+    "hotspot": "Communal space",
+    "level": 87,
+    "chronotes": 706,
+    "xp": 9722.2,
+    "materials": {
+      "'Friendship bracelet' (damaged)": 1,
+      "Soapstone": 30,
+      "Felt": 46
+    },
+    "collections": ["Museum - Dragonkin VI", "Dragonkin VI"],
+    "otherUses": [
+      "Accessing Daemonheim - Depths excavation site (not consumed, but required every time and can be added to tool belt)."
+    ]
+  },
+  {
+    "name": "Homely totem",
+    "digsite": "Daemonheim",
+    "hotspot": "Communal space",
+    "level": 87,
+    "chronotes": 706,
+    "xp": 9722.2,
+    "materials": {
+      "Homely totem (damaged)": 1,
+      "Soapstone": 36,
+      "Felt": 40
+    },
+    "collections": ["Museum - Dragonkin VI", "Dragonkin VI"]
+  },
+  {
+    "name": "High priest crozier",
+    "digsite": "Warforge",
+    "hotspot": "Big High War God shrine",
+    "level": 89,
+    "chronotes": 724,
+    "xp": 10500,
+    "materials": {
+      "High priest crozier (damaged)": 1,
+      "Mark of the Kyzaj": 26,
+      "Malachite green": 24,
+      "Goldrune": 28
+    },
+    "collections": [
+      "Museum - Bandosian I",
+      "Green Gobbo Goodies II",
+      "Hitty Fings"
+    ]
+  },
+  {
+    "name": "High priest mitre",
+    "digsite": "Warforge",
+    "hotspot": "Big High War God shrine",
+    "level": 89,
+    "chronotes": 724,
+    "xp": 10500,
+    "materials": {
+      "High priest mitre (damaged)": 1,
+      "Mark of the Kyzaj": 26,
+      "Malachite green": 24,
+      "Samite silk": 28
+    },
+    "collections": [
+      "Museum - Bandosian I",
+      "Green Gobbo Goodies II",
+      "Hat Problem",
+      "Magic Man"
+    ]
+  },
+  {
+    "name": "High priest orb",
+    "digsite": "Warforge",
+    "hotspot": "Big High War God shrine",
+    "level": 89,
+    "chronotes": 724,
+    "xp": 10500,
+    "materials": {
+      "High priest orb (damaged)": 1,
+      "Mark of the Kyzaj": 26,
+      "Malachite green": 24,
+      "Goldrune": 28
+    },
+    "collections": [
+      "Museum - Bandosian I",
+      "Green Gobbo Goodies II",
+      "Hitty Fings"
+    ]
+  },
+  {
+    "name": "'Torment' metal sculpture",
+    "digsite": "Infernal Source",
+    "hotspot": "Dis overspill",
+    "level": 89,
+    "chronotes": 724,
+    "xp": 10500,
+    "materials": {
+      "'Torment' metal sculpture (damaged)": 1,
+      "Eye of Dagon": 20,
+      "Third Age iron": 20,
+      "Hellfire metal": 38
+    },
+    "collections": ["Museum - Zamorakian III", "Zamorakian III"]
+  },
+  {
+    "name": "'Pandemonium' tapestry",
+    "digsite": "Infernal Source",
+    "hotspot": "Dis overspill",
+    "level": 89,
+    "chronotes": 724,
+    "xp": 10500,
+    "materials": {
+      "'Pandemonium' tapestry (damaged)": 1,
+      "White oak": 12,
+      "Samite silk": 12,
+      "Vellum": 12,
+      "Cadmium red": 42
+    },
+    "collections": [
+      "Museum - Zamorakian III",
+      "Zamorakian III",
+      "Anarchic Abstraction"
+    ]
+  },
+  {
+    "name": "Ceremonial dragonkin tablet",
+    "digsite": "Orthen",
+    "hotspot": "Orthen rubble",
+    "level": 90,
+    "chronotes": 733,
+    "xp": 10888.9,
+    "materials": {
+      "Ceremonial dragonkin tablet (damaged)": 1,
+      "Orthenglass": 79
+    },
+    "collections": ["Desperate for Artefacts"]
+  },
+  {
+    "name": "Pasaha",
+    "digsite": "Orthen",
+    "hotspot": "Orthen rubble",
+    "level": 90,
+    "chronotes": 726,
+    "xp": 10888.9,
+    "materials": {
+      "Pasaha (damaged)": 1,
+      "Felt": 40,
+      "Goldrune": 38
+    },
+    "collections": ["Museum - Dragonkin I", "Dragonkin I"],
+    "otherUses": ["One is used in the recipe for an artificer's measure."]
+  },
+  {
+    "name": "Ritual bell",
+    "digsite": "Orthen",
+    "hotspot": "Orthen rubble",
+    "level": 90,
+    "chronotes": 726,
+    "xp": 10888.9,
+    "materials": {
+      "Ritual bell (damaged)": 1,
+      "Goldrune": 40,
+      "Compass rose": 38
+    },
+    "collections": ["Museum - Dragonkin I", "Dragonkin I"]
+  },
+  {
+    "name": "Prototype gravimeter",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Gravitron research debris",
+    "level": 91,
+    "chronotes": 742,
+    "xp": 11277.8,
+    "materials": {
+      "Prototype gravimeter (damaged)": 1,
+      "Quintessence": 34,
+      "Leather scraps": 20,
+      "Third Age iron": 26
+    },
+    "collections": ["Museum - Armadylean II", "Armadylean II"]
+  },
+  {
+    "name": "Songbird recorder",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Gravitron research debris",
+    "level": 91,
+    "chronotes": 742,
+    "xp": 11277.8,
+    "materials": {
+      "Songbird recorder (damaged)": 1,
+      "Stormguard steel": 44,
+      "Orthenglass": 36,
+      "Diamond": 1
+    },
+    "collections": [
+      "Museum - Armadylean II",
+      "Armadylean II",
+      "Wise Am the Music Man"
+    ]
+  },
+  {
+    "name": "Amphora",
+    "digsite": "Everlight",
+    "hotspot": "Acropolis debris",
+    "level": 92,
+    "chronotes": 742,
+    "xp": 11666.7,
+    "materials": {
+      "Amphora (damaged)": 1,
+      "Everlight silvthril": 34,
+      "Keramos": 46
+    },
+    "collections": ["Museum - Saradominist III", "Saradominist III"]
+  },
+  {
+    "name": "Rod of Asclepius",
+    "digsite": "Everlight",
+    "hotspot": "Acropolis debris",
+    "level": 92,
+    "chronotes": 742,
+    "xp": 11666.7,
+    "materials": {
+      "White marble": 30,
+      "Star of Saradomin": 24,
+      "Goldrune": 26
+    },
+    "collections": [
+      "Museum - Saradominist III",
+      "Saradominist III",
+      "Showy Fings"
+    ],
+    "otherUses": ["Restoring the Statue of Tromple."]
+  },
+  {
+    "name": "Zarosian ewer",
+    "digsite": "Kharid-et",
+    "hotspot": "Armarium debris",
+    "level": 93,
+    "chronotes": 760,
+    "xp": 12500,
+    "materials": {
+      "Third Age iron": 52,
+      "Zarosian insignia": 30
+    },
+    "collections": ["Museum - Zarosian III", "Zarosian III"]
+  },
+  {
+    "name": "Zarosian stein",
+    "digsite": "Kharid-et",
+    "hotspot": "Armarium debris",
+    "level": 93,
+    "chronotes": 760,
+    "xp": 12500,
+    "materials": {
+      "Third Age iron": 16,
+      "Imperial steel": 36,
+      "Zarosian insignia": 30
+    },
+    "collections": ["Museum - Zarosian III", "Zarosian III"]
+  },
+  {
+    "name": "Beastkeeper helm",
+    "digsite": "Warforge",
+    "hotspot": "Yu'biusk animal pen",
+    "level": 94,
+    "chronotes": 776,
+    "xp": 13333.3,
+    "materials": {
+      "Warforged bronze": 16,
+      "Vulcanised rubber": 24,
+      "Animal furs": 20,
+      "Fossilised bone": 24
+    },
+    "collections": ["Museum - Bandosian II", "Hat Problem", "Red Rum Relics I"]
+  },
+  {
+    "name": "Idithuun horn ring",
+    "digsite": "Warforge",
+    "hotspot": "Yu'biusk animal pen",
+    "level": 94,
+    "chronotes": 776,
+    "xp": 13333.3,
+    "materials": {
+      "Yu'biusk clay": 40,
+      "Vulcanised rubber": 44
+    },
+    "collections": ["Museum - Bandosian II", "Green Gobbo Goodies II"]
+  },
+  {
+    "name": "'Nosorog!' sculpture",
+    "digsite": "Warforge",
+    "hotspot": "Yu'biusk animal pen",
+    "level": 94,
+    "chronotes": 776,
+    "xp": 13333.3,
+    "materials": {
+      "Yu'biusk clay": 30,
+      "Malachite green": 24,
+      "Warforged bronze": 30
+    },
+    "collections": ["Museum - Bandosian II", "Red Rum Relics I"]
+  },
+  {
+    "name": "Dayguard shield",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Keshik tower debris",
+    "level": 95,
+    "chronotes": 778,
+    "xp": 14166.7,
+    "materials": {
+      "Stormguard steel": 36,
+      "Wings of War": 28,
+      "White oak": 20
+    },
+    "collections": ["Museum - Armadylean II", "Armadylean II"]
+  },
+  {
+    "name": "Stormguard gerege",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Keshik tower debris",
+    "level": 95,
+    "chronotes": 778,
+    "xp": 14166.7,
+    "materials": {
+      "Stormguard steel": 36,
+      "Wings of War": 28,
+      "Goldrune": 20
+    },
+    "collections": ["Museum - Armadylean II", "Armadylean II"],
+    "otherUses": [
+      "Accessing Howl's Floating Workshop in the Stormguard Citadel (not consumed, but required every time and can be added to tool belt)."
+    ]
+  },
+  {
+    "name": "Kilaya",
+    "digsite": "Orthen",
+    "hotspot": "Dragonkin reliquary",
+    "level": 96,
+    "chronotes": 794,
+    "xp": 15000,
+    "materials": {
+      "Dragon metal": 46,
+      "Compass rose": 40
+    },
+    "collections": ["Museum - Dragonkin I", "Dragonkin I"]
+  },
+  {
+    "name": "Vazara",
+    "digsite": "Orthen",
+    "hotspot": "Dragonkin reliquary",
+    "level": 96,
+    "chronotes": 794,
+    "xp": 15000,
+    "materials": {
+      "Dragon metal": 30,
+      "Compass rose": 28,
+      "Goldrune": 28
+    },
+    "collections": ["Museum - Dragonkin I", "Dragonkin I"]
+  },
+  {
+    "name": "Ourg megahitter",
+    "digsite": "Warforge",
+    "hotspot": "Goblin trainee remains",
+    "level": 97,
+    "chronotes": 810,
+    "xp": 15833.3,
+    "materials": {
+      "White oak": 20,
+      "Leather scraps": 20,
+      "Orthenglass": 26,
+      "Malachite green": 22
+    },
+    "collections": ["Museum - Bandosian II", "Red Rum Relics II"],
+    "otherUses": [
+      "One is required to unlock Asgarnia Smith as part of your research team."
+    ]
+  },
+  {
+    "name": "Ourg tower/goblin cower shield",
+    "digsite": "Warforge",
+    "hotspot": "Goblin trainee remains",
+    "level": 97,
+    "chronotes": 810,
+    "xp": 15833.3,
+    "materials": {
+      "Mark of the Kyzaj": 20,
+      "Third Age iron": 26,
+      "Leather scraps": 22,
+      "White oak": 20
+    },
+    "collections": ["Museum - Bandosian II", "Red Rum Relics II"]
+  },
+  {
+    "name": "Garagorshuun anchor",
+    "digsite": "Warforge",
+    "hotspot": "Goblin trainee remains",
+    "level": 97,
+    "chronotes": 810,
+    "xp": 15833.3,
+    "materials": {
+      "Warforged bronze": 32,
+      "Mark of the Kyzaj": 26,
+      "Third Age iron": 30
+    },
+    "collections": ["Museum - Bandosian II", "Green Gobbo Goodies II"],
+    "otherUses": [
+      "Used in the south-western tunnel (containing the Idithuun key) of the Warforge to obtain a green skull cave painting."
+    ]
+  },
+  {
+    "name": "Golem heart",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Destroyed golem",
+    "level": 98,
+    "chronotes": 826,
+    "xp": 16666.7,
+    "materials": {
+      "Aetherium alloy": 34,
+      "Quintessence": 24,
+      "Orthenglass": 16,
+      "Soapstone": 16
+    },
+    "collections": ["Museum - Armadylean II", "Armadylean II"],
+    "otherUses": [
+      "One is required (along with a Golem instruction) to create a Golem framework and is consumed in the process."
+    ]
+  },
+  {
+    "name": "Golem instruction",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Destroyed golem",
+    "level": 98,
+    "chronotes": 826,
+    "xp": 16666.7,
+    "materials": {
+      "Quintessence": 46,
+      "Vellum": 44
+    },
+    "collections": [
+      "Museum - Armadylean II",
+      "Armadylean II",
+      "Knowledge is Power"
+    ],
+    "otherUses": [
+      "One is required (along with a golem heart) to create a golem framework and is consumed in the process.",
+      "One is required to unlock Elissa Giovanni as part of your research team."
+    ]
+  },
+  {
+    "name": "Hellfire haladie",
+    "digsite": "Infernal Source",
+    "hotspot": "Byzroth remains",
+    "level": 98,
+    "chronotes": 826,
+    "xp": 16666.7,
+    "materials": {
+      "Hellfire metal": 44,
+      "Third Age iron": 26,
+      "Leather scraps": 20
+    },
+    "collections": ["Museum - Zamorakian III", "Zamorakian III"]
+  },
+  {
+    "name": "Hellfire katar",
+    "digsite": "Infernal Source",
+    "hotspot": "Byzroth remains",
+    "level": 98,
+    "chronotes": 826,
+    "xp": 16666.7,
+    "materials": {
+      "Hellfire metal": 50,
+      "Leather scraps": 40
+    },
+    "collections": ["Museum - Zamorakian III", "Zamorakian III"],
+    "otherUses": [
+      "Trading two Hellfire katars with Dagon the Gatekeeper for The Rings of Razulei relic (which requires completion of the Dagon Bye mystery)."
+    ]
+  },
+  {
+    "name": "Hellfire zaghnal",
+    "digsite": "Infernal Source",
+    "hotspot": "Byzroth remains",
+    "level": 98,
+    "chronotes": 826,
+    "xp": 16666.7,
+    "materials": {
+      "Hellfire metal": 38,
+      "White oak": 26,
+      "Orthenglass": 26
+    },
+    "collections": ["Museum - Zamorakian III", "Zamorakian III"]
+  },
+  {
+    "name": "Death mask",
+    "digsite": "Orthen",
+    "hotspot": "Dragonkin coffin",
+    "level": 99,
+    "chronotes": 828,
+    "xp": 17500,
+    "materials": {
+      "Orgone": 56,
+      "Soapstone": 34
+    },
+    "collections": ["Museum - Dragonkin I", "Dragonkin I"],
+    "otherUses": [
+      "Trading with Bob the Cat for Evil Bob's Catspaw relic (requires a catspeak amulet)."
+    ]
+  },
+  {
+    "name": "Dragonkin calendar",
+    "digsite": "Orthen",
+    "hotspot": "Dragonkin coffin",
+    "level": 99,
+    "chronotes": 828,
+    "xp": 17500,
+    "materials": {
+      "Orgone": 34,
+      "Carbon black": 28,
+      "Compass rose": 28
+    },
+    "collections": ["Museum - Dragonkin I", "Dragonkin I"]
+  },
+  {
+    "name": "Dragonkin staff",
+    "digsite": "Orthen",
+    "hotspot": "Dragonkin coffin",
+    "level": 99,
+    "chronotes": 828,
+    "xp": 17500,
+    "materials": {
+      "Orgone": 56,
+      "Compass rose": 34
+    },
+    "collections": ["Museum - Dragonkin I", "Dragonkin I"]
+  },
+  {
+    "name": "Dorgeshuun spear",
+    "digsite": "Warforge",
+    "hotspot": "Kyzaj champion's boudoir",
+    "level": 100,
+    "chronotes": 844,
+    "xp": 18666.7,
+    "materials": {
+      "Warforged bronze": 50,
+      "White oak": 42
+    },
+    "collections": ["Museum - Bandosian II", "Green Gobbo Goodies III"],
+    "otherUses": [
+      "Completing the You Have Chosen... mystery (consumed).",
+      "One is used for the Stick It to Da Boss Man achievement (not consumed)."
+    ]
+  },
+  {
+    "name": "'Forged in War' sculpture",
+    "digsite": "Warforge",
+    "hotspot": "Kyzaj champion's boudoir",
+    "level": 100,
+    "chronotes": 844,
+    "xp": 18666.7,
+    "materials": {
+      "Warforged bronze": 50,
+      "Yu'biusk clay": 42,
+      "Emerald": 1
+    },
+    "collections": ["Museum - Bandosian II", "Red Rum Relics II"],
+    "otherUses": ["Completing the You Have Chosen... mystery (consumed)."]
+  },
+  {
+    "name": "Kopis dagger",
+    "digsite": "Everlight",
+    "hotspot": "Icyene weapon rack",
+    "level": 100,
+    "chronotes": 844,
+    "xp": 18666.7,
+    "materials": {
+      "Everlight silvthril": 50,
+      "Leather scraps": 42
+    },
+    "collections": ["Museum - Saradominist III", "Saradominist III"]
+  },
+  {
+    "name": "Xiphos short sword",
+    "digsite": "Everlight",
+    "hotspot": "Icyene weapon rack",
+    "level": 100,
+    "chronotes": 844,
+    "xp": 18666.7,
+    "materials": {
+      "Everlight silvthril": 46,
+      "Leather scraps": 46
+    },
+    "collections": ["Museum - Saradominist III", "Saradominist III"]
+  },
+  {
+    "name": "'Smoke Cloud' spell scroll",
+    "digsite": "Kharid-et",
+    "hotspot": "Culinarum debris",
+    "level": 100,
+    "chronotes": 844,
+    "xp": 18666.7,
+    "materials": {
+      "Vellum": 40,
+      "Ancient vis": 20,
+      "Blood of Orcus": 32
+    },
+    "collections": [
+      "Museum - Zarosian III",
+      "Zarosian III",
+      "Magic Man",
+      "Imperial Sorcery"
+    ],
+    "otherUses": [
+      "Accessing the smoke door in Kharid-et while standing near the dial."
+    ]
+  },
+  {
+    "name": "Vigorem vial",
+    "digsite": "Kharid-et",
+    "hotspot": "Culinarum debris",
+    "level": 100,
+    "chronotes": 844,
+    "xp": 18666.7,
+    "materials": {
+      "Imperial steel": 54,
+      "Ancient vis": 38,
+      "Molten glass": 1
+    },
+    "collections": ["Museum - Zarosian III", "Zarosian III"]
+  },
+  {
+    "name": "Dragon scalpel",
+    "digsite": "Orthen",
+    "hotspot": "Autopsy table",
+    "level": 101,
+    "chronotes": 860,
+    "xp": 19833.3,
+    "materials": {
+      "Dragon metal": 52,
+      "Felt": 42
+    },
+    "collections": ["Museum - Dragonkin II", "Dragonkin II"],
+    "otherUses": ["One is used in the recipe for an artificer's measure."]
+  },
+  {
+    "name": "Protective goggles",
+    "digsite": "Orthen",
+    "hotspot": "Autopsy table",
+    "level": 101,
+    "chronotes": 860,
+    "xp": 19833.3,
+    "materials": {
+      "Felt": 42,
+      "Orthenglass": 52
+    },
+    "collections": ["Museum - Dragonkin II", "Dragonkin II"],
+    "otherUses": ["One is used in the recipe for an artificer's measure."]
+  },
+  {
+    "name": "Dragon burner",
+    "digsite": "Orthen",
+    "hotspot": "Experiment workbench",
+    "level": 102,
+    "chronotes": 862,
+    "xp": 21000,
+    "materials": {
+      "Dragon metal": 52,
+      "Orgone": 42
+    },
+    "collections": ["Museum - Dragonkin II", "Dragonkin II"],
+    "otherUses": ["Four are used in the recipe for an Orthen furnace core."]
+  },
+  {
+    "name": "Orthenglass flask",
+    "digsite": "Orthen",
+    "hotspot": "Experiment workbench",
+    "level": 102,
+    "chronotes": 862,
+    "xp": 21000,
+    "materials": {
+      "Dragon metal": 34,
+      "Orthenglass": 60
+    },
+    "collections": ["Museum - Dragonkin II", "Dragonkin II"],
+    "otherUses": [
+      "One of the ingredients used to create the Soma relic.",
+      "One is used in the recipe for an artificer's measure."
+    ]
+  },
+  {
+    "name": "Blackfire lance",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Keshik weapon rack",
+    "level": 103,
+    "chronotes": 878,
+    "xp": 22166.7,
+    "materials": {
+      "Aetherium alloy": 50,
+      "Quintessence": 46
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III"]
+  },
+  {
+    "name": "Nightguard shield",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Keshik weapon rack",
+    "level": 103,
+    "chronotes": 878,
+    "xp": 22166.7,
+    "materials": {
+      "Stormguard steel": 30,
+      "Wings of War": 36,
+      "White oak": 30
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III"]
+  },
+  {
+    "name": "Projection attuner",
+    "digsite": "Daemonheim",
+    "hotspot": "Projection space",
+    "level": 103,
+    "chronotes": 878,
+    "xp": 22166.7,
+    "materials": {
+      "Goldrune": 28,
+      "Orthenglass": 28,
+      "Dragon metal": 40
+    },
+    "collections": ["Museum - Dragonkin VII", "Dragonkin VII"]
+  },
+  {
+    "name": "Golden projection 'needle'",
+    "digsite": "Daemonheim",
+    "hotspot": "Projection space",
+    "level": 103,
+    "chronotes": 878,
+    "xp": 22166.7,
+    "materials": {
+      "Goldrune": 36,
+      "Dragon metal": 60
+    },
+    "collections": ["Museum - Dragonkin VII", "Dragonkin VII"]
+  },
+  {
+    "name": "Huzamogaarb chaos crown",
+    "digsite": "Warforge",
+    "hotspot": "Warforge scrap pile",
+    "level": 104,
+    "chronotes": 894,
+    "xp": 23333.3,
+    "materials": {
+      "Warforged bronze": 44,
+      "Third Age iron": 34,
+      "Eye of Dagon": 20
+    },
+    "collections": [
+      "Museum - Bandosian III",
+      "Green Gobbo Goodies III",
+      "Hat Problem"
+    ]
+  },
+  {
+    "name": "Saragorgak star crown",
+    "digsite": "Warforge",
+    "hotspot": "Warforge scrap pile",
+    "level": 104,
+    "chronotes": 894,
+    "xp": 23333.3,
+    "materials": {
+      "Warforged bronze": 44,
+      "Third Age iron": 34,
+      "Star of Saradomin": 20
+    },
+    "collections": [
+      "Museum - Bandosian III",
+      "Green Gobbo Goodies III",
+      "Hat Hoarder"
+    ]
+  },
+  {
+    "name": "'Possession' metal sculpture",
+    "digsite": "Infernal Source",
+    "hotspot": "Hellfire forge",
+    "level": 104,
+    "chronotes": 894,
+    "xp": 23333.3,
+    "materials": {
+      "Eye of Dagon": 24,
+      "Chaotic brimstone": 30,
+      "Third Age iron": 44
+    },
+    "collections": ["Museum - Zamorakian III", "Zamorakian III"]
+  },
+  {
+    "name": "Trishula",
+    "digsite": "Infernal Source",
+    "hotspot": "Hellfire forge",
+    "level": 104,
+    "chronotes": 894,
+    "xp": 23333.3,
+    "materials": {
+      "Hellfire metal": 48,
+      "Eye of Dagon": 30,
+      "Third Age iron": 20
+    },
+    "collections": ["Museum - Zamorakian III", "Zamorakian III"]
+  },
+  {
+    "name": "Tsutsaroth piercing",
+    "digsite": "Infernal Source",
+    "hotspot": "Hellfire forge",
+    "level": 104,
+    "chronotes": 894,
+    "xp": 23333.3,
+    "materials": {
+      "Hellfire metal": 44,
+      "Chaotic brimstone": 30,
+      "Cadmium red": 24
+    },
+    "collections": ["Museum - Zamorakian III", "Zamorakian III"]
+  },
+  {
+    "name": "'Hallowed Be the Everlight' painting",
+    "digsite": "Everlight",
+    "hotspot": "Stockpiled art",
+    "level": 105,
+    "chronotes": 910,
+    "xp": 24500,
+    "materials": {
+      "Cobalt blue": 52,
+      "White oak": 16,
+      "Samite silk": 16,
+      "Vellum": 16
+    },
+    "collections": [
+      "Museum - Saradominist IV",
+      "Radiant Renaissance",
+      "Saradominist IV"
+    ],
+    "otherUses": ["One is required for Hallowed Be... (not consumed)."]
+  },
+  {
+    "name": "'The Lord of Light' painting",
+    "digsite": "Everlight",
+    "hotspot": "Stockpiled art",
+    "level": 105,
+    "chronotes": 910,
+    "xp": 24500,
+    "materials": {
+      "Cobalt blue": 52,
+      "White oak": 16,
+      "Samite silk": 16,
+      "Vellum": 16
+    },
+    "collections": [
+      "Museum - Saradominist IV",
+      "Radiant Renaissance",
+      "Saradominist IV"
+    ]
+  },
+  {
+    "name": "'The Pride of Padosan' painting",
+    "digsite": "Everlight",
+    "hotspot": "Stockpiled art",
+    "level": 105,
+    "chronotes": 910,
+    "xp": 24500,
+    "materials": {
+      "Cobalt blue": 52,
+      "White oak": 16,
+      "Samite silk": 16,
+      "Vellum": 16
+    },
+    "collections": [
+      "Museum - Saradominist IV",
+      "Saradominist IV",
+      "Radiant Renaissance"
+    ]
+  },
+  {
+    "name": "Meditation pipe",
+    "digsite": "Orthen",
+    "hotspot": "Aughra remains",
+    "level": 106,
+    "chronotes": 912,
+    "xp": 25666.7,
+    "materials": {
+      "Orgone": 60,
+      "Dragon metal": 40
+    },
+    "collections": ["Museum - Dragonkin III", "Dragonkin III"]
+  },
+  {
+    "name": "Personal totem",
+    "digsite": "Orthen",
+    "hotspot": "Aughra remains",
+    "level": 106,
+    "chronotes": 912,
+    "xp": 25666.7,
+    "materials": {
+      "Orgone": 48,
+      "Carbon black": 26,
+      "Compass rose": 26
+    },
+    "collections": ["Museum - Dragonkin III", "Dragonkin III"]
+  },
+  {
+    "name": "Singing bowl",
+    "digsite": "Orthen",
+    "hotspot": "Aughra remains",
+    "level": 106,
+    "chronotes": 912,
+    "xp": 25666.7,
+    "materials": {
+      "Orgone": 60,
+      "Dragon metal": 40
+    },
+    "collections": ["Museum - Dragonkin III", "Dragonkin III"],
+    "otherUses": ["Completing the Fragmented Memories mystery (not consumed)."]
+  },
+  {
+    "name": "Ancient magic tablet",
+    "digsite": "Kharid-et",
+    "hotspot": "Ancient magick munitions",
+    "level": 107,
+    "chronotes": 942,
+    "xp": 27000,
+    "materials": {
+      "Ancient vis": 40,
+      "Blood of Orcus": 64
+    },
+    "collections": ["Museum - Zarosian III", "Zarosian III", "Imperial Sorcery"]
+  },
+  {
+    "name": "'Animate Dead' spell scroll",
+    "digsite": "Kharid-et",
+    "hotspot": "Ancient magick munitions",
+    "level": 107,
+    "chronotes": 942,
+    "xp": 27000,
+    "materials": {
+      "Vellum": 40,
+      "Ancient vis": 24,
+      "Blood of Orcus": 40
+    },
+    "collections": [
+      "Museum - Zarosian III",
+      "Zarosian III",
+      "Magic Man",
+      "Imperial Sorcery"
+    ],
+    "otherUses": [
+      "Accessing the shadow door in The Vault of Shadows while standing near the dial."
+    ]
+  },
+  {
+    "name": "Portable phylactery",
+    "digsite": "Kharid-et",
+    "hotspot": "Ancient magick munitions",
+    "level": 107,
+    "chronotes": 942,
+    "xp": 27000,
+    "materials": {
+      "Imperial steel": 48,
+      "Blood of Orcus": 36,
+      "Ancient vis": 20
+    },
+    "collections": ["Museum - Zarosian III", "Zarosian III", "Magic Man"],
+    "otherUses": ["Completing the The Forgotten Prisoner mystery."]
+  },
+  {
+    "name": "Comfort gatestone",
+    "digsite": "Daemonheim",
+    "hotspot": "Security booth",
+    "level": 107,
+    "chronotes": 942,
+    "xp": 27000,
+    "materials": {
+      "Orthenglass": 40,
+      "Orgone": 34,
+      "Compass rose": 30
+    },
+    "collections": ["Museum - Dragonkin VII", "Dragonkin VII"]
+  },
+  {
+    "name": "Halak's cube",
+    "digsite": "Daemonheim",
+    "hotspot": "Security booth",
+    "level": 107,
+    "chronotes": 942,
+    "xp": 27000,
+    "materials": {
+      "Compass rose": 36,
+      "Carbon black": 40,
+      "Orgone": 28
+    },
+    "collections": ["Museum - Dragonkin VII", "Dragonkin VII"]
+  },
+  {
+    "name": "Lingam stone",
+    "digsite": "Orthen",
+    "hotspot": "Moksha device",
+    "level": 108,
+    "chronotes": 958,
+    "xp": 28333.3,
+    "materials": {
+      "Orgone": 44,
+      "Carbon black": 30,
+      "Compass rose": 32
+    },
+    "collections": ["Museum - Dragonkin III", "Dragonkin III"],
+    "otherUses": ["Accessing Xolo city"]
+  },
+  {
+    "name": "Master control",
+    "digsite": "Orthen",
+    "hotspot": "Moksha device",
+    "level": 108,
+    "chronotes": 958,
+    "xp": 28333.3,
+    "materials": {
+      "Orgone": 30,
+      "Carbon black": 32,
+      "Compass rose": 44
+    },
+    "collections": ["Museum - Dragonkin III", "Dragonkin III"],
+    "otherUses": ["Completing the Fragmented Memories mystery."]
+  },
+  {
+    "name": "'The Enlightened Soul' scroll",
+    "digsite": "Everlight",
+    "hotspot": "Bibliotheke debris",
+    "level": 109,
+    "chronotes": 988,
+    "xp": 29666.7,
+    "materials": {
+      "Star of Saradomin": 50,
+      "Vellum": 60
+    },
+    "collections": [
+      "Museum - Saradominist IV",
+      "Saradominist IV",
+      "Knowledge is Power"
+    ]
+  },
+  {
+    "name": "'The Eudoxian Elements' tablet",
+    "digsite": "Everlight",
+    "hotspot": "Bibliotheke debris",
+    "level": 109,
+    "chronotes": 988,
+    "xp": 29666.7,
+    "materials": {
+      "White marble": 60,
+      "Goldrune": 50
+    },
+    "collections": [
+      "Museum - Saradominist IV",
+      "Saradominist IV",
+      "Knowledge is Power"
+    ]
+  },
+  {
+    "name": "Drogokishuun hook sword",
+    "digsite": "Warforge",
+    "hotspot": "Warforge weapon rack",
+    "level": 110,
+    "chronotes": 1004,
+    "xp": 31000,
+    "materials": {
+      "Warforged bronze": 44,
+      "Malachite green": 36,
+      "Fossilised bone": 32
+    },
+    "collections": ["Museum - Bandosian III", "Green Gobbo Goodies III"]
+  },
+  {
+    "name": "Hobgoblin mansticker",
+    "digsite": "Warforge",
+    "hotspot": "Warforge weapon rack",
+    "level": 110,
+    "chronotes": 1004,
+    "xp": 31000,
+    "materials": {
+      "Warforged bronze": 66,
+      "Fossilised bone": 46
+    },
+    "collections": ["Museum - Bandosian III", "Red Rum Relics II"]
+  },
+  {
+    "name": "Chaos Elemental trophy",
+    "digsite": "Infernal Source",
+    "hotspot": "Chthonian trophies",
+    "level": 110,
+    "chronotes": 1004,
+    "xp": 31000,
+    "materials": {
+      "Chaotic brimstone": 52,
+      "White oak": 30,
+      "Hellfire metal": 30
+    },
+    "collections": ["Museum - Zamorakian IV", "Zamorakian IV"]
+  },
+  {
+    "name": "Virius trophy",
+    "digsite": "Infernal Source",
+    "hotspot": "Chthonian trophies",
+    "level": 110,
+    "chronotes": 1004,
+    "xp": 31000,
+    "materials": {
+      "Demonhide": 44,
+      "White oak": 34,
+      "Orthenglass": 34
+    },
+    "collections": ["Museum - Zamorakian IV", "Zamorakian IV"]
+  },
+  {
+    "name": "Flat cap",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Flight research debris",
+    "level": 111,
+    "chronotes": 1004,
+    "xp": 32333.3,
+    "materials": {
+      "Armadylean yellow": 60,
+      "Samite silk": 54
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III", "Hat Problem"]
+  },
+  {
+    "name": "Night owl flight goggles",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Flight research debris",
+    "level": 111,
+    "chronotes": 1004,
+    "xp": 32333.3,
+    "materials": {
+      "Armadylean yellow": 44,
+      "Leather scraps": 40,
+      "Orthenglass": 30
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III"]
+  },
+  {
+    "name": "Prototype godbow",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Aetherium forge",
+    "level": 112,
+    "chronotes": 1050,
+    "xp": 33666.7,
+    "materials": {
+      "Aetherium alloy": 50,
+      "Quintessence": 34,
+      "Wings of War": 34
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III"]
+  },
+  {
+    "name": "Prototype godstaff",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Aetherium forge",
+    "level": 112,
+    "chronotes": 1050,
+    "xp": 33666.7,
+    "materials": {
+      "Aetherium alloy": 50,
+      "Quintessence": 34,
+      "Wings of War": 34
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III"]
+  },
+  {
+    "name": "Prototype godsword",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Aetherium forge",
+    "level": 112,
+    "chronotes": 1050,
+    "xp": 33666.7,
+    "materials": {
+      "Aetherium alloy": 50,
+      "Wings of War": 34,
+      "Goldrune": 34
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III"],
+    "otherUses": ["Creating The Subtle Blade relic (consumed)."]
+  },
+  {
+    "name": "Xolo hard hat",
+    "digsite": "Orthen",
+    "hotspot": "Xolo mine",
+    "level": 113,
+    "chronotes": 1066,
+    "xp": 35000,
+    "materials": {
+      "Goldrune": 54,
+      "Dragon metal": 66
+    },
+    "collections": ["Museum - Dragonkin IV", "Dragonkin IV"]
+  },
+  {
+    "name": "Xolo pickaxe",
+    "digsite": "Orthen",
+    "hotspot": "Xolo mine",
+    "level": 113,
+    "chronotes": 1066,
+    "xp": 35000,
+    "materials": {
+      "Goldrune": 36,
+      "Dragon metal": 50,
+      "Orgone": 34
+    },
+    "collections": ["Museum - Dragonkin IV", "Dragonkin IV"]
+  },
+  {
+    "name": "Portable portal generator",
+    "digsite": "Daemonheim",
+    "hotspot": "Traveller's station",
+    "level": 113,
+    "chronotes": 1066,
+    "xp": 35000,
+    "materials": {
+      "Dragon metal": 50,
+      "Orthenglass": 36,
+      "Goldrune": 34
+    },
+    "collections": ["Museum - Dragonkin VII", "Dragonkin VII"]
+  },
+  {
+    "name": "Warped trinket",
+    "digsite": "Daemonheim",
+    "hotspot": "Traveller's station",
+    "level": 113,
+    "chronotes": 1066,
+    "xp": 35000,
+    "materials": {
+      "Dragon metal": 30,
+      "Orthenglass": 30,
+      "Soapstone": 30,
+      "Goldrune": 30
+    },
+    "collections": ["Museum - Dragonkin VII", "Dragonkin VII"]
+  },
+  {
+    "name": "Praetorian hood",
+    "digsite": "Kharid-et",
+    "hotspot": "Praetorian remains",
+    "level": 114,
+    "chronotes": 1096,
+    "xp": 36666.7,
+    "materials": {
+      "Ancient vis": 36,
+      "Samite silk": 48,
+      "Zarosian insignia": 40,
+      "Death rune": 30
+    },
+    "collections": ["Museum - Zarosian IV", "Zarosian IV", "Hat Problem"]
+  },
+  {
+    "name": "Praetorian robes",
+    "digsite": "Kharid-et",
+    "hotspot": "Praetorian remains",
+    "level": 114,
+    "chronotes": 1096,
+    "xp": 36666.7,
+    "materials": {
+      "Ancient vis": 30,
+      "Samite silk": 54,
+      "Zarosian insignia": 40,
+      "Death rune": 50
+    },
+    "collections": ["Museum - Zarosian IV", "Zarosian IV"]
+  },
+  {
+    "name": "Praetorian staff",
+    "digsite": "Kharid-et",
+    "hotspot": "Praetorian remains",
+    "level": 114,
+    "chronotes": 1096,
+    "xp": 36666.7,
+    "materials": {
+      "Imperial steel": 36,
+      "Ancient vis": 58,
+      "Zarosian insignia": 30,
+      "Death rune": 100
+    },
+    "collections": ["Museum - Zarosian IV", "Zarosian IV"],
+    "otherUses": ["Creating the inquisitor staff."]
+  },
+  {
+    "name": "Kal-i-kra chieftain crown",
+    "digsite": "Warforge",
+    "hotspot": "Bandos's sanctum debris",
+    "level": 115,
+    "chronotes": 1112,
+    "xp": 38333.3,
+    "materials": {
+      "Yu'biusk clay": 66,
+      "Animal furs": 60
+    },
+    "collections": [
+      "Hat Hoarder",
+      "Museum - Bandosian III",
+      "Red Rum Relics III"
+    ]
+  },
+  {
+    "name": "Kal-i-kra mace",
+    "digsite": "Warforge",
+    "hotspot": "Bandos's sanctum debris",
+    "level": 115,
+    "chronotes": 1112,
+    "xp": 38333.3,
+    "materials": {
+      "Vulcanised rubber": 42,
+      "Third Age iron": 44,
+      "Fossilised bone": 40
+    },
+    "collections": ["Museum - Bandosian III", "Red Rum Relics III"]
+  },
+  {
+    "name": "Kal-i-kra warhorn",
+    "digsite": "Warforge",
+    "hotspot": "Bandos's sanctum debris",
+    "level": 115,
+    "chronotes": 1112,
+    "xp": 38333.3,
+    "materials": {
+      "Vulcanised rubber": 44,
+      "Fossilised bone": 42,
+      "Animal furs": 40
+    },
+    "collections": ["Museum - Bandosian III", "Red Rum Relics III"]
+  },
+  {
+    "name": "Tsutsaroth helm",
+    "digsite": "Infernal Source",
+    "hotspot": "Tsutsaroth remains",
+    "level": 116,
+    "chronotes": 1142,
+    "xp": 40000,
+    "materials": {
+      "Hellfire metal": 50,
+      "Eye of Dagon": 40,
+      "Goldrune": 40
+    },
+    "collections": ["Museum - Zamorakian IV", "Zamorakian IV", "Hat Hoarder"]
+  },
+  {
+    "name": "Tsutsaroth pauldron",
+    "digsite": "Infernal Source",
+    "hotspot": "Tsutsaroth remains",
+    "level": 116,
+    "chronotes": 1142,
+    "xp": 40000,
+    "materials": {
+      "Hellfire metal": 40,
+      "Goldrune": 50,
+      "Eye of Dagon": 40
+    },
+    "collections": ["Museum - Zamorakian IV", "Zamorakian IV"]
+  },
+  {
+    "name": "Tsutsaroth urumi",
+    "digsite": "Infernal Source",
+    "hotspot": "Tsutsaroth remains",
+    "level": 116,
+    "chronotes": 1142,
+    "xp": 40000,
+    "materials": {
+      "Hellfire metal": 50,
+      "Eye of Dagon": 40,
+      "Third Age iron": 40
+    },
+    "collections": ["Museum - Zamorakian IV", "Zamorakian IV"]
+  },
+  {
+    "name": "Doru spear",
+    "digsite": "Everlight",
+    "hotspot": "Optimatoi remains",
+    "level": 117,
+    "chronotes": 1158,
+    "xp": 41666.7,
+    "materials": {
+      "Everlight silvthril": 70,
+      "White oak": 62
+    },
+    "collections": ["Museum - Saradominist IV", "Saradominist IV"]
+  },
+  {
+    "name": "Kontos lance",
+    "digsite": "Everlight",
+    "hotspot": "Optimatoi remains",
+    "level": 117,
+    "chronotes": 1158,
+    "xp": 41666.7,
+    "materials": {
+      "Everlight silvthril": 70,
+      "Samite silk": 62
+    },
+    "collections": ["Museum - Saradominist IV", "Saradominist IV"]
+  },
+  {
+    "name": "Chuluu stone",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Howl's workshop debris",
+    "level": 118,
+    "chronotes": 1174,
+    "xp": 43333.3,
+    "materials": {
+      "Aetherium alloy": 40,
+      "Quintessence": 30,
+      "Soapstone": 40,
+      "Goldrune": 24
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III", "Magic Man"],
+    "otherUses": ["Creating the Experimental Aether Reactor relic (consumed)."]
+  },
+  {
+    "name": "Quintessence counter",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Howl's workshop debris",
+    "level": 118,
+    "chronotes": 1174,
+    "xp": 43333.3,
+    "materials": {
+      "Quintessence": 54,
+      "Stormguard steel": 40,
+      "White oak": 40
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III"]
+  },
+  {
+    "name": "Spherical astrolabe",
+    "digsite": "Stormguard Citadel",
+    "hotspot": "Howl's workshop debris",
+    "level": 118,
+    "chronotes": 1174,
+    "xp": 43333.3,
+    "materials": {
+      "Aetherium alloy": 46,
+      "Armadylean yellow": 40,
+      "Orthenglass": 48
+    },
+    "collections": ["Museum - Armadylean III", "Armadylean III"]
+  },
+  {
+    "name": "Ancient globe",
+    "digsite": "Kharid-et",
+    "hotspot": "War table debris",
+    "level": 118,
+    "chronotes": 1174,
+    "xp": 43333.3,
+    "materials": {
+      "White oak": 20,
+      "Tyrian purple": 54,
+      "Ancient vis": 60
+    },
+    "collections": ["Museum - Zarosian IV", "Zarosian IV"]
+  },
+  {
+    "name": "Battle plans",
+    "digsite": "Kharid-et",
+    "hotspot": "War table debris",
+    "level": 118,
+    "chronotes": 1174,
+    "xp": 43333.3,
+    "materials": {
+      "Vellum": 40,
+      "Tyrian purple": 60,
+      "Ancient vis": 34
+    },
+    "collections": ["Museum - Zarosian IV", "Zarosian IV"]
+  },
+  {
+    "name": "'Prima Legio' painting",
+    "digsite": "Kharid-et",
+    "hotspot": "War table debris",
+    "level": 118,
+    "chronotes": 1174,
+    "xp": 43333.3,
+    "materials": {
+      "White oak": 20,
+      "Samite silk": 20,
+      "Tyrian purple": 74,
+      "Zarosian insignia": 20
+    },
+    "collections": [
+      "Museum - Zarosian IV",
+      "Zarosian IV",
+      "Imperial Impressionism"
+    ]
+  },
+  {
+    "name": "'Da Boss Man' sculpture",
+    "digsite": "Warforge",
+    "hotspot": "Makeshift pie oven",
+    "level": 119,
+    "chronotes": 1204,
+    "xp": 45000,
+    "materials": {
+      "Yu'biusk clay": 50,
+      "Malachite green": 44,
+      "Soapstone": 44
+    },
+    "collections": [
+      "Museum - Bandosian III",
+      "Green Gobbo Goodies III",
+      "Knowledge is Power",
+      "Red Rum Relics III"
+    ]
+  },
+  {
+    "name": "Horogothgar cooking pot",
+    "digsite": "Warforge",
+    "hotspot": "Makeshift pie oven",
+    "level": 119,
+    "chronotes": 1204,
+    "xp": 45000,
+    "materials": {
+      "Yu'biusk clay": 60,
+      "Malachite green": 38,
+      "Soapstone": 40
+    },
+    "collections": ["Museum - Bandosian III", "Green Gobbo Goodies III"]
+  },
+  {
+    "name": "Xolo shield",
+    "digsite": "Orthen",
+    "hotspot": "Xolo remains",
+    "level": 119,
+    "chronotes": 1204,
+    "xp": 45000,
+    "materials": {
+      "Goldrune": 52,
+      "Orgone": 44,
+      "Felt": 42
+    },
+    "collections": ["Museum - Dragonkin IV", "Dragonkin IV"]
+  },
+  {
+    "name": "Xolo spear",
+    "digsite": "Orthen",
+    "hotspot": "Xolo remains",
+    "level": 119,
+    "chronotes": 1204,
+    "xp": 45000,
+    "materials": {
+      "Dragon metal": 74,
+      "Orgone": 64
+    },
+    "collections": ["Museum - Dragonkin IV", "Dragonkin IV"]
+  },
+  {
+    "name": "Gold dish",
+    "digsite": "Orthen",
+    "hotspot": "Saurthen debris",
+    "level": 120,
+    "chronotes": 1220,
+    "xp": 46666.7,
+    "materials": {
+      "Goldrune": 86,
+      "Dragon metal": 54
+    },
+    "collections": ["Museum - Dragonkin IV", "Dragonkin IV"],
+    "otherUses": ["Completing the Mysterious City mystery."]
+  },
+  {
+    "name": "'Raksha' idol",
+    "digsite": "Orthen",
+    "hotspot": "Saurthen debris",
+    "level": 120,
+    "chronotes": 1220,
+    "xp": 46666.7,
+    "materials": {
+      "Orgone": 56,
+      "Dragon metal": 44,
+      "Goldrune": 40
+    },
+    "collections": ["Museum - Dragonkin IV", "Dragonkin IV"],
+    "otherUses": ["Completing the Mysterious City mystery."]
+  }
+]

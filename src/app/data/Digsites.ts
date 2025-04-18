@@ -5,49 +5,49 @@ export enum DigsiteNames {
   InfernalSource = 'Infernal Source',
   Orthen = 'Orthen',
   Senntisten = 'Senntisten',
-  Stormguard = 'Stormguard',
+  Stormguard = 'Stormguard Citadel',
   Warforge = 'Warforge',
 }
 
 export const Digsites: DigsiteInfo = {
   [DigsiteNames.Daemonheim]: {
-    icon: '/assets/digsites/daemonheim.png',
-    backgroundColor: '#A3A3A333',
+    icon: '/assets/digsites/Daemonheim.png',
+    backgroundColor: '#A3A3A377',
     url: 'https://runescape.wiki/w/Daemonheim_Dig_Site',
   },
   [DigsiteNames.Everlight]: {
-    icon: '/assets/digsites/everlight.png',
-    backgroundColor: '#121fcc33',
+    icon: '/assets/digsites/Everlight.png',
+    backgroundColor: '#08659699',
     url: 'https://runescape.wiki/w/Everlight_Dig_Site',
   },
   [DigsiteNames.KharidEt]: {
-    icon: '/assets/digsites/kharid-et.png',
-    backgroundColor: '#5F398644',
+    icon: '/assets/digsites/Kharid-et.png',
+    backgroundColor: '#5F3986CC',
     url: 'https://runescape.wiki/w/Kharid-et_Dig_Site',
   },
   [DigsiteNames.InfernalSource]: {
-    icon: '/assets/digsites/infernal-source.png',
-    backgroundColor: '#98010033',
+    icon: '/assets/digsites/Infernal_Source.png',
+    backgroundColor: '#980100AA',
     url: 'https://runescape.wiki/w/Infernal_Source_Dig_Site',
   },
   [DigsiteNames.Warforge]: {
-    icon: '/assets/digsites/warforge.png',
-    backgroundColor: '#4B4B4B33',
+    icon: '/assets/digsites/Warforge.png',
+    backgroundColor: '#407d0aAA',
     url: 'https://runescape.wiki/w/Warforge_Dig_Site',
   },
   [DigsiteNames.Senntisten]: {
-    icon: '/assets/digsites/stormguard.png',
-    backgroundColor: '#A3A3A333',
+    icon: '/assets/digsites/Senntisten.png',
+    backgroundColor: '#3a09b5AA',
     url: 'https://runescape.wiki/w/Senntisten_Dig_Site',
   },
   [DigsiteNames.Stormguard]: {
-    icon: '/assets/digsites/stormguard.png',
-    backgroundColor: '#A3A3A333',
+    icon: '/assets/digsites/Stormguard_Citadel.png',
+    backgroundColor: '#cfa71777',
     url: 'https://runescape.wiki/w/Stormguard_Dig_Site',
   },
   [DigsiteNames.Orthen]: {
-    icon: '/assets/digsites/orthen.png',
-    backgroundColor: '#A3A3A333',
+    icon: '/assets/digsites/Orthen.png',
+    backgroundColor: '#85380177',
     url: 'https://runescape.wiki/w/Orthen_Dig_Site',
   },
 };

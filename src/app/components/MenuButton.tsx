@@ -1,5 +1,3 @@
-'use client';
-import { useRouter } from 'next/navigation';
 import { Screens, useGlobalState } from '../data/GlobalStateProvider';
 
 export default function MenuButton({ label }: { label: Screens }) {
@@ -7,7 +5,7 @@ export default function MenuButton({ label }: { label: Screens }) {
   return (
     <button
       className={[
-        'rounded-md border-2 border-white px-5 py-1 cursor-pointer w-32',
+        'rounded-md border-2 border-white px-5 py-1 cursor-pointer',
         label === screen
           ? 'bg-white text-gray-950 font-bold'
           : 'bg-transparent text-white',

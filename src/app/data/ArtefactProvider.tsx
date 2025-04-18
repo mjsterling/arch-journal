@@ -1,4 +1,10 @@
-import { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
+import artefactData from './artefacts.json';
+import { useContext } from 'react';
+import { ArtefactStates } from './Artefact';
+import { CollectionNames } from './Collections';
+import { Materials } from './Materials';
+import { DigsiteNames } from './Digsites';
 
 export enum Screens {
   Artefacts = 'Artefacts',
@@ -6,7 +12,21 @@ export enum Screens {
   Materials = 'Materials',
 }
 
-const artefactContext = createContext<Artefact[]>([]);
+export type Artefact = {
+  name: string;
+  image: string;
+  collections: { [P in CollectionNames]: ArtefactStates };
+  level: number;
+  xp: number;
+  chronotes: number;
+  digsite: DigsiteNames;
+  materials: { [P in Materials]?: number };
+};
+
+const artefactContext = createContext<{
+  artefacts: Artefact[];
+  setArtefact: (artefact: Artefact) => void;
+}>({ artefacts: [], setArtefact: () => {} });
 
 export default function ArtefactProvider({
   children,
@@ -15,48 +35,47 @@ export default function ArtefactProvider({
 }) {
   const [artefacts, setArtefacts] = useState<Artefact[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const getArtefacts = async () => {
+  const importArtefacts = () => {
     setLoading(true);
-    const res = await axios.get('/assets/artefacts.csv');
-    const data = res.data;
-    const rows = data.split('\n');
-    const headers = rows[0].split(',');
-    const artefactsData = rows.slice(1).map((row) => {
-      const values = row.split(',');
-      const artefact: { [key: string]: string | number } = {};
-      headers.forEach((header: string, index: number) => {
-        artefact[header.trim()] = values[index].trim();
-      });
-      return new Artefact(
-        artefact.Name as string,
-        `/assets/artefacts/${(artefact.Name as string).replace(/ /g, '_')}.png`,
-        artefact.Level as number,
-        artefact.Digsite as string
-      );
-    });
-
-    setArtefacts(artefactsData);
+    setArtefacts(
+      artefactData.map((artefact) => {
+        const collections: { [P in CollectionNames]: ArtefactStates } = {};
+        for (const collection of artefact.collections as string[]) {
+          collections[collection] = ArtefactStates.NotFound;
+        }
+        return {
+          ...artefact,
+          digsite: artefact.digsite as DigsiteNames,
+          collections,
+          image:
+            '/assets/artefacts/' + artefact.name.replace(/ /g, '_') + '.png',
+        };
+      })
+    );
     setLoading(false);
-    console.log(artefacts);
   };
-  useEffect(() => {
-    getArtefacts();
-  }, []);
+  useEffect(importArtefacts, []);
+  const setArtefact = (newArtefact: Artefact) => {
+    const index = artefacts.findIndex((a) => a.name === newArtefact.name);
+    const newArtefacts = [
+      ...artefacts.slice(0, index),
+      newArtefact,
+      ...artefacts.slice(index + 1),
+    ];
+    setArtefacts(newArtefacts);
+  };
+
   return (
-    <artefactContext.Provider value={artefacts}>
+    <artefactContext.Provider value={{ artefacts, setArtefact }}>
       {loading ? null : children}
     </artefactContext.Provider>
   );
 }
 
-import { useContext } from 'react';
-import { Artefact } from './Artefact';
-import axios from 'axios';
-
 export const useArtefacts = () => {
   const context = useContext(artefactContext);
   if (!context) {
-    throw new Error('useartefact must be used within a artefactProvider');
+    throw new Error('useArtefact must be used within a artefactProvider');
   }
   return context;
 };
