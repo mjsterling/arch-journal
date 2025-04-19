@@ -96,7 +96,7 @@ export default function Planner() {
         name: material,
         amount,
       }));
-  }, [selectedCollectionData, artefacts, mode, numberOfRecurringCompletions]);
+  }, [selectedCollectionData, mode, numberOfRecurringCompletions]);
 
   return (
     <div className="flex flex-col gap-8 text-orange-100 w-full max-w-[1000px] mx-auto">

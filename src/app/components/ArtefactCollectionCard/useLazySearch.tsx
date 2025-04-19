@@ -8,7 +8,7 @@ export default function useLazySearch<T extends { name: string }>(data: T[]) {
       _searchTerms[datum.name] = JSON.stringify(datum).toLowerCase();
     });
     return _searchTerms;
-  }, [data, searchQuery]);
+  }, [data]);
 
   const filteredData = useMemo<T[]>(
     () => data.filter((datum) => searchTerms[datum.name].includes(searchQuery)),

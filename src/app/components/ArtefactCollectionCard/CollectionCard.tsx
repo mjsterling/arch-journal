@@ -21,7 +21,7 @@ export default function CollectionCard(collection: Collection) {
     if (!digsiteName) return null;
     const digsite = Digsites[digsiteName];
     return { ...digsite, name: digsiteName };
-  }, [collection]);
+  }, [digsiteName]);
 
   const isComplete = useMemo(() => {
     return collection.artefacts
@@ -163,7 +163,9 @@ export default function CollectionCard(collection: Collection) {
                 alt={reward}
                 className="h-8 w-8 object-contain"
               />
-              <p className="text-sm font-bold">{shortNumber(amount)}</p>
+              <p className="text-sm font-bold">
+                {amount ? shortNumber(amount) : ''}
+              </p>
             </div>
           );
         })}

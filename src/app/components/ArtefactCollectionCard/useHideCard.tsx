@@ -1,22 +1,22 @@
 import { useGlobalState } from '@/app/data/GlobalStateProvider';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function useHideCard(isComplete: boolean) {
   const { showCompleted } = useGlobalState();
   const [hidden, setHidden] = useState(false);
   const [opacity, setOpacity] = useState(1);
 
-  const hide = () => {
+  const hide = useCallback(() => {
     setOpacity(0);
     setTimeout(() => {
       setHidden(true);
     }, 500);
-  };
+  }, [setOpacity, setHidden]);
 
-  const show = () => {
+  const show = useCallback(() => {
     setHidden(false);
     setOpacity(isComplete ? 0.5 : 1);
-  };
+  }, [isComplete, setOpacity, setHidden]);
 
   useEffect(() => {
     if (showCompleted === false && isComplete) {
@@ -24,7 +24,7 @@ export default function useHideCard(isComplete: boolean) {
     } else {
       show();
     }
-  }, [showCompleted, isComplete]);
+  }, [showCompleted, isComplete, hide, show]);
 
   return { hidden, opacity };
 }

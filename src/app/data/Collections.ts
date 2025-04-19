@@ -7,11 +7,11 @@ export type Collection = {
   shortName?: string;
   artefacts?: Artefact[];
   levelToComplete?: number;
-  reward: {
-    [key: string]: number;
+  reward?: {
+    [key: string]: number | undefined;
   };
   recurringReward: {
-    [key: string]: number;
+    [key: string]: number | undefined;
   };
 };
 
