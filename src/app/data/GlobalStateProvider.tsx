@@ -158,7 +158,7 @@ export default function GlobalStateProvider({
         });
         highlightedCollection.style.border = '2px solid #FFA500';
       }
-    }, 500);
+    }, 1000);
   };
   const goToArtefact = (artefact: string) => {
     setScreen(Screens.Artefacts);
@@ -174,7 +174,7 @@ export default function GlobalStateProvider({
         });
         highlightedArtefact.style.border = '2px solid #FFA500';
       }
-    }, 500);
+    }, 1000);
   };
   const [activeCollection, setActiveCollection] = useState<string>('');
   const goToPlanner = (collection: string) => {
