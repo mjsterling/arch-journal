@@ -1,6 +1,7 @@
 import { ArtefactStates } from '../../data/Artefact';
 import { Artefact, useArtefacts } from '../../data/ArtefactProvider';
 import { useGlobalState } from '../../data/GlobalStateProvider';
+import Icon from '../Icon';
 
 export default function CollectionButton({
   artefact,
@@ -100,7 +101,7 @@ export default function CollectionButton({
       className={[
         'flex flex-col gap-1 items-center justify-center',
         'border-2 border-orange-100 rounded-lg h-full p-2',
-        'transition-all duration-200 gap-1',
+        'transition-all duration-200 gap-1 w-[52px] h-[52px] max-h-[52px]',
         status === 'Not Found'
           ? 'bg-gray-500 hover:bg-orange-600 cursor-pointer'
           : status === 'Damaged'
@@ -113,10 +114,10 @@ export default function CollectionButton({
       ].join(' ')}
       title={`${artefact.name} - ${artefact.hotspot} - ${status}`}
     >
-      <img
+      <Icon
         src={image}
         alt={collection}
-        className="h-8 w-8 xl:h-9 xl:w-9 object-contain transition-all"
+        className="h-8 w-8 object-contain transition-all"
       />
     </button>
   );

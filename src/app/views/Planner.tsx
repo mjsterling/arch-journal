@@ -6,6 +6,7 @@ import { ArtefactStates } from '../data/Artefact';
 import CollectionButton from '../components/ArtefactCollectionCard/CollectionButton';
 import { useGlobalState } from '../data/GlobalStateProvider';
 import { Materials } from '../data/Materials';
+import Icon from '../components/Icon';
 
 export default function Planner() {
   const { artefacts } = useArtefacts();
@@ -161,6 +162,43 @@ export default function Planner() {
       </div>
       {mode === 'first' && selectedCollectionData && (
         <div className="flex flex-col gap-8 w-full">
+          <div className="flex flex-row gap-8 w-full justify-center items-center">
+            {Object.entries(
+              selectedCollectionData.reward ??
+                selectedCollectionData.recurringReward
+            ).map(([reward, amount]) => {
+              return (
+                <div
+                  key={`${selectedCollectionData.name}_${reward}`}
+                  onContextMenu={(e) =>
+                    createContextMenu(e, [
+                      [
+                        {
+                          label: 'Wiki: ' + reward,
+                          callback: () => wiki(reward),
+                        },
+                      ],
+                    ])
+                  }
+                  className="flex flex-col items-center text-orange-100 px-2 cursor-help"
+                >
+                  <Icon
+                    src={`/assets/collections/${reward.replace(/ /g, '_')}.${
+                      reward === 'Tetracompass piece' ||
+                      reward === 'Elder Trove'
+                        ? 'gif'
+                        : 'png'
+                    }`}
+                    alt={reward}
+                    className="h-8 w-8 object-contain"
+                  />
+                  <p className="text-base font-bold">
+                    {reward} x {Intl.NumberFormat('en-AU').format(amount)}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
           <ul className="flex flex-col gap-6 items-stretch">
             {selectedCollectionData.artefacts.map((artefact) => (
               <li
@@ -192,23 +230,14 @@ export default function Planner() {
                         key={`${artefact.name}_${material}`}
                       >
                         <div className="flex justify-center items-center">
-                          <img
+                          <Icon
                             src={`/assets/materials/${material.replace(
                               / /g,
                               '_'
                             )}.png`}
                             alt={material}
                             className="h-8 w-8 object-contain object-center cursor-help"
-                            onContextMenu={(e) =>
-                              createContextMenu(e, [
-                                [
-                                  {
-                                    label: 'Wiki: ' + material,
-                                    callback: () => wiki(material),
-                                  },
-                                ],
-                              ])
-                            }
+                            contextMenu
                           />
                         </div>
                         <span className="w-full text-center font-bold">
@@ -230,23 +259,14 @@ export default function Planner() {
                   key={material.name}
                   className="flex flex-row gap-3 justify-center items-center"
                 >
-                  <img
+                  <Icon
                     src={`/assets/materials/${material.name.replace(
                       / /g,
                       '_'
                     )}.png`}
                     alt={material.name}
                     className="h-8 w-8 object-contain object-center cursor-help"
-                    onContextMenu={(e) =>
-                      createContextMenu(e, [
-                        [
-                          {
-                            label: 'Wiki: ' + material.name,
-                            callback: () => wiki(material.name),
-                          },
-                        ],
-                      ])
-                    }
+                    contextMenu
                   />
                   <span
                     className={[
@@ -285,26 +305,56 @@ export default function Planner() {
               className="w-16 text-center bg-gray-800 text-orange-100 p-2 rounded-md cursor-pointer"
             />
           </div>
+          <div className="flex flex-row gap-8 w-full justify-center items-center">
+            {Object.entries(selectedCollectionData.recurringReward).map(
+              ([reward, amount]) => {
+                return (
+                  <div
+                    key={`${selectedCollectionData.name}_${reward}`}
+                    onContextMenu={(e) =>
+                      createContextMenu(e, [
+                        [
+                          {
+                            label: 'Wiki: ' + reward,
+                            callback: () => wiki(reward),
+                          },
+                        ],
+                      ])
+                    }
+                    className="flex flex-col items-center text-orange-100 px-2 cursor-help"
+                  >
+                    <Icon
+                      src={`/assets/collections/${reward.replace(/ /g, '_')}.${
+                        reward === 'Tetracompass piece' ||
+                        reward === 'Elder Trove'
+                          ? 'gif'
+                          : 'png'
+                      }`}
+                      alt={reward}
+                      className="h-8 w-8 object-contain"
+                    />
+                    <p className="text-base font-bold">
+                      {reward} x{' '}
+                      {Intl.NumberFormat('en-AU').format(
+                        amount * numberOfRecurringCompletions
+                      )}
+                    </p>
+                  </div>
+                );
+              }
+            )}
+          </div>
           <ul className="flex flex-col gap-6 items-stretch">
             {selectedCollectionData.artefacts.map((artefact) => (
               <li
                 key={artefact.name}
                 className="grid grid-cols-[64px_1.2fr_2fr] grid-rows-1 gap-4 justify-start items-center bg-[#FFF1] rounded-lg p-4"
               >
-                <img
+                <Icon
                   src={artefact.image}
                   alt={artefact.name}
                   className="h-8 w-8 cursor-help ml-3"
-                  onContextMenu={(e) =>
-                    createContextMenu(e, [
-                      [
-                        {
-                          label: 'Wiki: ' + artefact.name,
-                          callback: () => wiki(artefact.name),
-                        },
-                      ],
-                    ])
-                  }
+                  contextMenu
                 />
                 <span className="text-lg font-bold">
                   {artefact.name} x {numberOfRecurringCompletions}
@@ -318,27 +368,20 @@ export default function Planner() {
                         key={`${artefact.name}_${material}`}
                       >
                         <div className="flex justify-center items-center">
-                          <img
+                          <Icon
                             src={`/assets/materials/${material.replace(
                               / /g,
                               '_'
                             )}.png`}
                             alt={material}
                             className="h-8 w-8 object-contain object-center cursor-help"
-                            onContextMenu={(e) =>
-                              createContextMenu(e, [
-                                [
-                                  {
-                                    label: 'Wiki: ' + material,
-                                    callback: () => wiki(material),
-                                  },
-                                ],
-                              ])
-                            }
+                            contextMenu
                           />
                         </div>
                         <span className="w-full text-center font-bold">
-                          {amount * numberOfRecurringCompletions}
+                          {Intl.NumberFormat('en-AU').format(
+                            amount * numberOfRecurringCompletions
+                          )}
                         </span>
                       </div>
                     ))}
@@ -356,23 +399,14 @@ export default function Planner() {
                   key={material.name}
                   className="flex flex-row gap-3 justify-center items-center"
                 >
-                  <img
+                  <Icon
                     src={`/assets/materials/${material.name.replace(
                       / /g,
                       '_'
                     )}.png`}
                     alt={material.name}
                     className="h-8 w-8 object-contain object-center cursor-help"
-                    onContextMenu={(e) =>
-                      createContextMenu(e, [
-                        [
-                          {
-                            label: 'Wiki: ' + material.name,
-                            callback: () => wiki(material.name),
-                          },
-                        ],
-                      ])
-                    }
+                    contextMenu
                   />
                   <span
                     className={[
@@ -387,7 +421,7 @@ export default function Planner() {
                   >
                     {materialStorage[material.name as Materials]}
                     {materialStorage.hasOwnProperty(material.name) ? ' / ' : ''}
-                    {material.amount}
+                    {Intl.NumberFormat('en-AU').format(material.amount)}
                   </span>
                 </div>
               ))}

@@ -7,75 +7,104 @@ export default function MaterialStorage() {
     <div className="flex flex-col items-center justify-center h-full w-full gap-4 py-8">
       <div className="flex flex-col md:grid md:grid-cols-5 md:w-144 gap-4 mx-auto">
         <MaterialStorageTitle title="Agnostic Materials" />
-        {Object.entries(materialStorage)
-          .slice(0, 10)
-          .map(([material, amount]) => (
-            <MaterialStorageInput
-              key={material}
-              material={material as Materials}
-              amount={amount}
-            />
-          ))}
+        {[
+          'Third-age iron',
+          'Samite silk',
+          'White oak',
+          'Goldrune',
+          'Orthenglass',
+          'Vellum',
+          'Leather scraps',
+          'Soapstone',
+          'Animal furs',
+          'Fossilised bone',
+        ].map((material) => (
+          <MaterialStorageInput
+            key={material}
+            material={material as Materials}
+            amount={materialStorage[material as Materials]}
+          />
+        ))}
         <MaterialStorageTitle title="Armadylean Materials" />
-        {Object.entries(materialStorage)
-          .slice(10, 15)
-          .map(([material, amount]) => (
-            <MaterialStorageInput
-              key={material}
-              material={material as Materials}
-              amount={amount}
-            />
-          ))}
+        {[
+          'Stormguard steel',
+          'Wings of War',
+          'Armadylean yellow',
+          'Aetherium alloy',
+          'Quintessence',
+        ].map((material) => (
+          <MaterialStorageInput
+            key={material}
+            material={material as Materials}
+            amount={materialStorage[material as Materials]}
+          />
+        ))}
         <MaterialStorageTitle title="Bandosian Materials" />
-        {Object.entries(materialStorage)
-          .slice(15, 20)
-          .map(([material, amount]) => (
-            <MaterialStorageInput
-              key={material}
-              material={material as Materials}
-              amount={amount}
-            />
-          ))}
+        {[
+          'Malachite green',
+          'Mark of the Kyzaj',
+          'Vulcanised rubber',
+          'Warforged bronze',
+          "Yu'biusk clay",
+        ].map((material) => (
+          <MaterialStorageInput
+            key={material}
+            material={material as Materials}
+            amount={materialStorage[material as Materials]}
+          />
+        ))}
         <MaterialStorageTitle title="Dragonkin Materials" />
-        {Object.entries(materialStorage)
-          .slice(20, 25)
-          .map(([material, amount]) => (
+        {['Dragon metal', 'Orgone', 'Compass rose', 'Carbon black', 'Felt'].map(
+          (material) => (
             <MaterialStorageInput
               key={material}
               material={material as Materials}
-              amount={amount}
+              amount={materialStorage[material as Materials]}
             />
-          ))}
+          )
+        )}
         <MaterialStorageTitle title="Saradominist Materials" />
-        {Object.entries(materialStorage)
-          .slice(25, 30)
-          .map(([material, amount]) => (
-            <MaterialStorageInput
-              key={material}
-              material={material as Materials}
-              amount={amount}
-            />
-          ))}
+        {[
+          'Keramos',
+          'White marble',
+          'Cobalt blue',
+          'Everlight silvthril',
+          'Star of Saradomin',
+        ].map((material) => (
+          <MaterialStorageInput
+            key={material}
+            material={material as Materials}
+            amount={materialStorage[material as Materials]}
+          />
+        ))}
         <MaterialStorageTitle title="Zamorakian Materials" />
-        {Object.entries(materialStorage)
-          .slice(30, 35)
-          .map(([material, amount]) => (
-            <MaterialStorageInput
-              key={material}
-              material={material as Materials}
-              amount={amount}
-            />
-          ))}
+        {[
+          'Cadmium red',
+          'Chaotic brimstone',
+          'Demonhide',
+          'Eye of Dagon',
+          'Hellfire metal',
+        ].map((material) => (
+          <MaterialStorageInput
+            key={material}
+            material={material as Materials}
+            amount={materialStorage[material as Materials]}
+          />
+        ))}
         <MaterialStorageTitle title="Zarosian Materials" />
-        {Object.entries(materialStorage)
-          .slice(35, 40)
-          .map(([material, amount]) => (
-            <MaterialStorageInput
-              key={material}
-              material={material as Materials}
-              amount={amount}
-            />
-          ))}
+        {[
+          'Zarosian insignia',
+          'Imperial steel',
+          'Ancient vis',
+          'Tyrian purple',
+          'Blood of Orcus',
+        ].map((material) => (
+          <MaterialStorageInput
+            key={material}
+            material={material as Materials}
+            amount={materialStorage[material as Materials]}
+          />
+        ))}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import CollectionButton from './CollectionButton';
 import LevelSiteDisplay from './LevelSiteDisplay';
 import useHideCard from './useHideCard';
 import { useGlobalState } from '@/app/data/GlobalStateProvider';
+import Icon from '../Icon';
 
 export default function CollectionCard(collection: Collection) {
   const { setArtefact } = useArtefacts();
@@ -48,12 +49,22 @@ export default function CollectionCard(collection: Collection) {
 
   const { hidden, opacity } = useHideCard(isComplete);
 
+  const shortNumber = (num: number) => {
+    if (num >= 10000) {
+      return Math.round(num / 1000).toFixed(0) + 'k';
+    }
+    if (num >= 1000) {
+      return (Math.round(num / 100) / 10).toFixed(1) + 'k';
+    }
+    return num.toString();
+  };
+
   if (hidden) return null;
 
   return (
     <div
       className={[
-        'w-full bg-gray-800 border-2 rounded-lg px-4 sm:px-8 py-12 lg:py-4 lg:grid lg:grid-cols-[2.8fr_6fr_1fr] justify-between gap-8 cursor-help transition-opacity duration-500',
+        'w-full bg-gray-800 border-2 rounded-lg px-4 sm:px-8 py-12 lg:py-4 lg:grid lg:grid-cols-[2fr_6fr_0.7fr] justify-between gap-8 cursor-help transition-opacity duration-500',
         isComplete ? 'border-green-700' : 'border-orange-100',
       ].join(' ')}
       style={{
@@ -90,17 +101,14 @@ export default function CollectionCard(collection: Collection) {
         ])
       }
     >
-      <div className="grid grid-cols-[50px_1fr_50px] sm:grid-cols-[84px_1fr_84px] lg:flex lg:flex-row flex-wrap lg:flex-nowrap content-center gap-4 justify-around md:justify-between items-center font-bold text-orange-100 pb-4 lg:pb-0">
-        <img
+      <div className="flex flex-row sm:grid sm:grid-cols-[84px_1fr_84px] lg:flex lg:flex-row flex-wrap lg:flex-nowrap content-center gap-4 justify-around md:justify-between items-center font-bold text-orange-100 pb-4 lg:pb-0">
+        <Icon
           src={collection.image}
           alt={collection.name}
-          className="h-10 w-10 object-contain"
+          className="h-10 w-10 object-contain hidden sm:block"
         />
         <p className="text-center lg:text-right text-lg text-wrap">
           {collection.name}
-        </p>
-        <p className="text-center text-lg sm:hidden">
-          {collection.levelToComplete}
         </p>
         <LevelSiteDisplay
           className="hidden sm:flex lg:hidden"
@@ -108,7 +116,7 @@ export default function CollectionCard(collection: Collection) {
           site={digsiteInfo}
         />
       </div>
-      <div className="flex flex-row flex-wrap md:flex-nowrap gap-2 justify-center lg:justify-start">
+      <div className="flex flex-row flex-wrap gap-2 justify-center lg:justify-start items-center">
         {collection.artefacts &&
           collection.artefacts.map((artefact: Artefact) => {
             return (
@@ -122,6 +130,43 @@ export default function CollectionCard(collection: Collection) {
               />
             );
           })}
+        <span className="text-2xl px-4 font-bold text-orange-100 w-[52px] text-center">
+          =
+        </span>
+
+        {Object.entries(
+          collection.reward && !isComplete
+            ? collection.reward
+            : collection.recurringReward
+        ).map(([reward, amount]) => {
+          return (
+            <div
+              key={`${collection.name}_${reward}`}
+              onContextMenu={(e) =>
+                createContextMenu(e, [
+                  [
+                    {
+                      label: 'Wiki: ' + reward,
+                      callback: () => wiki(reward),
+                    },
+                  ],
+                ])
+              }
+              className="flex flex-col items-center text-orange-100 px-2 w-[52px]"
+            >
+              <img
+                src={`/assets/collections/${reward.replace(/ /g, '_')}.${
+                  reward === 'Tetracompass piece' || reward === 'Elder Trove'
+                    ? 'gif'
+                    : 'png'
+                }`}
+                alt={reward}
+                className="h-8 w-8 object-contain"
+              />
+              <p className="text-sm font-bold">{shortNumber(amount)}</p>
+            </div>
+          );
+        })}
       </div>
       <LevelSiteDisplay
         className="hidden lg:flex"

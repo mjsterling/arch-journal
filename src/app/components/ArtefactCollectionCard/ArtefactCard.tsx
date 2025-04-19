@@ -6,6 +6,7 @@ import CollectorButton from './ArtefactButton';
 import { useGlobalState } from '@/app/data/GlobalStateProvider';
 import { ArtefactStates } from '@/app/data/Artefact';
 import LevelSiteDisplay from './LevelSiteDisplay';
+import Icon from '../Icon';
 
 export default function ArtefactCard(props: {
   artefact: Artefact;
@@ -88,7 +89,7 @@ export default function ArtefactCard(props: {
       }
     >
       <div className="grid grid-cols-[2fr_3fr_2fr] mb-4 md:mb-0 md:flex gap-4 justify-center md:justify-start w-full md:w-88 items-center font-bold text-orange-100">
-        <img
+        <Icon
           src={artefact.image}
           alt={artefact.name}
           className="h-10 w-10 object-contain transition-all"

@@ -76,8 +76,8 @@ export default function Artefacts() {
           onClick={() => setShowCompleted(!showCompleted)}
         >
           {showCompleted
-            ? `Hide Completed ${screen}`
-            : `Show Completed ${screen}`}
+            ? `Showing Completed ${screen}`
+            : `Hiding Completed ${screen}`}
         </button>
       </div>
       <div className="w-full h-full flex flex-col gap-4 px-6 py-6 md:px-12 md:py-12">

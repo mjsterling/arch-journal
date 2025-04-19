@@ -931,6 +931,18 @@
     ]
   },
   {
+    "name": "Ceremonial dragonkin device",
+    "digsite": "Orthen",
+    "hotspot": "Dragonkin remains",
+    "level": 70,
+    "chronotes": 602,
+    "xp": 4666.7,
+    "materials": {
+      "Orthenglass": 66
+    },
+    "collections": ["Desperate for Artefacts"]
+  },
+  {
     "name": "Dominion torch",
     "digsite": "Everlight",
     "hotspot": "Dominion Games podium",
@@ -1507,7 +1519,6 @@
     "chronotes": 688,
     "xp": 8944.4,
     "materials": {
-      "Hawkeye lens multi-vision scope (damaged)": 1,
       "Stormguard steel": 40,
       "Orthenglass": 34
     },
@@ -1521,7 +1532,6 @@
     "chronotes": 688,
     "xp": 8944.4,
     "materials": {
-      "Talon-3 razor wing (damaged)": 1,
       "Aetherium alloy": 40,
       "Wings of War": 34,
       "Rope": 1
@@ -1536,7 +1546,6 @@
     "chronotes": 704,
     "xp": 9333.3,
     "materials": {
-      "'Exsanguinate' spell scroll (damaged)": 1,
       "Vellum": 40,
       "Blood of Orcus": 36
     },
@@ -1558,7 +1567,6 @@
     "chronotes": 704,
     "xp": 9333.3,
     "materials": {
-      "Necromantic focus (damaged)": 1,
       "Imperial steel": 20,
       "Blood of Orcus": 26,
       "Ancient vis": 30
@@ -1582,7 +1590,6 @@
     "chronotes": 706,
     "xp": 9722.2,
     "materials": {
-      "Spent summoning charm (damaged)": 1,
       "Orgone": 46,
       "Felt": 30
     },
@@ -1596,7 +1603,6 @@
     "chronotes": 706,
     "xp": 9722.2,
     "materials": {
-      "'Friendship bracelet' (damaged)": 1,
       "Soapstone": 30,
       "Felt": 46
     },
@@ -1613,7 +1619,6 @@
     "chronotes": 706,
     "xp": 9722.2,
     "materials": {
-      "Homely totem (damaged)": 1,
       "Soapstone": 36,
       "Felt": 40
     },
@@ -1627,7 +1632,6 @@
     "chronotes": 724,
     "xp": 10500,
     "materials": {
-      "High priest crozier (damaged)": 1,
       "Mark of the Kyzaj": 26,
       "Malachite green": 24,
       "Goldrune": 28
@@ -1646,7 +1650,6 @@
     "chronotes": 724,
     "xp": 10500,
     "materials": {
-      "High priest mitre (damaged)": 1,
       "Mark of the Kyzaj": 26,
       "Malachite green": 24,
       "Samite silk": 28
@@ -1666,7 +1669,6 @@
     "chronotes": 724,
     "xp": 10500,
     "materials": {
-      "High priest orb (damaged)": 1,
       "Mark of the Kyzaj": 26,
       "Malachite green": 24,
       "Goldrune": 28
@@ -1685,7 +1687,6 @@
     "chronotes": 724,
     "xp": 10500,
     "materials": {
-      "'Torment' metal sculpture (damaged)": 1,
       "Eye of Dagon": 20,
       "Third-age iron": 20,
       "Hellfire metal": 38
@@ -1700,7 +1701,6 @@
     "chronotes": 724,
     "xp": 10500,
     "materials": {
-      "'Pandemonium' tapestry (damaged)": 1,
       "White oak": 12,
       "Samite silk": 12,
       "Vellum": 12,
@@ -1720,7 +1720,6 @@
     "chronotes": 733,
     "xp": 10888.9,
     "materials": {
-      "Ceremonial dragonkin tablet (damaged)": 1,
       "Orthenglass": 79
     },
     "collections": ["Desperate for Artefacts"]
@@ -1733,7 +1732,6 @@
     "chronotes": 726,
     "xp": 10888.9,
     "materials": {
-      "Pasaha (damaged)": 1,
       "Felt": 40,
       "Goldrune": 38
     },
@@ -1748,7 +1746,6 @@
     "chronotes": 726,
     "xp": 10888.9,
     "materials": {
-      "Ritual bell (damaged)": 1,
       "Goldrune": 40,
       "Compass rose": 38
     },
@@ -1762,7 +1759,6 @@
     "chronotes": 742,
     "xp": 11277.8,
     "materials": {
-      "Prototype gravimeter (damaged)": 1,
       "Quintessence": 34,
       "Leather scraps": 20,
       "Third-age iron": 26
@@ -1777,7 +1773,6 @@
     "chronotes": 742,
     "xp": 11277.8,
     "materials": {
-      "Songbird recorder (damaged)": 1,
       "Stormguard steel": 44,
       "Orthenglass": 36,
       "Diamond": 1
@@ -1796,7 +1791,6 @@
     "chronotes": 742,
     "xp": 11666.7,
     "materials": {
-      "Amphora (damaged)": 1,
       "Everlight silvthril": 34,
       "Keramos": 46
     },

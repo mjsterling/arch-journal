@@ -1,6 +1,7 @@
 import { ArtefactStates } from '../../data/Artefact';
 import { Artefact, useArtefacts } from '../../data/ArtefactProvider';
 import { useGlobalState } from '../../data/GlobalStateProvider';
+import Icon from '../Icon';
 
 export default function ArtefactButton({
   artefact,
@@ -115,7 +116,7 @@ export default function ArtefactButton({
       ].join(' ')}
       title={`${collection} - ${collector} - ${status}`}
     >
-      <img
+      <Icon
         src={image}
         alt={collection}
         className="h-8 w-8 lg:h-10 lg:w-10 object-contain transition-all"
