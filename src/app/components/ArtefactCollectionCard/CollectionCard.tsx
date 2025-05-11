@@ -71,7 +71,7 @@ export default function CollectionCard(collection: Collection) {
     <div
       className={[
         'w-full bg-gray-800 border-2 rounded-lg px-4 sm:px-8 py-12 lg:py-4 lg:grid lg:grid-cols-[2fr_6fr_0.7fr] justify-between gap-8',
-        'cursor-help transition-opacity duration-500 hover:z-50',
+        'cursor-help transition-opacity duration-500 hover:z-20',
         isComplete ? 'border-green-700' : 'border-orange-100',
         isHighlighted
           ? 'outline-2 -outline-offset-2 outline-yellow-500 z-10'
