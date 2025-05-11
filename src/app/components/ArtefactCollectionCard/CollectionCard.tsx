@@ -72,6 +72,9 @@ export default function CollectionCard(collection: Collection) {
       className={[
         'w-full bg-gray-800 border-2 rounded-lg px-4 sm:px-8 py-12 lg:py-4 lg:grid lg:grid-cols-[2fr_6fr_0.7fr] justify-between gap-8 cursor-help transition-opacity duration-500',
         isComplete ? 'border-green-700' : 'border-orange-100',
+        isHighlighted
+          ? 'outline-2 -outline-offset-2 outline-yellow-500 z-10'
+          : 'z-0',
       ].join(' ')}
       style={{
         backgroundColor: digsiteInfo?.backgroundColor ?? '#333',
@@ -113,7 +116,12 @@ export default function CollectionCard(collection: Collection) {
           alt={collection.name}
           className="h-10 w-10 object-contain hidden sm:block"
         />
-        <p className="text-center lg:text-right text-lg text-wrap">
+        <p
+          className={[
+            'text-center text-wrap md:text-nowrap',
+            isHighlighted ? 'text-yellow-500' : 'text-white',
+          ].join(' ')}
+        >
           {collection.name}
         </p>
         <LevelSiteDisplay

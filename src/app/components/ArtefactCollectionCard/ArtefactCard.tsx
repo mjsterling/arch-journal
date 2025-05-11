@@ -35,7 +35,7 @@ export default function ArtefactCard(props: {
 
   const isHidden = useMemo(
     () => isComplete && !alwaysShow && !showCompleted && !isHighlighted,
-    [isComplete, showCompleted, alwaysShow]
+    [isComplete, showCompleted, alwaysShow, isHighlighted]
   );
 
   const { onContextMenu } = useHandlers(artefact, isComplete, digsiteInfo);

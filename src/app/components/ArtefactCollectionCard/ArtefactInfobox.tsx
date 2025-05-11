@@ -1,15 +1,12 @@
 import { ArtefactStates } from '@/app/data/Artefact';
 import { Artefact, useArtefacts } from '@/app/data/ArtefactProvider';
-import { Collections, type Collection } from '@/app/data/Collections';
 import { useGlobalState } from '@/app/data/GlobalStateProvider';
 import React, { useEffect, useMemo, useState } from 'react';
 
 export const ArtefactInfobox = ({
   artefact,
   collection,
-  collector,
   open,
-  status,
   mode,
 }: {
   artefact: Artefact;
@@ -19,16 +16,11 @@ export const ArtefactInfobox = ({
   status: ArtefactStates;
   mode: 'artefactPage' | 'collectionPage';
 }) => {
-  if (!open) return null;
-  const collectionData = useMemo(
-    () => Collections.find((c) => c.name === collection),
-    [collection]
-  );
   const { goToArtefact, goToCollection } = useGlobalState();
   const { artefacts } = useArtefacts();
   const artefactsInCollection = useMemo(
     () => artefacts.filter((a) => a.collections.hasOwnProperty(collection)),
-    [artefacts, artefact, collection]
+    [artefacts, collection]
   );
   const [opacity, setOpacity] = useState(0);
   useEffect(() => {
@@ -38,6 +30,7 @@ export const ArtefactInfobox = ({
       setOpacity(0);
     }
   }, [open]);
+  if (!open) return null;
   return (
     <div
       className="absolute left-1/2 top-3/4 bg-gray-900 border-2 border-white rounded-md flex flex-col justify-center items-center gap-3 transition-all p-3 min-w-fit cursor-default"
@@ -83,7 +76,7 @@ export const ArtefactInfobox = ({
         </div>
       ) : (
         <div className="flex flex-col gap-1">
-          {Object.entries(artefact.collections).map(([collection, _status]) => (
+          {Object.keys(artefact.collections).map((collection) => (
             <div
               key={`infobox_${artefact.name}_${collection}`}
               className="grid grid-cols-[12px_1fr] items-center gap-2 px-4"
