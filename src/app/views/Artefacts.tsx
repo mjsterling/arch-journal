@@ -107,7 +107,7 @@ export default function Artefacts() {
           hotspotsCompleted[hotspot] &&
           !showCompleted &&
           !searchQuery ? null : (
-            <div key={`${hotspot}_container`}>
+            <div key={`${hotspot}_container`} className="relative">
               <span className="cursor-help">
                 <h2
                   className={[

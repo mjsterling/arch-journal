@@ -92,7 +92,7 @@
       "Third-age iron": 16
     },
     "collections": ["Museum - Zarosian I", "Zarosian I"],
-    "otherUses": ["Unlocking Katarina (student) as a researcher."]
+    "researchers": ["Katarina (student)"]
   },
   {
     "name": "Hookah pipe",
@@ -120,7 +120,7 @@
       "Goldrune": 16
     },
     "collections": ["Museum - Zamorakian I", "Smoky Fings", "Zamorakian I"],
-    "otherUses": ["Unlocking Dorian (student) as a researcher."]
+    "researchers": ["Dorian (student)"]
   },
   {
     "name": "Crest of Dagon",
@@ -143,9 +143,7 @@
       "Showy Fings",
       "Knowledge is Power"
     ],
-    "mysteries": [
-      ["Eyes in Their Stars", "Eyes in Their Stars", "Eyes in Their Stars"]
-    ]
+    "mysteries": ["Eyes in Their Stars"]
   },
   {
     "name": "'Disorder' painting",
@@ -246,9 +244,7 @@
       "Tyrian purple": 6
     },
     "collections": ["Museum - Zamorakian I", "Hat Hoarder", "Zamorakian I"],
-    "otherUses": [
-      "Completing the How Do You Do, Fellow Demon achievement (not consumed)."
-    ]
+    "achievements": ["How Do You Do, Fellow Demon"]
   },
   {
     "name": "Order of Dis robes",
@@ -306,7 +302,7 @@
       "White candle": 1
     },
     "collections": ["Museum - Saradominist I", "Saradominist I"],
-    "otherUses": [
+    "misc": [
       "Restoring the Statue of Hebe for the No Secrets Left to Steal achievement, a 'Frying pan' (damaged) and some materials.",
       "Using it on the top of the lighthouse will award a hallowed lantern, which can be used on the statue of Hebe for a book that awards 50,000 Archaeology experience. (Requires 105 Archaeology)"
     ]
@@ -357,7 +353,7 @@
       "Blingy Fings",
       "Magic Man"
     ],
-    "otherUses": ["Completing the Time Served mystery"]
+    "mysteries": ["Time Served"]
   },
   {
     "name": "Legatus pendant",
@@ -373,7 +369,7 @@
       "Dragonstone": 1
     },
     "collections": ["Museum - Zarosian II", "Blingy Fings", "Zarosian II"],
-    "otherUses": ["Adding to toolbelt to pass barriers in Kharid-et digsite."]
+    "misc": ["Adding to toolbelt to pass barriers in Kharid-et digsite."]
   },
   {
     "name": "Ceremonial unicorn ornament",
@@ -386,8 +382,8 @@
       "Keramos": 26,
       "Cobalt blue": 20
     },
-    "collections": ["Museum - Saradominist I", "Saradominist I"],
-    "otherUses": ["Unlocking Eduardo (student) as a researcher."]
+    "collections": ["Museum - Saradominist I", "Saradominist I", "Hat Hoarder"],
+    "researchers": ["Eduardo (student)"]
   },
   {
     "name": "Ceremonial unicorn saddle",
@@ -419,7 +415,7 @@
       "Saradominist I",
       "Wise Am the Music Man"
     ],
-    "otherUses": [
+    "misc": [
       "Restoring the Statue of Mesomedes for the No Secrets Left to Steal achievement and the Hand of Glory (Everlight"
     ]
   },
@@ -440,7 +436,7 @@
       "Wise Am the Music Man",
       "Smoky Fings"
     ],
-    "otherUses": ["That Old Black Magic quest"]
+    "quests": ["That Old Black Magic"]
   },
   {
     "name": "Everlight violin",
@@ -520,7 +516,7 @@
       "Dragonstone": 1
     },
     "collections": ["Museum - Zarosian II", "Blingy Fings", "Zarosian II"],
-    "otherUses": [
+    "misc": [
       "Adding to toolbelt to pass barriers in Kharid-et digsite.",
       "Upgrading to the Pontifex observation ring after Azzanadra's quest."
     ]
@@ -815,7 +811,7 @@
       "Blood of Orcus": 20
     },
     "collections": ["Museum - Zarosian VII", "Urns of the Empire"],
-    "otherUses": ["Completing the Secrets of the Inquisition mystery."]
+    "mysteries": ["Secrets of the Inquisition"]
   },
   {
     "name": "Funerary urn of miasma",
@@ -873,7 +869,7 @@
       "Hellfire metal": 36
     },
     "collections": ["Museum - Zamorakian II", "Zamorakian II"],
-    "otherUses": [
+    "misc": [
       "Accessing the Hydra portal in the Infernal Source achievement (not consumed, but required every time and can be added to tool belt).",
       "Creating an Abyssal Gatestone with the chaotic gatestone.",
       "Three are used in the recipe for an Enchantment of dispelling."
@@ -892,7 +888,7 @@
       "Chaotic brimstone": 16
     },
     "collections": ["Museum - Zamorakian II", "Zamorakian II"],
-    "otherUses": ["Used for the Who's a Bad Boy? achievement (not consumed)."]
+    "misc": ["Used for the Who's a Bad Boy? achievement (not consumed)."]
   },
   {
     "name": "Bronze Dominion medal",
@@ -960,9 +956,9 @@
       "Saradominist II",
       "Smoky Fings"
     ],
-    "otherUses": [
-      "Restoring the statue of Padosan and getting the gold Dominion medal.",
-      "Opening a door in the Acropolis for the Hallowed Be... mystery."
+    "mysteries": ["Hallowed Be..."],
+    "misc": [
+      "Restoring the statue of Padosan and getting the gold Dominion medal."
     ]
   },
   {
@@ -981,7 +977,7 @@
       "Armadylean I",
       "Knowledge is Power"
     ],
-    "otherUses": [
+    "misc": [
       "Accessing the Stormguard Citadel (not consumed, but required every time and can be added to tool belt)."
     ]
   },
@@ -1038,7 +1034,7 @@
       "Sapphire": 1
     },
     "collections": ["Museum - Saradominist II", "Saradominist II"],
-    "otherUses": [
+    "misc": [
       "Creating the Cup of Nectar at the top of the Everlight lighthouse (level 105 Archaeology required)."
     ]
   },
@@ -1308,7 +1304,7 @@
       "Animal furs": 22
     },
     "collections": ["Museum - Armadylean I", "Armadylean I"],
-    "otherUses": ["Trading with Armadyl for the Ring of Solomon relic."]
+    "misc": ["Trading with Armadyl for the Ring of Solomon relic."]
   },
   {
     "name": "Ceremonial plume",
@@ -1363,7 +1359,7 @@
       "Fossilised bone": 36
     },
     "collections": ["Museum - Bandosian I", "Red Rum Relics I"],
-    "otherUses": ["Two are used in the recipe for an Enchantment of savagery."]
+    "misc": ["Two are used in the recipe for an Enchantment of savagery."]
   },
   {
     "name": "Larupia trophy",
@@ -1555,7 +1551,7 @@
       "Magic Man",
       "Imperial Sorcery"
     ],
-    "otherUses": [
+    "misc": [
       "Accessing the blood door in Kharid-et while standing near the dial."
     ]
   },
@@ -1577,10 +1573,8 @@
       "Knowledge is Power",
       "Imperial Sorcery"
     ],
-    "otherUses": [
-      "One is used in the recipe for an Enchantment of affliction.",
-      "One is used during the Tomes of the Warlock quest."
-    ]
+    "quests": ["Tomes of the Warlock"],
+    "misc": ["One is used in the recipe for an Enchantment of affliction."]
   },
   {
     "name": "Spent summoning charm",
@@ -1607,7 +1601,7 @@
       "Felt": 46
     },
     "collections": ["Museum - Dragonkin VI", "Dragonkin VI"],
-    "otherUses": [
+    "misc": [
       "Accessing Daemonheim - Depths excavation site (not consumed, but required every time and can be added to tool belt)."
     ]
   },
@@ -1736,7 +1730,7 @@
       "Goldrune": 38
     },
     "collections": ["Museum - Dragonkin I", "Dragonkin I"],
-    "otherUses": ["One is used in the recipe for an artificer's measure."]
+    "misc": ["One is used in the recipe for an artificer's measure."]
   },
   {
     "name": "Ritual bell",
@@ -1813,7 +1807,7 @@
       "Saradominist III",
       "Showy Fings"
     ],
-    "otherUses": ["Restoring the Statue of Tromple."]
+    "misc": ["Restoring the Statue of Tromple."]
   },
   {
     "name": "Zarosian ewer",
@@ -1911,7 +1905,7 @@
       "Goldrune": 20
     },
     "collections": ["Museum - Armadylean II", "Armadylean II"],
-    "otherUses": [
+    "misc": [
       "Accessing Howl's Floating Workshop in the Stormguard Citadel (not consumed, but required every time and can be added to tool belt)."
     ]
   },
@@ -1956,9 +1950,7 @@
       "Malachite green": 22
     },
     "collections": ["Museum - Bandosian II", "Red Rum Relics II"],
-    "otherUses": [
-      "One is required to unlock Asgarnia Smith as part of your research team."
-    ]
+    "researchers": ["Asgarnia Smith"]
   },
   {
     "name": "Ourg tower/goblin cower shield",
@@ -1988,7 +1980,7 @@
       "Third-age iron": 30
     },
     "collections": ["Museum - Bandosian II", "Green Gobbo Goodies II"],
-    "otherUses": [
+    "misc": [
       "Used in the south-western tunnel (containing the Idithuun key) of the Warforge to obtain a green skull cave painting."
     ]
   },
@@ -2006,7 +1998,7 @@
       "Soapstone": 16
     },
     "collections": ["Museum - Armadylean II", "Armadylean II"],
-    "otherUses": [
+    "misc": [
       "One is required (along with a Golem instruction) to create a Golem framework and is consumed in the process."
     ]
   },
@@ -2026,10 +2018,10 @@
       "Armadylean II",
       "Knowledge is Power"
     ],
-    "otherUses": [
-      "One is required (along with a golem heart) to create a golem framework and is consumed in the process.",
-      "One is required to unlock Elissa Giovanni as part of your research team."
-    ]
+    "misc": [
+      "One is required (along with a golem heart) to create a golem framework and is consumed in the process."
+    ],
+    "researchers": ["Elissa Giovanni"]
   },
   {
     "name": "Hellfire haladie",
@@ -2057,7 +2049,7 @@
       "Leather scraps": 40
     },
     "collections": ["Museum - Zamorakian III", "Zamorakian III"],
-    "otherUses": [
+    "misc": [
       "Trading two Hellfire katars with Dagon the Gatekeeper for The Rings of Razulei relic (which requires completion of the Dagon Bye mystery)."
     ]
   },
@@ -2087,7 +2079,7 @@
       "Soapstone": 34
     },
     "collections": ["Museum - Dragonkin I", "Dragonkin I"],
-    "otherUses": [
+    "misc": [
       "Trading with Bob the Cat for Evil Bob's Catspaw relic (requires a catspeak amulet)."
     ]
   },
@@ -2130,8 +2122,8 @@
       "White oak": 42
     },
     "collections": ["Museum - Bandosian II", "Green Gobbo Goodies III"],
-    "otherUses": [
-      "Completing the You Have Chosen... mystery (consumed).",
+    "mysteries": ["You Have Chosen..."],
+    "misc": [
       "One is used for the Stick It to Da Boss Man achievement (not consumed)."
     ]
   },
@@ -2148,7 +2140,7 @@
       "Emerald": 1
     },
     "collections": ["Museum - Bandosian II", "Red Rum Relics II"],
-    "otherUses": ["Completing the You Have Chosen... mystery (consumed)."]
+    "mysteries": ["You Have Chosen..."]
   },
   {
     "name": "Kopis dagger",
@@ -2194,7 +2186,7 @@
       "Magic Man",
       "Imperial Sorcery"
     ],
-    "otherUses": [
+    "misc": [
       "Accessing the smoke door in Kharid-et while standing near the dial."
     ]
   },
@@ -2224,7 +2216,7 @@
       "Felt": 42
     },
     "collections": ["Museum - Dragonkin II", "Dragonkin II"],
-    "otherUses": ["One is used in the recipe for an artificer's measure."]
+    "misc": ["One is used in the recipe for an artificer's measure."]
   },
   {
     "name": "Protective goggles",
@@ -2238,7 +2230,7 @@
       "Orthenglass": 52
     },
     "collections": ["Museum - Dragonkin II", "Dragonkin II"],
-    "otherUses": ["One is used in the recipe for an artificer's measure."]
+    "misc": ["One is used in the recipe for an artificer's measure."]
   },
   {
     "name": "Dragon burner",
@@ -2252,7 +2244,7 @@
       "Orgone": 42
     },
     "collections": ["Museum - Dragonkin II", "Dragonkin II"],
-    "otherUses": ["Four are used in the recipe for an Orthen furnace core."]
+    "misc": ["Four are used in the recipe for an Orthen furnace core."]
   },
   {
     "name": "Orthenglass flask",
@@ -2266,7 +2258,7 @@
       "Orthenglass": 60
     },
     "collections": ["Museum - Dragonkin II", "Dragonkin II"],
-    "otherUses": [
+    "misc": [
       "One of the ingredients used to create the Soma relic.",
       "One is used in the recipe for an artificer's measure."
     ]
@@ -2421,7 +2413,7 @@
       "Radiant Renaissance",
       "Saradominist IV"
     ],
-    "otherUses": ["One is required for Hallowed Be... (not consumed)."]
+    "mysteries": ["Hallowed Be..."]
   },
   {
     "name": "'The Lord of Light' painting",
@@ -2500,7 +2492,7 @@
       "Dragon metal": 40
     },
     "collections": ["Museum - Dragonkin III", "Dragonkin III"],
-    "otherUses": ["Completing the Fragmented Memories mystery (not consumed)."]
+    "mysteries": ["Fragmented Memories"]
   },
   {
     "name": "Ancient magic tablet",
@@ -2533,7 +2525,7 @@
       "Magic Man",
       "Imperial Sorcery"
     ],
-    "otherUses": [
+    "misc": [
       "Accessing the shadow door in The Vault of Shadows while standing near the dial."
     ]
   },
@@ -2550,7 +2542,7 @@
       "Ancient vis": 20
     },
     "collections": ["Museum - Zarosian III", "Zarosian III", "Magic Man"],
-    "otherUses": ["Completing the The Forgotten Prisoner mystery."]
+    "mysteries": ["The Forgotten Prisoner"]
   },
   {
     "name": "Comfort gatestone",
@@ -2593,7 +2585,7 @@
       "Compass rose": 32
     },
     "collections": ["Museum - Dragonkin III", "Dragonkin III"],
-    "otherUses": ["Accessing Xolo city"]
+    "misc": ["Accessing Xolo city"]
   },
   {
     "name": "Master control",
@@ -2608,7 +2600,7 @@
       "Compass rose": 44
     },
     "collections": ["Museum - Dragonkin III", "Dragonkin III"],
-    "otherUses": ["Completing the Fragmented Memories mystery."]
+    "misc": ["Completing the Fragmented Memories mystery."]
   },
   {
     "name": "'The Enlightened Soul' scroll",
@@ -2767,7 +2759,7 @@
       "Goldrune": 34
     },
     "collections": ["Museum - Armadylean III", "Armadylean III"],
-    "otherUses": ["Creating The Subtle Blade relic (consumed)."]
+    "misc": ["Creating The Subtle Blade relic (consumed)."]
   },
   {
     "name": "Xolo hard hat",
@@ -2869,7 +2861,7 @@
       "Death rune": 100
     },
     "collections": ["Museum - Zarosian IV", "Zarosian IV"],
-    "otherUses": ["Creating the inquisitor staff."]
+    "misc": ["Creating the inquisitor staff."]
   },
   {
     "name": "Kal-i-kra chieftain crown",
@@ -2998,7 +2990,7 @@
       "Goldrune": 24
     },
     "collections": ["Museum - Armadylean III", "Armadylean III", "Magic Man"],
-    "otherUses": ["Creating the Experimental Aether Reactor relic (consumed)."]
+    "misc": ["Creating the Experimental Aether Reactor relic (consumed)."]
   },
   {
     "name": "Quintessence counter",
@@ -3147,7 +3139,7 @@
       "Dragon metal": 54
     },
     "collections": ["Museum - Dragonkin IV", "Dragonkin IV"],
-    "otherUses": ["Completing the Mysterious City mystery."]
+    "mysteries": ["Mysterious City"]
   },
   {
     "name": "'Raksha' idol",
@@ -3162,6 +3154,6 @@
       "Goldrune": 40
     },
     "collections": ["Museum - Dragonkin IV", "Dragonkin IV"],
-    "otherUses": ["Completing the Mysterious City mystery."]
+    "mysteries": ["Mysterious City"]
   }
 ]

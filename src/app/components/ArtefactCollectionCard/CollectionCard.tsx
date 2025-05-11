@@ -3,7 +3,7 @@ import { Digsites } from '../../data/Digsites';
 import { Artefact, useArtefacts } from '../../data/ArtefactProvider';
 import { Collection } from '../../data/Collections';
 import { ArtefactStates } from '../../data/Artefact';
-import CollectionButton from './CollectionButton';
+import ArtefactCollectionButton from './ArtefactCollectionButton';
 import LevelSiteDisplay from './LevelSiteDisplay';
 import useHideCard from './useHideCard';
 import { useGlobalState } from '@/app/data/GlobalStateProvider';
@@ -11,7 +11,8 @@ import Icon from '../Icon';
 
 export default function CollectionCard(collection: Collection) {
   const { setArtefact } = useArtefacts();
-  const { createContextMenu, wiki, goToPlanner } = useGlobalState();
+  const { createContextMenu, wiki, goToPlanner, highlightedCollection } =
+    useGlobalState();
   const digsiteName = useMemo(() => {
     if (!collection.artefacts?.[0]?.digsite) return null;
     return collection.artefacts[0].digsite;
@@ -46,6 +47,11 @@ export default function CollectionCard(collection: Collection) {
       setArtefact(newArtefact);
     });
   };
+
+  const isHighlighted = useMemo(
+    () => collection.name === highlightedCollection,
+    [collection, highlightedCollection]
+  );
 
   const { hidden, opacity } = useHideCard(isComplete);
 
@@ -120,7 +126,8 @@ export default function CollectionCard(collection: Collection) {
         {collection.artefacts &&
           collection.artefacts.map((artefact: Artefact) => {
             return (
-              <CollectionButton
+              <ArtefactCollectionButton
+                mode="collectionPage"
                 artefact={artefact}
                 key={artefact.name}
                 collection={collection.name}
@@ -130,7 +137,7 @@ export default function CollectionCard(collection: Collection) {
               />
             );
           })}
-        <span className="text-2xl px-4 font-bold text-orange-100 w-[52px] text-center">
+        <span className="text-2xl px-4 font-bold text-orange-100 w-12 text-center">
           =
         </span>
 
@@ -152,7 +159,7 @@ export default function CollectionCard(collection: Collection) {
                   ],
                 ])
               }
-              className="flex flex-col items-center text-orange-100 px-2 w-[52px]"
+              className="flex flex-col items-center text-orange-100 px-2 w-12"
             >
               <img
                 src={`/assets/collections/${reward.replace(/ /g, '_')}.${

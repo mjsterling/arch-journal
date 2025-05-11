@@ -25,8 +25,8 @@ type GlobalStateContext = {
   };
   createContextMenu: (e: React.MouseEvent, items: ContextMenuItems) => void;
   clearContextMenu: () => void;
-  goToCollection: (collection: string) => void;
-  goToArtefact: (artefact: string) => void;
+  goToArtefact: (artefact: string, immediate?: boolean) => void;
+  goToCollection: (collection: string, immediate?: boolean) => void;
   goToPlanner: (collection: string) => void;
   showCompleted: boolean;
   setShowCompleted: SetState<boolean>;
@@ -37,6 +37,8 @@ type GlobalStateContext = {
   updateMaterialStorage: (material: Materials, amount: number) => void;
   activeCollection: string;
   setActiveCollection: (collection: string) => void;
+  highlightedArtefact: string;
+  highlightedCollection: string;
 };
 
 const emptyMaterialStorage = {
@@ -109,6 +111,8 @@ const globalStateContext = createContext<GlobalStateContext>({
   updateMaterialStorage: () => {},
   activeCollection: '',
   setActiveCollection: () => {},
+  highlightedArtefact: '',
+  highlightedCollection: '',
 });
 
 export default function GlobalStateProvider({
@@ -144,37 +148,46 @@ export default function GlobalStateProvider({
       items,
     });
   };
-  const goToCollection = (collection: string) => {
+  const [highlightedCollection, setHighlightedCollection] =
+    useState<string>('');
+  const goToCollection = (collection: string, immediate: boolean = false) => {
     setScreen(Screens.Collections);
-    setTimeout(() => {
-      const highlightedCollection = document.getElementById(
-        collection.replace(/\W/g, '')
-      );
-      if (highlightedCollection) {
-        highlightedCollection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'nearest',
-        });
-        highlightedCollection.style.border = '2px solid #FFA500';
-      }
-    }, 1000);
+    setTimeout(
+      () => {
+        setHighlightedCollection(collection);
+        const collectionElement = document.getElementById(
+          collection.replace(/\W/g, '')
+        );
+        if (collectionElement) {
+          collectionElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest',
+          });
+        }
+      },
+      immediate ? 0 : 1000
+    );
   };
-  const goToArtefact = (artefact: string) => {
+  const [highlightedArtefact, setHighlightedArtefact] = useState<string>('');
+  const goToArtefact = (artefact: string, immediate: boolean = false) => {
     setScreen(Screens.Artefacts);
-    setTimeout(() => {
-      const highlightedArtefact = document.getElementById(
-        artefact.replace(/\W/g, '')
-      );
-      if (highlightedArtefact) {
-        highlightedArtefact.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'nearest',
-        });
-        highlightedArtefact.style.border = '2px solid #FFA500';
-      }
-    }, 1000);
+    setTimeout(
+      () => {
+        setHighlightedArtefact(artefact);
+        const artefactElement = document.getElementById(
+          artefact.replace(/\W/g, '')
+        );
+        if (artefactElement) {
+          artefactElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest',
+          });
+        }
+      },
+      immediate ? 0 : 1000
+    );
   };
   const [activeCollection, setActiveCollection] = useState<string>('');
   const goToPlanner = (collection: string) => {
@@ -232,6 +245,8 @@ export default function GlobalStateProvider({
         wiki,
         materialStorage,
         updateMaterialStorage,
+        highlightedArtefact,
+        highlightedCollection,
       }}
     >
       <ContextMenu />

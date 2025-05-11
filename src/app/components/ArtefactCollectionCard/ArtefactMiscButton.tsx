@@ -3,31 +3,32 @@ import { Artefact, useArtefacts } from '../../data/ArtefactProvider';
 import { useGlobalState } from '../../data/GlobalStateProvider';
 import Icon from '../Icon';
 
-export default function CollectionButton({
+export default function ArtefactButton({
   artefact,
-  collection,
+  type,
+  typeKey,
   image,
   status,
 }: {
   artefact: Artefact;
-  collection: string;
-  collector: string;
+  type: 'mysteries' | 'researchers' | 'misc';
+  typeKey: string;
   image: string;
   status: ArtefactStates;
 }) {
-  const { createContextMenu, goToArtefact, wiki } = useGlobalState();
+  const { createContextMenu, wiki } = useGlobalState();
   const { setArtefact } = useArtefacts();
   const handleClick = () => {
     const newArtefact = { ...artefact };
-    switch (artefact.collections[collection]) {
+    switch (artefact[type][typeKey]) {
       case ArtefactStates.NotFound:
-        newArtefact.collections[collection] = ArtefactStates.Damaged;
+        newArtefact[type][typeKey] = ArtefactStates.Damaged;
         break;
       case ArtefactStates.Damaged:
-        newArtefact.collections[collection] = ArtefactStates.Restored;
+        newArtefact[type][typeKey] = ArtefactStates.Restored;
         break;
       case ArtefactStates.Restored:
-        newArtefact.collections[collection] = ArtefactStates.Completed;
+        newArtefact[type][typeKey] = ArtefactStates.Completed;
         break;
       default:
         break;
@@ -36,7 +37,7 @@ export default function CollectionButton({
   };
   const handleDoubleClick = () => {
     const newArtefact = { ...artefact };
-    newArtefact.collections[collection] = ArtefactStates.Completed;
+    newArtefact[type][typeKey] = ArtefactStates.Completed;
     setArtefact(newArtefact);
   };
   const handleContextMenu = (e: React.MouseEvent) =>
@@ -46,7 +47,7 @@ export default function CollectionButton({
           label: 'Set to Not Found',
           callback: () => {
             const newArtefact = { ...artefact };
-            newArtefact.collections[collection] = ArtefactStates.NotFound;
+            newArtefact[type][typeKey] = ArtefactStates.NotFound;
             setArtefact(newArtefact);
           },
         },
@@ -54,7 +55,7 @@ export default function CollectionButton({
           label: 'Set to Damaged',
           callback: () => {
             const newArtefact = { ...artefact };
-            newArtefact.collections[collection] = ArtefactStates.Damaged;
+            newArtefact[type][typeKey] = ArtefactStates.Damaged;
             setArtefact(newArtefact);
           },
         },
@@ -62,7 +63,7 @@ export default function CollectionButton({
           label: 'Set to Restored',
           callback: () => {
             const newArtefact = { ...artefact };
-            newArtefact.collections[collection] = ArtefactStates.Restored;
+            newArtefact[type][typeKey] = ArtefactStates.Restored;
             setArtefact(newArtefact);
           },
         },
@@ -70,26 +71,20 @@ export default function CollectionButton({
           label: 'Set to Completed',
           callback: () => {
             const newArtefact = { ...artefact };
-            newArtefact.collections[collection] = ArtefactStates.Completed;
+            newArtefact[type][typeKey] = ArtefactStates.Completed;
             setArtefact(newArtefact);
           },
         },
       ],
       [
-        {
-          label: 'View in Artefacts',
-          callback: () => goToArtefact(artefact.name),
-        },
-      ],
-      [
-        {
-          label: 'Wiki: ' + artefact.name,
-          callback: () => wiki(artefact.name),
-        },
-        {
-          label: 'Wiki: ' + artefact.hotspot,
-          callback: () => wiki(artefact.hotspot),
-        },
+        ...(type !== 'misc'
+          ? [
+              {
+                label: 'Wiki: ' + typeKey,
+                callback: () => wiki(typeKey),
+              },
+            ]
+          : []),
       ],
     ]);
 
@@ -100,8 +95,9 @@ export default function CollectionButton({
       onContextMenu={handleContextMenu}
       className={[
         'flex flex-col gap-1 items-center justify-center',
-        'border-2 border-orange-100 rounded-lg h-full p-2',
-        'transition-all duration-200 gap-1 w-[52px] h-[52px] max-h-[52px]',
+        ' rounded-lg h-full p-1',
+        'transition-all duration-200 gap-1',
+        'border-orange-100 border-2',
         status === 'Not Found'
           ? 'bg-gray-500 hover:bg-orange-600 cursor-pointer'
           : status === 'Damaged'
@@ -112,12 +108,12 @@ export default function CollectionButton({
           ? 'bg-green-800 cursor-help'
           : '',
       ].join(' ')}
-      title={`${artefact.name} - ${artefact.hotspot} - ${status}`}
+      title={typeKey}
     >
       <Icon
         src={image}
-        alt={collection}
-        className="h-8 w-8 object-contain transition-all"
+        alt={typeKey}
+        className="h-8 w-8 lg:h-10 lg:w-10 object-contain transition-all"
       />
     </button>
   );

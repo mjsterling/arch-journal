@@ -3,7 +3,7 @@ import { Collections as CollectionData } from '../data/Collections';
 import { ArrowUturnLeftIcon } from '@heroicons/react/20/solid';
 import { useArtefacts } from '../data/ArtefactProvider';
 import { ArtefactStates } from '../data/Artefact';
-import CollectionButton from '../components/ArtefactCollectionCard/CollectionButton';
+import ArtefactCollectionButton from '../components/ArtefactCollectionCard/ArtefactCollectionButton';
 import { useGlobalState } from '../data/GlobalStateProvider';
 import { Materials } from '../data/Materials';
 import Icon from '../components/Icon';
@@ -205,7 +205,8 @@ export default function Planner() {
                 key={artefact.name}
                 className="grid grid-cols-[64px_1.2fr_2fr] grid-rows-1 gap-4 justify-start items-center bg-[#FFF1] rounded-lg p-4"
               >
-                <CollectionButton
+                <ArtefactCollectionButton
+                  mode="collectionPage"
                   artefact={artefact}
                   collection={selectedCollectionData.name}
                   collector={selectedCollectionData.collector}
