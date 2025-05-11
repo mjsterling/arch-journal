@@ -39,7 +39,7 @@ export default function ArtefactCollectionButton({
       className={[
         'relative flex flex-col gap-1 items-center justify-center',
         'rounded-lg h-full',
-        'min-h-12 min-w-12 max-h-12 max-w-12',
+        'min-h-13 min-w-13 max-h-13 max-w-13',
         'transition-all duration-200 gap-1',
         'border-orange-100 border-2 z-0 hover:z-10',
         status === 'Not Found'

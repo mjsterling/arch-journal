@@ -95,8 +95,9 @@ export default function ArtefactButton({
       onContextMenu={handleContextMenu}
       className={[
         'flex flex-col gap-1 items-center justify-center',
-        ' rounded-lg h-full p-1',
+        'rounded-lg h-full p-1',
         'transition-all duration-200 gap-1',
+        'min-h-13 min-w-13 max-h-13 max-w-13',
         'border-orange-100 border-2',
         status === 'Not Found'
           ? 'bg-gray-500 hover:bg-orange-600 cursor-pointer'
@@ -113,7 +114,7 @@ export default function ArtefactButton({
       <Icon
         src={image}
         alt={typeKey}
-        className="h-8 w-8 lg:h-10 lg:w-10 object-contain transition-all"
+        className="min-h-10 min-w-10 max-h-10 max-w-10 object-contain transition-all"
       />
     </button>
   );
