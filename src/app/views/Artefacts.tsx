@@ -59,7 +59,6 @@ export default function Artefacts() {
   };
   const markAllAsCompleted = (hotspot: string) => {
     const newArtefacts = [...artefactsByHotspot[hotspot].artefacts];
-    console.log(newArtefacts);
     newArtefacts.forEach((artefact) => {
       const newArtefact = { ...artefact };
       Object.keys(newArtefact.collections).forEach((collection) => {

@@ -20,16 +20,15 @@ export default function CollectionCard({
   const { setArtefact } = useArtefacts();
   const { createContextMenu, wiki, goToPlanner, highlightedCollection } =
     useGlobalState();
-  const digsiteName = useMemo(() => {
-    if (!collection.artefacts?.[0]?.digsite) return null;
-    return collection.artefacts[0].digsite;
+  const digsiteNames = useMemo(() => {
+    return Array.from(new Set(collection.artefacts?.map((a) => a.digsite)));
   }, [collection]);
 
   const digsiteInfo = useMemo(() => {
-    if (!digsiteName) return null;
-    const digsite = Digsites[digsiteName];
-    return { ...digsite, name: digsiteName };
-  }, [digsiteName]);
+    return digsiteNames.map((digsiteName) => {
+      return { ...Digsites[digsiteName], name: digsiteName };
+    });
+  }, [digsiteNames]);
 
   const isComplete = useMemo(() => {
     return collection.artefacts
@@ -180,7 +179,7 @@ export default function CollectionCard({
         <div className="flex justify-end md:hidden">
           <LevelSiteDisplay
             level={collection.levelToComplete!}
-            site={digsiteInfo}
+            sites={digsiteInfo}
           />
         </div>
       </div>
@@ -204,7 +203,7 @@ export default function CollectionCard({
       <LevelSiteDisplay
         className="hidden md:flex"
         level={collection.levelToComplete!}
-        site={digsiteInfo}
+        sites={digsiteInfo}
       />
     </CardContainer>
   );

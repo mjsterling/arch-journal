@@ -86,7 +86,7 @@ export default function ArtefactCard(props: {
           </div>
         </div>
         <div className="flex justify-end md:hidden">
-          <LevelSiteDisplay level={artefact.level} site={digsiteInfo} />
+          <LevelSiteDisplay level={artefact.level} sites={digsiteInfo} />
         </div>
       </div>
       <div className="flex flex-row flex-wrap md:flex-nowrap gap-2 justify-center lg:justify-start">
@@ -158,7 +158,7 @@ export default function ArtefactCard(props: {
       <LevelSiteDisplay
         className="hidden md:flex"
         level={artefact.level}
-        site={digsiteInfo}
+        sites={digsiteInfo}
       />
     </CardContainer>
   );
