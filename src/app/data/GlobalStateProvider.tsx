@@ -150,6 +150,7 @@ export default function GlobalStateProvider({
       items,
     });
   };
+
   const [highlightedCollection, setHighlightedCollection] =
     useState<string>('');
   const goToCollection = (collection: string, immediate: boolean = false) => {
@@ -171,6 +172,12 @@ export default function GlobalStateProvider({
       immediate ? 0 : 1000
     );
   };
+  useEffect(() => {
+    setTimeout(() => {
+      if (highlightedCollection) setHighlightedCollection('');
+    }, 10000);
+  }, [highlightedCollection]);
+
   const [highlightedArtefact, setHighlightedArtefact] = useState<string>('');
   const goToArtefact = (artefact: string, immediate: boolean = false) => {
     setScreen(Screens.Artefacts);
@@ -191,6 +198,12 @@ export default function GlobalStateProvider({
       immediate ? 0 : 1000
     );
   };
+  useEffect(() => {
+    setTimeout(() => {
+      if (highlightedArtefact) setHighlightedArtefact('');
+    }, 10000);
+  }, [highlightedArtefact]);
+
   const [activeCollection, setActiveCollection] = useState<string>('');
   const goToPlanner = (collection: string) => {
     setScreen(Screens.Planner);
