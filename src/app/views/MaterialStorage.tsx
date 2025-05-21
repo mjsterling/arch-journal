@@ -103,7 +103,7 @@ const MaterialStorageInput = ({
   backgroundColor?: string;
   borderColor?: string;
 }) => {
-  const { createContextMenu, updateMaterialStorage, wiki } = useGlobalState();
+  const { updateMaterialStorage } = useGlobalState();
   const { createMaterialContextMenu } = useContextMenu();
   return (
     <div

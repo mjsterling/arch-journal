@@ -1,4 +1,3 @@
-import { useGlobalState } from '../data/GlobalStateProvider';
 import { useContextMenu } from '../data/useContextMenus';
 
 export default function Icon({

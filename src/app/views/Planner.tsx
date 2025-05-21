@@ -8,17 +8,11 @@ import { useGlobalState } from '../data/GlobalStateProvider';
 import { Materials, MaterialsList } from '../data/Materials';
 import Icon from '../components/Icon';
 import { useContextMenu } from '../data/useContextMenus';
-import { create } from 'domain';
 
 export default function Planner() {
   const { artefacts, isComplete } = useArtefacts();
-  const {
-    materialStorage,
-    wiki,
-    createContextMenu,
-    activeCollection,
-    setActiveCollection,
-  } = useGlobalState();
+  const { materialStorage, activeCollection, setActiveCollection } =
+    useGlobalState();
 
   const [mode, setMode] = useState<'first' | 'recurring'>('first');
   const [numberOfRecurringCompletions, setNumberOfRecurringCompletions] =
@@ -101,7 +95,12 @@ export default function Planner() {
           amount,
         };
       });
-  }, [selectedCollectionData, mode, numberOfRecurringCompletions]);
+  }, [
+    selectedCollectionData,
+    mode,
+    numberOfRecurringCompletions,
+    materialStorage,
+  ]);
 
   const { createMaterialContextMenu, createWikiContextMenu } = useContextMenu();
 
