@@ -280,6 +280,14 @@ export default function Planner() {
                     {materialStorage[material.name as Materials]}
                     {materialStorage.hasOwnProperty(material.name) ? ' / ' : ''}
                     {material.amount}
+                    {materialStorage.hasOwnProperty(material.name) &&
+                    material.amount >
+                      materialStorage[material.name as Materials]
+                      ? ` (-${
+                          material.amount -
+                          materialStorage[material.name as Materials]
+                        })`
+                      : ''}
                   </span>
                 </div>
               ))}
