@@ -14,8 +14,7 @@ import { useContextMenu } from '../data/useContextMenus';
 
 export default function Artefacts() {
   const { artefacts, isComplete } = useArtefacts();
-  const { screen, showCompleted, setShowCompleted, createContextMenu, wiki } =
-    useGlobalState();
+  const { screen, showCompleted, setShowCompleted } = useGlobalState();
   const { setArtefact } = useArtefacts();
 
   const {
@@ -46,7 +45,7 @@ export default function Artefacts() {
         _artefactsByHotspot[hotspot].artefacts.every(isComplete);
     }
     return _artefactsByHotspot;
-  }, [filteredArtefacts]);
+  }, [filteredArtefacts, isComplete]);
 
   const markAllAsNotFound = (hotspot: string) => {
     const newArtefacts = [...artefactsByHotspot[hotspot].artefacts];
