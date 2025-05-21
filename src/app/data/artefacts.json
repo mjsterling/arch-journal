@@ -1488,7 +1488,10 @@
       "Third-age iron": 22,
       "Clockwork": 1
     },
-    "collections": ["Museum - Saradominist III", "Saradominist III"]
+    "collections": ["Museum - Saradominist III", "Saradominist III"],
+    "misc": [
+      "Trading to Reldo for the Andvaranaut relic (Sticky Fingers relic power)."
+    ]
   },
   {
     "name": "Fishing trident",
