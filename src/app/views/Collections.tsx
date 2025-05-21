@@ -1,15 +1,16 @@
 import { useMemo, useState } from 'react';
 import { useArtefacts } from '../data/ArtefactProvider';
-import { Collections as CollectionData } from '../data/Collections';
+import { Collection, Collections as CollectionData } from '../data/Collections';
 import CollectionCard from '../components/ArtefactCollectionCard/CollectionCard';
 import { useGlobalState } from '../data/GlobalStateProvider';
+import { CheckIcon } from '@heroicons/react/16/solid';
 
 export default function Collections() {
-  const { artefacts } = useArtefacts();
+  const { artefacts, isComplete } = useArtefacts();
   const { screen, showCompleted, setShowCompleted } = useGlobalState();
-  const [sort, setSort] = useState<'levelToComplete' | 'collector' | 'name'>(
-    'levelToComplete'
-  );
+  const [sort, setSort] = useState<
+    'levelToComplete' | 'collector' | 'name' | 'digsite'
+  >('levelToComplete');
   const collections = useMemo(
     () =>
       CollectionData.map((collection) => {
@@ -20,9 +21,11 @@ export default function Collections() {
         return {
           ...collection,
           artefacts: artefactsInCollection,
+          digsite: artefactsInCollection[0]?.digsite ?? 'Unknown',
           levelToComplete: Math.max(
             ...artefactsInCollection.map((artefact) => artefact.level)
           ),
+          isComplete: artefactsInCollection.every(isComplete),
         };
       }).sort((a, b) => {
         switch (sort) {
@@ -33,6 +36,10 @@ export default function Collections() {
               a.collector.localeCompare(b.collector) ||
               a.name.localeCompare(b.name)
             );
+          case 'digsite':
+            return (
+              a.digsite.localeCompare(b.digsite) || a.name.localeCompare(b.name)
+            );
           case 'name':
             return (
               a.name.localeCompare(b.name) ||
@@ -42,53 +49,137 @@ export default function Collections() {
             return 0;
         }
       }),
-    [artefacts, sort]
+    [artefacts, sort, isComplete]
   );
 
+  type Collector = string;
+  const groupedCollections = useMemo<{
+    [key: Collector]: Collection[];
+  }>(() => {
+    const _groupedCollections: { [key: Collector]: Collection[] } = {};
+    collections.forEach((collection) => {
+      const key =
+        sort === 'collector'
+          ? collection.collector
+          : sort === 'digsite'
+          ? collection.digsite
+          : collection.name[0].toUpperCase();
+      _groupedCollections[key] = _groupedCollections[key] || [];
+      _groupedCollections[key].push(collection);
+    });
+    return _groupedCollections;
+  }, [collections, sort]);
+
+  const groupsCompleted = useMemo(() => {
+    const _groupsCompleted: { [key: string]: boolean } = {};
+    for (const key in groupedCollections) {
+      _groupsCompleted[key] = groupedCollections[key].every((collection) =>
+        collection.artefacts?.every(isComplete)
+      );
+    }
+    return _groupsCompleted;
+  }, [groupedCollections, isComplete]);
+
   return (
-    <div className="w-full h-full flex flex-col gap-4">
-      <div className="flex gap-4 justify-center my-8">
-        <button
-          className={[
-            'rounded-md border border-orange-100 px-5 py-1 cursor-pointer',
-            'bg-transparent text-orange-100',
-            'transition-colors ease-in-out',
-            'hover:bg-orange-100 hover:text-gray-950',
-          ].join(' ')}
-          onClick={() => setShowCompleted(!showCompleted)}
-        >
-          {showCompleted
-            ? `Showing Completed ${screen}`
-            : `Hiding Completed ${screen}`}
-        </button>
-        {sort === 'levelToComplete' ? (
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4 justify-between px-6 py-6 md:px-12 md:py-6">
+        <div className="flex gap-4 items-center text-orange-100">
+          Sort by:
+          <div className="flex gap-2 items-center text-orange-100">
+            <button
+              value={sort === 'levelToComplete' ? 'checked' : 'unchecked'}
+              className={[
+                'cursor-pointer',
+                'bg-transparent border border-orange-100 rounded-sm text-orange-100',
+                'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
+              ].join(' ')}
+              onClick={() => setSort('levelToComplete')}
+            >
+              {sort === 'levelToComplete' ? (
+                <CheckIcon className="w-5 h-5 text-orange-100" />
+              ) : null}
+            </button>
+            Level
+          </div>
+          <div className="flex gap-2 items-center text-orange-100">
+            <button
+              value={sort === 'collector' ? 'checked' : 'unchecked'}
+              className={[
+                'cursor-pointer',
+                'bg-transparent border border-orange-100 rounded-sm text-orange-100',
+                'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
+              ].join(' ')}
+              onClick={() => setSort('collector')}
+            >
+              {sort === 'collector' ? (
+                <CheckIcon className="w-5 h-5 text-orange-100" />
+              ) : null}
+            </button>
+            Collector
+          </div>
+          <div className="flex gap-2 items-center text-orange-100">
+            <button
+              value={sort === 'name' ? 'checked' : 'unchecked'}
+              className={[
+                'cursor-pointer',
+                'bg-transparent border border-orange-100 rounded-sm text-orange-100',
+                'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
+              ].join(' ')}
+              onClick={() => setSort('name')}
+            >
+              {sort === 'name' ? (
+                <CheckIcon className="w-5 h-5 text-orange-100" />
+              ) : null}
+            </button>
+            Alphabetical
+          </div>
+        </div>{' '}
+        <div className="flex gap-2 items-center text-orange-100">
           <button
-            className="cursor-pointer px-5 py-1 rounded-md border border-orange-100 text-orange-100 bg-transparent hover:bg-orange-100 hover:text-gray-800"
-            onClick={() => setSort('collector')}
+            value={showCompleted ? 'checked' : 'unchecked'}
+            className={[
+              'cursor-pointer',
+              'bg-transparent border border-orange-100 rounded-sm text-orange-100',
+              'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
+            ].join(' ')}
+            onClick={() => setShowCompleted(!showCompleted)}
           >
-            Sorting by Level
+            {showCompleted ? (
+              <CheckIcon className="w-5 h-5 text-orange-100" />
+            ) : null}
           </button>
-        ) : null}
-        {sort === 'collector' ? (
-          <button
-            className="cursor-pointer px-5 py-1 rounded-md border border-orange-100 text-orange-100 bg-transparent hover:bg-orange-100 hover:text-gray-800"
-            onClick={() => setSort('name')}
-          >
-            Sorting by Collector
-          </button>
-        ) : null}
-        {sort === 'name' ? (
-          <button
-            className="cursor-pointer px-5 py-1 rounded-md border border-orange-100 text-orange-100 bg-transparent hover:bg-orange-100 hover:text-gray-800"
-            onClick={() => setSort('levelToComplete')}
-          >
-            Sorting by Alphabetical
-          </button>
-        ) : null}
+          Show completed {screen.toLowerCase()}?
+        </div>
       </div>
-      {collections.map((collection) => (
-        <CollectionCard key={collection.name} {...collection} />
-      ))}
+      <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-6 md:px-12 md:py-6">
+        {sort === 'collector' || sort === 'digsite' || sort === 'name'
+          ? Object.entries(groupedCollections).map(([key, collections]) => (
+              <div key={`${key}_collection_container`} className="relative">
+                <span className="cursor-help">
+                  <h2
+                    className={[
+                      'text-xl text-orange-100 font-semibold mx-auto pt-4 mt-4 pb-4',
+                      groupsCompleted[key] ? 'opacity-50' : '',
+                    ].join(' ')}
+                    key={`${key}_title`}
+                  >
+                    {key}
+                  </h2>
+                </span>
+
+                {collections.map((collection) => (
+                  <CollectionCard
+                    key={collection.name}
+                    collection={collection}
+                    combined
+                  />
+                ))}
+              </div>
+            ))
+          : collections.map((collection) => (
+              <CollectionCard key={collection.name} collection={collection} />
+            ))}
+      </div>
     </div>
   );
 }

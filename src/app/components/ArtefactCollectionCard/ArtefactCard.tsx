@@ -18,7 +18,7 @@ export default function ArtefactCard(props: {
 }) {
   const { artefact, combined = false, alwaysShow } = props;
   const { isComplete: artefactIsComplete } = useArtefacts();
-  const { showCompleted, highlightedArtefact } = useGlobalState();
+  const { highlightedArtefact } = useGlobalState();
   const digsiteInfo = useMemo(() => {
     const digsite = Digsites[artefact.digsite as DigsiteNames];
     if (!digsite) return null;
@@ -35,13 +35,10 @@ export default function ArtefactCard(props: {
     [artefact, highlightedArtefact]
   );
 
-  const isHidden = useMemo(
-    () => isComplete && !alwaysShow && !showCompleted && !isHighlighted,
-    [isComplete, showCompleted, alwaysShow, isHighlighted]
-  );
-
   const { onContextMenu } = useHandlers(artefact, isComplete, digsiteInfo);
-  const { hidden, opacity } = useHideCard(isHidden);
+  const { hidden, opacity } = useHideCard(
+    isComplete && !isHighlighted && !alwaysShow
+  );
 
   if (hidden) return null;
 
@@ -55,7 +52,7 @@ export default function ArtefactCard(props: {
       combined={combined}
       onContextMenu={onContextMenu}
     >
-      <div className="flex justify-between md:grid-cols-[2fr_3fr_2fr] mb-4 md:mb-0 md:flex gap-4 md:justify-center md:justify-start w-full md:w-88 items-center font-semibold text-orange-100">
+      <div className="flex justify-start items-center mb-4 md:mb-0 gap-4  w-full md:w-88  font-semibold text-orange-100">
         <Icon
           src={artefact.image}
           alt={artefact.name}
@@ -222,11 +219,11 @@ const useHandlers = (
         ],
         [
           {
-            label: 'Wiki: ' + artefact.name,
+            label: '[WIKI]' + artefact.name,
             callback: () => wiki(artefact.name),
           },
           {
-            label: 'Wiki: ' + digsiteInfo?.name + ' Dig Site',
+            label: '[WIKI]' + digsiteInfo?.name + ' Dig Site',
             callback: () => wiki(digsiteInfo?.name ?? ''),
           },
         ],

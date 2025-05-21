@@ -10,7 +10,13 @@ import { useGlobalState } from '@/app/data/GlobalStateProvider';
 import Icon from '../Icon';
 import { CardContainer } from './CardContainer';
 
-export default function CollectionCard(collection: Collection) {
+export default function CollectionCard({
+  collection,
+  combined = false,
+}: {
+  collection: Collection;
+  combined?: boolean;
+}) {
   const { setArtefact } = useArtefacts();
   const { createContextMenu, wiki, goToPlanner, highlightedCollection } =
     useGlobalState();
@@ -84,11 +90,11 @@ export default function CollectionCard(collection: Collection) {
       ],
       [
         {
-          label: 'Wiki: ' + collection.name,
+          label: '[WIKI]' + collection.name,
           callback: () => wiki(collection.name),
         },
         {
-          label: 'Wiki: ' + collection.collector,
+          label: '[WIKI]Collector: ' + collection.collector,
           callback: () => wiki(collection.collector),
         },
       ],
@@ -102,11 +108,11 @@ export default function CollectionCard(collection: Collection) {
       isComplete={isComplete}
       isHighlighted={isHighlighted}
       digsiteInfo={digsiteInfo}
-      combined={false}
+      combined={combined}
       onContextMenu={onContextMenu}
       opacity={opacity}
     >
-      <div className="flex justify-between md:grid-cols-[2fr_3fr_2fr] mb-4 md:mb-0 md:flex gap-4 md:justify-center md:justify-start w-full md:w-88 items-center font-semibold text-orange-100">
+      <div className="flex justify-start items-center mb-4 md:mb-0 gap-4 min-w-[270px] font-semibold text-orange-100">
         <Icon
           src={collection.image}
           alt={collection.name}
@@ -119,7 +125,7 @@ export default function CollectionCard(collection: Collection) {
               isHighlighted ? 'text-yellow-500' : 'text-orange-100',
             ].join(' ')}
           >
-            {collection.name}
+            {collection.name.replace('Museum -', 'M.')}
           </p>
           <div className="flex gap-3">
             {collection.reward &&
@@ -178,7 +184,7 @@ export default function CollectionCard(collection: Collection) {
           />
         </div>
       </div>
-      <div className="flex w-full flex-row flex-wrap items-center content-start gap-2 justify-start">
+      <div className="flex w-full h-fit flex-row flex-wrap items-center content-start gap-2 justify-start">
         {collection.artefacts &&
           collection.artefacts.map((artefact: Artefact) => {
             return (

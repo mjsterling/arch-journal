@@ -1,8 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
-import { useGlobalState } from '../data/GlobalStateProvider';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ContextMenuItem, useGlobalState } from '../data/GlobalStateProvider';
 
 export default function ContextMenu() {
-  const { contextMenu, clearContextMenu } = useGlobalState();
+  const { contextMenu: unfilteredContextMenu, clearContextMenu } =
+    useGlobalState();
+
+  const itemExists = (
+    item: ContextMenuItem | null | false | undefined
+  ): item is ContextMenuItem => typeof item === 'object' && item !== null;
+
+  const contextMenu = useMemo(
+    () => ({
+      x: unfilteredContextMenu.x,
+      y: unfilteredContextMenu.y,
+      items: unfilteredContextMenu.items
+        .map((section) => section.filter(itemExists))
+        .filter((section) => section.length),
+    }),
+    [unfilteredContextMenu]
+  );
 
   const handleBackgroundClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -73,14 +89,14 @@ export default function ContextMenu() {
                     }
                   }}
                 >
-                  {item.label.startsWith('Wiki:') ? (
+                  {item.label.startsWith('[WIKI]') ? (
                     <span className="flex gap-2 items-center text-nowrap min-w-fit">
                       <img
                         src="/assets/RS_Wiki.jpg"
                         alt="Wiki"
                         className="h-4 w-4 inline-block"
                       />
-                      {item.label.replace('Wiki: ', '')}
+                      {item.label.replace('[WIKI]', '')}
                     </span>
                   ) : (
                     <span className="text-nowrap min-w-fit">{item.label}</span>

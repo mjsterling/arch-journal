@@ -80,7 +80,7 @@ export default function ArtefactButton({
         ...(type !== 'misc'
           ? [
               {
-                label: 'Wiki: ' + typeKey,
+                label: '[WIKI]' + typeKey,
                 callback: () => wiki(typeKey),
               },
             ]

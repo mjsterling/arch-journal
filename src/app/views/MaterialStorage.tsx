@@ -1,108 +1,83 @@
 import { useGlobalState } from '../data/GlobalStateProvider';
-import { Materials } from '../data/Materials';
+import { Materials, MaterialsByType } from '../data/Materials';
+import { DigsiteNames, Digsites } from '../data/Digsites';
 
 export default function MaterialStorage() {
   const { materialStorage } = useGlobalState();
+
   return (
     <div className="flex flex-col items-center justify-center h-full w-full gap-4 py-8">
-      <div className="flex flex-col md:grid md:grid-cols-5 md:w-144 gap-4 mx-auto">
+      <div className="flex flex-col md:grid md:grid-cols-5 md:w-144 mx-auto">
         <MaterialStorageTitle title="Agnostic Materials" />
-        {[
-          'Third-age iron',
-          'Samite silk',
-          'White oak',
-          'Goldrune',
-          'Orthenglass',
-          'Vellum',
-          'Leather scraps',
-          'Soapstone',
-          'Animal furs',
-          'Fossilised bone',
-        ].map((material) => (
+        {MaterialsByType.Agnostic.map((material) => (
           <MaterialStorageInput
             key={material}
-            material={material as Materials}
-            amount={materialStorage[material as Materials]}
+            material={material}
+            amount={materialStorage[material]}
+            backgroundColor={'#CCC3'}
+            borderColor={'#ccc'}
           />
         ))}
         <MaterialStorageTitle title="Armadylean Materials" />
-        {[
-          'Stormguard steel',
-          'Wings of War',
-          'Armadylean yellow',
-          'Aetherium alloy',
-          'Quintessence',
-        ].map((material) => (
+        {MaterialsByType.Armadylean.map((material) => (
           <MaterialStorageInput
             key={material}
-            material={material as Materials}
-            amount={materialStorage[material as Materials]}
+            material={material}
+            amount={materialStorage[material]}
+            backgroundColor={Digsites[DigsiteNames.Stormguard].backgroundColor}
+            borderColor={Digsites[DigsiteNames.Stormguard].borderColor}
           />
         ))}
         <MaterialStorageTitle title="Bandosian Materials" />
-        {[
-          'Malachite green',
-          'Mark of the Kyzaj',
-          'Vulcanised rubber',
-          'Warforged bronze',
-          "Yu'biusk clay",
-        ].map((material) => (
+        {MaterialsByType.Bandosian.map((material) => (
           <MaterialStorageInput
             key={material}
-            material={material as Materials}
-            amount={materialStorage[material as Materials]}
+            material={material}
+            amount={materialStorage[material]}
+            backgroundColor={Digsites[DigsiteNames.Warforge].backgroundColor}
+            borderColor={Digsites[DigsiteNames.Warforge].borderColor}
           />
         ))}
         <MaterialStorageTitle title="Dragonkin Materials" />
-        {['Dragon metal', 'Orgone', 'Compass rose', 'Carbon black', 'Felt'].map(
-          (material) => (
-            <MaterialStorageInput
-              key={material}
-              material={material as Materials}
-              amount={materialStorage[material as Materials]}
-            />
-          )
-        )}
-        <MaterialStorageTitle title="Saradominist Materials" />
-        {[
-          'Keramos',
-          'White marble',
-          'Cobalt blue',
-          'Everlight silvthril',
-          'Star of Saradomin',
-        ].map((material) => (
+        {MaterialsByType.Dragonkin.map((material) => (
           <MaterialStorageInput
             key={material}
-            material={material as Materials}
-            amount={materialStorage[material as Materials]}
+            material={material}
+            amount={materialStorage[material]}
+            backgroundColor={Digsites[DigsiteNames.Daemonheim].backgroundColor}
+            borderColor={Digsites[DigsiteNames.Daemonheim].borderColor}
+          />
+        ))}
+        <MaterialStorageTitle title="Saradominist Materials" />
+        {MaterialsByType.Saradominist.map((material) => (
+          <MaterialStorageInput
+            key={material}
+            material={material}
+            amount={materialStorage[material]}
+            backgroundColor={Digsites[DigsiteNames.Everlight].backgroundColor}
+            borderColor={Digsites[DigsiteNames.Everlight].borderColor}
           />
         ))}
         <MaterialStorageTitle title="Zamorakian Materials" />
-        {[
-          'Cadmium red',
-          'Chaotic brimstone',
-          'Demonhide',
-          'Eye of Dagon',
-          'Hellfire metal',
-        ].map((material) => (
+        {MaterialsByType.Zamorakian.map((material) => (
           <MaterialStorageInput
             key={material}
-            material={material as Materials}
-            amount={materialStorage[material as Materials]}
+            material={material}
+            amount={materialStorage[material]}
+            backgroundColor={
+              Digsites[DigsiteNames.InfernalSource].backgroundColor
+            }
+            borderColor={Digsites[DigsiteNames.InfernalSource].borderColor}
           />
         ))}
         <MaterialStorageTitle title="Zarosian Materials" />
-        {[
-          'Zarosian insignia',
-          'Imperial steel',
-          'Ancient vis',
-          'Tyrian purple',
-          'Blood of Orcus',
-        ].map((material) => (
+        {MaterialsByType.Zarosian.map((material) => (
           <MaterialStorageInput
             key={material}
-            material={material as Materials}
-            amount={materialStorage[material as Materials]}
+            material={material}
+            amount={materialStorage[material]}
+            backgroundColor={Digsites[DigsiteNames.KharidEt].backgroundColor}
+            borderColor={Digsites[DigsiteNames.KharidEt].borderColor}
           />
         ))}
       </div>
@@ -111,7 +86,7 @@ export default function MaterialStorage() {
 }
 
 const MaterialStorageTitle = ({ title }: { title: string }) => (
-  <h3 className="text-lg text-center md:text-left font-semibold w-full md:col-span-5 text-orange-100">
+  <h3 className="text-lg text-center md:text-left font-medium w-full md:col-span-5 text-orange-100 my-4">
     {title}
   </h3>
 );
@@ -119,15 +94,19 @@ const MaterialStorageTitle = ({ title }: { title: string }) => (
 const MaterialStorageInput = ({
   material,
   amount,
+  backgroundColor,
+  borderColor,
 }: {
   material: Materials;
   amount: number;
+  backgroundColor?: string;
+  borderColor?: string;
 }) => {
   const { createContextMenu, updateMaterialStorage, wiki } = useGlobalState();
   return (
     <div
-      key={material}
-      className="flex flex-row justify-between items-center pl-4 md:pl-0 mx-auto w-[360px] max-w-full md:flex md:flex-col md:items-center md:max-w-full overflow-hidden gap-2 border md:pt-2 border-orange-100 rounded-md"
+      className="flex flex-row justify-between items-center pl-4 md:pl-0 mx-auto w-[360px] max-w-full md:flex md:flex-col md:items-center md:max-w-full overflow-hidden gap-2 border md:pt-2 border-orange-100"
+      style={{ backgroundColor, borderColor }}
     >
       <img
         src={`/assets/materials/${material.replace(/ /g, '_')}.png`}
@@ -138,11 +117,11 @@ const MaterialStorageInput = ({
           createContextMenu(e, [
             [
               {
-                label: 'Wiki: ' + material,
+                label: '[WIKI]' + material,
                 callback: () => wiki(material.replace(/ /g, '_')),
               },
               {
-                label: 'Wiki: Material cache locations',
+                label: '[WIKI]Material cache locations: ' + material,
                 callback: () =>
                   wiki(
                     `Material_cache_(${material

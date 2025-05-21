@@ -16,7 +16,7 @@ export default function LevelSiteDisplay({
   return (
     <div
       className={[
-        'flex flex-col sm:flex-row justify-center items-center md:gap-1 min-h-full',
+        'flex flex-col sm:flex-row justify-center items-center md:gap-1 min-h-full md:min-w-24',
         className,
       ].join(' ')}
     >

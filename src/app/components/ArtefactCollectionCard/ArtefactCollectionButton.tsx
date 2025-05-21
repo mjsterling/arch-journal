@@ -162,21 +162,21 @@ const useHandlers = (
       mode === 'artefactPage'
         ? [
             {
-              label: 'Wiki: ' + artefact.name,
+              label: '[WIKI]' + artefact.name,
               callback: () => wiki(artefact.name),
             },
             {
-              label: 'Wiki: ' + artefact.hotspot,
+              label: '[WIKI]' + artefact.hotspot,
               callback: () => wiki(artefact.hotspot),
             },
           ]
         : [
             {
-              label: 'Wiki: ' + collection,
+              label: '[WIKI]' + collection,
               callback: () => wiki(collection),
             },
             {
-              label: 'Wiki: ' + collector,
+              label: '[WIKI]' + collector,
               callback: () => wiki(collector),
             },
           ],

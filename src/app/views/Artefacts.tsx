@@ -23,30 +23,27 @@ export default function Artefacts() {
     clearSearch,
   } = useLazySearch<Artefact>(artefacts);
 
-  const artefactsWithHotspots = useMemo<{ [key: string]: Artefact[] }>(() => {
-    const _artefactsWithHotspots: { [key: string]: Artefact[] } = {};
+  const artefactsByHotspot = useMemo<{ [key: string]: Artefact[] }>(() => {
+    const _artefactsByHotspot: { [key: string]: Artefact[] } = {};
     filteredArtefacts.forEach((artefact: Artefact) => {
-      _artefactsWithHotspots[artefact.hotspot] =
-        _artefactsWithHotspots[artefact.hotspot] || [];
-      _artefactsWithHotspots[artefact.hotspot].push(artefact);
+      _artefactsByHotspot[artefact.hotspot] =
+        _artefactsByHotspot[artefact.hotspot] || [];
+      _artefactsByHotspot[artefact.hotspot].push(artefact);
     });
-    return _artefactsWithHotspots;
+    return _artefactsByHotspot;
   }, [filteredArtefacts]);
 
   const hotspotsCompleted = useMemo(() => {
     const _hotspotsCompleted: { [key: string]: boolean } = {};
-    for (const hotspot in artefactsWithHotspots) {
+    for (const hotspot in artefactsByHotspot) {
       _hotspotsCompleted[hotspot] =
-        artefactsWithHotspots[hotspot]
-          .map(isComplete)
-          .reduce((a, b) => Number(a) + Number(b), 0) ===
-        artefactsWithHotspots[hotspot].length;
+        artefactsByHotspot[hotspot].every(isComplete);
     }
     return _hotspotsCompleted;
-  }, [artefactsWithHotspots, isComplete]);
+  }, [artefactsByHotspot, isComplete]);
 
   const markAllAsNotFound = (hotspot: string) => {
-    const newArtefacts = [...artefactsWithHotspots[hotspot]];
+    const newArtefacts = [...artefactsByHotspot[hotspot]];
     newArtefacts.forEach((artefact) => {
       const newArtefact = { ...artefact };
       Object.keys(newArtefact.collections).forEach((collection) => {
@@ -56,7 +53,7 @@ export default function Artefacts() {
     });
   };
   const markAllAsCompleted = (hotspot: string) => {
-    const newArtefacts = [...artefactsWithHotspots[hotspot]];
+    const newArtefacts = [...artefactsByHotspot[hotspot]];
     console.log(newArtefacts);
     newArtefacts.forEach((artefact) => {
       const newArtefact = { ...artefact };
@@ -109,7 +106,7 @@ export default function Artefacts() {
           </div>
         )}
 
-        {Object.entries(artefactsWithHotspots).map(([hotspot, artefacts]) =>
+        {Object.entries(artefactsByHotspot).map(([hotspot, artefacts]) =>
           hotspotsCompleted[hotspot] &&
           !showCompleted &&
           !searchQuery ? null : (
@@ -136,7 +133,7 @@ export default function Artefacts() {
                       ],
                       [
                         {
-                          label: 'Wiki: ' + hotspot,
+                          label: '[WIKI]' + hotspot,
                           callback: () => wiki(hotspot),
                         },
                       ],

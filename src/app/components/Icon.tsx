@@ -28,7 +28,7 @@ export default function Icon({
               createContextMenu(e, [
                 [
                   {
-                    label: 'Wiki: ' + alt,
+                    label: '[WIKI]' + alt,
                     callback: () => contextMenu && wiki(alt),
                   },
                 ],

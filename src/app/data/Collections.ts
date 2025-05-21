@@ -7,6 +7,7 @@ export type Collection = {
   shortName?: string;
   artefacts?: Artefact[];
   levelToComplete?: number;
+  isComplete?: boolean;
   reward?: {
     [key: string]: number | undefined;
   };

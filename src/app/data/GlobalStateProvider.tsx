@@ -7,14 +7,15 @@ export enum Screens {
   MaterialStorage = 'Mat. Storage',
   Planner = 'Planner',
 }
-
-type ContextMenuItems = Array<
-  Array<{
-    label: string;
-    callback?: () => void;
-    disabled?: boolean;
-  }>
+export type ContextMenuItem = {
+  label: string;
+  callback?: () => void;
+  disabled?: boolean;
+};
+export type ContextMenuSection = Array<
+  ContextMenuItem | false | null | undefined
 >;
+export type ContextMenuItems = Array<ContextMenuSection>;
 
 type GlobalStateContext = {
   screen: Screens;

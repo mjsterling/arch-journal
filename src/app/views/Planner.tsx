@@ -9,7 +9,7 @@ import { Materials } from '../data/Materials';
 import Icon from '../components/Icon';
 
 export default function Planner() {
-  const { artefacts } = useArtefacts();
+  const { artefacts, isComplete } = useArtefacts();
   const {
     materialStorage,
     wiki,
@@ -45,15 +45,10 @@ export default function Planner() {
         : null,
     [activeCollection, collections]
   );
-  const selectedCollectionIsComplete = useMemo(() => {
-    if (!selectedCollectionData) return false;
-
-    return selectedCollectionData.artefacts.every(
-      (artefact) =>
-        artefact.collections[selectedCollectionData.name] ===
-        ArtefactStates.Completed
-    );
-  }, [selectedCollectionData]);
+  const selectedCollectionIsComplete = useMemo(
+    () => !!selectedCollectionData?.artefacts.every(isComplete),
+    [selectedCollectionData, isComplete]
+  );
 
   useEffect(() => {
     if (activeCollection && selectedCollectionIsComplete) {
@@ -176,7 +171,7 @@ export default function Planner() {
                     createContextMenu(e, [
                       [
                         {
-                          label: 'Wiki: ' + reward,
+                          label: '[WIKI]' + reward,
                           callback: () => wiki(reward),
                         },
                       ],
@@ -320,7 +315,7 @@ export default function Planner() {
                       createContextMenu(e, [
                         [
                           {
-                            label: 'Wiki: ' + reward,
+                            label: '[WIKI]' + reward,
                             callback: () => wiki(reward),
                           },
                         ],
