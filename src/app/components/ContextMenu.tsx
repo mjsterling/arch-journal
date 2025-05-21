@@ -59,13 +59,13 @@ export default function ContextMenu() {
 
   return (
     <div
-      className="fixed top-0 left-0 w-full h-full z-50 transition-all duration-150"
+      className="fixed top-0 left-0 w-full h-full transition-all duration-150 z-[1000]"
       style={{ opacity }}
       onClick={handleBackgroundClick}
       onContextMenu={handleBackgroundClick}
     >
       <div
-        className="w-fit border border-orange-100 bg-gray-900 rounded-md rounded-tl-none absolute top-0 left-0 z-50"
+        className="w-fit border border-orange-100 bg-gray-900 rounded-md rounded-tl-none absolute top-0 left-0 z-[1001]"
         style={{
           top: contextMenu.y,
           left: contextMenu.x,

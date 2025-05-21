@@ -27,7 +27,7 @@ export const CardContainer = ({
 }) => (
   <div
     className={[
-      'w-full md:w-auto border-2 p-4 pb-6 md:pb-4 flex flex-wrap md:flex-nowrap content-center justify-around md:justify-between gap-4 transition-opacity duration-500 cursor-help hover:z-50',
+      'w-full md:w-auto border-2 p-4 pb-6 md:pb-4 flex flex-wrap md:flex-nowrap content-center justify-around md:justify-between gap-4 transition-opacity duration-500 cursor-help hover:z-10',
       isComplete ? 'border-green-700' : 'border-orange-100',
       isHighlighted
         ? 'outline-2 -outline-offset-2 outline-yellow-500 z-10'
