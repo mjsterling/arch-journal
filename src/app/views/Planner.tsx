@@ -5,8 +5,10 @@ import { useArtefacts } from '../data/ArtefactProvider';
 import { ArtefactStates } from '../data/Artefact';
 import ArtefactCollectionButton from '../components/ArtefactCollectionCard/ArtefactCollectionButton';
 import { useGlobalState } from '../data/GlobalStateProvider';
-import { Materials } from '../data/Materials';
+import { Materials, MaterialsList } from '../data/Materials';
 import Icon from '../components/Icon';
+import { useContextMenu } from '../data/useContextMenus';
+import { create } from 'domain';
 
 export default function Planner() {
   const { artefacts, isComplete } = useArtefacts();
@@ -87,11 +89,21 @@ export default function Planner() {
     );
     return Object.entries(materials)
       .sort(([name1], [name2]) => (name1 > name2 ? 1 : -1))
-      .map(([material, amount]) => ({
-        name: material,
-        amount,
-      }));
+      .map(([material, amount]) => {
+        const isArchMaterial = MaterialsList.includes(material as Materials);
+        return {
+          name: material,
+          isArchMaterial,
+          storage: isArchMaterial ? materialStorage[material as Materials] : 0,
+          diff: isArchMaterial
+            ? materialStorage[material as Materials] - amount
+            : 0,
+          amount,
+        };
+      });
   }, [selectedCollectionData, mode, numberOfRecurringCompletions]);
+
+  const { createMaterialContextMenu, createWikiContextMenu } = useContextMenu();
 
   return (
     <div className="flex flex-col gap-8 text-orange-100 w-full max-w-[1000px] mx-auto">
@@ -167,16 +179,7 @@ export default function Planner() {
               return (
                 <div
                   key={`${selectedCollectionData.name}_${reward}`}
-                  onContextMenu={(e) =>
-                    createContextMenu(e, [
-                      [
-                        {
-                          label: '[WIKI]' + reward,
-                          callback: () => wiki(reward),
-                        },
-                      ],
-                    ])
-                  }
+                  onContextMenu={createWikiContextMenu(reward)}
                   className="flex flex-col items-center text-orange-100 px-2 cursor-help"
                 >
                   <Icon
@@ -235,7 +238,11 @@ export default function Planner() {
                             )}.png`}
                             alt={material}
                             className="h-8 w-8 object-contain object-center cursor-help"
-                            contextMenu
+                            onContextMenu={
+                              materialStorage.hasOwnProperty(material)
+                                ? createMaterialContextMenu(material)
+                                : createWikiContextMenu(material)
+                            }
                           />
                         </div>
                         <span className="w-full text-center font-semibold">
@@ -253,43 +260,7 @@ export default function Planner() {
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-6 justify-center items-center">
               {selectedCollectionMaterials?.map((material) => (
-                <div
-                  key={material.name}
-                  className="flex flex-row gap-3 justify-center items-center"
-                >
-                  <Icon
-                    src={`/assets/materials/${material.name.replace(
-                      / /g,
-                      '_'
-                    )}.png`}
-                    alt={material.name}
-                    className="h-8 w-8 object-contain object-center cursor-help"
-                    contextMenu
-                  />
-                  <span
-                    className={[
-                      'w-full text-right font-semibold',
-                      !materialStorage.hasOwnProperty(material.name)
-                        ? 'text-yellow-500'
-                        : materialStorage[material.name as Materials] <
-                          material.amount
-                        ? 'text-red-500'
-                        : 'text-green-500',
-                    ].join(' ')}
-                  >
-                    {materialStorage[material.name as Materials]}
-                    {materialStorage.hasOwnProperty(material.name) ? ' / ' : ''}
-                    {material.amount}
-                    {materialStorage.hasOwnProperty(material.name) &&
-                    material.amount >
-                      materialStorage[material.name as Materials]
-                      ? ` (-${
-                          material.amount -
-                          materialStorage[material.name as Materials]
-                        })`
-                      : ''}
-                  </span>
-                </div>
+                <MaterialDisplay {...material} key={material.name} />
               ))}
             </div>
           </div>
@@ -319,16 +290,7 @@ export default function Planner() {
                 return (
                   <div
                     key={`${selectedCollectionData.name}_${reward}`}
-                    onContextMenu={(e) =>
-                      createContextMenu(e, [
-                        [
-                          {
-                            label: '[WIKI]' + reward,
-                            callback: () => wiki(reward),
-                          },
-                        ],
-                      ])
-                    }
+                    onContextMenu={createWikiContextMenu(reward)}
                     className="flex flex-col items-center text-orange-100 px-2 cursor-help"
                   >
                     <Icon
@@ -383,7 +345,11 @@ export default function Planner() {
                             )}.png`}
                             alt={material}
                             className="h-8 w-8 object-contain object-center cursor-help"
-                            contextMenu
+                            onContextMenu={
+                              materialStorage.hasOwnProperty(material)
+                                ? createMaterialContextMenu(material)
+                                : createWikiContextMenu(material)
+                            }
                           />
                         </div>
                         <span className="w-full text-center font-semibold">
@@ -403,35 +369,7 @@ export default function Planner() {
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-6 justify-center items-center">
               {selectedCollectionMaterials?.map((material) => (
-                <div
-                  key={material.name}
-                  className="flex flex-row gap-3 justify-center items-center"
-                >
-                  <Icon
-                    src={`/assets/materials/${material.name.replace(
-                      / /g,
-                      '_'
-                    )}.png`}
-                    alt={material.name}
-                    className="h-8 w-8 object-contain object-center cursor-help"
-                    contextMenu
-                  />
-                  <span
-                    className={[
-                      'w-full text-right font-semibold',
-                      !materialStorage.hasOwnProperty(material.name)
-                        ? 'text-yellow-500'
-                        : materialStorage[material.name as Materials] <
-                          material.amount
-                        ? 'text-red-500'
-                        : 'text-green-500',
-                    ].join(' ')}
-                  >
-                    {materialStorage[material.name as Materials]}
-                    {materialStorage.hasOwnProperty(material.name) ? ' / ' : ''}
-                    {Intl.NumberFormat('en-AU').format(material.amount)}
-                  </span>
-                </div>
+                <MaterialDisplay {...material} key={material.name} />
               ))}
             </div>
           </div>
@@ -440,3 +378,57 @@ export default function Planner() {
     </div>
   );
 }
+
+const MaterialDisplay = (material: {
+  name: string;
+  isArchMaterial: boolean;
+  storage: number;
+  diff: number;
+  amount: number;
+}) => {
+  const { createMaterialContextMenu, createWikiContextMenu } = useContextMenu();
+  return (
+    //                 {material.isArchMaterial ? material.storage : ''}
+    //                 {material.isArchMaterial ? ' / ' : ''}
+    //                 {material.amount}
+    //                 {material.diff < 0 ? ` (${material.diff})` : ''}
+    //               </span>
+    //             </div>
+    <div
+      key={material.name}
+      className="flex flex-col gap-2 justify-center items-center"
+    >
+      <Icon
+        src={`/assets/materials/${material.name.replace(/ /g, '_')}.png`}
+        alt={material.name}
+        className="h-8 w-8 mb-1 object-contain object-center cursor-help"
+        onContextMenu={
+          material.isArchMaterial
+            ? createMaterialContextMenu(material.name)
+            : createWikiContextMenu(material.name)
+        }
+      />
+      <span className="font-medium text-orange-100">{material.name}</span>
+
+      <span
+        className={[
+          'w-full text-center font-semibold',
+          !material.isArchMaterial
+            ? 'text-yellow-500'
+            : material.diff < 0
+            ? 'text-red-500'
+            : 'text-green-500',
+        ].join(' ')}
+      >
+        {material.isArchMaterial
+          ? Intl.NumberFormat('en-AU').format(material.storage)
+          : ''}
+        {material.isArchMaterial ? ' / ' : ''}
+        {Intl.NumberFormat('en-AU').format(material.amount)}
+        {material.diff < 0
+          ? ` (${Intl.NumberFormat('en-AU').format(material.diff)})`
+          : ''}
+      </span>
+    </div>
+  );
+};

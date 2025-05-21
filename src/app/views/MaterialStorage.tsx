@@ -1,6 +1,7 @@
 import { useGlobalState } from '../data/GlobalStateProvider';
 import { Materials, MaterialsByType } from '../data/Materials';
 import { DigsiteNames, Digsites } from '../data/Digsites';
+import { useContextMenu } from '../data/useContextMenus';
 
 export default function MaterialStorage() {
   const { materialStorage } = useGlobalState();
@@ -103,6 +104,7 @@ const MaterialStorageInput = ({
   borderColor?: string;
 }) => {
   const { createContextMenu, updateMaterialStorage, wiki } = useGlobalState();
+  const { createMaterialContextMenu } = useContextMenu();
   return (
     <div
       className="flex flex-row justify-between items-center pl-4 md:pl-0 mx-auto w-[360px] max-w-full md:flex md:flex-col md:items-center md:max-w-full overflow-hidden gap-2 border md:pt-2 border-orange-100"
@@ -113,25 +115,7 @@ const MaterialStorageInput = ({
         alt={material}
         className="h-8 w-8 md:h-10 md:w-10 md:py-1 object-contain object-center cursor-help"
         title={material}
-        onContextMenu={(e) =>
-          createContextMenu(e, [
-            [
-              {
-                label: '[WIKI]' + material,
-                callback: () => wiki(material.replace(/ /g, '_')),
-              },
-              {
-                label: '[WIKI]Material cache locations: ' + material,
-                callback: () =>
-                  wiki(
-                    `Material_cache_(${material
-                      .toLowerCase()
-                      .replace(/ /g, '_')})#Locations`
-                  ),
-              },
-            ],
-          ])
-        }
+        onContextMenu={createMaterialContextMenu(material)}
       />
       <p className="text-orange-100 md:hidden font-semibold text-sm">
         {material}

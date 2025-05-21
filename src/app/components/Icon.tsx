@@ -1,4 +1,5 @@
 import { useGlobalState } from '../data/GlobalStateProvider';
+import { useContextMenu } from '../data/useContextMenus';
 
 export default function Icon({
   src,
@@ -6,6 +7,7 @@ export default function Icon({
   className,
   title,
   contextMenu = false,
+  onContextMenu = undefined,
   ...props
 }: {
   src: string;
@@ -13,8 +15,9 @@ export default function Icon({
   className?: string;
   title?: string;
   contextMenu?: boolean;
+  onContextMenu?: (e: React.MouseEvent) => void;
 }) {
-  const { createContextMenu, wiki } = useGlobalState();
+  const { createWikiContextMenu } = useContextMenu();
   return (
     <img
       {...props}
@@ -23,17 +26,7 @@ export default function Icon({
       title={title}
       className={`w-4 h-4 ${className}`}
       onContextMenu={
-        contextMenu
-          ? (e) =>
-              createContextMenu(e, [
-                [
-                  {
-                    label: '[WIKI]' + alt,
-                    callback: () => contextMenu && wiki(alt),
-                  },
-                ],
-              ])
-          : undefined
+        onContextMenu ?? (contextMenu ? createWikiContextMenu(alt) : undefined)
       }
     />
   );
