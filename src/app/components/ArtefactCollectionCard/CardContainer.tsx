@@ -8,6 +8,7 @@ export const CardContainer = ({
   combined,
   digsiteInfo,
   onContextMenu,
+  opacity,
 }: {
   name: string;
   children: React.ReactNode;
@@ -21,6 +22,7 @@ export const CardContainer = ({
     borderColor: string;
     url: string;
   } | null;
+  opacity: number;
   onContextMenu: (e: React.MouseEvent) => void;
 }) => (
   <div
@@ -37,7 +39,7 @@ export const CardContainer = ({
     style={{
       backgroundColor: digsiteInfo?.backgroundColor ?? '#333',
       borderColor: digsiteInfo?.borderColor ?? '#333',
-      opacity: isComplete ? 0.5 : 1,
+      opacity,
     }}
     id={name.replace(/\W/g, '')}
     onContextMenu={onContextMenu}

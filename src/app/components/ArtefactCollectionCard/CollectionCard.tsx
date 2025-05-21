@@ -104,6 +104,7 @@ export default function CollectionCard(collection: Collection) {
       digsiteInfo={digsiteInfo}
       combined={false}
       onContextMenu={onContextMenu}
+      opacity={opacity}
     >
       <div className="flex justify-between md:grid-cols-[2fr_3fr_2fr] mb-4 md:mb-0 md:flex gap-4 md:justify-center md:justify-start w-full md:w-88 items-center font-semibold text-orange-100">
         <Icon

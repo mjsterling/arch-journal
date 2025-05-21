@@ -9,6 +9,7 @@ import LevelSiteDisplay from './LevelSiteDisplay';
 import Icon from '../Icon';
 import ArtefactMiscButton from './ArtefactMiscButton';
 import { CardContainer } from './CardContainer';
+import useHideCard from './useHideCard';
 
 export default function ArtefactCard(props: {
   artefact: Artefact;
@@ -40,11 +41,13 @@ export default function ArtefactCard(props: {
   );
 
   const { onContextMenu } = useHandlers(artefact, isComplete, digsiteInfo);
+  const { hidden, opacity } = useHideCard(isHidden);
 
-  if (isHidden) return null;
+  if (hidden) return null;
 
   return (
     <CardContainer
+      opacity={opacity}
       name={artefact.name}
       isComplete={isComplete}
       isHighlighted={isHighlighted}
