@@ -4,6 +4,7 @@ import { Collection, Collections as CollectionData } from '../data/Collections';
 import CollectionCard from '../components/ArtefactCollectionCard/CollectionCard';
 import { useGlobalState } from '../data/GlobalStateProvider';
 import { CheckIcon } from '@heroicons/react/16/solid';
+import { ArtefactStates } from '../data/Artefact';
 
 export default function Collections() {
   const { artefacts, isComplete } = useArtefacts();
@@ -53,10 +54,10 @@ export default function Collections() {
   );
 
   type Collector = string;
-  const groupedCollections = useMemo<{
-    [key: Collector]: Collection[];
-  }>(() => {
-    const _groupedCollections: { [key: Collector]: Collection[] } = {};
+  const groupedCollections = useMemo(() => {
+    const _groupedCollections: {
+      [key: Collector]: { isComplete: boolean; collections: Collection[] };
+    } = {};
     collections.forEach((collection) => {
       const key =
         sort === 'collector'
@@ -64,21 +65,24 @@ export default function Collections() {
           : sort === 'digsite'
           ? collection.digsite
           : collection.name[0].toUpperCase();
-      _groupedCollections[key] = _groupedCollections[key] || [];
-      _groupedCollections[key].push(collection);
+      _groupedCollections[key] = _groupedCollections[key] || {
+        isComplete: false,
+        collections: [],
+      };
+      _groupedCollections[key].collections.push(collection);
     });
-    return _groupedCollections;
-  }, [collections, sort]);
-
-  const groupsCompleted = useMemo(() => {
-    const _groupsCompleted: { [key: string]: boolean } = {};
-    for (const key in groupedCollections) {
-      _groupsCompleted[key] = groupedCollections[key].every((collection) =>
-        collection.artefacts?.every(isComplete)
+    for (const key in _groupedCollections) {
+      _groupedCollections[key].isComplete = _groupedCollections[
+        key
+      ].collections.every((collection) =>
+        collection.artefacts?.every(
+          (artefact) =>
+            artefact.collections[collection.name] === ArtefactStates.Completed
+        )
       );
     }
-    return _groupsCompleted;
-  }, [groupedCollections, isComplete]);
+    return _groupedCollections;
+  }, [collections, sort]);
 
   return (
     <div className="flex flex-col gap-4">
@@ -153,29 +157,30 @@ export default function Collections() {
       </div>
       <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-6 md:px-12 md:py-6">
         {sort === 'collector' || sort === 'digsite' || sort === 'name'
-          ? Object.entries(groupedCollections).map(([key, collections]) => (
-              <div key={`${key}_collection_container`} className="relative">
-                <span className="cursor-help">
+          ? Object.entries(groupedCollections).map(
+              ([key, { isComplete, collections }]) => (
+                <div key={`${key}_collection_container`} className="relative">
                   <h2
                     className={[
                       'text-xl text-orange-100 font-semibold mx-auto pt-4 mt-4 pb-4',
-                      groupsCompleted[key] ? 'opacity-50' : '',
+                      isComplete ? 'opacity-50' : '',
+                      isComplete && !showCompleted ? 'hidden' : '',
                     ].join(' ')}
                     key={`${key}_title`}
                   >
                     {key}
                   </h2>
-                </span>
 
-                {collections.map((collection) => (
-                  <CollectionCard
-                    key={collection.name}
-                    collection={collection}
-                    combined
-                  />
-                ))}
-              </div>
-            ))
+                  {collections.map((collection) => (
+                    <CollectionCard
+                      key={collection.name}
+                      collection={collection}
+                      combined
+                    />
+                  ))}
+                </div>
+              )
+            )
           : collections.map((collection) => (
               <CollectionCard key={collection.name} collection={collection} />
             ))}
