@@ -52,16 +52,16 @@ export default function ArtefactCard(props: {
       combined={combined}
       onContextMenu={onContextMenu}
     >
-      <div className="flex justify-start items-center mb-4 md:mb-0 gap-4  w-full md:w-88  font-semibold text-orange-100">
+      <div className="flex justify-center md:justify-start items-center mb-4 md:mb-0 gap-4  w-full  font-semibold text-orange-100">
         <Icon
           src={artefact.image}
           alt={artefact.name}
           className="h-8 w-14 md:h-10 md:w-10 object-contain transition-all"
         />
-        <div className="flex flex-col items-start gap-1">
+        <div className="flex flex-col items-center md:items-start gap-1">
           <p
             className={[
-              'text-left text-nowrap sm:text-lg',
+              'text-center md:text-left lg:text-nowrap sm:text-lg',
               isHighlighted ? 'text-yellow-500' : 'text-orange-100',
             ].join(' ')}
           >

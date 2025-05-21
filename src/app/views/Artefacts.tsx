@@ -9,6 +9,8 @@ import {
   XMarkIcon,
 } from '@heroicons/react/20/solid';
 import useLazySearch from '../components/ArtefactCollectionCard/useLazySearch';
+import Icon from '../components/Icon';
+import { useContextMenu } from '../data/useContextMenus';
 
 export default function Artefacts() {
   const { artefacts, isComplete } = useArtefacts();
@@ -23,27 +25,31 @@ export default function Artefacts() {
     clearSearch,
   } = useLazySearch<Artefact>(artefacts);
 
-  const artefactsByHotspot = useMemo<{ [key: string]: Artefact[] }>(() => {
-    const _artefactsByHotspot: { [key: string]: Artefact[] } = {};
+  const { createHotspotContextMenu, createMaterialContextMenu } =
+    useContextMenu();
+
+  const artefactsByHotspot = useMemo(() => {
+    const _artefactsByHotspot: {
+      [key: string]: { artefacts: Artefact[]; completed: boolean };
+    } = {};
     filteredArtefacts.forEach((artefact: Artefact) => {
-      _artefactsByHotspot[artefact.hotspot] =
-        _artefactsByHotspot[artefact.hotspot] || [];
-      _artefactsByHotspot[artefact.hotspot].push(artefact);
+      if (!_artefactsByHotspot[artefact.hotspot]) {
+        _artefactsByHotspot[artefact.hotspot] = {
+          artefacts: [],
+          completed: false,
+        };
+      }
+      _artefactsByHotspot[artefact.hotspot].artefacts.push(artefact);
     });
+    for (const hotspot in _artefactsByHotspot) {
+      _artefactsByHotspot[hotspot].completed =
+        _artefactsByHotspot[hotspot].artefacts.every(isComplete);
+    }
     return _artefactsByHotspot;
   }, [filteredArtefacts]);
 
-  const hotspotsCompleted = useMemo(() => {
-    const _hotspotsCompleted: { [key: string]: boolean } = {};
-    for (const hotspot in artefactsByHotspot) {
-      _hotspotsCompleted[hotspot] =
-        artefactsByHotspot[hotspot].every(isComplete);
-    }
-    return _hotspotsCompleted;
-  }, [artefactsByHotspot, isComplete]);
-
   const markAllAsNotFound = (hotspot: string) => {
-    const newArtefacts = [...artefactsByHotspot[hotspot]];
+    const newArtefacts = [...artefactsByHotspot[hotspot].artefacts];
     newArtefacts.forEach((artefact) => {
       const newArtefact = { ...artefact };
       Object.keys(newArtefact.collections).forEach((collection) => {
@@ -53,7 +59,7 @@ export default function Artefacts() {
     });
   };
   const markAllAsCompleted = (hotspot: string) => {
-    const newArtefacts = [...artefactsByHotspot[hotspot]];
+    const newArtefacts = [...artefactsByHotspot[hotspot].artefacts];
     console.log(newArtefacts);
     newArtefacts.forEach((artefact) => {
       const newArtefact = { ...artefact };
@@ -62,6 +68,31 @@ export default function Artefacts() {
       });
       setArtefact(newArtefact);
     });
+  };
+
+  const hotspotMaterials = (hotspot: string) => {
+    const materials: { [key: string]: number } = {};
+    artefactsByHotspot[hotspot].artefacts.forEach((artefact) => {
+      Object.entries(artefact.materials).forEach(([material, amount]) => {
+        materials[material] =
+          (materials[material] || 0) +
+          amount *
+            Object.values({
+              ...artefact.collections,
+              ...artefact.misc,
+              ...artefact.quests,
+              ...artefact.mysteries,
+            })
+              .map((state) =>
+                Number(
+                  state === ArtefactStates.NotFound ||
+                    state === ArtefactStates.Damaged
+                )
+              )
+              .reduce((a, b) => a + b, 0);
+      });
+    });
+    return materials;
   };
 
   return (
@@ -106,54 +137,65 @@ export default function Artefacts() {
           </div>
         )}
 
-        {Object.entries(artefactsByHotspot).map(([hotspot, artefacts]) =>
-          hotspotsCompleted[hotspot] &&
-          !showCompleted &&
-          !searchQuery ? null : (
-            <div key={`${hotspot}_container`} className="relative">
-              <span className="cursor-help">
-                <h2
-                  className={[
-                    'text-xl text-orange-100 font-semibold mx-auto pt-4 mt-4 pb-4',
-                    hotspotsCompleted[hotspot] ? 'opacity-50' : '',
-                  ].join(' ')}
-                  key={`${hotspot}_title`}
-                  onContextMenu={(e) =>
-                    createContextMenu(e, [
-                      [
-                        hotspotsCompleted[hotspot]
-                          ? {
-                              label: 'Reset hotspot',
-                              callback: () => markAllAsNotFound(hotspot),
-                            }
-                          : {
-                              label: 'Mark hotspot as completed',
-                              callback: () => markAllAsCompleted(hotspot),
-                            },
-                      ],
-                      [
-                        {
-                          label: '[WIKI]' + hotspot,
-                          callback: () => wiki(hotspot),
-                        },
-                      ],
-                    ])
-                  }
-                >
-                  {hotspot}
-                </h2>
-              </span>
+        {Object.entries(artefactsByHotspot).map(
+          ([hotspot, { artefacts, completed }]) =>
+            completed && !showCompleted && !searchQuery ? null : (
+              <div
+                key={`${hotspot}_container`}
+                className="relative w-full mt-2"
+              >
+                <span className="cursor-help flex flex-col md:flex-row w-full justify-between items-center py-4 gap-y-3">
+                  <h2
+                    className={[
+                      'text-xl text-orange-100 font-semibold',
+                      completed ? 'opacity-50' : '',
+                    ].join(' ')}
+                    key={`${hotspot}_title`}
+                    onContextMenu={createHotspotContextMenu(
+                      hotspot,
+                      completed,
+                      () => markAllAsNotFound(hotspot),
+                      () => markAllAsCompleted(hotspot)
+                    )}
+                  >
+                    {hotspot}
+                  </h2>
+                  <div className="flex gap-3 items-center text-orange-100">
+                    {!completed &&
+                      Object.entries(hotspotMaterials(hotspot)).map(
+                        ([material, amount]) => (
+                          <div
+                            key={`${material}_${amount}`}
+                            className="flex flex-row gap-1.5 items-center"
+                            onContextMenu={createMaterialContextMenu(material)}
+                          >
+                            <Icon
+                              src={`/assets/materials/${material.replace(
+                                / /g,
+                                '_'
+                              )}.png`}
+                              alt={material}
+                              className="h-6 w-6 object-contain object-center"
+                            />
+                            <p className="text-orange-100 font-semibold text-base">
+                              {amount}
+                            </p>
+                          </div>
+                        )
+                      )}
+                  </div>
+                </span>
 
-              {artefacts.map((artefact) => (
-                <ArtefactCard
-                  key={artefact.name}
-                  artefact={artefact}
-                  alwaysShow={searchQuery.length > 0}
-                  combined={true}
-                />
-              ))}
-            </div>
-          )
+                {artefacts.map((artefact) => (
+                  <ArtefactCard
+                    key={artefact.name}
+                    artefact={artefact}
+                    alwaysShow={searchQuery.length > 0}
+                    combined={true}
+                  />
+                ))}
+              </div>
+            )
         )}
         {searchQuery && filteredArtefacts.length === 0 && (
           <div className="flex flex-col gap-4 items-center justify-center">

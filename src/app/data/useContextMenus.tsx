@@ -4,6 +4,36 @@ import { useGlobalState } from './GlobalStateProvider';
 export const useContextMenu = () => {
   const { createContextMenu, wiki } = useGlobalState();
 
+  const createHotspotContextMenu = useCallback(
+    (
+        hotspot: string,
+        completed: boolean,
+        resetCallback: () => void,
+        completedCallback: () => void
+      ) =>
+      (e: React.MouseEvent) =>
+        createContextMenu(e, [
+          [
+            completed
+              ? {
+                  label: 'Reset hotspot',
+                  callback: resetCallback,
+                }
+              : {
+                  label: 'Mark hotspot as completed',
+                  callback: completedCallback,
+                },
+          ],
+          [
+            {
+              label: '[WIKI]' + hotspot,
+              callback: () => wiki(hotspot),
+            },
+          ],
+        ]),
+    [createContextMenu, wiki]
+  );
+
   const createMaterialContextMenu = useCallback(
     (material: string) => (e: React.MouseEvent) =>
       createContextMenu(e, [
@@ -39,5 +69,9 @@ export const useContextMenu = () => {
     [createContextMenu, wiki]
   );
 
-  return { createMaterialContextMenu, createWikiContextMenu };
+  return {
+    createHotspotContextMenu,
+    createMaterialContextMenu,
+    createWikiContextMenu,
+  };
 };
