@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Arch Journal',
     description:
-      'Arch Journal - An all-in=one for tracking your Archaeology progress',
+      'Arch Journal - An all-in-one tool for tracking your Archaeology progress',
     url: 'https://mjsterling.github.io',
     images: 'https://mjsterling.github.io/assets/Archaeology.png',
   },
