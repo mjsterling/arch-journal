@@ -12,6 +12,7 @@ type ContextMenuItems = Array<
   Array<{
     label: string;
     callback?: () => void;
+    disabled?: boolean;
   }>
 >;
 

@@ -33,14 +33,14 @@ export const ArtefactInfobox = ({
   if (!open) return null;
   return (
     <div
-      className="absolute left-1/2 top-3/4 bg-gray-900 border-2 border-white rounded-md flex flex-col justify-center items-center gap-3 transition-all p-3 min-w-fit cursor-default"
+      className="absolute left-2/3 top-2/3 bg-gray-900 border border-white rounded-md flex flex-col justify-center items-center gap-3 transition-all p-3 min-w-fit cursor-default"
       style={{ opacity }}
       onClick={(e) => {
         e.stopPropagation();
       }}
     >
       <div className="flex flex-row gap-2 items-center">
-        <span className="text-base font-bold text-white uppercase text-nowrap px-4">
+        <span className="text-sm font-semibold text-orange-100 uppercase text-nowrap px-4">
           {mode === 'artefactPage' ? collection : artefact.name}
         </span>
       </div>
@@ -66,7 +66,7 @@ export const ArtefactInfobox = ({
                 ].join(' ')}
               ></div>
               <span
-                className="text-sm text-left text-white text-nowrap font-semibold hover:underline cursor-pointer"
+                className="text-sm text-left text-orange-100 text-nowrap font-medium hover:underline cursor-pointer"
                 onClick={() => goToArtefact(art.name, true)}
               >
                 {art.name}
@@ -96,7 +96,7 @@ export const ArtefactInfobox = ({
                 ].join(' ')}
               ></div>
               <span
-                className="text-sm text-left text-white text-nowrap font-semibold hover:underline cursor-pointer"
+                className="text-sm text-left text-orange-100 text-nowrap font-semibold hover:underline cursor-pointer"
                 onClick={() => goToCollection(collection, true)}
               >
                 {collection}

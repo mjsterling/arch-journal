@@ -38,18 +38,18 @@ export default function ArtefactCollectionButton({
       onMouseLeave={() => setInfoboxOpen(false)}
       className={[
         'relative flex flex-col gap-1 items-center justify-center',
-        'rounded-lg h-full',
+        'rounded-md h-full',
         'min-h-13 min-w-13 max-h-13 max-w-13',
         'transition-all duration-200 gap-1',
-        'border-orange-100 border-2 z-0 hover:z-10',
+        'border-2 z-0 hover:z-10',
         status === 'Not Found'
-          ? 'bg-gray-500 hover:bg-orange-600 cursor-pointer'
+          ? 'bg-gray-200/30 border-gray-300/60 hover:bg-orange-600/80 cursor-pointer'
           : status === 'Damaged'
-          ? 'bg-orange-700 hover:bg-yellow-500 cursor-pointer'
+          ? 'bg-orange-700/60 border-orange-700 hover:bg-yellow-500/80 cursor-pointer'
           : status === 'Restored'
-          ? 'bg-yellow-600 hover:bg-green-500 cursor-pointer'
+          ? 'bg-yellow-600/60 border-yellow-600 hover:bg-green-500/80 cursor-pointer'
           : status === 'Completed'
-          ? 'bg-green-800 cursor-help'
+          ? 'bg-green-800/60 border-green-800 cursor-help'
           : '',
       ].join(' ')}
     >
@@ -108,6 +108,8 @@ const useHandlers = (
       [
         {
           label: 'Set to Not Found',
+          disabled:
+            artefact.collections[collection] === ArtefactStates.NotFound,
           callback: () => {
             const newArtefact = { ...artefact };
             newArtefact.collections[collection] = ArtefactStates.NotFound;
@@ -116,6 +118,7 @@ const useHandlers = (
         },
         {
           label: 'Set to Damaged',
+          disabled: artefact.collections[collection] === ArtefactStates.Damaged,
           callback: () => {
             const newArtefact = { ...artefact };
             newArtefact.collections[collection] = ArtefactStates.Damaged;
@@ -124,6 +127,8 @@ const useHandlers = (
         },
         {
           label: 'Set to Restored',
+          disabled:
+            artefact.collections[collection] === ArtefactStates.Restored,
           callback: () => {
             const newArtefact = { ...artefact };
             newArtefact.collections[collection] = ArtefactStates.Restored;
@@ -132,6 +137,8 @@ const useHandlers = (
         },
         {
           label: 'Set to Completed',
+          disabled:
+            artefact.collections[collection] === ArtefactStates.Completed,
           callback: () => {
             const newArtefact = { ...artefact };
             newArtefact.collections[collection] = ArtefactStates.Completed;

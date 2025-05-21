@@ -3,7 +3,11 @@ import ArtefactCard from '../components/ArtefactCollectionCard/ArtefactCard';
 import { useGlobalState } from '../data/GlobalStateProvider';
 import { useMemo } from 'react';
 import { ArtefactStates } from '../data/Artefact';
-import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import {
+  CheckIcon,
+  MagnifyingGlassIcon,
+  XMarkIcon,
+} from '@heroicons/react/20/solid';
 import useLazySearch from '../components/ArtefactCollectionCard/useLazySearch';
 
 export default function Artefacts() {
@@ -64,24 +68,9 @@ export default function Artefacts() {
   };
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex gap-4 justify-center">
-        <button
-          className={[
-            'rounded-md border border-orange-100 px-5 py-1 cursor-pointer',
-            'bg-transparent text-orange-100',
-            'transition-colors ease-in-out',
-            'hover:bg-orange-100 hover:text-gray-950',
-          ].join(' ')}
-          onClick={() => setShowCompleted(!showCompleted)}
-        >
-          {showCompleted
-            ? `Showing Completed ${screen}`
-            : `Hiding Completed ${screen}`}
-        </button>
-      </div>
-      <div className="w-full h-full flex flex-col gap-4 px-6 py-6 md:px-12 md:py-12">
-        <div className="flex flex-row gap-2 border-2 border-orange-100 rounded-lg p-2">
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4 justify-between px-6 py-6 md:px-12 md:py-6">
+        <div className="flex flex-row gap-2 border border-orange-100 rounded-md p-2">
           <MagnifyingGlassIcon className="w-6 h-6 text-orange-100" />
           <input
             type="text"
@@ -96,7 +85,24 @@ export default function Artefacts() {
             </button>
           ) : null}
         </div>
-
+        <div className="flex gap-2 items-center text-orange-100">
+          <button
+            value={showCompleted ? 'checked' : 'unchecked'}
+            className={[
+              'rounded-md border border-orange-100 cursor-pointer',
+              'bg-transparent text-orange-100',
+              'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
+            ].join(' ')}
+            onClick={() => setShowCompleted(!showCompleted)}
+          >
+            {showCompleted ? (
+              <CheckIcon className="w-5 h-5 text-orange-100" />
+            ) : null}
+          </button>
+          Show completed {screen.toLowerCase()}?
+        </div>
+      </div>
+      <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-6 md:px-12 md:py-6">
         {searchQuery && (
           <div className="flex flex-row gap-2 items-center text-orange-100 italic">
             Showing {filteredArtefacts.length} of {artefacts.length} artefacts
@@ -111,7 +117,7 @@ export default function Artefacts() {
               <span className="cursor-help">
                 <h2
                   className={[
-                    'text-xl text-orange-100 font-bold mx-auto pt-8 pb-4',
+                    'text-xl text-orange-100 font-semibold mx-auto pt-4 mt-4 pb-4',
                     hotspotsCompleted[hotspot] ? 'opacity-50' : '',
                   ].join(' ')}
                   key={`${hotspot}_title`}

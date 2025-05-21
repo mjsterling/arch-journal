@@ -8,6 +8,7 @@ import { ArtefactStates } from '@/app/data/Artefact';
 import LevelSiteDisplay from './LevelSiteDisplay';
 import Icon from '../Icon';
 import ArtefactMiscButton from './ArtefactMiscButton';
+import { CardContainer } from './CardContainer';
 
 export default function ArtefactCard(props: {
   artefact: Artefact;
@@ -43,44 +44,50 @@ export default function ArtefactCard(props: {
   if (isHidden) return null;
 
   return (
-    <div
-      className={[
-        'w-full md:w-auto bg-gray-800 border-2 px-8 py-8 md:py-4 flex flex-wrap md:flex-nowrap content-center justify-around md:justify-between gap-4 cursor-help transition-opacity duration-500',
-        isComplete ? 'border-green-700' : 'border-orange-100',
-        isHighlighted
-          ? 'outline-2 -outline-offset-2 outline-yellow-500 z-10'
-          : 'z-0',
-        combined
-          ? 'rounded-none border-t-1 first-of-type:border-t-2 border-b-1 last-of-type:border-b-2 last-of-type:rounded-b-lg first-of-type:rounded-t-lg'
-          : 'rounded-lg',
-      ].join(' ')}
-      style={{
-        backgroundColor: digsiteInfo?.backgroundColor ?? '#333',
-        opacity: isComplete ? 0.5 : 1,
-      }}
-      id={artefact.name.replace(/\W/g, '')}
+    <CardContainer
+      name={artefact.name}
+      isComplete={isComplete}
+      isHighlighted={isHighlighted}
+      digsiteInfo={digsiteInfo}
+      combined={combined}
       onContextMenu={onContextMenu}
     >
-      <div className="grid grid-cols-[2fr_3fr_2fr] mb-4 md:mb-0 md:flex gap-4 justify-center md:justify-start w-full md:w-88 items-center font-bold text-orange-100">
+      <div className="flex justify-between md:grid-cols-[2fr_3fr_2fr] mb-4 md:mb-0 md:flex gap-4 md:justify-center md:justify-start w-full md:w-88 items-center font-semibold text-orange-100">
         <Icon
           src={artefact.image}
           alt={artefact.name}
-          className="h-10 w-10 object-contain transition-all"
+          className="h-8 w-14 md:h-10 md:w-10 object-contain transition-all"
         />
-        <p
-          className={[
-            'text-center text-wrap md:text-nowrap',
-            isHighlighted ? 'text-yellow-500' : 'text-white',
-          ].join(' ')}
-        >
-          {artefact.name}
-        </p>
-        <p className="text-center text-lg sm:hidden">{artefact.level}</p>
-        <LevelSiteDisplay
-          level={artefact.level}
-          site={digsiteInfo}
-          className="hidden sm:flex md:hidden"
-        />
+        <div className="flex flex-col items-start gap-1">
+          <p
+            className={[
+              'text-left text-nowrap sm:text-lg',
+              isHighlighted ? 'text-yellow-500' : 'text-orange-100',
+            ].join(' ')}
+          >
+            {artefact.name}
+          </p>
+          <div className="flex gap-3">
+            {Object.entries(artefact.materials).map(([name, amount]) => (
+              <div
+                className="flex gap-1 items-center"
+                key={`ArtefactMaterial_${artefact.name}__${name}`}
+              >
+                <Icon
+                  src={`/assets/materials/${name.replace(/ /g, '_')}.png`}
+                  alt={name}
+                  title={name}
+                  contextMenu
+                  className="h-5 w-5 object-contain cursor-help"
+                />
+                <span className="text-sm text-orange-100">{amount}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex justify-end md:hidden">
+          <LevelSiteDisplay level={artefact.level} site={digsiteInfo} />
+        </div>
       </div>
       <div className="flex flex-row flex-wrap md:flex-nowrap gap-2 justify-center lg:justify-start">
         {Object.entries(artefact.collections).map(([name, status]) => {
@@ -128,7 +135,7 @@ export default function ArtefactCard(props: {
             <ArtefactMiscButton
               key={`ArtefactButton_${artefact.name}__${name}`}
               artefact={artefact}
-              type="researchers"
+              type="quests"
               typeKey={name}
               image={'/assets/collections/quests.png'}
               status={status}
@@ -153,7 +160,7 @@ export default function ArtefactCard(props: {
         level={artefact.level}
         site={digsiteInfo}
       />
-    </div>
+    </CardContainer>
   );
 }
 

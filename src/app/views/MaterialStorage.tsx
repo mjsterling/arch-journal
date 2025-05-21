@@ -111,7 +111,7 @@ export default function MaterialStorage() {
 }
 
 const MaterialStorageTitle = ({ title }: { title: string }) => (
-  <h3 className="text-lg text-center md:text-left font-bold w-full md:col-span-5 text-orange-100">
+  <h3 className="text-lg text-center md:text-left font-semibold w-full md:col-span-5 text-orange-100">
     {title}
   </h3>
 );
@@ -127,7 +127,7 @@ const MaterialStorageInput = ({
   return (
     <div
       key={material}
-      className="flex flex-row justify-between items-center pl-4 md:pl-0 mx-auto w-[360px] max-w-full md:flex md:flex-col md:items-center md:max-w-full overflow-hidden gap-2 border-2 md:pt-2 border-orange-100 rounded-lg"
+      className="flex flex-row justify-between items-center pl-4 md:pl-0 mx-auto w-[360px] max-w-full md:flex md:flex-col md:items-center md:max-w-full overflow-hidden gap-2 border md:pt-2 border-orange-100 rounded-md"
     >
       <img
         src={`/assets/materials/${material.replace(/ /g, '_')}.png`}
@@ -154,7 +154,9 @@ const MaterialStorageInput = ({
           ])
         }
       />
-      <p className="text-orange-100 md:hidden font-bold text-sm">{material}</p>
+      <p className="text-orange-100 md:hidden font-semibold text-sm">
+        {material}
+      </p>
       <input
         value={amount}
         onChange={(e) =>

@@ -11,7 +11,7 @@ export default function ArtefactButton({
   status,
 }: {
   artefact: Artefact;
-  type: 'mysteries' | 'researchers' | 'misc';
+  type: 'mysteries' | 'researchers' | 'quests' | 'misc';
   typeKey: string;
   image: string;
   status: ArtefactStates;
@@ -94,19 +94,19 @@ export default function ArtefactButton({
       onDoubleClick={handleDoubleClick}
       onContextMenu={handleContextMenu}
       className={[
-        'flex flex-col gap-1 items-center justify-center',
-        'rounded-lg h-full p-1',
-        'transition-all duration-200 gap-1',
+        'relative flex flex-col gap-1 items-center justify-center',
+        'rounded-md h-full',
         'min-h-13 min-w-13 max-h-13 max-w-13',
-        'border-orange-100 border-2',
+        'transition-all duration-200 gap-1',
+        'border-2 z-0 hover:z-10',
         status === 'Not Found'
-          ? 'bg-gray-500 hover:bg-orange-600 cursor-pointer'
+          ? 'bg-gray-200/30 border-gray-300/60 hover:bg-orange-600/85 cursor-pointer'
           : status === 'Damaged'
-          ? 'bg-orange-700 hover:bg-yellow-500 cursor-pointer'
+          ? 'bg-orange-700/70 border-orange-700 hover:bg-yellow-500/85 cursor-pointer'
           : status === 'Restored'
-          ? 'bg-yellow-600 hover:bg-green-500 cursor-pointer'
+          ? 'bg-yellow-600/70 border-yellow-600 hover:bg-green-500/85 cursor-pointer'
           : status === 'Completed'
-          ? 'bg-green-800 cursor-help'
+          ? 'bg-green-800/60 border-green-800 cursor-help'
           : '',
       ].join(' ')}
       title={typeKey}

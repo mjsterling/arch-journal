@@ -16,18 +16,19 @@ export default function LevelSiteDisplay({
   return (
     <div
       className={[
-        'flex flex-row justify-center items-center md:gap-1',
+        'flex flex-col sm:flex-row justify-center items-center md:gap-1 min-h-full',
         className,
       ].join(' ')}
     >
-      <p className="text-lg md:text-2xl text-orange-100 font-bold text-center px-2">
+      <p className="sm:text-lg md:text-2xl text-orange-100 font-semibold text-center px-2 pb-1">
         {level}
       </p>
 
       <img
         src={site?.icon}
         alt={site?.name}
-        className="transition-all h-9 w-9 object-cover rounded-full cursor-help"
+        title={site?.name}
+        className="transition-all h-5 w-5 sm:h-6 sm:w-6 md:h-9 md:w-9 object-cover rounded-full cursor-help"
       />
     </div>
   );

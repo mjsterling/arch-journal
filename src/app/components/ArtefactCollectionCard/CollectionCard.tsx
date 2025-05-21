@@ -8,6 +8,7 @@ import LevelSiteDisplay from './LevelSiteDisplay';
 import useHideCard from './useHideCard';
 import { useGlobalState } from '@/app/data/GlobalStateProvider';
 import Icon from '../Icon';
+import { CardContainer } from './CardContainer';
 
 export default function CollectionCard(collection: Collection) {
   const { setArtefact } = useArtefacts();
@@ -65,73 +66,118 @@ export default function CollectionCard(collection: Collection) {
     return num.toString();
   };
 
+  const onContextMenu = (e: React.MouseEvent) =>
+    createContextMenu(e, [
+      [
+        isComplete
+          ? { label: 'Reset Collection', callback: markAllAsNotFound }
+          : {
+              label: 'Mark all as Completed',
+              callback: markAllAsCompleted,
+            },
+        {
+          label: 'Open in Planner',
+          callback: () => {
+            goToPlanner(collection.name);
+          },
+        },
+      ],
+      [
+        {
+          label: 'Wiki: ' + collection.name,
+          callback: () => wiki(collection.name),
+        },
+        {
+          label: 'Wiki: ' + collection.collector,
+          callback: () => wiki(collection.collector),
+        },
+      ],
+    ]);
+
   if (hidden) return null;
 
   return (
-    <div
-      className={[
-        'w-full bg-gray-800 border-2 rounded-lg px-4 sm:px-8 py-12 lg:py-4 lg:grid lg:grid-cols-[2fr_6fr_0.7fr] justify-between gap-8',
-        'cursor-help transition-opacity duration-500 hover:z-20',
-        isComplete ? 'border-green-700' : 'border-orange-100',
-        isHighlighted
-          ? 'outline-2 -outline-offset-2 outline-yellow-500 z-10'
-          : 'z-0',
-      ].join(' ')}
-      style={{
-        backgroundColor: digsiteInfo?.backgroundColor ?? '#333',
-        opacity,
-      }}
-      id={collection.name.replace(/\W/g, '')}
-      onContextMenu={(e) =>
-        createContextMenu(e, [
-          [
-            isComplete
-              ? { label: 'Reset Collection', callback: markAllAsNotFound }
-              : {
-                  label: 'Mark all as Completed',
-                  callback: markAllAsCompleted,
-                },
-            {
-              label: 'Open in Planner',
-              callback: () => {
-                goToPlanner(collection.name);
-              },
-            },
-          ],
-          [
-            {
-              label: 'Wiki: ' + collection.name,
-              callback: () => wiki(collection.name),
-            },
-            {
-              label: 'Wiki: ' + collection.collector,
-              callback: () => wiki(collection.collector),
-            },
-          ],
-        ])
-      }
+    <CardContainer
+      name={collection.name}
+      isComplete={isComplete}
+      isHighlighted={isHighlighted}
+      digsiteInfo={digsiteInfo}
+      combined={false}
+      onContextMenu={onContextMenu}
     >
-      <div className="flex flex-row sm:grid sm:grid-cols-[84px_1fr_84px] lg:flex lg:flex-row flex-wrap lg:flex-nowrap content-center gap-4 justify-around md:justify-between items-center font-bold text-orange-100 pb-4 lg:pb-0">
+      <div className="flex justify-between md:grid-cols-[2fr_3fr_2fr] mb-4 md:mb-0 md:flex gap-4 md:justify-center md:justify-start w-full md:w-88 items-center font-semibold text-orange-100">
         <Icon
           src={collection.image}
           alt={collection.name}
-          className="h-10 w-10 object-contain hidden sm:block"
+          className="h-8 w-8 lg:h-10 lg:w-10 object-contain sm:block"
         />
-        <p
-          className={[
-            'text-center text-wrap md:text-nowrap',
-            isHighlighted ? 'text-yellow-500' : 'text-white',
-          ].join(' ')}
-        >
-          {collection.name}
-        </p>
-        <LevelSiteDisplay
-          className="hidden sm:flex lg:hidden"
-          level={collection.levelToComplete!}
-          site={digsiteInfo}
-        />
+        <div className="flex flex-col items-start gap-1">
+          <p
+            className={[
+              'text-left text-wrap text-lg',
+              isHighlighted ? 'text-yellow-500' : 'text-orange-100',
+            ].join(' ')}
+          >
+            {collection.name}
+          </p>
+          <div className="flex gap-3">
+            {collection.reward &&
+              !isComplete &&
+              Object.entries(collection.reward).map(([name, amount]) => (
+                <div
+                  className="flex gap-1 items-center"
+                  key={`${collection}_Reward_${name}`}
+                >
+                  <Icon
+                    src={`/assets/collections/${name.replace(/ /g, '_')}.${
+                      name === 'Tetracompass piece' || name === 'Elder Trove'
+                        ? 'gif'
+                        : 'png'
+                    }`}
+                    alt={name}
+                    title={name}
+                    contextMenu
+                    className="h-5 w-5 object-contain cursor-help"
+                  />
+                  <span className="text-sm text-orange-100">
+                    {amount ? shortNumber(amount) : ''}
+                  </span>
+                </div>
+              ))}
+            {(!collection.reward || isComplete) &&
+              Object.entries(collection.recurringReward).map(
+                ([name, amount]) => (
+                  <div
+                    className="flex gap-1 items-center text-sm"
+                    key={`${collection}_Reward_${name}`}
+                  >
+                    <Icon
+                      src={`/assets/collections/${name.replace(/ /g, '_')}.${
+                        name === 'Tetracompass piece' || name === 'Elder Trove'
+                          ? 'gif'
+                          : 'png'
+                      }`}
+                      alt={name}
+                      title={name}
+                      contextMenu
+                      className="h-5 w-5 object-contain cursor-help"
+                    />
+                    <span className="text-sm text-orange-100">
+                      {amount ? shortNumber(amount) : ''}
+                    </span>
+                  </div>
+                )
+              )}
+          </div>
+        </div>
+        <div className="flex justify-end md:hidden">
+          <LevelSiteDisplay
+            level={collection.levelToComplete!}
+            site={digsiteInfo}
+          />
+        </div>
       </div>
-      <div className="flex flex-row flex-wrap gap-2 justify-center lg:justify-start items-center">
+      <div className="flex w-full flex-row flex-wrap items-center content-start gap-2 justify-start">
         {collection.artefacts &&
           collection.artefacts.map((artefact: Artefact) => {
             return (
@@ -146,51 +192,13 @@ export default function CollectionCard(collection: Collection) {
               />
             );
           })}
-        <span className="text-2xl px-4 font-bold text-orange-100 w-12 text-center">
-          =
-        </span>
-
-        {Object.entries(
-          collection.reward && !isComplete
-            ? collection.reward
-            : collection.recurringReward
-        ).map(([reward, amount]) => {
-          return (
-            <div
-              key={`${collection.name}_${reward}`}
-              onContextMenu={(e) =>
-                createContextMenu(e, [
-                  [
-                    {
-                      label: 'Wiki: ' + reward,
-                      callback: () => wiki(reward),
-                    },
-                  ],
-                ])
-              }
-              className="flex flex-col items-center text-orange-100 px-2 w-12"
-            >
-              <img
-                src={`/assets/collections/${reward.replace(/ /g, '_')}.${
-                  reward === 'Tetracompass piece' || reward === 'Elder Trove'
-                    ? 'gif'
-                    : 'png'
-                }`}
-                alt={reward}
-                className="h-8 w-8 object-contain"
-              />
-              <p className="text-sm font-bold">
-                {amount ? shortNumber(amount) : ''}
-              </p>
-            </div>
-          );
-        })}
       </div>
+
       <LevelSiteDisplay
-        className="hidden lg:flex"
+        className="hidden md:flex"
         level={collection.levelToComplete!}
         site={digsiteInfo}
       />
-    </div>
+    </CardContainer>
   );
 }

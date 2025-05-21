@@ -49,7 +49,7 @@ export default function ContextMenu() {
       onContextMenu={handleBackgroundClick}
     >
       <div
-        className="w-fit border-2 border-orange-100 bg-gray-900 rounded-md rounded-tl-none absolute top-0 left-0 z-50"
+        className="w-fit border border-orange-100 bg-gray-900 rounded-md rounded-tl-none absolute top-0 left-0 z-50"
         style={{
           top: contextMenu.y,
           left: contextMenu.x,
@@ -59,13 +59,14 @@ export default function ContextMenu() {
         <div className="flex flex-col min-w-fit" ref={menuContentsRef}>
           {contextMenu.items.map((section, index) => (
             <div
-              className="flex flex-col w-full border-b-2 border-b-orange-100 last-of-type:border-b-0"
+              className="flex flex-col w-full border-b border-b-orange-100 last-of-type:border-b-0"
               key={`section_${index}`}
             >
               {section.map((item, index) => (
                 <button
                   key={`${item.label}_${index}`}
-                  className="text-orange-100 hover:bg-gray-800 px-4 py-2 text-left cursor-pointer"
+                  disabled={item.disabled}
+                  className="text-orange-100 disabled:text-gray-500 hover:bg-gray-800 disabled:hover:bg-transparent disabled:cursor-default px-4 py-2 text-left cursor-pointer"
                   onClick={() => {
                     if (item.callback) {
                       item.callback();
