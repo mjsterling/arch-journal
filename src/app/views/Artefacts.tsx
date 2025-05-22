@@ -51,9 +51,16 @@ export default function Artefacts() {
     const newArtefacts = [...artefactsByHotspot[hotspot].artefacts];
     newArtefacts.forEach((artefact) => {
       const newArtefact = { ...artefact };
-      Object.keys(newArtefact.collections).forEach((collection) => {
-        newArtefact.collections[collection] = ArtefactStates.NotFound;
+      (
+        ['collections', 'mysteries', 'researchers', 'quests', 'misc'] as const
+      ).forEach((type) => {
+        if (!newArtefact[type]) return;
+        Object.keys(newArtefact[type] ?? {}).forEach((key) => {
+          newArtefact[type][key as keyof Artefact[keyof Artefact]] =
+            ArtefactStates.NotFound;
+        });
       });
+
       setArtefact(newArtefact);
     });
   };
@@ -61,9 +68,16 @@ export default function Artefacts() {
     const newArtefacts = [...artefactsByHotspot[hotspot].artefacts];
     newArtefacts.forEach((artefact) => {
       const newArtefact = { ...artefact };
-      Object.keys(newArtefact.collections).forEach((collection) => {
-        newArtefact.collections[collection] = ArtefactStates.Completed;
+      (
+        ['collections', 'mysteries', 'researchers', 'quests', 'misc'] as const
+      ).forEach((type) => {
+        if (!newArtefact[type]) return;
+        Object.keys(newArtefact[type] ?? {}).forEach((key) => {
+          newArtefact[type][key as keyof Artefact[keyof Artefact]] =
+            ArtefactStates.Completed;
+        });
       });
+
       setArtefact(newArtefact);
     });
   };

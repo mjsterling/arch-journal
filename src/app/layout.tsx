@@ -9,13 +9,13 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: 'Arch Journal',
+  title: 'ScapeTools',
   openGraph: {
-    title: 'Arch Journal',
+    title: 'ScapeTools',
     description:
-      'Arch Journal - An all-in-one tool for tracking your Archaeology progress',
-    url: 'https://mjsterling.github.io',
-    images: 'https://mjsterling.github.io/assets/Archaeology.png',
+      'ScapeTools Arch Journal - An all-in-one tool for tracking your Archaeology progress',
+    url: 'https://scape.tools',
+    images: 'https://scape.tools/assets/Archaeology.png',
   },
 };
 
