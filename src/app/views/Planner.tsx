@@ -265,8 +265,6 @@ export default function Planner() {
               Number of Completions:
             </span>
             <input
-              min={0}
-              max={1000}
               value={numberOfRecurringCompletions}
               onChange={(e) =>
                 setNumberOfRecurringCompletions(
