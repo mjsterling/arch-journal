@@ -86,8 +86,8 @@ export default function Collections() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-4 justify-between px-6 py-6 md:px-12 md:py-6">
-        <div className="flex gap-4 items-center text-orange-100">
+      <div className="flex flex-col items-center md:flex-row gap-4 gap-y-8 justify-between px-6 py-6 md:px-12 md:py-6">
+        <div className="flex flex-wrap justify-center gap-4 items-center text-orange-100">
           Sort by:
           <div className="flex gap-2 items-center text-orange-100">
             <button
@@ -144,7 +144,7 @@ export default function Collections() {
             className={[
               'cursor-pointer',
               'bg-transparent border border-orange-100 rounded-sm text-orange-100',
-              'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
+              'transition-colors ease-in-out min-h-6 min-w-6 flex justify-center items-center',
             ].join(' ')}
             onClick={() => setShowCompleted(!showCompleted)}
           >
@@ -152,10 +152,12 @@ export default function Collections() {
               <CheckIcon className="w-5 h-5 text-orange-100" />
             ) : null}
           </button>
-          Show completed {screen.toLowerCase()}?
+          <span className="text-center">
+            Show completed {screen.toLowerCase()}?
+          </span>
         </div>
       </div>
-      <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-6 md:px-12 md:py-6">
+      <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-2 md:px-12 md:py-6">
         {sort === 'collector' || sort === 'digsite' || sort === 'name'
           ? Object.entries(groupedCollections).map(
               ([key, { isComplete, collections }]) => (

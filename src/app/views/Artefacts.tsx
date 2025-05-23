@@ -109,13 +109,13 @@ export default function Artefacts() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-4 justify-between px-6 py-6 md:px-12 md:py-6">
+      <div className="flex flex-col sm:flex-row items-center gap-4 justify-between px-6 py-6 md:px-12 md:py-6">
         <div className="flex flex-row gap-2 border border-orange-100 rounded-md p-2">
           <MagnifyingGlassIcon className="w-6 h-6 text-orange-100" />
           <input
             type="text"
             className="w-full text-orange-100 !outline-none"
-            placeholder="Search..."
+            placeholder="Search artefacts..."
             value={searchQuery}
             onChange={handleSearch}
           />
@@ -142,7 +142,7 @@ export default function Artefacts() {
           Show completed {screen.toLowerCase()}?
         </div>
       </div>
-      <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-6 md:px-12 md:py-6">
+      <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-2 md:px-12 md:py-6">
         {searchQuery && (
           <div className="flex flex-row gap-2 items-center text-orange-100 italic">
             Showing {filteredArtefacts.length} of {artefacts.length} artefacts
@@ -156,7 +156,7 @@ export default function Artefacts() {
                 key={`${hotspot}_container`}
                 className="relative w-full mt-2"
               >
-                <span className="cursor-help flex flex-col md:flex-row w-full justify-between items-center py-4 gap-y-3">
+                <span className="cursor-help flex flex-col md:flex-row w-full justify-between items-center py-4 gap-y-1">
                   <h2
                     className={[
                       'text-xl text-orange-100 font-semibold',

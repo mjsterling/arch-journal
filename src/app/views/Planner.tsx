@@ -8,6 +8,7 @@ import { useGlobalState } from '../data/GlobalStateProvider';
 import { Materials, MaterialsList } from '../data/Materials';
 import Icon from '../components/Icon';
 import { useContextMenu } from '../data/useContextMenus';
+import { Combobox } from '../components/Combobox';
 
 export default function Planner() {
   const { artefacts, isComplete } = useArtefacts();
@@ -124,25 +125,15 @@ export default function Planner() {
             </button>
           </div>
         ) : (
-          <>
-            <h2 className="text-2xl mx-auto">Load a collection:</h2>
-            <select
-              className="text-xl bg-gray-800 text-orange-100 p-2 rounded-md cursor-pointer"
-              onChange={(e) => {
-                setActiveCollection(e.target.value);
-              }}
-              value=""
-            >
-              <option value="" disabled>
-                Select a collection
-              </option>
-              {collections.map((collection) => (
-                <option key={collection.name} value={collection.name}>
-                  ({collection.levelToComplete}) {collection.name}
-                </option>
-              ))}
-            </select>
-          </>
+          <Combobox
+            className="w-full max-w-[500px] mx-auto"
+            placeholder="Search for a collection..."
+            options={collections.map((coll) => ({
+              value: coll.name,
+              displayValue: `${coll.name} (${coll.levelToComplete})`,
+            }))}
+            onSelect={(coll) => setActiveCollection(coll.value)}
+          />
         )}
       </div>
       <div className="flex flex-row gap-4 justify-center items-center w-full">
@@ -202,7 +193,7 @@ export default function Planner() {
             {selectedCollectionData.artefacts.map((artefact) => (
               <li
                 key={artefact.name}
-                className="grid grid-cols-[64px_1.2fr_2fr] grid-rows-1 gap-4 justify-start items-center bg-[#FFF1] rounded-md p-4"
+                className="grid grid-cols-[64px_1.2fr_2fr] grid-rows-2 sm:grid-rows-1 gap-4 justify-start items-center bg-[#FFF1] rounded-md p-4"
               >
                 <ArtefactCollectionButton
                   mode="collectionPage"
@@ -212,8 +203,10 @@ export default function Planner() {
                   image={artefact.image}
                   status={artefact.collections[selectedCollectionData.name]}
                 />
-                <span className="text-lg font-semibold">{artefact.name}</span>
-                <div className="flex flex-row gap-8 justify-end items-center">
+                <span className="text-lg font-semibold col-span-2 sm:col-span-1">
+                  {artefact.name}
+                </span>
+                <div className="flex flex-row gap-8 justify-center sm:justify-end items-center col-span-3 sm:col-span-1">
                   {Object.entries(artefact.materials)
                     .sort(([name1], [name2]) => (name1 > name2 ? 1 : -1))
                     .map(([material, amount]) => (
@@ -387,12 +380,6 @@ const MaterialDisplay = (material: {
 }) => {
   const { createMaterialContextMenu, createWikiContextMenu } = useContextMenu();
   return (
-    //                 {material.isArchMaterial ? material.storage : ''}
-    //                 {material.isArchMaterial ? ' / ' : ''}
-    //                 {material.amount}
-    //                 {material.diff < 0 ? ` (${material.diff})` : ''}
-    //               </span>
-    //             </div>
     <div
       key={material.name}
       className="flex flex-col gap-2 justify-center items-center"

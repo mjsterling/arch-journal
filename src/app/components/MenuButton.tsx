@@ -5,9 +5,9 @@ export default function MenuButton({ label }: { label: Screens }) {
   return (
     <button
       className={[
-        'rounded-md border-b text-lg border-b-transparent px-5 py-1 cursor-pointer text-orange-100',
+        'rounded-md border-b text-lg border-b-transparent px-5 py-3 md:py-1 cursor-pointer text-orange-100',
         label === screen ? 'font-bold border-b-orange-100' : 'font-normal',
-        'transition-colors ease-in-out',
+        'transition-colors ease-in-out active:bg-[#fff1]',
       ].join(' ')}
       onClick={() => setScreen(label)}
     >

@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 export const ArtefactInfobox = ({
   artefact,
   collection,
+  collector,
   open,
   mode,
 }: {
@@ -33,15 +34,27 @@ export const ArtefactInfobox = ({
   if (!open) return null;
   return (
     <div
-      className="absolute left-2/3 top-2/3 bg-gray-900 border border-white rounded-md flex flex-col justify-center items-center gap-3 transition-all p-3 min-w-fit cursor-default"
+      className="absolute left-2/3 top-2/3 bg-gray-900 border border-white rounded-md flex-col justify-center items-center gap-3 transition-all p-3 min-w-fit cursor-default hidden lg:flex"
       style={{ opacity }}
       onClick={(e) => {
         e.stopPropagation();
       }}
     >
       <div className="flex flex-row gap-2 items-center">
-        <span className="text-sm font-semibold text-orange-100 uppercase text-nowrap px-4">
+        <a
+          onClick={() =>
+            mode === 'artefactPage'
+              ? goToCollection(collection)
+              : goToArtefact(artefact.name)
+          }
+          className="text-sm font-semibold text-orange-100 uppercase text-nowrap cursor-pointer hover:underline"
+        >
           {mode === 'artefactPage' ? collection : artefact.name}
+        </a>
+      </div>
+      <div className="flex flex-row gap-2 items-center">
+        <span className="text-xs font-medium text-orange-100 text-nowrap">
+          {mode === 'artefactPage' ? collector : artefact.hotspot}
         </span>
       </div>
       {mode === 'artefactPage' ? (

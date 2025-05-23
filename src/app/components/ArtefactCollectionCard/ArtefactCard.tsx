@@ -10,6 +10,7 @@ import Icon from '../Icon';
 import ArtefactMiscButton from './ArtefactMiscButton';
 import { CardContainer } from './CardContainer';
 import useHideCard from './useHideCard';
+import { useContextMenu } from '@/app/data/useContextMenus';
 
 export default function ArtefactCard(props: {
   artefact: Artefact;
@@ -35,6 +36,8 @@ export default function ArtefactCard(props: {
     [artefact, highlightedArtefact]
   );
 
+  const { createMaterialContextMenu } = useContextMenu();
+
   const { onContextMenu } = useHandlers(artefact, isComplete, digsiteInfo);
   const { hidden, opacity } = useHideCard(
     isComplete && !isHighlighted && !alwaysShow
@@ -52,11 +55,11 @@ export default function ArtefactCard(props: {
       combined={combined}
       onContextMenu={onContextMenu}
     >
-      <div className="flex justify-center md:justify-start items-center mb-4 md:mb-0 gap-4  w-full  font-semibold text-orange-100">
+      <div className="flex justify-between md:justify-start items-center mb-4 md:mb-0 gap-4 w-full font-semibold text-orange-100">
         <Icon
           src={artefact.image}
           alt={artefact.name}
-          className="h-8 w-14 md:h-10 md:w-10 object-contain transition-all"
+          className="h-8 w-8 md:h-10 md:w-10 object-contain transition-all"
         />
         <div className="flex flex-col items-center md:items-start gap-1">
           <p
@@ -79,6 +82,7 @@ export default function ArtefactCard(props: {
                   title={name}
                   contextMenu
                   className="h-5 w-5 object-contain cursor-help"
+                  onContextMenu={createMaterialContextMenu(name)}
                 />
                 <span className="text-sm text-orange-100">{amount}</span>
               </div>

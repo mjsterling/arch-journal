@@ -25,9 +25,11 @@ export default function CollectionCard({
   }, [collection]);
 
   const digsiteInfo = useMemo(() => {
-    return digsiteNames.map((digsiteName) => {
-      return { ...Digsites[digsiteName], name: digsiteName };
-    });
+    return digsiteNames.length === 1
+      ? { ...Digsites[digsiteNames[0]], name: digsiteNames[0] }
+      : digsiteNames.map((digsiteName) => {
+          return { ...Digsites[digsiteName], name: digsiteName };
+        });
   }, [digsiteNames]);
 
   const isComplete = useMemo(() => {
@@ -111,22 +113,22 @@ export default function CollectionCard({
       onContextMenu={onContextMenu}
       opacity={opacity}
     >
-      <div className="flex justify-start items-center mb-4 md:mb-0 gap-4 min-w-[270px] font-semibold text-orange-100">
+      <div className="flex w-full px-3 lg:px-0 justify-between md:justify-start items-center mb-4 md:mb-0 gap-4 lg:w-[440px] font-semibold text-orange-100">
         <Icon
           src={collection.image}
           alt={collection.name}
           className="h-8 w-8 lg:h-10 lg:w-10 object-contain sm:block"
         />
-        <div className="flex flex-col items-start gap-1">
+        <div className="flex flex-col items-center md:items-start gap-1">
           <p
             className={[
-              'text-left text-wrap text-lg',
+              'text-center md:text-left text-wrap text-lg',
               isHighlighted ? 'text-yellow-500' : 'text-orange-100',
             ].join(' ')}
           >
             {collection.name.replace('Museum -', 'M.')}
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-3 items-center md:items-start">
             {collection.reward &&
               !isComplete &&
               Object.entries(collection.reward).map(([name, amount]) => (
@@ -183,7 +185,7 @@ export default function CollectionCard({
           />
         </div>
       </div>
-      <div className="flex w-full h-fit flex-row flex-wrap items-center content-start gap-2 justify-start">
+      <div className="flex w-full h-fit flex-row flex-wrap items-center gap-2 justify-center lg:justify-start">
         {collection.artefacts &&
           collection.artefacts.map((artefact: Artefact) => {
             return (

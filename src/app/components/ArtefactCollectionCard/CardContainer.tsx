@@ -35,32 +35,20 @@ export const CardContainer = ({
   opacity: number;
   onContextMenu: (e: React.MouseEvent) => void;
 }) => {
-  const [backgroundColor, setBackgroundColor] = useState('#333');
-  const [borderColor, setBorderColor] = useState('#333');
+  const [backgroundColor, setBackgroundColor] = useState<string | string[]>(
+    '#3343'
+  );
+  const [borderColor, setBorderColor] = useState<string | string[]>('#334');
   useEffect(() => {
     if (Array.isArray(digsiteInfo)) {
-      setBackgroundColor(digsiteInfo[0].backgroundColor);
-      setBorderColor(digsiteInfo[0].borderColor);
+      setBackgroundColor(digsiteInfo.map((site) => site.backgroundColor));
+      setBorderColor(digsiteInfo.map((site) => site.borderColor));
     } else if (digsiteInfo) {
       setBackgroundColor(digsiteInfo.backgroundColor);
       setBorderColor(digsiteInfo.borderColor);
     }
   }, [digsiteInfo]);
-  useEffect(() => {
-    if (!Array.isArray(digsiteInfo)) return;
-    const lastIndex = digsiteInfo.findIndex(
-      (site) => site.backgroundColor === backgroundColor
-    );
-    setTimeout(() => {
-      if (lastIndex === digsiteInfo.length - 1) {
-        setBackgroundColor(digsiteInfo[0].backgroundColor);
-        setBorderColor(digsiteInfo[0].borderColor);
-      } else {
-        setBackgroundColor(digsiteInfo[lastIndex + 1].backgroundColor);
-        setBorderColor(digsiteInfo[lastIndex + 1].borderColor);
-      }
-    }, 5000);
-  }, [digsiteInfo, backgroundColor]);
+
   return (
     <div
       className={[
@@ -70,13 +58,28 @@ export const CardContainer = ({
           ? 'outline-2 -outline-offset-2 outline-yellow-500 z-10'
           : 'z-0',
         combined
-          ? 'rounded-none border-t-1 first-of-type:border-t-2 border-b-1 last-of-type:border-b-2 last-of-type:rounded-b-lg first-of-type:rounded-t-lg'
-          : 'rounded-md',
+          ? 'rounded-none border-t-1 first-of-type:border-t-2 border-b-1 last-of-type:border-b-2'
+          : 'rounded-none',
       ].join(' ')}
       style={{
-        backgroundColor,
-        borderColor,
+        backgroundColor:
+          typeof backgroundColor === 'string' ? backgroundColor : undefined,
+        borderColor: typeof borderColor === 'string' ? borderColor : undefined,
         opacity,
+
+        ...(Array.isArray(backgroundColor) &&
+        Array.isArray(borderColor) &&
+        Array.isArray(digsiteInfo)
+          ? {
+              backgroundImage: `linear-gradient(to right, ${backgroundColor.join(
+                ', '
+              )})`,
+              borderImageSource: `linear-gradient(to right, ${borderColor.join(
+                ', '
+              )})`,
+              borderImageSlice: 1,
+            }
+          : {}),
       }}
       id={name.replace(/\W/g, '')}
       onContextMenu={onContextMenu}
