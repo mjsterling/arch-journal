@@ -31,6 +31,7 @@ export const ArtefactInfobox = ({
       setOpacity(0);
     }
   }, [open]);
+  const { colorblindMode } = useGlobalState();
   if (!open) return null;
   return (
     <div
@@ -58,26 +59,54 @@ export const ArtefactInfobox = ({
         </span>
       </div>
       {mode === 'artefactPage' ? (
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           {artefactsInCollection.map((art) => (
             <div
               key={`infobox_${collection}_${art.name}`}
-              className="grid grid-cols-[12px_1fr] items-center gap-2 px-4"
+              className="grid grid-cols-[18px_1fr] items-center gap-4 px-4"
             >
-              <div
-                className={[
-                  'w-3 h-3 rounded-full flex items-center justify-center',
-                  art.collections[collection] === 'Not Found'
-                    ? 'bg-gray-500'
+              {colorblindMode ? (
+                <div
+                  className={[
+                    'w-6 h-6 rounded-full flex items-center justify-center  font-bold mr-2 text-orange-100',
+                    art.collections[collection] === 'Not Found'
+                      ? 'bg-gray-500 rounded-md'
+                      : art.collections[collection] === 'Damaged'
+                      ? 'bg-orange-700 rounded-r-3xl rounded-l-md'
+                      : art.collections[collection] === 'Restored'
+                      ? 'bg-purple-600 rounded-l-3xl rounded-r-md'
+                      : art.collections[collection] === 'Completed'
+                      ? 'bg-green-700 rounded-3xl'
+                      : '',
+                  ].join(' ')}
+                >
+                  {art.collections[collection] === 'Not Found'
+                    ? 'N'
                     : art.collections[collection] === 'Damaged'
-                    ? 'bg-orange-700'
+                    ? 'D'
                     : art.collections[collection] === 'Restored'
-                    ? 'bg-yellow-600'
+                    ? 'R'
                     : art.collections[collection] === 'Completed'
-                    ? 'bg-green-700'
-                    : '',
-                ].join(' ')}
-              ></div>
+                    ? 'C'
+                    : ''}
+                </div>
+              ) : (
+                <div
+                  className={[
+                    'w-3 h-3 rounded-full flex items-center justify-center',
+                    art.collections[collection] === 'Not Found'
+                      ? 'bg-gray-500'
+                      : art.collections[collection] === 'Damaged'
+                      ? 'bg-orange-700'
+                      : art.collections[collection] === 'Restored'
+                      ? 'bg-yellow-600'
+                      : art.collections[collection] === 'Completed'
+                      ? 'bg-green-700'
+                      : '',
+                  ].join(' ')}
+                ></div>
+              )}
+
               <span
                 className="text-sm text-left text-orange-100 text-nowrap font-medium hover:underline cursor-pointer"
                 onClick={() => goToArtefact(art.name, true)}

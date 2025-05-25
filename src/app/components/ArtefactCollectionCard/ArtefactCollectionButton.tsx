@@ -21,6 +21,7 @@ export default function ArtefactCollectionButton({
   mode: 'artefactPage' | 'collectionPage';
 }) {
   const [infoboxOpen, setInfoboxOpen] = useState(false);
+  const { colorblindMode } = useGlobalState();
 
   const { handleClick, handleDoubleClick, handleContextMenu } = useHandlers(
     artefact,
@@ -45,11 +46,16 @@ export default function ArtefactCollectionButton({
         status === 'Not Found'
           ? 'bg-gray-200/30 border-gray-300/60 hover:bg-orange-600/80 cursor-pointer'
           : status === 'Damaged'
-          ? 'bg-orange-700/60 border-orange-700 hover:bg-yellow-500/80 cursor-pointer'
+          ? 'bg-orange-700/60 border-orange-700 hover:bg-yellow-500/80 cursor-pointer' +
+            (colorblindMode && ' rounded-r-4xl pr-1 [&]:hover:bg-purple-600/80')
           : status === 'Restored'
-          ? 'bg-yellow-600/60 border-yellow-600 hover:bg-green-500/80 cursor-pointer'
+          ? 'bg-yellow-600/60 border-yellow-600 hover:bg-green-700/80 cursor-pointer' +
+            (colorblindMode &&
+              ' rounded-l-4xl pl-1 [&]:bg-purple-600/60 [&]:border-purple-600 [&]:hover:bg-green-700/80')
           : status === 'Completed'
-          ? 'bg-green-800/60 border-green-800 cursor-help'
+          ? 'bg-green-800/60 border-green-800 cursor-help' +
+            (colorblindMode &&
+              ' rounded-l-4xl rounded-r-4xl [&]:bg-green-700/60 [&]:border-green-700')
           : '',
       ].join(' ')}
     >

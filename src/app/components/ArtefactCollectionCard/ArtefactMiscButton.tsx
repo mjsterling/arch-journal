@@ -104,7 +104,7 @@ export default function ArtefactButton({
           : status === 'Damaged'
           ? 'bg-orange-700/70 border-orange-700 hover:bg-yellow-500/85 cursor-pointer'
           : status === 'Restored'
-          ? 'bg-yellow-600/70 border-yellow-600 hover:bg-green-500/85 cursor-pointer'
+          ? 'bg-yellow-600/70 border-yellow-600 hover:bg-green-700/85 cursor-pointer'
           : status === 'Completed'
           ? 'bg-green-800/60 border-green-800 cursor-help'
           : '',

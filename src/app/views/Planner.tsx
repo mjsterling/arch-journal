@@ -401,7 +401,7 @@ const MaterialDisplay = (material: {
             ? 'text-yellow-500'
             : material.diff < 0
             ? 'text-red-500'
-            : 'text-green-500',
+            : 'text-green-700',
         ].join(' ')}
       >
         {material.isArchMaterial

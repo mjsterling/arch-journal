@@ -4,7 +4,7 @@ import React, { createContext, useEffect, useState } from 'react';
 export enum Screens {
   Artefacts = 'Artefacts',
   Collections = 'Collections',
-  MaterialStorage = 'Mat. Storage',
+  MaterialStorage = 'Storage',
   Planner = 'Planner',
 }
 export type ContextMenuItem = {
@@ -41,6 +41,8 @@ type GlobalStateContext = {
   setActiveCollection: (collection: string) => void;
   highlightedArtefact: string;
   highlightedCollection: string;
+  colorblindMode?: boolean;
+  toggleColorblindMode?: () => void;
 };
 
 const emptyMaterialStorage = {
@@ -115,6 +117,8 @@ const globalStateContext = createContext<GlobalStateContext>({
   setActiveCollection: () => {},
   highlightedArtefact: '',
   highlightedCollection: '',
+  colorblindMode: false,
+  toggleColorblindMode: () => {},
 });
 
 export default function GlobalStateProvider({
@@ -242,6 +246,8 @@ export default function GlobalStateProvider({
       })
     );
   };
+
+  const { colorblindMode, toggleColorblindMode } = useSettings();
   return (
     <globalStateContext.Provider
       value={{
@@ -262,6 +268,8 @@ export default function GlobalStateProvider({
         updateMaterialStorage,
         highlightedArtefact,
         highlightedCollection,
+        colorblindMode,
+        toggleColorblindMode,
       }}
     >
       <ContextMenu />
@@ -273,6 +281,7 @@ export default function GlobalStateProvider({
 import { useContext } from 'react';
 import ContextMenu from '../components/ContextMenu';
 import { Materials } from './Materials';
+import { useSettings } from './useSettings';
 
 export const useGlobalState = () => {
   const context = useContext(globalStateContext);
