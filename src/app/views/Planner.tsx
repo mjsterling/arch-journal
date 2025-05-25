@@ -173,7 +173,6 @@ export default function Planner() {
                 className="h-8 w-8 object-contain"
               />
               <p className="text-base font-semibold">
-                XP x{' '}
                 {Intl.NumberFormat('en-AU').format(
                   Math.round(
                     selectedCollectionData.artefacts
@@ -307,7 +306,6 @@ export default function Planner() {
                 className="h-8 w-8 object-contain"
               />
               <p className="text-base font-semibold">
-                XP x{' '}
                 {Intl.NumberFormat('en-AU').format(
                   Math.round(
                     selectedCollectionData.artefacts
