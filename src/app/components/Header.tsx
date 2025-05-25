@@ -132,7 +132,7 @@ export default function Header() {
             </div>
             <div className="flex flex-col items-end pt-4">
               <span className="text-xs text-gray-300 text-right">
-                Version 1.1.0 (2025/05/25)
+                Version 1.1.1 (2025/05/25)
               </span>
               <span className="text-xs text-gray-300 text-right">
                 Found a bug? Expected to see something that isn&apos;t here?
