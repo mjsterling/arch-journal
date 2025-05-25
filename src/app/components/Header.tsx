@@ -1,3 +1,4 @@
+'use client';
 import {
   Bars3Icon,
   CheckIcon,
@@ -134,11 +135,12 @@ export default function Header() {
                 Version 1.1.0 (2025/05/25)
               </span>
               <span className="text-xs text-gray-300 text-right">
-                Found a bug? Expected to see something that isn't here?
+                Found a bug? Expected to see something that isn&apos;t here?
               </span>
               <span className="text-xs text-gray-300 text-right">
+                Please&nbsp;
                 <a className="underline" href="https://discord.gg/NwzYjZadaS">
-                  Please contact me via Discord!
+                  contact me via Discord!
                 </a>
               </span>
             </div>
