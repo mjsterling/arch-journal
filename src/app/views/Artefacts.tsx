@@ -156,10 +156,10 @@ export default function Artefacts() {
                 key={`${hotspot}_container`}
                 className="relative w-full mt-2"
               >
-                <span className="cursor-help flex flex-col md:flex-row w-full justify-between items-center py-4 gap-y-1">
+                <span className="flex flex-col w-full md:flex-row justify-between items-center py-4 gap-y-1">
                   <h2
                     className={[
-                      'text-xl text-orange-100 font-semibold',
+                      'text-xl text-orange-100 font-semibold cursor-help',
                       completed ? 'opacity-50' : '',
                     ].join(' ')}
                     key={`${hotspot}_title`}

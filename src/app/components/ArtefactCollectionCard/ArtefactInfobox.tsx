@@ -31,7 +31,6 @@ export const ArtefactInfobox = ({
       setOpacity(0);
     }
   }, [open]);
-  const { colorblindMode } = useGlobalState();
   if (!open) return null;
   return (
     <div
@@ -65,47 +64,7 @@ export const ArtefactInfobox = ({
               key={`infobox_${collection}_${art.name}`}
               className="grid grid-cols-[18px_1fr] items-center gap-4 px-4"
             >
-              {colorblindMode ? (
-                <div
-                  className={[
-                    'w-6 h-6 rounded-full flex items-center justify-center  font-bold mr-2 text-orange-100',
-                    art.collections[collection] === 'Not Found'
-                      ? 'bg-gray-500 rounded-md'
-                      : art.collections[collection] === 'Damaged'
-                      ? 'bg-orange-700 rounded-r-3xl rounded-l-md'
-                      : art.collections[collection] === 'Restored'
-                      ? 'bg-purple-600 rounded-l-3xl rounded-r-md'
-                      : art.collections[collection] === 'Completed'
-                      ? 'bg-green-700 rounded-3xl'
-                      : '',
-                  ].join(' ')}
-                >
-                  {art.collections[collection] === 'Not Found'
-                    ? 'N'
-                    : art.collections[collection] === 'Damaged'
-                    ? 'D'
-                    : art.collections[collection] === 'Restored'
-                    ? 'R'
-                    : art.collections[collection] === 'Completed'
-                    ? 'C'
-                    : ''}
-                </div>
-              ) : (
-                <div
-                  className={[
-                    'w-3 h-3 rounded-full flex items-center justify-center',
-                    art.collections[collection] === 'Not Found'
-                      ? 'bg-gray-500'
-                      : art.collections[collection] === 'Damaged'
-                      ? 'bg-orange-700'
-                      : art.collections[collection] === 'Restored'
-                      ? 'bg-yellow-600'
-                      : art.collections[collection] === 'Completed'
-                      ? 'bg-green-700'
-                      : '',
-                  ].join(' ')}
-                ></div>
-              )}
+              <ArtefactStatusDisplay artefact={art} collection={collection} />
 
               <span
                 className="text-sm text-left text-orange-100 text-nowrap font-medium hover:underline cursor-pointer"
@@ -121,22 +80,13 @@ export const ArtefactInfobox = ({
           {Object.keys(artefact.collections).map((collection) => (
             <div
               key={`infobox_${artefact.name}_${collection}`}
-              className="grid grid-cols-[12px_1fr] items-center gap-2 px-4"
+              className="grid grid-cols-[18px_1fr] items-center gap-4 px-4"
             >
-              <div
-                className={[
-                  'w-3 h-3 rounded-full flex items-center justify-center',
-                  artefact.collections[collection] === 'Not Found'
-                    ? 'bg-gray-500'
-                    : artefact.collections[collection] === 'Damaged'
-                    ? 'bg-orange-700'
-                    : artefact.collections[collection] === 'Restored'
-                    ? 'bg-yellow-600'
-                    : artefact.collections[collection] === 'Completed'
-                    ? 'bg-green-700'
-                    : '',
-                ].join(' ')}
-              ></div>
+              <ArtefactStatusDisplay
+                artefact={artefact}
+                collection={collection}
+              />
+
               <span
                 className="text-sm text-left text-orange-100 text-nowrap font-semibold hover:underline cursor-pointer"
                 onClick={() => goToCollection(collection, true)}
@@ -147,6 +97,69 @@ export const ArtefactInfobox = ({
           ))}
         </div>
       )}
+    </div>
+  );
+};
+
+const ArtefactStatusDisplay = ({
+  artefact,
+  collection,
+}: {
+  artefact: Artefact;
+  collection: string;
+}) => {
+  const { colorblindMode } = useGlobalState();
+  const status = useMemo(
+    () => artefact.collections[collection],
+    [artefact, collection]
+  );
+
+  const baseContainerClass = useMemo(
+    () =>
+      colorblindMode
+        ? 'w-6 h-6 rounded-full flex items-center justify-center font-bold mr-2 text-orange-100'
+        : 'w-3 h-3 rounded-full flex items-center justify-center',
+    [colorblindMode]
+  );
+
+  const conditionalContainerClass = useMemo(() => {
+    if (colorblindMode) {
+      switch (status) {
+        case ArtefactStates.NotFound:
+          return `bg-gray-500 rounded-md`;
+        case ArtefactStates.Damaged:
+          return `bg-orange-700 rounded-r-3xl rounded-l-md`;
+        case ArtefactStates.Restored:
+          return `bg-purple-600 rounded-l-3xl rounded-r-md`;
+        case ArtefactStates.Completed:
+          return `bg-green-700 rounded-3xl`;
+        default:
+          return `bg-gray-500 rounded-md`;
+      }
+    } else {
+      switch (status) {
+        case ArtefactStates.NotFound:
+          return `bg-gray-500`;
+        case ArtefactStates.Damaged:
+          return `bg-orange-700`;
+        case ArtefactStates.Restored:
+          return `bg-yellow-600`;
+        case ArtefactStates.Completed:
+          return `bg-green-700`;
+        default:
+          return `bg-gray-500`;
+      }
+    }
+  }, [status, colorblindMode]);
+
+  const statusText = useMemo(() => {
+    if (!colorblindMode) return '';
+    return status[0];
+  }, [status, colorblindMode]);
+
+  return (
+    <div className={`${baseContainerClass} ${conditionalContainerClass}`}>
+      {statusText}
     </div>
   );
 };

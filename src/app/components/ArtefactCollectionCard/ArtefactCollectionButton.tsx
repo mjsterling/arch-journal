@@ -172,7 +172,11 @@ const useHandlers = (
               callback: () => wiki(artefact.name),
             },
             {
-              label: '[WIKI]' + artefact.hotspot,
+              label: '[WIKI]' + 'Collector: ' + collector,
+              callback: () => wiki(collector),
+            },
+            {
+              label: '[WIKI]' + 'Hotspot: ' + artefact.hotspot,
               callback: () => wiki(artefact.hotspot),
             },
           ]
@@ -182,8 +186,12 @@ const useHandlers = (
               callback: () => wiki(collection),
             },
             {
-              label: '[WIKI]' + collector,
+              label: '[WIKI]' + 'Collector: ' + collector,
               callback: () => wiki(collector),
+            },
+            {
+              label: '[WIKI]' + 'Hotspot: ' + artefact.hotspot,
+              callback: () => wiki(artefact.hotspot),
             },
           ],
     ]);
