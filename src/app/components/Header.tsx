@@ -44,7 +44,7 @@ export default function Header() {
             RS3 Arch Planner
           </h1>
           <h1 className="text-center text-xl justify-center items-center text-orange-100 hidden md:flex lg:text-2xl">
-            RS3 Archaeology Planner
+            RuneScape Archaeology Planner
           </h1>
           <div className="flex gap-x-3 gap-y-5 justify-end items-center content-center overflow-hidden transition-all duration-300">
             <div className="hidden lg:flex gap-2 items-center">
