@@ -21,9 +21,6 @@ export default function Header() {
   const toggleSettingsMenu = () => {
     setSettingsMenuOpen((prev) => !prev);
   };
-  const closeSettingsMenu = () => {
-    setSettingsMenuOpen(false);
-  };
   const { colorblindMode, toggleColorblindMode } = useGlobalState();
   return (
     <>
@@ -64,6 +61,8 @@ export default function Header() {
                 <img
                   className="h-5 w-5 min-h-5 min-w-5"
                   src="assets/discord.svg"
+                  alt="Discord"
+                  title="Join the ScapeTools Discord server"
                 />
               </button>
               <button
@@ -138,9 +137,8 @@ export default function Header() {
                 Found a bug? Expected to see something that isn't here?
               </span>
               <span className="text-xs text-gray-300 text-right">
-                Please{' '}
                 <a className="underline" href="https://discord.gg/NwzYjZadaS">
-                  contact me via Discord!
+                  Please contact me via Discord!
                 </a>
               </span>
             </div>
