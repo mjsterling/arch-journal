@@ -25,7 +25,7 @@ export default function Header() {
   const { colorblindMode, toggleColorblindMode } = useGlobalState();
   return (
     <>
-      <div className="sticky top-0 z-50 w-full flex flex-col pt-4 pb-0 lg:py-4 justify-start gap-y-2 gap-x-8 px-6 md:px-12 items-center bg-[#0009] backdrop-blur-[10px]">
+      <div className="sticky top-0 z-50 w-full flex flex-col pt-4 pb-0 lg:pb-2 justify-start gap-y-2 gap-x-8 px-6 md:px-12 items-center bg-[#0009] backdrop-blur-[10px]">
         <div className="flex w-full justify-between gap-6 items-center">
           <a href="https://scape.tools/">
             <Icon

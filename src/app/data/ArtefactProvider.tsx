@@ -1,3 +1,4 @@
+'use client';
 import React, { createContext, useEffect, useState } from 'react';
 import artefactDataRaw from './artefacts.json';
 import { useContext } from 'react';
