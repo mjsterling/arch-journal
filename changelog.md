@@ -4,6 +4,7 @@
 
 - Fixed colorblind mode on infoboxes not working correctly in Collection mode
 - Removed misleading help cursor in area above hotspots on Artefacts page
+- Fixed cursor not showing on artefact buttons with colorblind mode off
 
 **v1.1.0 - 25/05/2025**
 
