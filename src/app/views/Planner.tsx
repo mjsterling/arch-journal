@@ -338,9 +338,9 @@ export default function Planner() {
                     />
                     <p className="text-base font-semibold">
                       {reward}{' '}
-                      {amount > 1
-                        ? `x ${Intl.NumberFormat('en-AU').format(amount)}`
-                        : ''}
+                      {`x ${Intl.NumberFormat('en-AU').format(
+                        amount * numberOfRecurringCompletions
+                      )}`}
                     </p>
                   </div>
                 );
