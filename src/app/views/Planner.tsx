@@ -268,10 +268,10 @@ export default function Planner() {
               value={numberOfRecurringCompletions}
               onChange={(e) =>
                 setNumberOfRecurringCompletions(
-                  Math.max(0, Math.min(100, Number(e.target.value)))
+                  Number(e.target.value.replace(/[^0-9]/g, '') || 0)
                 )
               }
-              className="w-16 text-center bg-gray-800 text-orange-100 p-2 rounded-md cursor-pointer"
+              className="w-24 text-center bg-gray-800 text-orange-100 p-2 rounded-md cursor-pointer"
             />
           </div>
           <div className="flex flex-row gap-8 w-full justify-center items-center">
