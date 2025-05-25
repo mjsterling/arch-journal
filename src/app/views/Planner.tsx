@@ -162,6 +162,27 @@ export default function Planner() {
       {mode === 'first' && selectedCollectionData && (
         <div className="flex flex-col gap-8 w-full">
           <div className="flex flex-row gap-8 w-full justify-center items-center">
+            <div
+              key={`${selectedCollectionData.name}_experience}`}
+              onContextMenu={createWikiContextMenu('Experience')}
+              className="flex flex-col items-center text-orange-100 px-2 cursor-help"
+            >
+              <Icon
+                src={`/assets/collections/Experience.png`}
+                alt={'Experience'}
+                className="h-8 w-8 object-contain"
+              />
+              <p className="text-base font-semibold">
+                XP x{' '}
+                {Intl.NumberFormat('en-AU').format(
+                  Math.round(
+                    selectedCollectionData.artefacts
+                      .map((artefact) => artefact.xp)
+                      .reduce((a, b) => a + b, 0)
+                  )
+                )}
+              </p>
+            </div>
             {Object.entries(
               selectedCollectionData.reward ??
                 selectedCollectionData.recurringReward
@@ -275,6 +296,27 @@ export default function Planner() {
             />
           </div>
           <div className="flex flex-row gap-8 w-full justify-center items-center">
+            <div
+              key={`${selectedCollectionData.name}_experience}`}
+              onContextMenu={createWikiContextMenu('Experience')}
+              className="flex flex-col items-center text-orange-100 px-2 cursor-help"
+            >
+              <Icon
+                src={`/assets/collections/Experience.png`}
+                alt={'Experience'}
+                className="h-8 w-8 object-contain"
+              />
+              <p className="text-base font-semibold">
+                XP x{' '}
+                {Intl.NumberFormat('en-AU').format(
+                  Math.round(
+                    selectedCollectionData.artefacts
+                      .map((artefact) => artefact.xp)
+                      .reduce((a, b) => a + b, 0) * numberOfRecurringCompletions
+                  )
+                )}
+              </p>
+            </div>
             {Object.entries(selectedCollectionData.recurringReward).map(
               ([reward, amount]) => {
                 return (
@@ -317,7 +359,10 @@ export default function Planner() {
                   contextMenu
                 />
                 <span className="text-lg font-semibold">
-                  {artefact.name} x {numberOfRecurringCompletions}
+                  {artefact.name} x{' '}
+                  {Intl.NumberFormat('en-AU').format(
+                    numberOfRecurringCompletions
+                  )}
                 </span>
                 <div className="flex flex-row gap-8 justify-end items-center">
                   {Object.entries(artefact.materials)
