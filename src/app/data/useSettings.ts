@@ -2,13 +2,14 @@
 import { useEffect, useState } from 'react';
 
 export const useSettings = () => {
-  const [colorblindMode, setColorblindMode] = useState<boolean>(() => {
+  const [colorblindMode, setColorblindMode] = useState<boolean>(false);
+  useEffect(() => {
     const storedMode = window.localStorage.getItem(
       'arch-journal-settings-colorblindMode'
     );
 
-    return storedMode === 'true';
-  });
+    setColorblindMode(storedMode === 'true');
+  }, []);
   const toggleColorblindMode = () => {
     setColorblindMode((prev) => !prev);
   };
