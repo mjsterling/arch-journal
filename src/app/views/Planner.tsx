@@ -203,7 +203,10 @@ export default function Planner() {
                     className="h-8 w-8 object-contain"
                   />
                   <p className="text-base font-semibold">
-                    {reward} x {Intl.NumberFormat('en-AU').format(amount)}
+                    {reward}{' '}
+                    {amount > 1
+                      ? `x ${Intl.NumberFormat('en-AU').format(amount)}`
+                      : ''}
                   </p>
                 </div>
               );
@@ -334,10 +337,10 @@ export default function Planner() {
                       className="h-8 w-8 object-contain"
                     />
                     <p className="text-base font-semibold">
-                      {reward} x{' '}
-                      {Intl.NumberFormat('en-AU').format(
-                        amount * numberOfRecurringCompletions
-                      )}
+                      {reward}{' '}
+                      {amount > 1
+                        ? `x ${Intl.NumberFormat('en-AU').format(amount)}`
+                        : ''}
                     </p>
                   </div>
                 );
