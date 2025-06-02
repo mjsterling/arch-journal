@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from 'react';
 
 export enum Screens {
   Artefacts = 'Artefacts',
+  BankCleaner = 'Bank Cleaner',
   Collections = 'Collections',
   MaterialStorage = 'Storage',
   Planner = 'Planner',

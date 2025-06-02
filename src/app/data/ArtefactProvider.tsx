@@ -38,6 +38,10 @@ export type Artefact = {
   researchers: { [key: string]: ArtefactStates };
   misc: { [key: string]: ArtefactStates };
   quests: { [key: string]: ArtefactStates };
+  count: {
+    damaged: number;
+    restored: number;
+  };
   level: number;
   xp: number;
   chronotes: number;
@@ -69,6 +73,10 @@ export default function ArtefactProvider({
       researchers: { [key: string]: ArtefactStates };
       quests: { [key: string]: ArtefactStates };
       misc: { [key: string]: ArtefactStates };
+      count?: {
+        damaged: number;
+        restored: number;
+      };
     }> | null = null;
     if (artefactState) {
       artefactStateParsed = JSON.parse(artefactState);
@@ -80,6 +88,7 @@ export default function ArtefactProvider({
         researchers: {} as { [key: string]: ArtefactStates },
         quests: {} as { [key: string]: ArtefactStates },
         misc: {} as { [key: string]: ArtefactStates },
+        count: { damaged: 0, restored: 0 },
       };
       const foundArtefact = artefactStateParsed?.find(
         (_artefact) => _artefact.name === artefact.name
@@ -112,7 +121,10 @@ export default function ArtefactProvider({
             foundArtefact?.misc?.[misc] ?? ArtefactStates.NotFound;
         }
       }
-
+      artefactState.count = {
+        damaged: foundArtefact?.count?.damaged ?? 0,
+        restored: foundArtefact?.count?.restored ?? 0,
+      };
       return {
         ...artefact,
         image:
@@ -122,6 +134,7 @@ export default function ArtefactProvider({
         researchers: artefactState.researchers,
         misc: artefactState.misc,
         quests: artefactState.quests,
+        count: artefactState.count,
       };
     });
 

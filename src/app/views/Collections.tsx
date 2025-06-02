@@ -5,6 +5,7 @@ import CollectionCard from '../components/ArtefactCollectionCard/CollectionCard'
 import { useGlobalState } from '../data/GlobalStateProvider';
 import { CheckIcon } from '@heroicons/react/16/solid';
 import { ArtefactStates } from '../data/Artefact';
+import { RadioGroup } from '../components/RadioGroup';
 
 export default function Collections() {
   const { artefacts, isComplete } = useArtefacts();
@@ -87,57 +88,17 @@ export default function Collections() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col items-center md:flex-row gap-4 gap-y-8 justify-between px-6 py-6 md:px-12 md:py-6">
-        <div className="flex flex-wrap justify-center gap-4 items-center text-orange-100">
-          Sort by:
-          <div className="flex gap-2 items-center text-orange-100">
-            <button
-              value={sort === 'levelToComplete' ? 'checked' : 'unchecked'}
-              className={[
-                'cursor-pointer',
-                'bg-transparent border border-orange-100 rounded-sm text-orange-100',
-                'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
-              ].join(' ')}
-              onClick={() => setSort('levelToComplete')}
-            >
-              {sort === 'levelToComplete' ? (
-                <CheckIcon className="w-5 h-5 text-orange-100" />
-              ) : null}
-            </button>
-            Level
-          </div>
-          <div className="flex gap-2 items-center text-orange-100">
-            <button
-              value={sort === 'collector' ? 'checked' : 'unchecked'}
-              className={[
-                'cursor-pointer',
-                'bg-transparent border border-orange-100 rounded-sm text-orange-100',
-                'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
-              ].join(' ')}
-              onClick={() => setSort('collector')}
-            >
-              {sort === 'collector' ? (
-                <CheckIcon className="w-5 h-5 text-orange-100" />
-              ) : null}
-            </button>
-            Collector
-          </div>
-          <div className="flex gap-2 items-center text-orange-100">
-            <button
-              value={sort === 'name' ? 'checked' : 'unchecked'}
-              className={[
-                'cursor-pointer',
-                'bg-transparent border border-orange-100 rounded-sm text-orange-100',
-                'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
-              ].join(' ')}
-              onClick={() => setSort('name')}
-            >
-              {sort === 'name' ? (
-                <CheckIcon className="w-5 h-5 text-orange-100" />
-              ) : null}
-            </button>
-            Alphabetical
-          </div>
-        </div>{' '}
+        <RadioGroup
+          label="Sort by:"
+          options={[
+            { key: 'levelToComplete', label: 'Level' },
+            { key: 'collector' },
+            { key: 'digsite' },
+            { key: 'name', label: 'Alphabetical' },
+          ]}
+          value={sort}
+          setValue={setSort}
+        />
         <div className="flex gap-2 items-center text-orange-100">
           <button
             value={showCompleted ? 'checked' : 'unchecked'}

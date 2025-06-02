@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Collections as CollectionData } from '../data/Collections';
+import { Collection, Collections as CollectionData } from '../data/Collections';
 import { ArrowUturnLeftIcon } from '@heroicons/react/20/solid';
 import { useArtefacts } from '../data/ArtefactProvider';
 import { ArtefactStates } from '../data/Artefact';
@@ -9,8 +9,177 @@ import { Materials, MaterialsList } from '../data/Materials';
 import Icon from '../components/Icon';
 import { useContextMenu } from '../data/useContextMenus';
 import { Combobox } from '../components/Combobox';
+import { MaterialDisplay } from '../components/Planner/MaterialDisplay';
+import { MaterialCard } from '../components/Planner/MaterialCard';
+import { RewardDisplay } from '../components/Planner/RewardDisplay';
+import { CollectionSearch } from '../components/Planner/CollectionSearch';
+import { ModeSelect } from '../components/Planner/ModeSelect';
+import { RadioGroup } from '../components/RadioGroup';
 
 export default function Planner() {
+  const { createMaterialContextMenu, createWikiContextMenu } = useContextMenu();
+  const { materialStorage } = useGlobalState();
+  const {
+    activeCollection,
+    setActiveCollection,
+    collections,
+    mode,
+    setMode,
+    numberOfRecurringCompletions,
+    setNumberOfRecurringCompletions,
+    selectedCollectionIsComplete,
+    selectedCollectionData,
+    selectedCollectionMaterials,
+  } = usePlannerData();
+
+  return (
+    <div className="flex flex-col gap-8 text-orange-100 w-full max-w-[1000px] mx-auto">
+      <CollectionSearch
+        activeCollection={activeCollection}
+        setActiveCollection={setActiveCollection}
+        collections={collections}
+      />
+      <RadioGroup
+        options={[
+          {
+            key: 'first',
+            label: 'First Completion',
+            disabled: selectedCollectionIsComplete,
+          },
+          { key: 'recurring', label: 'Recurring Completions' },
+        ]}
+        value={mode}
+        setValue={setMode}
+        selectedCollectionIsComplete={selectedCollectionIsComplete}
+      />
+
+      {selectedCollectionData && (
+        <>
+          {mode === 'recurring' && (
+            <div className="flex flex-row gap-4 justify-center items-center">
+              <span className="text-lg font-semibold">
+                Number of Completions:
+              </span>
+              <input
+                value={numberOfRecurringCompletions}
+                onChange={(e) =>
+                  setNumberOfRecurringCompletions(
+                    Number(e.target.value.replace(/[^0-9]/g, '') || 0)
+                  )
+                }
+                className="w-24 text-center bg-gray-800 text-orange-100 p-2 rounded-md cursor-pointer"
+              />
+            </div>
+          )}
+          <div className="flex flex-col gap-8 w-full">
+            <RewardDisplay
+              selectedCollectionData={selectedCollectionData}
+              mode={mode}
+              numberOfRecurringCompletions={numberOfRecurringCompletions}
+            />
+            <ul className="flex flex-col gap-6 items-stretch">
+              {selectedCollectionData.artefacts.map((artefact) => (
+                <li
+                  key={artefact.name}
+                  className="grid grid-cols-[64px_1.2fr_2fr] grid-rows-2 sm:grid-rows-1 gap-4 justify-start items-center bg-[#FFF1] rounded-md p-4"
+                >
+                  {mode === 'first' ? (
+                    <ArtefactCollectionButton
+                      mode="collectionPage"
+                      artefact={artefact}
+                      collection={selectedCollectionData.name}
+                      collector={selectedCollectionData.collector}
+                      image={artefact.image}
+                      status={artefact.collections[selectedCollectionData.name]}
+                    />
+                  ) : (
+                    <Icon
+                      src={artefact.image}
+                      alt={artefact.name}
+                      className="h-8 w-8 cursor-help ml-3"
+                      contextMenu
+                    />
+                  )}
+                  <span className="text-lg font-semibold col-span-2 sm:col-span-1">
+                    {artefact.name}
+                    {mode === 'recurring' && (
+                      <>
+                        &nbsp;
+                        <span>
+                          x{' '}
+                          {Intl.NumberFormat('en-AU').format(
+                            numberOfRecurringCompletions
+                          )}
+                        </span>
+                      </>
+                    )}
+                  </span>
+                  <div className="flex flex-row gap-8 justify-center sm:justify-end items-center col-span-3 sm:col-span-1">
+                    {Object.entries(artefact.materials)
+                      .sort(([name1], [name2]) => (name1 > name2 ? 1 : -1))
+                      .map(([material, amount]) => (
+                        <div
+                          className={[
+                            'flex flex-col gap-1',
+                            mode === 'first' &&
+                            (artefact.collections[
+                              selectedCollectionData.name
+                            ] === ArtefactStates.Restored ||
+                              artefact.collections[
+                                selectedCollectionData.name
+                              ] === ArtefactStates.Completed)
+                              ? 'opacity-20'
+                              : '',
+                          ].join(' ')}
+                          key={`${artefact.name}_${material}`}
+                        >
+                          <div className="flex justify-center items-center">
+                            <Icon
+                              src={`/assets/materials/${material.replace(
+                                / /g,
+                                '_'
+                              )}.png`}
+                              alt={material}
+                              className="h-8 w-8 object-contain object-center cursor-help"
+                              onContextMenu={
+                                materialStorage.hasOwnProperty(material)
+                                  ? createMaterialContextMenu(material)
+                                  : createWikiContextMenu(material)
+                              }
+                            />
+                          </div>
+                          <span className="w-full text-center font-semibold">
+                            {amount *
+                              (mode === 'recurring'
+                                ? numberOfRecurringCompletions
+                                : 1)}
+                          </span>
+                        </div>
+                      ))}
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-col gap-8 w-full">
+              <div className="flex flex-col justify-center items-center w-full max-w-[1000px] mx-auto grid-rows-1 gap-6 py-8 bg-[#FFF1] rounded-md p-4">
+                <span className="col-span-2 text-lg font-semibold">
+                  {mode === 'first' ? 'Remaining Materials' : 'Total Materials'}
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-6 justify-center items-center">
+                  {selectedCollectionMaterials?.map((material) => (
+                    <MaterialDisplay {...material} key={material.name} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+const usePlannerData = () => {
   const { artefacts, isComplete } = useArtefacts();
   const { materialStorage, activeCollection, setActiveCollection } =
     useGlobalState();
@@ -103,362 +272,16 @@ export default function Planner() {
     materialStorage,
   ]);
 
-  const { createMaterialContextMenu, createWikiContextMenu } = useContextMenu();
-
-  return (
-    <div className="flex flex-col gap-8 text-orange-100 w-full max-w-[1000px] mx-auto">
-      <div className="flex flex-col gap-4 w-full">
-        {activeCollection ? (
-          <div className="flex flex-row gap-4 justify-center items-center">
-            <button
-              className="invisible pointer-events-none"
-              aria-hidden="true"
-            >
-              <ArrowUturnLeftIcon className="h-8 w-8 text-orange-100" />
-            </button>
-            <h2 className="text-2xl mx-auto">{activeCollection} </h2>
-            <button
-              className="cursor-pointer"
-              onClick={() => setActiveCollection('')}
-            >
-              <ArrowUturnLeftIcon className="h-8 w-8 text-orange-100" />
-            </button>
-          </div>
-        ) : (
-          <Combobox
-            className="w-full max-w-[500px] mx-auto"
-            placeholder="Search for a collection..."
-            options={collections.map((coll) => ({
-              value: coll.name,
-              displayValue: `${coll.name} (${coll.levelToComplete})`,
-            }))}
-            onSelect={(coll) => setActiveCollection(coll.value)}
-          />
-        )}
-      </div>
-      <div className="flex flex-row gap-4 justify-center items-center w-full">
-        <button
-          className={[
-            'px-5 py-1 rounded-md cursor-pointer border border-orange-100 disabled:cursor-not-allowed disabled:opacity-50',
-            mode === 'first' ? 'bg-orange-100 text-gray-800 font-semibold' : '',
-          ].join(' ')}
-          disabled={selectedCollectionIsComplete}
-          onClick={() => setMode('first')}
-        >
-          First Completion
-        </button>
-        <button
-          className={[
-            'px-5 py-1 rounded-md cursor-pointer border border-orange-100',
-            mode === 'recurring'
-              ? 'bg-orange-100 text-gray-800 font-semibold'
-              : '',
-          ].join(' ')}
-          onClick={() => setMode('recurring')}
-        >
-          Recurring Completions
-        </button>
-      </div>
-      {mode === 'first' && selectedCollectionData && (
-        <div className="flex flex-col gap-8 w-full">
-          <div className="flex flex-row gap-8 w-full justify-center items-center">
-            <div
-              key={`${selectedCollectionData.name}_experience}`}
-              onContextMenu={createWikiContextMenu('Experience')}
-              className="flex flex-col items-center text-orange-100 px-2 cursor-help"
-            >
-              <Icon
-                src={`/assets/collections/Experience.png`}
-                alt={'Experience'}
-                className="h-8 w-8 object-contain"
-              />
-              <p className="text-base font-semibold">
-                {Intl.NumberFormat('en-AU').format(
-                  Math.round(
-                    selectedCollectionData.artefacts
-                      .map((artefact) => artefact.xp)
-                      .reduce((a, b) => a + b, 0)
-                  )
-                )}
-              </p>
-            </div>
-            {Object.entries(
-              selectedCollectionData.reward ??
-                selectedCollectionData.recurringReward
-            ).map(([reward, amount]) => {
-              return (
-                <div
-                  key={`${selectedCollectionData.name}_${reward}`}
-                  onContextMenu={createWikiContextMenu(reward)}
-                  className="flex flex-col items-center text-orange-100 px-2 cursor-help"
-                >
-                  <Icon
-                    src={`/assets/collections/${reward.replace(/ /g, '_')}.${
-                      reward === 'Tetracompass piece' ||
-                      reward === 'Elder Trove'
-                        ? 'gif'
-                        : 'png'
-                    }`}
-                    alt={reward}
-                    className="h-8 w-8 object-contain"
-                  />
-                  <p className="text-base font-semibold">
-                    {reward}{' '}
-                    {amount > 1
-                      ? `x ${Intl.NumberFormat('en-AU').format(amount)}`
-                      : ''}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-          <ul className="flex flex-col gap-6 items-stretch">
-            {selectedCollectionData.artefacts.map((artefact) => (
-              <li
-                key={artefact.name}
-                className="grid grid-cols-[64px_1.2fr_2fr] grid-rows-2 sm:grid-rows-1 gap-4 justify-start items-center bg-[#FFF1] rounded-md p-4"
-              >
-                <ArtefactCollectionButton
-                  mode="collectionPage"
-                  artefact={artefact}
-                  collection={selectedCollectionData.name}
-                  collector={selectedCollectionData.collector}
-                  image={artefact.image}
-                  status={artefact.collections[selectedCollectionData.name]}
-                />
-                <span className="text-lg font-semibold col-span-2 sm:col-span-1">
-                  {artefact.name}
-                </span>
-                <div className="flex flex-row gap-8 justify-center sm:justify-end items-center col-span-3 sm:col-span-1">
-                  {Object.entries(artefact.materials)
-                    .sort(([name1], [name2]) => (name1 > name2 ? 1 : -1))
-                    .map(([material, amount]) => (
-                      <div
-                        className={[
-                          'flex flex-col gap-1',
-                          artefact.collections[selectedCollectionData.name] ===
-                            ArtefactStates.Restored ||
-                          artefact.collections[selectedCollectionData.name] ===
-                            ArtefactStates.Completed
-                            ? 'opacity-20'
-                            : '',
-                        ].join(' ')}
-                        key={`${artefact.name}_${material}`}
-                      >
-                        <div className="flex justify-center items-center">
-                          <Icon
-                            src={`/assets/materials/${material.replace(
-                              / /g,
-                              '_'
-                            )}.png`}
-                            alt={material}
-                            className="h-8 w-8 object-contain object-center cursor-help"
-                            onContextMenu={
-                              materialStorage.hasOwnProperty(material)
-                                ? createMaterialContextMenu(material)
-                                : createWikiContextMenu(material)
-                            }
-                          />
-                        </div>
-                        <span className="w-full text-center font-semibold">
-                          {amount}
-                        </span>
-                      </div>
-                    ))}
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div className="flex flex-col justify-center items-center w-full max-w-[1000px] mx-auto grid-rows-1 gap-6 py-8 bg-[#FFF1] rounded-md p-4">
-            <span className="col-span-2 text-lg font-semibold">
-              Remaining Materials
-            </span>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-6 justify-center items-center">
-              {selectedCollectionMaterials?.map((material) => (
-                <MaterialDisplay {...material} key={material.name} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-      {mode === 'recurring' && selectedCollectionData && (
-        <div className="flex flex-col gap-8 w-full">
-          <div className="flex flex-row gap-4 justify-center items-center">
-            <span className="text-lg font-semibold">
-              Number of Completions:
-            </span>
-            <input
-              value={numberOfRecurringCompletions}
-              onChange={(e) =>
-                setNumberOfRecurringCompletions(
-                  Number(e.target.value.replace(/[^0-9]/g, '') || 0)
-                )
-              }
-              className="w-24 text-center bg-gray-800 text-orange-100 p-2 rounded-md cursor-pointer"
-            />
-          </div>
-          <div className="flex flex-row gap-8 w-full justify-center items-center">
-            <div
-              key={`${selectedCollectionData.name}_experience}`}
-              onContextMenu={createWikiContextMenu('Experience')}
-              className="flex flex-col items-center text-orange-100 px-2 cursor-help"
-            >
-              <Icon
-                src={`/assets/collections/Experience.png`}
-                alt={'Experience'}
-                className="h-8 w-8 object-contain"
-              />
-              <p className="text-base font-semibold">
-                {Intl.NumberFormat('en-AU').format(
-                  Math.round(
-                    selectedCollectionData.artefacts
-                      .map((artefact) => artefact.xp)
-                      .reduce((a, b) => a + b, 0) * numberOfRecurringCompletions
-                  )
-                )}
-              </p>
-            </div>
-            {Object.entries(selectedCollectionData.recurringReward).map(
-              ([reward, amount]) => {
-                return (
-                  <div
-                    key={`${selectedCollectionData.name}_${reward}`}
-                    onContextMenu={createWikiContextMenu(reward)}
-                    className="flex flex-col items-center text-orange-100 px-2 cursor-help"
-                  >
-                    <Icon
-                      src={`/assets/collections/${reward.replace(/ /g, '_')}.${
-                        reward === 'Tetracompass piece' ||
-                        reward === 'Elder Trove'
-                          ? 'gif'
-                          : 'png'
-                      }`}
-                      alt={reward}
-                      className="h-8 w-8 object-contain"
-                    />
-                    <p className="text-base font-semibold">
-                      {reward}{' '}
-                      {`x ${Intl.NumberFormat('en-AU').format(
-                        amount * numberOfRecurringCompletions
-                      )}`}
-                    </p>
-                  </div>
-                );
-              }
-            )}
-          </div>
-          <ul className="flex flex-col gap-6 items-stretch">
-            {selectedCollectionData.artefacts.map((artefact) => (
-              <li
-                key={artefact.name}
-                className="grid grid-cols-[64px_1.2fr_2fr] grid-rows-1 gap-4 justify-start items-center bg-[#FFF1] rounded-md p-4"
-              >
-                <Icon
-                  src={artefact.image}
-                  alt={artefact.name}
-                  className="h-8 w-8 cursor-help ml-3"
-                  contextMenu
-                />
-                <span className="text-lg font-semibold">
-                  {artefact.name} x{' '}
-                  {Intl.NumberFormat('en-AU').format(
-                    numberOfRecurringCompletions
-                  )}
-                </span>
-                <div className="flex flex-row gap-8 justify-end items-center">
-                  {Object.entries(artefact.materials)
-                    .sort(([name1], [name2]) => (name1 > name2 ? 1 : -1))
-                    .map(([material, amount]) => (
-                      <div
-                        className={'flex flex-col gap-1'}
-                        key={`${artefact.name}_${material}`}
-                      >
-                        <div className="flex justify-center items-center">
-                          <Icon
-                            src={`/assets/materials/${material.replace(
-                              / /g,
-                              '_'
-                            )}.png`}
-                            alt={material}
-                            className="h-8 w-8 object-contain object-center cursor-help"
-                            onContextMenu={
-                              materialStorage.hasOwnProperty(material)
-                                ? createMaterialContextMenu(material)
-                                : createWikiContextMenu(material)
-                            }
-                          />
-                        </div>
-                        <span className="w-full text-center font-semibold">
-                          {Intl.NumberFormat('en-AU').format(
-                            amount * numberOfRecurringCompletions
-                          )}
-                        </span>
-                      </div>
-                    ))}
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div className="flex flex-col justify-center items-center w-full max-w-[1000px] mx-auto grid-rows-1 gap-6 py-8 bg-[#FFF1] rounded-md p-4">
-            <span className="col-span-2 text-lg font-semibold">
-              Total Materials
-            </span>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-6 justify-center items-center">
-              {selectedCollectionMaterials?.map((material) => (
-                <MaterialDisplay {...material} key={material.name} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-const MaterialDisplay = (material: {
-  name: string;
-  isArchMaterial: boolean;
-  storage: number;
-  diff: number;
-  amount: number;
-}) => {
-  const { createMaterialContextMenu, createWikiContextMenu } = useContextMenu();
-  return (
-    <div
-      key={material.name}
-      className="flex flex-col gap-2 justify-center items-center"
-    >
-      <Icon
-        src={`/assets/materials/${material.name.replace(/ /g, '_')}.png`}
-        alt={material.name}
-        className="h-8 w-8 mb-1 object-contain object-center cursor-help"
-        onContextMenu={
-          material.isArchMaterial
-            ? createMaterialContextMenu(material.name)
-            : createWikiContextMenu(material.name)
-        }
-      />
-      <span className="font-medium text-orange-100">{material.name}</span>
-
-      <span
-        className={[
-          'w-full text-center font-semibold',
-          !material.isArchMaterial
-            ? 'text-yellow-500'
-            : material.diff < 0
-            ? 'text-red-500'
-            : 'text-green-700',
-        ].join(' ')}
-      >
-        {material.isArchMaterial
-          ? Intl.NumberFormat('en-AU').format(material.storage)
-          : ''}
-        {material.isArchMaterial ? ' / ' : ''}
-        {Intl.NumberFormat('en-AU').format(material.amount)}
-        {material.diff < 0
-          ? ` (${Intl.NumberFormat('en-AU').format(material.diff)})`
-          : ''}
-      </span>
-    </div>
-  );
+  return {
+    collections,
+    activeCollection,
+    setActiveCollection,
+    mode,
+    setMode,
+    selectedCollectionData,
+    selectedCollectionIsComplete,
+    selectedCollectionMaterials,
+    numberOfRecurringCompletions,
+    setNumberOfRecurringCompletions,
+  };
 };
