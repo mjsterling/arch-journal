@@ -1,9 +1,9 @@
-export default function HeaderDiscordButton() {
+export function HeaderDiscordButton() {
   return (
     <button
       className="h-5 w-5 min-h-5 min-w-5 cursor-pointer"
       onClick={() => {
-        window.open("https://discord.gg/NwzYjZadaS");
+        window.open('https://discord.gg/NwzYjZadaS');
       }}
     >
       <img

@@ -1,3 +1,4 @@
+'use client';
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/16/solid';
 import { useRef, useState } from 'react';
 
@@ -12,8 +13,7 @@ export const Combobox = ({
   options: { value: string; displayValue: string }[];
   className?: string;
 }) => {
-  const [displayedOptions, setDisplayedOptions] =
-    useState<{ value: string; displayValue: string }[]>(options);
+  const [displayedOptions, setDisplayedOptions] = useState<{ value: string; displayValue: string }[]>(options);
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const stripSpaces = (str: string) => str.replace(/(^\s+)|(\s+$)/g, '');
@@ -26,12 +26,8 @@ export const Combobox = ({
       setDisplayedOptions(
         options.filter(
           (option) =>
-            option.value
-              .toLowerCase()
-              .includes(stripSpaces(e.target.value).toLowerCase()) ||
-            option.displayValue
-              .toLowerCase()
-              .includes(stripSpaces(e.target.value).toLowerCase())
+            option.value.toLowerCase().includes(stripSpaces(e.target.value).toLowerCase()) ||
+            option.displayValue.toLowerCase().includes(stripSpaces(e.target.value).toLowerCase())
         )
       );
     } else {
@@ -40,7 +36,6 @@ export const Combobox = ({
   };
 
   const clearInput = () => {
-    console.log('clear input');
     setInputValue('');
     setDisplayedOptions(options);
     setIsOpen(false);
@@ -50,9 +45,7 @@ export const Combobox = ({
     switch (e.key) {
       case 'Down':
       case 'ArrowDown':
-        setHighlightedOption((prev) =>
-          Math.min(prev + 1, displayedOptions.length - 1)
-        );
+        setHighlightedOption((prev) => Math.min(prev + 1, displayedOptions.length - 1));
         scrollToHighlightedOption();
         break;
       case 'Up':
@@ -117,18 +110,13 @@ export const Combobox = ({
               }}
               key={option.value}
               onClick={() => onSelect(option)}
-              className={[
-                'p-2 cursor-pointer',
-                index === highlightedOption ? 'bg-[#fff1]' : '',
-              ].join(' ')}
+              className={['p-2 cursor-pointer', index === highlightedOption ? 'bg-[#fff1]' : ''].join(' ')}
               onMouseOver={() => setHighlightedOption(index)}
             >
               {option.displayValue}
             </li>
           ))}
-          {!displayedOptions.length && inputValue && (
-            <li className="p-2 text-gray-500">No collections found</li>
-          )}
+          {!displayedOptions.length && inputValue && <li className="p-2 text-gray-500">No collections found</li>}
         </ul>
       )}
     </div>

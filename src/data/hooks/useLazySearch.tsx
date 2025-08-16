@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 
-export default function useLazySearch<T extends { name: string }>(data: T[]) {
-  const [searchQuery, setSearchQuery] = useState<string>("");
+export function useLazySearch<T extends { name: string }>(data: T[]) {
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const searchTerms = useMemo(() => {
     const _searchTerms: { [key: string]: string } = {};
     data.forEach((datum: T) => {
@@ -25,6 +25,6 @@ export default function useLazySearch<T extends { name: string }>(data: T[]) {
     filteredData,
     searchQuery,
     handleSearch,
-    clearSearch: () => setSearchQuery(""),
+    clearSearch: () => setSearchQuery(''),
   };
 }

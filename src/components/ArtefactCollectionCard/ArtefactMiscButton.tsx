@@ -1,22 +1,10 @@
-import { ArtefactStates } from "@/data/constants/Artefact";
-import { Artefact, useArtefacts } from "@/data/providers/ArtefactProvider";
-import { useGlobalState } from "@/data/providers/GlobalStateProvider";
-import Icon from "../Icon";
+import { ArtefactStates } from '@/data/constants';
+import { Icon } from '@/components';
+import { type Artefact, useArtefacts, useContextMenu, useGlobalState } from '@/data/providers';
+import { wiki } from '@/data/utils';
 
-export default function ArtefactButton({
-  artefact,
-  type,
-  typeKey,
-  image,
-  status,
-}: {
-  artefact: Artefact;
-  type: "mysteries" | "researchers" | "quests" | "misc";
-  typeKey: string;
-  image: string;
-  status: ArtefactStates;
-}) {
-  const { createContextMenu, wiki } = useGlobalState();
+export const ArtefactMiscButton: ArtefactMiscButton = ({ artefact, type, typeKey, image, status }) => {
+  const { createContextMenu } = useContextMenu();
   const { setArtefact } = useArtefacts();
   const handleClick = () => {
     const newArtefact = { ...artefact };
@@ -44,7 +32,7 @@ export default function ArtefactButton({
     createContextMenu(e, [
       [
         {
-          label: "Set to Not Found",
+          label: 'Set to Not Found',
           callback: () => {
             const newArtefact = { ...artefact };
             newArtefact[type][typeKey] = ArtefactStates.NotFound;
@@ -52,7 +40,7 @@ export default function ArtefactButton({
           },
         },
         {
-          label: "Set to Damaged",
+          label: 'Set to Damaged',
           callback: () => {
             const newArtefact = { ...artefact };
             newArtefact[type][typeKey] = ArtefactStates.Damaged;
@@ -60,7 +48,7 @@ export default function ArtefactButton({
           },
         },
         {
-          label: "Set to Restored",
+          label: 'Set to Restored',
           callback: () => {
             const newArtefact = { ...artefact };
             newArtefact[type][typeKey] = ArtefactStates.Restored;
@@ -68,7 +56,7 @@ export default function ArtefactButton({
           },
         },
         {
-          label: "Set to Completed",
+          label: 'Set to Completed',
           callback: () => {
             const newArtefact = { ...artefact };
             newArtefact[type][typeKey] = ArtefactStates.Completed;
@@ -77,10 +65,10 @@ export default function ArtefactButton({
         },
       ],
       [
-        ...(type !== "misc"
+        ...(type !== 'misc'
           ? [
               {
-                label: "[WIKI]" + typeKey,
+                label: '[WIKI]' + typeKey,
                 callback: () => wiki(typeKey),
               },
             ]
@@ -94,28 +82,32 @@ export default function ArtefactButton({
       onDoubleClick={handleDoubleClick}
       onContextMenu={handleContextMenu}
       className={[
-        "relative flex flex-col gap-1 items-center justify-center",
-        "rounded-md h-full",
-        "min-h-13 min-w-13 max-h-13 max-w-13",
-        "transition-all duration-200 gap-1",
-        "border-2 z-0 hover:z-10",
-        status === "Not Found"
-          ? "bg-gray-200/30 border-gray-300/60 hover:bg-orange-600/85 cursor-pointer"
-          : status === "Damaged"
-          ? "bg-orange-700/70 border-orange-700 hover:bg-yellow-500/85 cursor-pointer"
-          : status === "Restored"
-          ? "bg-yellow-600/70 border-yellow-600 hover:bg-green-700/85 cursor-pointer"
-          : status === "Completed"
-          ? "bg-green-800/60 border-green-800 cursor-help"
-          : "",
-      ].join(" ")}
+        'relative flex flex-col gap-1 items-center justify-center',
+        'rounded-md h-full',
+        'min-h-13 min-w-13 max-h-13 max-w-13',
+        'transition-all duration-200 gap-1',
+        'border-2 z-0 hover:z-10',
+        status === 'Not Found'
+          ? 'bg-gray-200/30 border-gray-300/60 hover:bg-orange-600/85 cursor-pointer'
+          : status === 'Damaged'
+          ? 'bg-orange-700/70 border-orange-700 hover:bg-yellow-500/85 cursor-pointer'
+          : status === 'Restored'
+          ? 'bg-yellow-600/70 border-yellow-600 hover:bg-green-700/85 cursor-pointer'
+          : status === 'Completed'
+          ? 'bg-green-800/60 border-green-800 cursor-help'
+          : '',
+      ].join(' ')}
       title={typeKey}
     >
-      <Icon
-        src={image}
-        alt={typeKey}
-        className="min-h-10 min-w-10 max-h-10 max-w-10 object-contain transition-all"
-      />
+      <Icon src={image} alt={typeKey} className="min-h-10 min-w-10 max-h-10 max-w-10 object-contain transition-all" />
     </button>
   );
-}
+};
+
+type ArtefactMiscButton = React.FC<{
+  artefact: Artefact;
+  type: 'mysteries' | 'researchers' | 'quests' | 'misc';
+  typeKey: string;
+  image: string;
+  status: ArtefactStates;
+}>;

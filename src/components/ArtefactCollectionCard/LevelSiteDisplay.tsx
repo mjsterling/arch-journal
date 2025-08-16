@@ -1,27 +1,7 @@
+'use client';
 import { useEffect, useState } from 'react';
 
-export default function LevelSiteDisplay({
-  className = '',
-  level,
-  sites,
-}: {
-  className?: string;
-  level: number;
-  sites:
-    | {
-        name: string;
-        icon: string;
-        backgroundColor: string;
-        url: string;
-      }
-    | {
-        name: string;
-        icon: string;
-        backgroundColor: string;
-        url: string;
-      }[]
-    | null;
-}) {
+export const LevelSiteDisplay: LevelSiteDisplay = ({ className = '', level, sites }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -42,16 +22,10 @@ export default function LevelSiteDisplay({
         className,
       ].join(' ')}
     >
-      <p className="sm:text-lg md:text-2xl text-orange-100 font-semibold text-center px-2 pb-1">
-        {level}
-      </p>
+      <p className="sm:text-lg md:text-2xl text-orange-100 font-semibold text-center px-2 pb-1">{level}</p>
       <div
         className="relative flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 md:h-9 md:w-9"
-        title={
-          Array.isArray(sites)
-            ? sites.map((site) => site.name).join(', ')
-            : sites?.name
-        }
+        title={Array.isArray(sites) ? sites.map((site) => site.name).join(', ') : sites?.name}
       >
         {Array.isArray(sites) ? (
           sites.map((site) => (
@@ -74,4 +48,23 @@ export default function LevelSiteDisplay({
       </div>
     </div>
   );
-}
+};
+
+type LevelSiteDisplay = React.FC<{
+  className?: string;
+  level: number;
+  sites:
+    | {
+        name: string;
+        icon: string;
+        backgroundColor: string;
+        url: string;
+      }
+    | {
+        name: string;
+        icon: string;
+        backgroundColor: string;
+        url: string;
+      }[]
+    | null;
+}>;

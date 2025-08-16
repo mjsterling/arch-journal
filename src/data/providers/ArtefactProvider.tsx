@@ -1,16 +1,16 @@
-"use client";
-import React, { createContext, useEffect, useState } from "react";
-import artefactDataRaw from "../artefacts.json";
-import { useContext } from "react";
-import { ArtefactStates } from "../constants/Artefact";
-import { CollectionNames } from "../constants/Collections";
-import { Materials } from "../constants/Materials";
-import { DigsiteNames } from "../constants/Digsites";
+'use client';
+import React, { createContext, useEffect, useState } from 'react';
+import artefactDataRaw from '../artefacts.json';
+import { useContext } from 'react';
+import { ArtefactStates } from '../constants/Artefact';
+import { CollectionNames } from '../constants/Collections';
+import { Materials } from '../constants/Materials';
+import { DigsiteNames } from '../constants/Digsites';
 
 export enum Screens {
-  Artefacts = "Artefacts",
-  Collections = "Collections",
-  Materials = "Materials",
+  Artefacts = 'Artefacts',
+  Collections = 'Collections',
+  Materials = 'Materials',
 }
 
 type RawArtefact = {
@@ -55,17 +55,13 @@ const artefactContext = createContext<{
   isComplete: (artefact: Artefact) => boolean;
 }>({ artefacts: [], setArtefact: () => {}, isComplete: () => false });
 
-export default function ArtefactProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function ArtefactProvider({ children }: { children: React.ReactNode }) {
   const [artefacts, setArtefacts] = useState<Artefact[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const importArtefacts = () => {
     setLoading(true);
     const artefactData = artefactDataRaw as RawArtefact[];
-    const artefactState = window.localStorage.getItem("arch-journal-artefacts");
+    const artefactState = window.localStorage.getItem('arch-journal-artefacts');
     let artefactStateParsed: Array<{
       name: string;
       collections: { [key: string]: ArtefactStates };
@@ -90,35 +86,28 @@ export default function ArtefactProvider({
         misc: {} as { [key: string]: ArtefactStates },
         count: { damaged: 0, restored: 0 },
       };
-      const foundArtefact = artefactStateParsed?.find(
-        (_artefact) => _artefact.name === artefact.name
-      );
+      const foundArtefact = artefactStateParsed?.find((_artefact) => _artefact.name === artefact.name);
       for (const collection of artefact.collections as unknown as string[]) {
-        artefactState.collections[collection] =
-          foundArtefact?.collections?.[collection] ?? ArtefactStates.NotFound;
+        artefactState.collections[collection] = foundArtefact?.collections?.[collection] ?? ArtefactStates.NotFound;
       }
       if (artefact.mysteries) {
         for (const mystery of artefact.mysteries as unknown as string[]) {
-          artefactState.mysteries[mystery] =
-            foundArtefact?.mysteries?.[mystery] ?? ArtefactStates.NotFound;
+          artefactState.mysteries[mystery] = foundArtefact?.mysteries?.[mystery] ?? ArtefactStates.NotFound;
         }
       }
       if (artefact.researchers) {
         for (const researcher of artefact.researchers as unknown as string[]) {
-          artefactState.researchers[researcher] =
-            foundArtefact?.researchers?.[researcher] ?? ArtefactStates.NotFound;
+          artefactState.researchers[researcher] = foundArtefact?.researchers?.[researcher] ?? ArtefactStates.NotFound;
         }
       }
       if (artefact.quests) {
         for (const quest of artefact.quests as unknown as string[]) {
-          artefactState.quests[quest] =
-            foundArtefact?.quests?.[quest] ?? ArtefactStates.NotFound;
+          artefactState.quests[quest] = foundArtefact?.quests?.[quest] ?? ArtefactStates.NotFound;
         }
       }
       if (artefact.misc) {
         for (const misc of artefact.misc as unknown as string[]) {
-          artefactState.misc[misc] =
-            foundArtefact?.misc?.[misc] ?? ArtefactStates.NotFound;
+          artefactState.misc[misc] = foundArtefact?.misc?.[misc] ?? ArtefactStates.NotFound;
         }
       }
       artefactState.count = {
@@ -127,8 +116,7 @@ export default function ArtefactProvider({
       };
       return {
         ...artefact,
-        image:
-          "/assets/artefacts/" + artefact.name.replace(/[ \/]/g, "_") + ".png",
+        image: '/assets/artefacts/' + artefact.name.replace(/[ \/]/g, '_') + '.png',
         collections: artefactState.collections,
         mysteries: artefactState.mysteries,
         researchers: artefactState.researchers,
@@ -146,11 +134,7 @@ export default function ArtefactProvider({
   useEffect(importArtefacts, []);
   const setArtefact = (newArtefact: Artefact) => {
     const index = artefacts.findIndex((a) => a.name === newArtefact.name);
-    const newArtefacts = [
-      ...artefacts.slice(0, index),
-      newArtefact,
-      ...artefacts.slice(index + 1),
-    ];
+    const newArtefacts = [...artefacts.slice(0, index), newArtefact, ...artefacts.slice(index + 1)];
     setArtefacts(newArtefacts);
   };
 
@@ -163,29 +147,16 @@ export default function ArtefactProvider({
       quests: artefact.quests ?? {},
       misc: artefact.misc ?? {},
     }));
-    window.localStorage.setItem(
-      "arch-journal-artefacts",
-      JSON.stringify(artefactState)
-    );
+    window.localStorage.setItem('arch-journal-artefacts', JSON.stringify(artefactState));
   };
   useEffect(saveArtefactState, [artefacts]);
 
   const isComplete = (artefact: Artefact) =>
-    Object.values(artefact.collections).every(
-      (status) => status === "Completed"
-    ) &&
-    Object.values(artefact.mysteries ?? {}).every(
-      (status) => status === "Completed"
-    ) &&
-    Object.values(artefact.researchers ?? {}).every(
-      (status) => status === "Completed"
-    ) &&
-    Object.values(artefact.quests ?? {}).every(
-      (status) => status === "Completed"
-    ) &&
-    Object.values(artefact.misc ?? {}).every(
-      (status) => status === "Completed"
-    );
+    Object.values(artefact.collections).every((status) => status === 'Completed') &&
+    Object.values(artefact.mysteries ?? {}).every((status) => status === 'Completed') &&
+    Object.values(artefact.researchers ?? {}).every((status) => status === 'Completed') &&
+    Object.values(artefact.quests ?? {}).every((status) => status === 'Completed') &&
+    Object.values(artefact.misc ?? {}).every((status) => status === 'Completed');
   return (
     <artefactContext.Provider value={{ artefacts, setArtefact, isComplete }}>
       {loading ? null : children}
@@ -196,7 +167,7 @@ export default function ArtefactProvider({
 export const useArtefacts = () => {
   const context = useContext(artefactContext);
   if (!context) {
-    throw new Error("useArtefact must be used within a artefactProvider");
+    throw new Error('useArtefact must be used within a artefactProvider');
   }
   return context;
 };

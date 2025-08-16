@@ -1,9 +1,9 @@
-import MenuButton from "../MenuButton";
+import { MenuButton } from '@/components';
 
-export default function HeaderNav() {
+export function HeaderNav() {
   return (
     <>
-      <MenuButton href="/" label="Artefacts" />
+      <MenuButton href="/artefacts" label="Artefacts" />
       <MenuButton href="/collections" label="Collections" />
       <MenuButton href="/material-storage" label="Material Storage" />
       <MenuButton href="/planner" label="Planner" />

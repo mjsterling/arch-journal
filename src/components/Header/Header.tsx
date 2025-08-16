@@ -1,13 +1,8 @@
-"use client";
-import { useState } from "react";
-import HeaderLogo from "./HeaderLogo";
-import HeaderNavDesktop from "./HeaderNavDesktop";
-import HeaderSettingsMenu from "./HeaderSettingsMenu";
-import HeaderButtons from "./HeaderButtons/HeaderButtons";
-import HeaderTitle from "./HeaderTitle";
-import HeaderNavMobile from "./HeaderNavMobile";
+'use client';
+import { useState } from 'react';
+import { HeaderLogo, HeaderNavDesktop, HeaderSettingsMenu, HeaderButtons, HeaderTitle, HeaderNavMobile } from '.';
 
-export default function Header() {
+export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -26,25 +21,13 @@ export default function Header() {
         <div className="w-full flex justify-between lg:grid-cols-[160px_1fr_160px] gap-6 items-center">
           <HeaderLogo />
           <HeaderTitle />
-          <HeaderButtons
-            toggleMenu={toggleMenu}
-            toggleSettingsMenu={toggleSettingsMenu}
-            menuOpen={menuOpen}
-          />
+          <HeaderButtons toggleMenu={toggleMenu} toggleSettingsMenu={toggleSettingsMenu} menuOpen={menuOpen} />
         </div>
         <HeaderNavMobile closeMenu={closeMenu} menuOpen={menuOpen} />
-        <HeaderSettingsMenu
-          settingsMenuOpen={settingsMenuOpen}
-          closeMenu={closeMenu}
-        />
+        <HeaderSettingsMenu settingsMenuOpen={settingsMenuOpen} closeMenu={closeMenu} />
         <HeaderNavDesktop />
       </div>
-      {menuOpen && (
-        <div
-          className="z-40 fixed top-0 left-0 h-screen w-screen lg:hidden"
-          onClick={closeMenu}
-        />
-      )}
+      {menuOpen && <div className="z-40 fixed top-0 left-0 h-screen w-screen lg:hidden" onClick={closeMenu} />}
     </>
   );
 }

@@ -1,9 +1,8 @@
-import { ArtefactStates } from "@/data/constants/Artefact";
-import { Artefact, useArtefacts } from "@/data/providers/ArtefactProvider";
-import { useGlobalState } from "@/data/providers/GlobalStateProvider";
-import { useSettings } from "@/data/providers/SettingsProvider";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useMemo, useState } from "react";
+'use client';
+import React, { useEffect, useMemo, useState } from 'react';
+import { ArtefactStates } from '@/data/constants';
+import { Artefact, useArtefacts, useSettings } from '@/data/providers';
+import { useRouter } from 'next/navigation';
 
 type ArtefactInfoboxProps = {
   artefact: Artefact;
@@ -11,16 +10,10 @@ type ArtefactInfoboxProps = {
   collector: string;
   open: boolean;
   status: ArtefactStates;
-  mode: "artefactPage" | "collectionPage";
+  mode: 'artefactPage' | 'collectionPage';
 };
 
-export const ArtefactInfobox = ({
-  artefact,
-  collection,
-  collector,
-  open,
-  mode,
-}: ArtefactInfoboxProps) => {
+export function ArtefactInfobox({ artefact, collection, collector, open, mode }: ArtefactInfoboxProps) {
   const router = useRouter();
   const { artefacts } = useArtefacts();
   const artefactsInCollection = useMemo(
@@ -47,23 +40,21 @@ export const ArtefactInfobox = ({
       <div className="flex flex-row gap-2 items-center">
         <a
           onClick={() =>
-            mode === "artefactPage"
-              ? router.push(
-                  `/collections?highlight=${encodeURIComponent(collection)}`
-                )
+            mode === 'artefactPage'
+              ? router.push(`/collections?highlight=${encodeURIComponent(collection)}`)
               : router.push(`/?highlight=${encodeURIComponent(artefact.name)}`)
           }
           className="text-sm font-semibold text-orange-100 uppercase text-nowrap cursor-pointer hover:underline"
         >
-          {mode === "artefactPage" ? collection : artefact.name}
+          {mode === 'artefactPage' ? collection : artefact.name}
         </a>
       </div>
       <div className="flex flex-row gap-2 items-center">
         <span className="text-xs font-medium text-orange-100 text-nowrap">
-          {mode === "artefactPage" ? collector : artefact.hotspot}
+          {mode === 'artefactPage' ? collector : artefact.hotspot}
         </span>
       </div>
-      {mode === "artefactPage" ? (
+      {mode === 'artefactPage' ? (
         <div className="flex flex-col gap-2">
           {artefactsInCollection.map((art) => (
             <div
@@ -74,11 +65,7 @@ export const ArtefactInfobox = ({
 
               <span
                 className="text-sm text-left text-orange-100 text-nowrap font-medium hover:underline cursor-pointer"
-                onClick={() =>
-                  router.push(
-                    `/?highlight=${encodeURIComponent(artefact.name)}`
-                  )
-                }
+                onClick={() => router.push(`/?highlight=${encodeURIComponent(artefact.name)}`)}
               >
                 {art.name}
               </span>
@@ -92,18 +79,11 @@ export const ArtefactInfobox = ({
               key={`infobox_${artefact.name}_${collection}`}
               className="grid grid-cols-[18px_1fr] items-center gap-4 px-4"
             >
-              <ArtefactStatusDisplay
-                artefact={artefact}
-                collection={collection}
-              />
+              <ArtefactStatusDisplay artefact={artefact} collection={collection} />
 
               <span
                 className="text-sm text-left text-orange-100 text-nowrap font-semibold hover:underline cursor-pointer"
-                onClick={() =>
-                  router.push(
-                    `/collections?highlight=${encodeURIComponent(collection)}`
-                  )
-                }
+                onClick={() => router.push(`/collections?highlight=${encodeURIComponent(collection)}`)}
               >
                 {collection}
               </span>
@@ -113,28 +93,17 @@ export const ArtefactInfobox = ({
       )}
     </div>
   );
-};
+}
 
-const ArtefactStatusDisplay = ({
-  artefact,
-  collection,
-}: {
-  artefact: Artefact;
-  collection: string;
-}) => {
-  const {
-    settings: { colorblindMode },
-  } = useSettings();
-  const status = useMemo(
-    () => artefact.collections[collection],
-    [artefact, collection]
-  );
+const ArtefactStatusDisplay = ({ artefact, collection }: { artefact: Artefact; collection: string }) => {
+  const { colorblindMode } = useSettings();
+  const status = useMemo(() => artefact.collections[collection], [artefact, collection]);
 
   const baseContainerClass = useMemo(
     () =>
       colorblindMode
-        ? "w-6 h-6 rounded-full flex items-center justify-center font-bold mr-2 text-orange-100"
-        : "w-3 h-3 rounded-full flex items-center justify-center",
+        ? 'w-6 h-6 rounded-full flex items-center justify-center font-bold mr-2 text-orange-100'
+        : 'w-3 h-3 rounded-full flex items-center justify-center',
     [colorblindMode]
   );
 
@@ -169,13 +138,9 @@ const ArtefactStatusDisplay = ({
   }, [status, colorblindMode]);
 
   const statusText = useMemo(() => {
-    if (!colorblindMode) return "";
+    if (!colorblindMode) return '';
     return status[0];
   }, [status, colorblindMode]);
 
-  return (
-    <div className={`${baseContainerClass} ${conditionalContainerClass}`}>
-      {statusText}
-    </div>
-  );
+  return <div className={`${baseContainerClass} ${conditionalContainerClass}`}>{statusText}</div>;
 };

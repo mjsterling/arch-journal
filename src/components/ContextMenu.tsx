@@ -1,16 +1,14 @@
-"use client";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useGlobalState } from "@/data/providers/GlobalStateProvider";
-import { type ContextMenuItem } from "@/data/providers/ContextMenuProvider";
-import { useContextMenu } from "@/data/providers/ContextMenuProvider";
+'use client';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useGlobalState } from '@/data/providers/GlobalStateProvider';
+import { type ContextMenuItem } from '@/data/providers/ContextMenuProvider';
+import { useContextMenu } from '@/data/providers/ContextMenuProvider';
 
-export default function ContextMenu() {
-  const { contextMenu: unfilteredContextMenu, clearContextMenu } =
-    useContextMenu();
+export function ContextMenu() {
+  const { contextMenu: unfilteredContextMenu, clearContextMenu } = useContextMenu();
 
-  const itemExists = (
-    item: ContextMenuItem | null | false | undefined
-  ): item is ContextMenuItem => typeof item === "object" && item !== null;
+  const itemExists = (item: ContextMenuItem | null | false | undefined): item is ContextMenuItem =>
+    typeof item === 'object' && item !== null;
 
   const contextMenu = useMemo(
     () => ({
@@ -41,14 +39,9 @@ export default function ContextMenu() {
     }
     const rect = menuContentsRef.current.getBoundingClientRect();
     setOffset({
-      x:
-        contextMenu.x + rect.width > window.innerWidth
-          ? -(contextMenu.x + rect.width - window.innerWidth + 20)
-          : 0,
+      x: contextMenu.x + rect.width > window.innerWidth ? -(contextMenu.x + rect.width - window.innerWidth + 20) : 0,
       y:
-        contextMenu.y + rect.height > window.innerHeight
-          ? -(contextMenu.y + rect.height - window.innerHeight + 20)
-          : 0,
+        contextMenu.y + rect.height > window.innerHeight ? -(contextMenu.y + rect.height - window.innerHeight + 20) : 0,
     });
   }, [contextMenu, menuContentsRef]);
 
@@ -92,14 +85,10 @@ export default function ContextMenu() {
                     }
                   }}
                 >
-                  {item.label.startsWith("[WIKI]") ? (
+                  {item.label.startsWith('[WIKI]') ? (
                     <span className="flex gap-2 items-center text-nowrap min-w-fit">
-                      <img
-                        src="/assets/RS_Wiki.jpg"
-                        alt="Wiki"
-                        className="h-4 w-4 inline-block"
-                      />
-                      {item.label.replace("[WIKI]", "")}
+                      <img src="/assets/RS_Wiki.jpg" alt="Wiki" className="h-4 w-4 inline-block" />
+                      {item.label.replace('[WIKI]', '')}
                     </span>
                   ) : (
                     <span className="text-nowrap min-w-fit">{item.label}</span>

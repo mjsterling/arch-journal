@@ -1,6 +1,6 @@
-import HeaderNav from "./HeaderNav";
+import { HeaderNav } from '.';
 
-export default function HeaderNavDesktop() {
+export function HeaderNavDesktop() {
   return (
     <div className="hidden lg:flex gap-2 items-center">
       <HeaderNav />

@@ -1,4 +1,4 @@
-export default function HeaderTitle() {
+export function HeaderTitle() {
   return (
     <>
       <h1 className="text-left mr-auto text-xl justify-center items-center text-orange-100 md:hidden">

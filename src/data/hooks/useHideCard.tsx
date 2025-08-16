@@ -1,8 +1,7 @@
-import { useGlobalState } from "@/data/providers/GlobalStateProvider";
-import { useCallback, useEffect, useState } from "react";
+'use client';
+import { useCallback, useEffect, useState } from 'react';
 
-export default function useHideCard(isComplete: boolean) {
-  const { showCompleted } = useGlobalState();
+export function useHideCard(isComplete: boolean, showCompleted: boolean) {
   const [hidden, setHidden] = useState(false);
   const [opacity, setOpacity] = useState(1);
 

@@ -1,15 +1,13 @@
-"use client";
-
-import { useMemo, useState } from "react";
-import { BankCleanerArtefactCard } from "@/components/BankCleanerArtefactCard";
-import { Artefact, useArtefacts } from "@/data/providers/ArtefactProvider";
-import useLazySearch from "@/components/ArtefactCollectionCard/useLazySearch";
-import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/20/solid";
-import { RadioGroup } from "@/components/RadioGroup";
+'use client';
+import { useMemo, useState } from 'react';
+import { BankCleanerArtefactCard, RadioGroup } from '@/components';
+import { Artefact, useArtefacts } from '@/data/providers';
+import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import { useLazySearch } from '@/data/hooks';
 
 export default function BankCleaner() {
   const { artefacts } = useArtefacts();
-  const [sort, setSort] = useState<"name" | "digsite">("digsite");
+  const [sort, setSort] = useState<'name' | 'digsite' | 'level'>('level');
   const {
     filteredData: filteredArtefacts,
     searchQuery,
@@ -38,35 +36,32 @@ export default function BankCleaner() {
         </div>
         <RadioGroup
           label="Sort by:"
-          options={[{ key: "name", label: "Alphabetical" }, { key: "digsite" }]}
+          options={[
+            { key: 'name', label: 'Alphabetical' },
+            { key: 'digsite', label: 'Digsite' },
+            { key: 'level', label: 'Level' },
+          ]}
           value={sort}
           setValue={setSort}
         />
       </div>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-4 px-6 py-6 md:px-12 md:py-6">
         {sortedArtefacts.map((artefact) => (
-          <BankCleanerArtefactCard
-            key={`bank_cleaner__${artefact.name}`}
-            artefact={artefact}
-          />
+          <BankCleanerArtefactCard key={`bank_cleaner__${artefact.name}`} artefact={artefact} />
         ))}
       </div>
     </div>
   );
 }
 
-const useSortedArtefacts = (
-  artefacts: Artefact[],
-  sort: "name" | "digsite"
-) => {
+const useSortedArtefacts = (artefacts: Artefact[], sort: 'name' | 'digsite' | 'level') => {
   const digsiteReducer = (a: Artefact, b: Artefact) =>
-    a.digsite.localeCompare(b.digsite) ||
-    a.name.replace(/\W/g, "").localeCompare(b.name.replace(/\W/g, ""));
-  const nameReducer = (a: Artefact, b: Artefact) =>
-    a.name.replace(/\W/g, "").localeCompare(b.name.replace(/\W/g, ""));
+    a.digsite.localeCompare(b.digsite) || a.name.replace(/\W/g, '').localeCompare(b.name.replace(/\W/g, ''));
+  const nameReducer = (a: Artefact, b: Artefact) => a.name.replace(/\W/g, '').localeCompare(b.name.replace(/\W/g, ''));
+  const levelReducer = (a: Artefact, b: Artefact) => a.level - b.level;
   const sortedArtefacts = useMemo(
-    () => artefacts.sort(sort === "name" ? nameReducer : digsiteReducer),
-    [artefacts, sort, nameReducer, digsiteReducer]
+    () => artefacts.sort(sort === 'name' ? nameReducer : sort === 'digsite' ? digsiteReducer : levelReducer),
+    [artefacts, sort, nameReducer, digsiteReducer, levelReducer]
   );
 
   return sortedArtefacts;

@@ -1,12 +1,4 @@
-export const ModeSelect = ({
-  mode,
-  setMode,
-  selectedCollectionIsComplete,
-}: {
-  mode: 'first' | 'recurring';
-  setMode: (mode: 'first' | 'recurring') => void;
-  selectedCollectionIsComplete: boolean;
-}) => {
+export const ModeSelect: ModeSelect = ({ mode, setMode, selectedCollectionIsComplete }) => {
   return (
     <div className="flex flex-row gap-4 justify-center items-center w-full">
       <button
@@ -22,9 +14,7 @@ export const ModeSelect = ({
       <button
         className={[
           'px-5 py-1 rounded-md cursor-pointer border border-orange-100',
-          mode === 'recurring'
-            ? 'bg-orange-100 text-gray-800 font-semibold'
-            : '',
+          mode === 'recurring' ? 'bg-orange-100 text-gray-800 font-semibold' : '',
         ].join(' ')}
         onClick={() => setMode('recurring')}
       >
@@ -33,3 +23,9 @@ export const ModeSelect = ({
     </div>
   );
 };
+
+type ModeSelect = React.FC<{
+  mode: 'first' | 'recurring';
+  setMode: (mode: 'first' | 'recurring') => void;
+  selectedCollectionIsComplete: boolean;
+}>;

@@ -1,6 +1,6 @@
-import { useContextMenu } from "@/data/providers/ContextMenuProvider";
+import { useContextMenu } from '@/data/providers/ContextMenuProvider';
 
-export default function Icon({
+export function Icon({
   src,
   alt,
   className,
@@ -24,9 +24,7 @@ export default function Icon({
       alt={alt}
       title={title}
       className={`w-4 h-4 ${className}`}
-      onContextMenu={
-        onContextMenu ?? (contextMenu ? createWikiContextMenu(alt) : undefined)
-      }
+      onContextMenu={onContextMenu ?? (contextMenu ? createWikiContextMenu(alt) : undefined)}
     />
   );
 }

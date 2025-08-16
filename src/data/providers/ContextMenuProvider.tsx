@@ -1,15 +1,13 @@
-"use client";
-import { createContext, useCallback, useContext, useState } from "react";
-import { useGlobalState } from "./GlobalStateProvider";
+'use client';
+import { createContext, useCallback, useContext, useState } from 'react';
+import { wiki } from '../utils';
 
 export type ContextMenuItem = {
   label: string;
   callback?: () => void;
   disabled?: boolean;
 };
-export type ContextMenuSection = Array<
-  ContextMenuItem | false | null | undefined
->;
+export type ContextMenuSection = Array<ContextMenuItem | false | null | undefined>;
 export type ContextMenuItems = Array<ContextMenuSection>;
 
 type ContextMenuContext = {
@@ -20,6 +18,14 @@ type ContextMenuContext = {
   };
   createContextMenu: (e: React.MouseEvent, items: ContextMenuItems) => void;
   clearContextMenu: () => void;
+  createHotspotContextMenu: (
+    hotspot: string,
+    completed: boolean,
+    resetCallback: () => void,
+    completedCallback: () => void
+  ) => (e: React.MouseEvent) => void;
+  createMaterialContextMenu: (material: string) => (e: React.MouseEvent) => void;
+  createWikiContextMenu: (text: string) => (e: React.MouseEvent) => void;
 };
 
 const contextMenuContext = createContext<ContextMenuContext>({
@@ -30,13 +36,12 @@ const contextMenuContext = createContext<ContextMenuContext>({
   },
   createContextMenu: () => {},
   clearContextMenu: () => {},
+  createHotspotContextMenu: () => () => {},
+  createMaterialContextMenu: () => () => {},
+  createWikiContextMenu: () => () => {},
 });
 
-export default function ContextMenuProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function ContextMenuProvider({ children }: { children: React.ReactNode }) {
   const [contextMenu, setContextMenu] = useState<{
     x: number;
     y: number;
@@ -62,12 +67,69 @@ export default function ContextMenuProvider({
       items,
     });
   };
+  const createHotspotContextMenu = useCallback(
+    (hotspot: string, completed: boolean, resetCallback: () => void, completedCallback: () => void) =>
+      (e: React.MouseEvent) =>
+        createContextMenu(e, [
+          [
+            completed
+              ? {
+                  label: 'Reset hotspot',
+                  callback: resetCallback,
+                }
+              : {
+                  label: 'Mark hotspot as completed',
+                  callback: completedCallback,
+                },
+          ],
+          [
+            {
+              label: '[WIKI]' + hotspot,
+              callback: () => wiki(hotspot),
+            },
+          ],
+        ]),
+    [createContextMenu]
+  );
+
+  const createMaterialContextMenu = useCallback(
+    (material: string) => (e: React.MouseEvent) =>
+      createContextMenu(e, [
+        [
+          {
+            label: '[WIKI]' + material,
+            callback: () => wiki(material.replace(/ /g, '_')),
+          },
+          {
+            label: '[WIKI]Material cache locations',
+            callback: () => wiki(`Material_cache_(${material.toLowerCase().replace(/ /g, '_')})#Locations`),
+          },
+        ],
+      ]),
+    [createContextMenu]
+  );
+
+  const createWikiContextMenu = useCallback(
+    (text: string) => (e: React.MouseEvent) =>
+      createContextMenu(e, [
+        [
+          {
+            label: '[WIKI]' + text,
+            callback: () => wiki(text),
+          },
+        ],
+      ]),
+    [createContextMenu]
+  );
   return (
     <contextMenuContext.Provider
       value={{
         contextMenu,
         createContextMenu,
         clearContextMenu,
+        createHotspotContextMenu,
+        createMaterialContextMenu,
+        createWikiContextMenu,
       }}
     >
       {children}
@@ -76,74 +138,14 @@ export default function ContextMenuProvider({
 }
 
 export const useContextMenu = () => {
-  const { contextMenu, createContextMenu, clearContextMenu } =
-    useContext(contextMenuContext);
-  const { wiki } = useGlobalState();
-
-  const createHotspotContextMenu = useCallback(
-    (
-        hotspot: string,
-        completed: boolean,
-        resetCallback: () => void,
-        completedCallback: () => void
-      ) =>
-      (e: React.MouseEvent) =>
-        createContextMenu(e, [
-          [
-            completed
-              ? {
-                  label: "Reset hotspot",
-                  callback: resetCallback,
-                }
-              : {
-                  label: "Mark hotspot as completed",
-                  callback: completedCallback,
-                },
-          ],
-          [
-            {
-              label: "[WIKI]" + hotspot,
-              callback: () => wiki(hotspot),
-            },
-          ],
-        ]),
-    [createContextMenu, wiki]
-  );
-
-  const createMaterialContextMenu = useCallback(
-    (material: string) => (e: React.MouseEvent) =>
-      createContextMenu(e, [
-        [
-          {
-            label: "[WIKI]" + material,
-            callback: () => wiki(material.replace(/ /g, "_")),
-          },
-          {
-            label: "[WIKI]Material cache locations",
-            callback: () =>
-              wiki(
-                `Material_cache_(${material
-                  .toLowerCase()
-                  .replace(/ /g, "_")})#Locations`
-              ),
-          },
-        ],
-      ]),
-    [createContextMenu, wiki]
-  );
-
-  const createWikiContextMenu = useCallback(
-    (text: string) => (e: React.MouseEvent) =>
-      createContextMenu(e, [
-        [
-          {
-            label: "[WIKI]" + text,
-            callback: () => wiki(text),
-          },
-        ],
-      ]),
-    [createContextMenu, wiki]
-  );
+  const {
+    contextMenu,
+    createContextMenu,
+    clearContextMenu,
+    createHotspotContextMenu,
+    createMaterialContextMenu,
+    createWikiContextMenu,
+  } = useContext(contextMenuContext);
 
   return {
     contextMenu,

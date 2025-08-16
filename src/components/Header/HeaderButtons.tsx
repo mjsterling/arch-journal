@@ -1,9 +1,7 @@
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
+import { HeaderDiscordButton, HeaderSettingsButton } from '.';
 
-import HeaderDiscordButton from "./HeaderDiscordButton";
-import HeaderSettingsButton from "./HeaderSettingsButton";
-
-export default function HeaderButtons({
+export function HeaderButtons({
   toggleMenu,
   toggleSettingsMenu,
   menuOpen,

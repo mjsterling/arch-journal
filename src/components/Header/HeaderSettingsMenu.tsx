@@ -1,29 +1,24 @@
-import { useGlobalState } from "@/data/providers/GlobalStateProvider";
-import { useSettings } from "@/data/providers/SettingsProvider";
-import { CheckIcon } from "@heroicons/react/20/solid";
+import { useGlobalState } from '@/data/providers/GlobalStateProvider';
+import { useSettings } from '@/data/providers/SettingsProvider';
+import { CheckIcon } from '@heroicons/react/20/solid';
 
-export default function HeaderSettingsMenu({
+export function HeaderSettingsMenu({
   closeMenu,
   settingsMenuOpen,
 }: {
   closeMenu: () => void;
   settingsMenuOpen: boolean;
 }) {
-  const {
-    settings: { colorblindMode },
-    importData,
-    exportData,
-    toggleColorblindMode,
-  } = useSettings();
+  const { colorblindMode, importData, exportData, toggleColorblindMode } = useSettings();
   return (
     <div
       className="flex flex-col w-full items-stretch md:flex-row justify-center md:items-center content-center gap-y-1 sm:gap-3 overflow-hidden transition-all duration-300 px-3"
       onClick={closeMenu}
       style={{
-        height: "fit-content",
-        maxHeight: settingsMenuOpen ? "280px" : "0",
-        paddingTop: settingsMenuOpen ? "8px" : "0",
-        paddingBottom: settingsMenuOpen ? "1rem" : "0",
+        height: 'fit-content',
+        maxHeight: settingsMenuOpen ? '280px' : '0',
+        paddingTop: settingsMenuOpen ? '8px' : '0',
+        paddingBottom: settingsMenuOpen ? '1rem' : '0',
       }}
     >
       <div className="flex flex-col w-full gap-2">
@@ -33,19 +28,17 @@ export default function HeaderSettingsMenu({
         <div className="flex gap-4 justify-end items-center text-orange-100 w-full">
           <button
             className="cursor-pointer flex gap-2"
-            value={colorblindMode ? "checked" : "unchecked"}
+            value={colorblindMode ? 'checked' : 'unchecked'}
             onClick={toggleColorblindMode}
           >
             <div
               className={[
-                "rounded-md border border-orange-100 cursor-pointer",
-                "bg-transparent text-orange-100",
-                "transition-colors ease-in-out h-6 w-6 flex justify-center items-center",
-              ].join(" ")}
+                'rounded-md border border-orange-100 cursor-pointer',
+                'bg-transparent text-orange-100',
+                'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
+              ].join(' ')}
             >
-              {colorblindMode ? (
-                <CheckIcon className="w-5 h-5 text-orange-100" />
-              ) : null}
+              {colorblindMode ? <CheckIcon className="w-5 h-5 text-orange-100" /> : null}
             </div>
             Colorblind mode
           </button>
@@ -63,9 +56,7 @@ export default function HeaderSettingsMenu({
           Export progress data to clipboard
         </button>
         <div className="flex flex-col items-end pt-4">
-          <span className="text-xs text-gray-300 text-right">
-            Version 1.1.1 (2025/05/25)
-          </span>
+          <span className="text-xs text-gray-300 text-right">Version 1.1.1 (2025/05/25)</span>
           <span className="text-xs text-gray-300 text-right">
             Found a bug? Expected to see something that isn&apos;t here?
           </span>

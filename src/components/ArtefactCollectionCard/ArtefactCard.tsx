@@ -1,23 +1,17 @@
-import { useMemo } from "react";
-import { DigsiteNames, Digsites } from "@/data/constants/Digsites";
-import { Collections } from "@/data/constants/Collections";
-import { Artefact, useArtefacts } from "@/data/providers/ArtefactProvider";
-import ArtefactCollectionButton from "./ArtefactCollectionButton";
-import { useGlobalState } from "@/data/providers/GlobalStateProvider";
-import { ArtefactStates } from "@/data/constants/Artefact";
-import LevelSiteDisplay from "./LevelSiteDisplay";
-import Icon from "../Icon";
-import ArtefactMiscButton from "./ArtefactMiscButton";
-import { CardContainer } from "./CardContainer";
-import useHideCard from "./useHideCard";
-import { useContextMenu } from "@/data/providers/ContextMenuProvider";
+import { useMemo } from 'react';
+import { ArtefactStates, Collections, DigsiteNames, Digsites } from '@/data/constants';
+import { Artefact, useArtefacts, useContextMenu, useGlobalState, useSettings } from '@/data/providers';
+import { ArtefactCollectionButton, Icon, LevelSiteDisplay, ArtefactMiscButton, CardContainer } from '@/components';
+import { useHideCard } from '@/data/hooks';
+import { wiki } from '@/data/utils';
 
-export default function ArtefactCard(props: {
+export function ArtefactCard(props: {
   artefact: Artefact;
   combined?: boolean;
   alwaysShow?: boolean;
   highlighted?: boolean;
 }) {
+  const { showCompletedArtefacts } = useSettings();
   const { artefact, combined = false, alwaysShow, highlighted = false } = props;
   const { isComplete: artefactIsComplete } = useArtefacts();
   const digsiteInfo = useMemo(() => {
@@ -26,17 +20,12 @@ export default function ArtefactCard(props: {
     return { ...digsite, name: artefact.digsite };
   }, [artefact.digsite]);
 
-  const isComplete = useMemo(
-    () => artefactIsComplete(artefact),
-    [artefact, artefactIsComplete]
-  );
+  const isComplete = useMemo(() => artefactIsComplete(artefact), [artefact, artefactIsComplete]);
 
   const { createMaterialContextMenu } = useContextMenu();
 
   const { onContextMenu } = useHandlers(artefact, isComplete, digsiteInfo);
-  const { hidden, opacity } = useHideCard(
-    isComplete && !highlighted && !alwaysShow
-  );
+  const { hidden, opacity } = useHideCard(isComplete && !highlighted && !alwaysShow, showCompletedArtefacts);
 
   if (hidden) return null;
 
@@ -59,20 +48,17 @@ export default function ArtefactCard(props: {
         <div className="flex flex-col items-center md:items-start gap-1">
           <p
             className={[
-              "text-center md:text-left lg:text-nowrap sm:text-lg",
-              highlighted ? "text-yellow-500" : "text-orange-100",
-            ].join(" ")}
+              'text-center md:text-left lg:text-nowrap sm:text-lg',
+              highlighted ? 'text-yellow-500' : 'text-orange-100',
+            ].join(' ')}
           >
             {artefact.name}
           </p>
           <div className="flex gap-3">
             {Object.entries(artefact.materials).map(([name, amount]) => (
-              <div
-                className="flex gap-1 items-center"
-                key={`ArtefactMaterial_${artefact.name}__${name}`}
-              >
+              <div className="flex gap-1 items-center" key={`ArtefactMaterial_${artefact.name}__${name}`}>
                 <Icon
-                  src={`/assets/materials/${name.replace(/ /g, "_")}.png`}
+                  src={`/assets/materials/${name.replace(/ /g, '_')}.png`}
                   alt={name}
                   title={name}
                   contextMenu
@@ -90,9 +76,11 @@ export default function ArtefactCard(props: {
       </div>
       <div className="flex flex-row flex-wrap md:flex-nowrap gap-2 justify-center lg:justify-start">
         {Object.entries(artefact.collections).map(([name, status]) => {
-          const { collector, image } = Collections.find(
-            (collection) => collection.name === name
-          ) ?? { collector: "", image: "", shortName: "" };
+          const { collector, image } = Collections.find((collection) => collection.name === name) ?? {
+            collector: '',
+            image: '',
+            shortName: '',
+          };
           return (
             <ArtefactCollectionButton
               mode="artefactPage"
@@ -112,7 +100,7 @@ export default function ArtefactCard(props: {
               artefact={artefact}
               type="mysteries"
               typeKey={name}
-              image={"/assets/collections/mysteries.png"}
+              image={'/assets/collections/mysteries.png'}
               status={status}
             />
           );
@@ -124,7 +112,7 @@ export default function ArtefactCard(props: {
               artefact={artefact}
               type="researchers"
               typeKey={name}
-              image={"/assets/collections/researchers.png"}
+              image={'/assets/collections/researchers.png'}
               status={status}
             />
           );
@@ -136,7 +124,7 @@ export default function ArtefactCard(props: {
               artefact={artefact}
               type="quests"
               typeKey={name}
-              image={"/assets/collections/quests.png"}
+              image={'/assets/collections/quests.png'}
               status={status}
             />
           );
@@ -148,17 +136,13 @@ export default function ArtefactCard(props: {
               artefact={artefact}
               type="misc"
               typeKey={name}
-              image={"/assets/collections/misc.png"}
+              image={'/assets/collections/misc.png'}
               status={status}
             />
           );
         })}
       </div>
-      <LevelSiteDisplay
-        className="hidden md:flex"
-        level={artefact.level}
-        sites={digsiteInfo}
-      />
+      <LevelSiteDisplay className="hidden md:flex" level={artefact.level} sites={digsiteInfo} />
     </CardContainer>
   );
 }
@@ -174,17 +158,13 @@ const useHandlers = (
   } | null
 ) => {
   const { createContextMenu } = useContextMenu();
-  const { wiki } = useGlobalState();
   const { setArtefact } = useArtefacts();
   const markAllAsCompleted = () => {
     const newArtefact = { ...artefact };
-    (
-      ["collections", "mysteries", "researchers", "quests", "misc"] as const
-    ).forEach((type) => {
+    (['collections', 'mysteries', 'researchers', 'quests', 'misc'] as const).forEach((type) => {
       if (!newArtefact[type]) return;
       Object.keys(newArtefact[type] ?? {}).forEach((key) => {
-        newArtefact[type][key as keyof Artefact[keyof Artefact]] =
-          ArtefactStates.Completed;
+        newArtefact[type][key as keyof Artefact[keyof Artefact]] = ArtefactStates.Completed;
       });
     });
 
@@ -193,13 +173,10 @@ const useHandlers = (
 
   const resetArtefact = () => {
     const newArtefact = { ...artefact };
-    (
-      ["collections", "mysteries", "researchers", "quests", "misc"] as const
-    ).forEach((type) => {
+    (['collections', 'mysteries', 'researchers', 'quests', 'misc'] as const).forEach((type) => {
       if (!newArtefact[type]) return;
       Object.keys(newArtefact[type] ?? {}).forEach((key) => {
-        newArtefact[type][key as keyof Artefact[keyof Artefact]] =
-          ArtefactStates.NotFound;
+        newArtefact[type][key as keyof Artefact[keyof Artefact]] = ArtefactStates.NotFound;
       });
     });
 
@@ -211,20 +188,20 @@ const useHandlers = (
       createContextMenu(e, [
         [
           isComplete
-            ? { label: "Reset Completion", callback: resetArtefact }
+            ? { label: 'Reset Completion', callback: resetArtefact }
             : {
-                label: "Mark artefact as completed",
+                label: 'Mark artefact as completed',
                 callback: markAllAsCompleted,
               },
         ],
         [
           {
-            label: "[WIKI]" + artefact.name,
+            label: '[WIKI]' + artefact.name,
             callback: () => wiki(artefact.name),
           },
           {
-            label: "[WIKI]" + digsiteInfo?.name + " Dig Site",
-            callback: () => wiki(digsiteInfo?.name ?? ""),
+            label: '[WIKI]' + digsiteInfo?.name + ' Dig Site',
+            callback: () => wiki(digsiteInfo?.name ?? ''),
           },
         ],
       ]),
