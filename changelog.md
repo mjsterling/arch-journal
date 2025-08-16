@@ -1,5 +1,12 @@
 # Changelog
 
+**v1.2.0 - 16/08/2025**
+
+- ScapeTools is now an Alt1 app!
+- Added import/export of persistent state to allow copying between browsers/Alt1
+- Added ability to import numbers from material storage
+- Added bank scanner for damaged/restored artefacts (work in progress, doesn't do anything yet!)
+
 **v1.1.1 - 25/05/2025**
 
 - Fixed colorblind mode on infoboxes not working correctly in Collection mode

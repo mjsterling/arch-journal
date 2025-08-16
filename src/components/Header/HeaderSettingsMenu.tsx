@@ -1,4 +1,3 @@
-import { useGlobalState } from '@/data/providers/GlobalStateProvider';
 import { useSettings } from '@/data/providers/SettingsProvider';
 import { CheckIcon } from '@heroicons/react/20/solid';
 
@@ -56,7 +55,7 @@ export function HeaderSettingsMenu({
           Export progress data to clipboard
         </button>
         <div className="flex flex-col items-end pt-4">
-          <span className="text-xs text-gray-300 text-right">Version 1.1.1 (2025/05/25)</span>
+          <span className="text-xs text-gray-300 text-right">Version 1.2.0 (2025/08/16)</span>
           <span className="text-xs text-gray-300 text-right">
             Found a bug? Expected to see something that isn&apos;t here?
           </span>
