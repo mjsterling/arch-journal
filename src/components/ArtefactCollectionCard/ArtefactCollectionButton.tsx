@@ -166,7 +166,7 @@ const useHandlers = (
         : [
             {
               label: 'View in Artefacts',
-              callback: () => `/?highlight=${encodeURIComponent(artefact.name)}`,
+              callback: () => router.push(`/artefacts?highlight=${encodeURIComponent(artefact.name)}`),
             },
           ],
       mode === 'artefactPage'

@@ -7,7 +7,6 @@ import { useLazySearch } from '@/data/hooks';
 import { ArtefactCard, Icon } from '@/components';
 
 export default function Artefacts() {
-  console.log('artefacts page loading');
   useEffect(() => {
     if (window.alt1) window.alt1.identifyAppUrl('/appconfig.json');
   }, []);
