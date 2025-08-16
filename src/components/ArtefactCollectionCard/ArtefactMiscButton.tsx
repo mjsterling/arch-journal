@@ -1,6 +1,6 @@
 import { ArtefactStates } from '@/data/constants';
 import { Icon } from '@/components';
-import { type Artefact, useArtefacts, useContextMenu, useGlobalState } from '@/data/providers';
+import { type Artefact, useArtefacts, useContextMenu } from '@/data/providers';
 import { wiki } from '@/data/utils';
 
 export const ArtefactMiscButton: ArtefactMiscButton = ({ artefact, type, typeKey, image, status }) => {

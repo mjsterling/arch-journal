@@ -17,7 +17,7 @@ export function pixelsToText(coords: Array<{ x: number; y: number }>) {
 
   // 3. Split grid into columns for each character
   //    (look for vertical gaps of all spaces)
-  let chars = [];
+  const chars = [];
   let currentChar = [];
 
   for (let col = 0; col < grid[0].length; col++) {

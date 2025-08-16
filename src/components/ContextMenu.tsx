@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useGlobalState } from '@/data/providers/GlobalStateProvider';
 import { type ContextMenuItem } from '@/data/providers/ContextMenuProvider';
 import { useContextMenu } from '@/data/providers/ContextMenuProvider';
 

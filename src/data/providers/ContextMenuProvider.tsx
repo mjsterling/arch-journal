@@ -58,7 +58,7 @@ export function ContextMenuProvider({ children }: { children: React.ReactNode })
       items: [],
     });
   };
-  const createContextMenu = (e: React.MouseEvent, items: ContextMenuItems) => {
+  const createContextMenu = useCallback((e: React.MouseEvent, items: ContextMenuItems) => {
     e.stopPropagation();
     e.preventDefault();
     setContextMenu({
@@ -66,7 +66,7 @@ export function ContextMenuProvider({ children }: { children: React.ReactNode })
       y: e.clientY,
       items,
     });
-  };
+  }, []);
   const createHotspotContextMenu = useCallback(
     (hotspot: string, completed: boolean, resetCallback: () => void, completedCallback: () => void) =>
       (e: React.MouseEvent) =>

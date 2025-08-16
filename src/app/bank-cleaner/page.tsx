@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { BankCleanerArtefactCard, Checkbox, RadioGroup } from '@/components';
 import { Artefact, useArtefacts } from '@/data/providers';
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
@@ -20,9 +20,9 @@ export default function BankCleaner() {
   const doubleFilteredArtefacts = useMemo(
     () =>
       hideZeroCountArtefacts
-        ? artefacts.filter((artefact) => artefact.count.damaged || artefact.count.restored)
-        : artefacts,
-    [artefacts, hideZeroCountArtefacts]
+        ? filteredArtefacts.filter((artefact) => artefact.count.damaged || artefact.count.restored)
+        : filteredArtefacts,
+    [filteredArtefacts, hideZeroCountArtefacts]
   );
   const sortedArtefacts = useSortedArtefacts(doubleFilteredArtefacts, sort);
   const [alt1Active, setAlt1Active] = useState(false);
@@ -83,7 +83,7 @@ export default function BankCleaner() {
   const importArtefacts = async () => {
     if (window.alt1) {
       const alt1 = window.alt1;
-      const region = alt1.bindRegion(0, 0, alt1.rsWidth, alt1.rsHeight);
+      alt1.bindRegion(0, 0, alt1.rsWidth, alt1.rsHeight);
       const newArtefacts = [...artefacts];
       for (const artefact of newArtefacts) {
         const damaged = await readArtefact(`/assets/artefacts/damaged/${artefact.name.replace(/[ \/]/g, '_')}.png`);
@@ -174,10 +174,16 @@ export default function BankCleaner() {
 }
 
 const useSortedArtefacts = (artefacts: Artefact[], sort: 'name' | 'digsite' | 'level') => {
-  const digsiteReducer = (a: Artefact, b: Artefact) =>
-    a.digsite.localeCompare(b.digsite) || a.name.replace(/\W/g, '').localeCompare(b.name.replace(/\W/g, ''));
-  const nameReducer = (a: Artefact, b: Artefact) => a.name.replace(/\W/g, '').localeCompare(b.name.replace(/\W/g, ''));
-  const levelReducer = (a: Artefact, b: Artefact) => a.level - b.level;
+  const digsiteReducer = useCallback(
+    (a: Artefact, b: Artefact) =>
+      a.digsite.localeCompare(b.digsite) || a.name.replace(/\W/g, '').localeCompare(b.name.replace(/\W/g, '')),
+    []
+  );
+  const nameReducer = useCallback(
+    (a: Artefact, b: Artefact) => a.name.replace(/\W/g, '').localeCompare(b.name.replace(/\W/g, '')),
+    []
+  );
+  const levelReducer = useCallback((a: Artefact, b: Artefact) => a.level - b.level, []);
   const sortedArtefacts = useMemo(
     () => artefacts.sort(sort === 'name' ? nameReducer : sort === 'digsite' ? digsiteReducer : levelReducer),
     [artefacts, sort, nameReducer, digsiteReducer, levelReducer]

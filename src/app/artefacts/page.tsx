@@ -2,7 +2,7 @@
 import { useMemo, useEffect, useState } from 'react';
 import { type Artefact, useArtefacts, useContextMenu, useSettings } from '@/data/providers';
 import { ArtefactStates } from '@/data/constants';
-import { CheckIcon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import { useLazySearch } from '@/data/hooks';
 import { ArtefactCard, Checkbox, Icon } from '@/components';
 

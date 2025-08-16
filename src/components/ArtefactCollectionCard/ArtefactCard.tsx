@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { ArtefactStates, Collections, DigsiteNames, Digsites } from '@/data/constants';
-import { Artefact, useArtefacts, useContextMenu, useGlobalState, useSettings } from '@/data/providers';
+import { Artefact, useArtefacts, useContextMenu, useSettings } from '@/data/providers';
 import { ArtefactCollectionButton, Icon, LevelSiteDisplay, ArtefactMiscButton, CardContainer } from '@/components';
 import { useHideCard } from '@/data/hooks';
 import { wiki } from '@/data/utils';

@@ -1,5 +1,3 @@
-import { JSX } from 'react';
-
 export const RadioGroup = <T extends string>({ label, options, value, setValue }: RadioGroupProps<T>) => {
   return (
     <div className="flex flex-wrap justify-center gap-4 items-center text-orange-100">

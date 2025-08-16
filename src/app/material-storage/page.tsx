@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useGlobalState } from '@/data/providers';
 import { MaterialsByType, DigsiteNames, Digsites } from '@/data/constants';
 import { MaterialStorageTitle, MaterialStorageInput } from './partials';
-import * as a1lib from 'alt1';
+import 'alt1';
 
 import { imageToBase64BGRA, hexToArgbInt, pixelsToText } from '@/data/utils';
 
@@ -21,7 +21,7 @@ export default function MaterialStorage() {
       for (const materialType in MaterialsByType) {
         const region = alt1.bindRegion(0, 0, alt1.rsWidth, alt1.rsHeight);
         try {
-          const { base64, width, height } = await imageToBase64BGRA(`/assets/ocr/${materialType}.png`);
+          const { base64, width } = await imageToBase64BGRA(`/assets/ocr/${materialType}.png`);
           if (!base64) {
             console.log('cannot load image');
             continue;
@@ -57,6 +57,7 @@ export default function MaterialStorage() {
             }
           });
         } catch (error) {
+          console.error(error);
           continue;
         }
       }

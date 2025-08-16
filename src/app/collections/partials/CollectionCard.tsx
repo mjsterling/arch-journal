@@ -1,7 +1,7 @@
 'use client';
 import { useMemo } from 'react';
 import { Digsites, ArtefactStates } from '@/data/constants';
-import { type Artefact, useArtefacts, useContextMenu, useGlobalState, useSettings } from '@/data/providers';
+import { type Artefact, useArtefacts, useContextMenu, useSettings } from '@/data/providers';
 import { ArtefactCollectionButton, LevelSiteDisplay, CardContainer, Icon } from '@/components';
 import { useHideCard } from '@/data/hooks';
 import { useCollectionsPageData } from '../page';

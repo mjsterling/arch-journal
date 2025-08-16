@@ -1,7 +1,7 @@
 'use client';
 import { useMemo, useState } from 'react';
 import { ArtefactStates } from '@/data/constants';
-import { Artefact, useArtefacts, useContextMenu, useGlobalState, useSettings } from '@/data/providers';
+import { Artefact, useArtefacts, useContextMenu, useSettings } from '@/data/providers';
 import { ArtefactInfobox, Icon } from '@/components';
 import { useRouter } from 'next/navigation';
 import { wiki } from '@/data/utils';
