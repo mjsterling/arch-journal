@@ -1,0 +1,16 @@
+{
+	"appName": "Arch Journal",
+	"description": "ScapeTools Archaeology Journal",
+	"appUrl": "/",
+	"configUrl": "./appconfig.json",
+	"iconUrl": "./assets/logo/ScapeTools_pickaxe_black.png",
+	"defaultWidth": 400,
+	"defaultHeight": 600,
+	"minWidth": 400,
+	"minHeight": 600,
+	"maxWidth": 1920,
+	"maxHeight": 1080,
+	"requestHandlers": [ ],
+	"activators": [	],
+	"permissions": "pixel,overlay,gamestate"
+}

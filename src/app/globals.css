@@ -1,14 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-gray-*: initial;
+  --color-orange-*: initial;
+  --color-yellow-*: initial;
+  --color-green-*: initial;
+  --color-gray-950: #020617;
+  --color-gray-900: #0f172a;
+  --color-gray-800: #2d3748;
+  --color-gray-700: #4a5568;
+  --color-gray-600: #718096;      
+  --color-gray-500:  #64748b;
+  --color-gray-400: #94a3b8;
+  --color-gray-300: #cbd5e1;
+  --color-gray-200: #e2e8f0;
+  --color-gray-100: #f1f5f9;
+  --color-gray-50: #f8fafc;
+  --color-orange-50: #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+  --color-orange-950: #431407;
+  --color-yellow-50: #FFF8E1;
+  --color-yellow-100: #FFECB3;
+  --color-yellow-200: #FFE082;
+  --color-yellow-300: #FFD54F;
+  --color-yellow-400: #FFCA28;
+  --color-yellow-500: #FFC107;
+  --color-yellow-600: #FFB300;
+  --color-yellow-700: #FFA000;
+  --color-yellow-800: #FF8F00;
+  --color-yellow-900: #FF6F00;
+  --color-green-50: #E8F5E9;
+  --color-green-100: #C8E6C9;
+  --color-green-200: #A5D6A7;
+  --color-green-300: #81C784;
+  --color-green-400: #66BB6A;
+  --color-green-500: #4CAF50;
+  --color-green-600: #43A047;
+  --color-green-700: #388E3C;   
+  --color-green-800: #2E7D32;
+  --color-green-900: #1B5E20;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: 'Raleway', monospace;
 }
 

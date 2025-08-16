@@ -1,0 +1,49 @@
+export const emptyMaterialStorage = {
+  // Agnostic materials
+  "Third-age iron": 0,
+  "Samite silk": 0,
+  "White oak": 0,
+  Goldrune: 0,
+  Orthenglass: 0,
+  Vellum: 0,
+  "Leather scraps": 0,
+  Soapstone: 0,
+  "Animal furs": 0,
+  "Fossilised bone": 0,
+  // Armadylean materials
+  "Stormguard steel": 0,
+  "Wings of War": 0,
+  "Armadylean yellow": 0,
+  "Aetherium alloy": 0,
+  Quintessence: 0,
+  // Bandosian materials
+  "Malachite green": 0,
+  "Mark of the Kyzaj": 0,
+  "Vulcanised rubber": 0,
+  "Warforged bronze": 0,
+  "Yu'biusk clay": 0,
+  // Dragonkin materials
+  "Dragon metal": 0,
+  Orgone: 0,
+  "Compass rose": 0,
+  "Carbon black": 0,
+  Felt: 0,
+  // Saradominist materials
+  Keramos: 0,
+  "White marble": 0,
+  "Cobalt blue": 0,
+  "Everlight silvthril": 0,
+  "Star of Saradomin": 0,
+  // Zamorakian materials
+  "Cadmium red": 0,
+  "Chaotic brimstone": 0,
+  Demonhide: 0,
+  "Eye of Dagon": 0,
+  "Hellfire metal": 0,
+  // Zarosian materials
+  "Ancient vis": 0,
+  "Blood of Orcus": 0,
+  "Imperial steel": 0,
+  "Tyrian purple": 0,
+  "Zarosian insignia": 0,
+};
