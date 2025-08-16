@@ -2,6 +2,7 @@
 export * from './ArtefactCollectionCard';
 export * from './ArtefactSingleCard';
 export * from './BankCleanerArtefactCard';
+export * from './Checkbox';
 export * from './Combobox';
 export * from './ContextMenu';
 export * from './Header';

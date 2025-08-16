@@ -4,7 +4,7 @@ import { type Artefact, useArtefacts, useContextMenu, useSettings } from '@/data
 import { ArtefactStates } from '@/data/constants';
 import { CheckIcon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import { useLazySearch } from '@/data/hooks';
-import { ArtefactCard, Icon } from '@/components';
+import { ArtefactCard, Checkbox, Icon } from '@/components';
 
 export default function Artefacts() {
   useEffect(() => {
@@ -125,20 +125,11 @@ export default function Artefacts() {
             </button>
           ) : null}
         </div>
-        <div className="flex gap-2 items-center text-orange-100">
-          <button
-            value={showCompletedArtefacts ? 'checked' : 'unchecked'}
-            className={[
-              'rounded-md border border-orange-100 cursor-pointer',
-              'bg-transparent text-orange-100',
-              'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
-            ].join(' ')}
-            onClick={toggleShowCompletedArtefacts}
-          >
-            {showCompletedArtefacts ? <CheckIcon className="w-5 h-5 text-orange-100" /> : null}
-          </button>
-          Show completed artefacts?
-        </div>
+        <Checkbox
+          label="Show completed artefacts?"
+          checked={showCompletedArtefacts}
+          toggle={toggleShowCompletedArtefacts}
+        />
       </div>
       <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-2 md:px-12 md:py-6">
         {searchQuery && (

@@ -52,8 +52,9 @@ export type Artefact = {
 const artefactContext = createContext<{
   artefacts: Artefact[];
   setArtefact: (artefact: Artefact) => void;
+  setArtefacts: (artefacts: Artefact[]) => void;
   isComplete: (artefact: Artefact) => boolean;
-}>({ artefacts: [], setArtefact: () => {}, isComplete: () => false });
+}>({ artefacts: [], setArtefact: () => {}, setArtefacts: () => {}, isComplete: () => false });
 
 export function ArtefactProvider({ children }: { children: React.ReactNode }) {
   const [artefacts, setArtefacts] = useState<Artefact[]>([]);
@@ -141,6 +142,7 @@ export function ArtefactProvider({ children }: { children: React.ReactNode }) {
   const saveArtefactState = () => {
     const artefactState = artefacts.map((artefact) => ({
       name: artefact.name,
+      count: artefact.count ?? {},
       collections: artefact.collections ?? {},
       mysteries: artefact.mysteries ?? {},
       researchers: artefact.researchers ?? {},
@@ -158,7 +160,7 @@ export function ArtefactProvider({ children }: { children: React.ReactNode }) {
     Object.values(artefact.quests ?? {}).every((status) => status === 'Completed') &&
     Object.values(artefact.misc ?? {}).every((status) => status === 'Completed');
   return (
-    <artefactContext.Provider value={{ artefacts, setArtefact, isComplete }}>
+    <artefactContext.Provider value={{ artefacts, setArtefact, setArtefacts, isComplete }}>
       {loading ? null : children}
     </artefactContext.Provider>
   );

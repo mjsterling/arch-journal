@@ -56,26 +56,8 @@ export default function MaterialStorage() {
               updateMaterialStorage(MaterialsByType[materialType][index], Number(count));
             }
           });
-          // if (pixelData) {
-          //   alt1.overLayRect(hexToArgbInt('#0F0'), boxLocation.x, boxLocation.y, boxWidth, boxHeight, 5000, 1);
-          //   alt1.overLayText(
-          //     pixelData.replace(/\D/g, ''),
-          //     hexToArgbInt('#0F0'),
-          //     12,
-          //     boxLocation.x,
-          //     boxLocation.y,
-          //     5000
-          //   );
-
-          //   console.warn('read text', tryReadingText);
-          // } else {
-          //   alt1.overLayRect(hexToArgbInt('#F00'), boxLocation.x, boxLocation.y, boxWidth, boxHeight, 5000, 1);
-
-          //   console.error('no text found');
-          // }
-          // }
         } catch (error) {
-          // continue;
+          continue;
         }
       }
     } else {
