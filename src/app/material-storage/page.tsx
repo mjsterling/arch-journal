@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useGlobalState } from '@/data/providers';
 import { MaterialsByType, DigsiteNames, Digsites } from '@/data/constants';
 import { MaterialStorageTitle, MaterialStorageInput } from './partials';
-import 'alt1';
 
 import { imageToBase64BGRA, hexToArgbInt, pixelsToText } from '@/data/utils';
 
