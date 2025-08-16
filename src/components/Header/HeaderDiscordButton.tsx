@@ -8,7 +8,7 @@ export function HeaderDiscordButton() {
     >
       <img
         className="h-5 w-5 min-h-5 min-w-5"
-        src="assets/discord.svg"
+        src="/assets/discord.svg"
         alt="Discord"
         title="Join the ScapeTools Discord server"
       />

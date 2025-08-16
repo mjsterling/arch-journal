@@ -1,33 +1,83 @@
 'use client';
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useGlobalState } from '@/data/providers';
 import { MaterialsByType, DigsiteNames, Digsites } from '@/data/constants';
 import { MaterialStorageTitle, MaterialStorageInput } from './partials';
+import * as a1lib from 'alt1';
+
+import { imageToBase64BGRA, hexToArgbInt, pixelsToText } from '@/data/utils';
 
 export default function MaterialStorage() {
-  const { materialStorage } = useGlobalState();
+  const { materialStorage, updateMaterialStorage } = useGlobalState();
+
+  const [alt1Active, setAlt1Active] = useState(false);
+  useEffect(() => {
+    if (window.alt1) setAlt1Active(true);
+  }, []);
 
   const importMaterialCounts = async () => {
     if (window.alt1) {
-      console.log(window.alt1);
-      const region = window.alt1.bindRegion(
-        window.alt1.rsX,
-        window.alt1.rsY,
-        window.alt1.rsWidth,
-        window.alt1.rsHeight
-      );
-      //   for (const material of Object.keys(materialStorage)) {
-      console.log(region);
-      const tai = await axios.get('/assets/materials/Third-age_iron.png', {
-        responseType: 'arraybuffer',
-      });
-      const buffer = Buffer.from(tai.data, 'binary').toString('base64');
-      console.log(buffer);
-      // stuck here
-      const subImage = window.alt1.bindFindSubImg(region, buffer, 27, 0, 0, window.alt1.rsWidth, window.alt1.rsHeight);
-      console.log(subImage);
-      //   }
+      const alt1 = window.alt1;
+      for (const materialType in MaterialsByType) {
+        const region = alt1.bindRegion(0, 0, alt1.rsWidth, alt1.rsHeight);
+        try {
+          const { base64, width, height } = await imageToBase64BGRA(`/assets/ocr/${materialType}.png`);
+          if (!base64) {
+            console.log('cannot load image');
+            continue;
+          }
+          const subImages = JSON.parse(alt1.bindFindSubImg(region, base64, width, 0, 0, alt1.rsWidth, alt1.rsHeight));
+
+          if (!subImages.length) {
+            continue;
+          }
+
+          const boxWidth = 38;
+          const boxHeight = 15;
+          const numberLocations =
+            materialType === 'Agnostic'
+              ? new Array(10).fill(0).map((_, i) => subImages[0].x + i * 45)
+              : new Array(5).fill(0).map((_, i) => subImages[0].x + i * 45);
+
+          numberLocations.forEach((location, index) => {
+            const yellowPixels: Array<{ x: number; y: number }> = [];
+            const boxLocation = { x: location, y: subImages[0].y + 25 };
+            for (let x = boxLocation.x; x < boxLocation.x + boxWidth; x++) {
+              for (let y = boxLocation.y; y < boxLocation.y + boxHeight; y++) {
+                const pixelData = alt1.bindGetPixel(1, x, y);
+                if (pixelData === hexToArgbInt('#FFFF00')) {
+                  yellowPixels.push({ x, y });
+                  alt1.overLayRect(hexToArgbInt('#0F0'), x, y, 1, 1, 5000, 1);
+                }
+              }
+            }
+            const count = pixelsToText(yellowPixels);
+            if (/^\d+$/.test(count)) {
+              updateMaterialStorage(MaterialsByType[materialType][index], Number(count));
+            }
+          });
+          // if (pixelData) {
+          //   alt1.overLayRect(hexToArgbInt('#0F0'), boxLocation.x, boxLocation.y, boxWidth, boxHeight, 5000, 1);
+          //   alt1.overLayText(
+          //     pixelData.replace(/\D/g, ''),
+          //     hexToArgbInt('#0F0'),
+          //     12,
+          //     boxLocation.x,
+          //     boxLocation.y,
+          //     5000
+          //   );
+
+          //   console.warn('read text', tryReadingText);
+          // } else {
+          //   alt1.overLayRect(hexToArgbInt('#F00'), boxLocation.x, boxLocation.y, boxWidth, boxHeight, 5000, 1);
+
+          //   console.error('no text found');
+          // }
+          // }
+        } catch (error) {
+          // continue;
+        }
+      }
     } else {
       alert('Alt1 is not available. Please ensure you are using the Alt1 client.');
     }
@@ -36,7 +86,7 @@ export default function MaterialStorage() {
   return (
     <div className="flex flex-col items-center justify-center h-full w-full gap-4 py-8">
       <div className="flex w-full justify-end">
-        {window.alt1 ? (
+        {alt1Active ? (
           <button
             className="text-orange-100 font-semibold cursor-pointer hover:scale-102 transition-transform text-base border-orange-100 border-2 rounded-md px-3 py-1"
             onClick={importMaterialCounts}
