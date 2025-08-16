@@ -1,5 +1,5 @@
 import { RadioGroup } from '@/components';
-import { useCollectionsPageData } from '../page';
+import { useCollectionsPageData } from '../data';
 import { CollectionSortOptions } from '@/data/constants';
 
 export const CollectionSort: React.FC = () => {

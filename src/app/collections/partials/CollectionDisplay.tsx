@@ -1,6 +1,6 @@
 import { useSettings } from '@/data/providers';
 import { CollectionCard } from '.';
-import { useCollectionsPageData } from '../page';
+import { useCollectionsPageData } from '../data';
 import { CollectionSortOptions } from '@/data/constants';
 
 export const CollectionDisplay: React.FC = () => {

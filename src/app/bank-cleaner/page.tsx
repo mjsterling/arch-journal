@@ -31,6 +31,7 @@ export default function BankCleaner() {
   }, []);
 
   const readArtefact = async (imageUrl: string) => {
+    const alt1 = window.alt1;
     try {
       const { base64, width, height } = await imageToBase64BGRA(imageUrl);
       if (!base64) {
