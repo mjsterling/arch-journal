@@ -6,8 +6,8 @@ type Settings = {
   colorblindMode: boolean;
   showCompletedArtefacts: boolean;
   showCompletedCollections: boolean;
-  importData(): void;
-  exportData(): void;
+  importData(text: string): boolean;
+  exportData(): boolean;
   toggleColorblindMode: () => void;
   toggleShowCompletedArtefacts: () => void;
   toggleShowCompletedCollections: () => void;
@@ -17,8 +17,8 @@ const SettingsContext = createContext<Settings>({
   colorblindMode: false,
   showCompletedArtefacts: false,
   showCompletedCollections: false,
-  importData: () => {},
-  exportData: () => {},
+  importData: () => false,
+  exportData: () => false,
   toggleColorblindMode: () => {},
   toggleShowCompletedArtefacts: () => {},
   toggleShowCompletedCollections: () => {},
@@ -42,21 +42,18 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem('arch-journal-settings', JSON.stringify(settings));
   }, [settings]);
 
-  const importData = async () => {
-    if (confirm('Are you sure you want to import data from the clipboard?')) {
-      try {
-        const decodedData = await navigator.clipboard.readText().then((data) => {
-          return atob(data);
-        });
-        const parsedData = JSON.parse(decodedData);
+  const importData = (text: string) => {
+    try {
+      const parsedData = JSON.parse(atob(text));
+      window.localStorage.setItem('arch-journal-artefacts', JSON.stringify(parsedData.artefacts));
+      window.localStorage.setItem('arch-journal-materialStorage', JSON.stringify(parsedData.materialStorage));
+      window.localStorage.setItem('arch-journal-settings', JSON.stringify(parsedData.settings));
+      window.location.reload();
+      return true;
+    } catch (error) {
+      console.error('Failed to import data:', error);
 
-        window.localStorage.setItem('arch-journal-artefacts', JSON.stringify(parsedData.artefacts));
-        window.localStorage.setItem('arch-journal-materialStorage', JSON.stringify(parsedData.materialStorage));
-        window.localStorage.setItem('arch-journal-settings', JSON.stringify(parsedData.settings));
-        window.location.reload();
-      } catch (error) {
-        console.error('Failed to read clipboard contents:', error);
-      }
+      return false;
     }
   };
 
@@ -73,9 +70,10 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
 
     try {
       navigator.clipboard.writeText(btoa(JSON.stringify(data)));
-      alert('Data copied to clipboard.');
+      return true;
     } catch (err) {
       console.error('Failed to copy data to clipboard', err);
+      return false;
     }
   };
 

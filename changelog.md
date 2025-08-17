@@ -1,5 +1,9 @@
 # Changelog
 
+**v1.2.1 - 17/08/2025**
+
+- Added backup data import option for Alt1
+
 **v1.2.0 - 16/08/2025**
 
 - ScapeTools is now an Alt1 app!

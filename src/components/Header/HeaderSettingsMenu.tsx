@@ -1,5 +1,8 @@
+'use client';
 import { useSettings } from '@/data/providers/SettingsProvider';
 import { CheckIcon } from '@heroicons/react/20/solid';
+import { useEffect, useState } from 'react';
+import { ImportDataModal } from '../ImportDataModal';
 
 export function HeaderSettingsMenu({
   closeMenu,
@@ -8,7 +11,49 @@ export function HeaderSettingsMenu({
   closeMenu: () => void;
   settingsMenuOpen: boolean;
 }) {
+  const [importModalOpen, setImportModalOpen] = useState(false);
   const { colorblindMode, importData, exportData, toggleColorblindMode } = useSettings();
+  const [dataImported, setDataImported] = useState(false);
+  const [dataExported, setDataExported] = useState(false);
+  useEffect(() => {
+    if (dataExported) {
+      setTimeout(() => {
+        setDataExported(false);
+      }, 5000);
+    }
+  });
+  const tryExportingData = async () => {
+    try {
+      const success = exportData();
+      if (success) {
+        setDataExported(true);
+      }
+    } catch (error) {
+      console.error('Failed to export data:', error);
+      setDataExported(false);
+    }
+  };
+  const tryImportingData = async () => {
+    try {
+      if ('clipboard' in navigator && 'confirm' in window) {
+        await navigator.clipboard.readText().then((text) => {
+          if (confirm('Are you sure you want to import data from the clipboard?')) {
+            const success = importData(text);
+            if (success) {
+              setImportModalOpen(false);
+              setDataImported(true);
+            }
+          }
+        });
+      } else {
+        setImportModalOpen(true);
+      }
+    } catch (error) {
+      console.error('navigator.clipboard not available');
+      setImportModalOpen(true);
+      setDataImported(false);
+    }
+  };
   return (
     <div
       className="flex flex-col w-full items-stretch md:flex-row justify-center md:items-center content-center gap-y-1 sm:gap-3 overflow-hidden transition-all duration-300 px-3"
@@ -43,19 +88,35 @@ export function HeaderSettingsMenu({
           </button>
         </div>
         <button
-          className="cursor-pointer flex gap-2 ml-auto text-orange-100 border  px-2 py-1 rounded-sm border-orange-100"
-          onClick={importData}
+          className="cursor-pointer flex gap-2 ml-auto text-orange-100 border disabled:border-0 disabled:opacity-50 px-2 py-1 rounded-sm border-orange-100"
+          onClick={tryImportingData}
+          disabled={dataImported}
         >
-          Import data from clipboard
+          {dataImported ? 'Data imported successfully ✓' : 'Import data from clipboard'}
         </button>
+        <ImportDataModal
+          open={importModalOpen}
+          setOpen={setImportModalOpen}
+          importData={(data: string) => {
+            const success = importData(data);
+            if (success) {
+              setDataImported(true);
+              setImportModalOpen(false);
+              window.location.reload();
+            } else {
+              setDataImported(false);
+            }
+          }}
+        />
         <button
-          className="cursor-pointer flex gap-2 ml-auto text-orange-100 border px-2 py-1 rounded-sm border-orange-100"
-          onClick={exportData}
+          className="cursor-pointer flex gap-2 ml-auto text-orange-100 disabled:border-0 disabled:opacity-50 border px-2 py-1 rounded-sm border-orange-100"
+          onClick={tryExportingData}
+          disabled={dataExported}
         >
-          Export progress data to clipboard
+          {dataExported ? 'Data exported successfully ✓' : 'Export progress data to clipboard'}
         </button>
         <div className="flex flex-col items-end pt-4">
-          <span className="text-xs text-gray-300 text-right">Version 1.2.0 (2025/08/16)</span>
+          <span className="text-xs text-gray-300 text-right">Version 1.2.1 (2025/08/17)</span>
           <span className="text-xs text-gray-300 text-right">
             Found a bug? Expected to see something that isn&apos;t here?
           </span>
