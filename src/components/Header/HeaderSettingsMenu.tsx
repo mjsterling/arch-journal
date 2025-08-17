@@ -48,7 +48,7 @@ export function HeaderSettingsMenu({
       } else {
         setImportModalOpen(true);
       }
-    } catch (error) {
+    } catch {
       console.error('navigator.clipboard not available');
       setImportModalOpen(true);
       setDataImported(false);

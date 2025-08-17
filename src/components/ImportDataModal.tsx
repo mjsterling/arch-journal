@@ -1,5 +1,4 @@
 'use client';
-import { useSettings } from '@/data/providers';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 
