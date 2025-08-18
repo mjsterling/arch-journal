@@ -56,13 +56,13 @@ export default function BankCleaner() {
           x: Math.round(subImage.x - (boxWidth - width) / 2),
           y: Math.round(subImage.y - (boxWidth - height) / 2),
         };
-        alt1.overLayRect(hexToArgbInt('#FFFFFF'), boxLocation.x, boxLocation.y, 40, 40, 5000, 1);
+        alt1.overLayRect(hexToArgbInt('#FFFFFF'), boxLocation.x, boxLocation.y, 40, 40, 2000, 1);
         for (let x = boxLocation.x; x < boxLocation.x + 15; x++) {
           for (let y = boxLocation.y; y < boxLocation.y + boxHeight; y++) {
             const pixelData = alt1.bindGetPixel(1, x, y);
             if (pixelData === hexToArgbInt('#FFFF00')) {
               yellowPixels.push({ x, y });
-              alt1.overLayRect(hexToArgbInt('#0F0'), x, y, 1, 1, 5000, 1);
+              alt1.overLayRect(hexToArgbInt('#0F0'), x, y, 1, 1, 2000, 1);
             }
           }
         }

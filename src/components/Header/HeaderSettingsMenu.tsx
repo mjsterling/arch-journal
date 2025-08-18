@@ -3,6 +3,7 @@ import { useSettings } from '@/data/providers/SettingsProvider';
 import { CheckIcon } from '@heroicons/react/20/solid';
 import { useEffect, useState } from 'react';
 import { ImportDataModal } from '../ImportDataModal';
+import { Checkbox } from '../Checkbox';
 
 export function HeaderSettingsMenu({
   closeMenu,
@@ -69,23 +70,8 @@ export function HeaderSettingsMenu({
         <div className="flex justify-end">
           <h2 className="text-orange-100 text-xl mb-4">Settings</h2>
         </div>
-        <div className="flex gap-4 justify-end items-center text-orange-100 w-full">
-          <button
-            className="cursor-pointer flex gap-2"
-            value={colorblindMode ? 'checked' : 'unchecked'}
-            onClick={toggleColorblindMode}
-          >
-            <div
-              className={[
-                'rounded-md border border-orange-100 cursor-pointer',
-                'bg-transparent text-orange-100',
-                'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
-              ].join(' ')}
-            >
-              {colorblindMode ? <CheckIcon className="w-5 h-5 text-orange-100" /> : null}
-            </div>
-            Colorblind mode
-          </button>
+        <div className="flex gap-4 justify-end items-center text-orange-100 w-full py-2">
+          <Checkbox checked={colorblindMode} toggle={toggleColorblindMode} label="Colorblind mode" />
         </div>
         <button
           className="cursor-pointer flex gap-2 ml-auto text-orange-100 border disabled:border-0 disabled:opacity-50 px-2 py-1 rounded-sm border-orange-100"

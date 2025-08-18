@@ -57,7 +57,7 @@ export default function MaterialStorage() {
                 const pixelData = alt1.bindGetPixel(1, x, y);
                 if (pixelData === hexToArgbInt('#FFFF00')) {
                   yellowPixels.push({ x, y });
-                  alt1.overLayRect(hexToArgbInt('#0F0'), x, y, 1, 1, 5000, 1);
+                  alt1.overLayRect(hexToArgbInt('#0F0'), x, y, 1, 1, 2000, 1);
                 }
               }
             }
@@ -78,8 +78,8 @@ export default function MaterialStorage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full w-full gap-4 py-8">
-      <div className="flex w-full justify-end">
+    <div className="flex flex-col items-center justify-center h-full w-full gap-4">
+      <div className="flex w-full justify-end sticky top-0 pt-20 -mt-16 lg:top-36 bg-gray-900 py-4">
         {alt1Active ? (
           <button
             className="text-orange-100 font-semibold cursor-pointer hover:scale-102 transition-transform text-base border-orange-100 border-2 rounded-md px-3 py-1"
@@ -90,9 +90,7 @@ export default function MaterialStorage() {
               : 'Import Material Counts'}
           </button>
         ) : (
-          <span className="text-sm text-orange-100">
-            ! Alt1 not available. Please open in Alt1 browser to use material import feature.
-          </span>
+          <span className="text-sm text-orange-100">Alt1 not available.</span>
         )}
       </div>
       <div className="flex flex-col md:grid md:grid-cols-5 md:w-144 mx-auto">
@@ -136,20 +134,6 @@ export default function MaterialStorage() {
             borderColor={Digsites[DigsiteNames.Daemonheim].borderColor}
           />
         ))}
-        {alt1Active ? (
-          <button
-            className="text-orange-100 mt-8 font-semibold cursor-pointer hover:scale-102 transition-transform text-base border-orange-100 border-2 rounded-md px-3 py-1"
-            onClick={importMaterialCounts}
-          >
-            {importNotFound
-              ? 'Failed to import! Please open material storage info in your arch journal.'
-              : 'Import Material Counts'}
-          </button>
-        ) : (
-          <span className="text-sm text-orange-100">
-            ! Alt1 not available. Please open in Alt1 browser to use material import feature.
-          </span>
-        )}
         <MaterialStorageTitle title="Saradominist Materials" />
         {MaterialsByType.Saradominist.map((material) => (
           <MaterialStorageInput

@@ -22,7 +22,7 @@ export const MaterialStorageInput: MaterialStorageInput = ({ material, amount, b
       <input
         value={amount}
         onChange={(e) => updateMaterialStorage(material, Number(e.target.value))}
-        className="text-xl py-2 text-center bg-gray-800 text-orange-100 w-40 md:w-full"
+        className="text-xl py-2 text-center bg-gray-800 text-orange-100 w-30 md:w-40 md:w-full"
       />
     </div>
   );
