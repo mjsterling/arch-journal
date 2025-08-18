@@ -66,6 +66,27 @@ export function ArtefactCollectionButton({
         buttonClasses.status[status],
       ].join(' ')}
     >
+      {mode === 'collectionPage' ? (
+        <div
+          className={[
+            'text-[10px] leading-[12px] absolute bottom-0.5 right-0.5 py-0 rounded-full',
+            (() => {
+              switch (status) {
+                case ArtefactStates.NotFound:
+                  return 'text-gray-300';
+                case ArtefactStates.Damaged:
+                  return 'text-orange-300';
+                case ArtefactStates.Restored:
+                  return 'text-yellow-100';
+                case ArtefactStates.Completed:
+                  return 'text-green-100';
+              }
+            })(),
+          ].join(' ')}
+        >
+          {artefact.level}
+        </div>
+      ) : null}
       <ArtefactInfobox
         artefact={artefact}
         collection={collection}

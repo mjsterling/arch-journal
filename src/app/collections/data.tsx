@@ -60,7 +60,6 @@ const useSortedCollections: (sort: CollectionSortOptions) => CollectionWithInfo[
         const artefactsInCollection = artefacts.filter((artefact) =>
           Object.keys(artefact.collections).includes(collection.name)
         );
-        console.log(artefactsInCollection);
 
         return {
           ...collection,

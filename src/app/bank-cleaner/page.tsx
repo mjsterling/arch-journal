@@ -89,10 +89,8 @@ export default function BankCleaner() {
       for (const artefact of newArtefacts) {
         const damaged = await readArtefact(`/assets/artefacts/damaged/${artefact.name.replace(/[ \/]/g, '_')}.png`);
         const restored = await readArtefact(`/assets/artefacts/${artefact.name.replace(/[ \/]/g, '_')}.png`);
-        console.log(artefact.name, 'Damaged:', damaged, 'Restored:', restored);
         artefact.count.damaged = damaged ?? artefact.count.damaged;
         artefact.count.restored = restored ?? artefact.count.restored;
-        console.log(artefact);
       }
       setArtefacts([...newArtefacts]);
     } else {
