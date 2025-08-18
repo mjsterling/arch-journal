@@ -53,7 +53,7 @@ const useHighlightedCollection = () => {
 };
 
 const useSortedCollections: (sort: CollectionSortOptions) => CollectionWithInfo[] = (sort) => {
-  const { artefacts, isComplete } = useArtefacts();
+  const { artefacts } = useArtefacts();
   return useMemo(
     () =>
       CollectionData.map((collection) => {
