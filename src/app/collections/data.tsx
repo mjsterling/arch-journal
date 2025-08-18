@@ -60,13 +60,16 @@ const useSortedCollections: (sort: CollectionSortOptions) => CollectionWithInfo[
         const artefactsInCollection = artefacts.filter((artefact) =>
           Object.keys(artefact.collections).includes(collection.name)
         );
+        console.log(artefactsInCollection);
 
         return {
           ...collection,
           artefacts: artefactsInCollection,
           digsite: artefactsInCollection[0]?.digsite ?? 'Unknown',
           levelToComplete: Math.max(...artefactsInCollection.map((artefact) => artefact.level)),
-          isComplete: artefactsInCollection.every(isComplete),
+          isComplete: artefactsInCollection.every(
+            (artefact) => artefact.collections[collection.name] === ArtefactStates.Completed
+          ),
         };
       }).sort((a, b) => {
         switch (sort) {
@@ -82,7 +85,7 @@ const useSortedCollections: (sort: CollectionSortOptions) => CollectionWithInfo[
             return 0;
         }
       }),
-    [artefacts, sort, isComplete]
+    [artefacts, CollectionData, sort, isComplete]
   );
 };
 

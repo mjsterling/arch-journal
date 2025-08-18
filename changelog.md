@@ -1,5 +1,9 @@
 # Changelog
 
+**v1.2.2 - 17/08/2025**
+
+- Fixed collections not disappearing when completed
+
 **v1.2.1 - 17/08/2025**
 
 - Added backup data import option for Alt1
