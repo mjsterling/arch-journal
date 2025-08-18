@@ -85,7 +85,7 @@ const useSortedCollections: (sort: CollectionSortOptions) => CollectionWithInfo[
             return 0;
         }
       }),
-    [artefacts, CollectionData, sort, isComplete]
+    [artefacts, sort]
   );
 };
 

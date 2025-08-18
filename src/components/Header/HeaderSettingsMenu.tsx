@@ -1,6 +1,5 @@
 'use client';
 import { useSettings } from '@/data/providers/SettingsProvider';
-import { CheckIcon } from '@heroicons/react/20/solid';
 import { useEffect, useState } from 'react';
 import { ImportDataModal } from '../ImportDataModal';
 import { Checkbox } from '../Checkbox';

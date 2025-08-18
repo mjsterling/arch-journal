@@ -1,4 +1,4 @@
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
+import { Bars3Icon } from '@heroicons/react/20/solid';
 import { HeaderDiscordButton, HeaderSettingsButton } from '.';
 
 export function HeaderButtons({
