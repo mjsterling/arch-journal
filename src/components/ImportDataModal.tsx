@@ -15,7 +15,6 @@ export const ImportDataModal = ({
   if (!open) return null;
   return (
     <div className="fixed w-screen h-screen left-0 p-8 top-0 bg-black/50">
-      <div className="fixed w-full h-full left-0 top-0 z-10 cursor-pointer" onClick={() => setOpen(false)} />
       <div className="flex items-center justify-center h-full z-20">
         <div className="bg-gray-900 p-4 rounded shadow-md text-orange-100">
           <div className="flex w-full justify-between">
