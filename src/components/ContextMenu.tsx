@@ -60,7 +60,7 @@ export function ContextMenu() {
       onContextMenu={handleBackgroundClick}
     >
       <div
-        className="w-fit border border-orange-100 bg-gray-900 rounded-md rounded-tl-none absolute top-0 left-0 z-[1001]"
+        className="w-fit border min-w-50 border-orange-100 bg-gray-900 rounded-md rounded-tl-none absolute top-0 left-0 z-[1001]"
         style={{
           top: contextMenu.y,
           left: contextMenu.x,
