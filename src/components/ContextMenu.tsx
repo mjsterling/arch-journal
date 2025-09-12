@@ -60,7 +60,7 @@ export function ContextMenu() {
       onContextMenu={handleBackgroundClick}
     >
       <div
-        className="w-fit border min-w-50 border-orange-100 bg-gray-900 rounded-md rounded-tl-none absolute top-0 left-0 z-[1001]"
+        className="w-fit border border-orange-100 bg-gray-900 rounded-md rounded-tl-none absolute top-0 left-0 z-[1001]"
         style={{
           top: contextMenu.y,
           left: contextMenu.x,
@@ -85,12 +85,12 @@ export function ContextMenu() {
                   }}
                 >
                   {item.label.startsWith('[WIKI]') ? (
-                    <span className="flex gap-2 items-center text-nowrap min-w-fit">
+                    <span className="flex gap-2 items-center text-nowrap! min-w-fit">
                       <img src="/assets/RS_Wiki.jpg" alt="Wiki" className="h-4 w-4 inline-block" />
                       {item.label.replace('[WIKI]', '')}
                     </span>
                   ) : (
-                    <span className="text-nowrap min-w-fit">{item.label}</span>
+                    <span className="text-nowrap! min-w-fit">{item.label}</span>
                   )}
                 </button>
               ))}
