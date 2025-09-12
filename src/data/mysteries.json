@@ -1,0 +1,226 @@
+[
+  {
+    "name": "Breaking the Seal",
+    "digsite": "Kharid-et",
+    "requirements": {
+      "level": 12,
+      "boostable": true,
+      "quests": ["Archaeology Tutorial"]
+    },
+    "rewards": {
+      "xp": 900,
+      "other": ["Access to the Kharid-et Main Fortress"]
+    },
+    "steps": [
+      "Speak to Dr Nabanik after completing the Archaeology tutorial and unlocking the Kharid-et Dig Site. Speak to him a second time to receive a centurion's seal (damaged). Dr Nabanik can be found next to the winch.",
+      "The player must excavate the fort debris blocking the fort entrance until it dwindles down to nothing and the triangular entryway is revealed.",
+      "After the entrance is completely revealed, a purple barrier will become visible. Restore the seal at an archaeologist's workbench with 6 Third Age iron and 2 Zarosian insignia.",
+      "Go through the fort entrance with the restored centurion's seal in your backpack."
+    ]
+  },
+  {
+    "name": "Prison Break",
+    "digsite": "Kharid-et",
+    "requirements": {
+      "level": 12,
+      "mysteries": ["Breaking the Seal"],
+      "boostable": true
+    },
+    "rewards": {
+      "xp": 900,
+      "other": ["Access to the Kharid-et Prison Block"]
+    },
+    "steps": [
+      [
+        "Gather four Custodian's log pages from legionary remains, castra debris, administratum debris, or carcerem debris in Kharid-et Dig Site. Any of these spots will drop all 4 pages. Read and right-click transcribe each page.",
+        {
+          "items": [
+            "Custodian's log page 1",
+            "Custodian's log page 2",
+            "Custodian's log page 3",
+            "Custodian's log page 4"
+          ],
+          "lorehound": true
+        }
+      ],
+      "Talk to Liam (map below) to obtain the missing Kharid-et prison dial.",
+      "Fix the broken dial (third one down) on the wall to the right of the prison door.",
+      [
+        "To the left of the door, press the buttons in the following order:",
+        { "items": ["Shadow dial", "Blood dial", "Smoke dial", "Ice dial"] }
+      ]
+    ]
+  },
+  {
+    "name": "Eyes in their Stars",
+    "digsite": "Infernal Source",
+    "requirements": {
+      "level": 24,
+      "boostable": false
+    },
+    "rewards": {
+      "xp": 1300,
+      "other": ["Access to the Dungeon of Disorder"]
+    },
+    "steps": [
+      [
+        "Search the six Star Lodge Storage chests in the Star Lodge cellar area of the Infernal Source digsite (down the first winch) to obtain two Crests of Dagon (one damaged, one restored), 26 Orthenglass and 20 Goldrune.",
+        {
+          "image": "TODO"
+        }
+      ],
+      [
+        "Excavate the Lodge bar storage for an additional Crest of Dagon (damaged)",
+        {
+          "items": ["Crest of Dagon (damaged)"]
+        }
+      ],
+      [
+        "Continue excavating at either the Lodge art storage or the Lodge bar storage until you find the four Founder's journal pages. Read and right-click transcribe each page.",
+        {
+          "items": [
+            "Founder's journal page 1",
+            "Founder's journal page 2",
+            "Founder's journal page 3",
+            "Founder's journal page 4"
+          ],
+          "lorehound": true
+        }
+      ],
+      [
+        "Restore the two damaged Crests of Dagon at an archaeologist's workbench at a total cost of 36 Orthenglass and 28 Goldrune.",
+        {
+          "items": ["Crest of Dagon (restored)", "Crest of Dagon (restored)"]
+        }
+      ],
+      "With the three restored Crests of Dagon in your inventory, interact with the Gutted fireplace in the Star Lodge area three times to add the crests to the slots.",
+      "Climb down the fireplace to access a hidden room and complete the mystery."
+    ]
+  },
+  {
+    "name": "Embrace the Chaos",
+    "digsite": "Infernal Source",
+    "requirements": {
+      "level": 29,
+      "mysteries": ["Eyes in their Stars"],
+      "boostable": false
+    },
+    "rewards": {
+      "xp": 1400,
+      "other": ["Access to the Source (Vestibule of Futility)"]
+    },
+    "steps": [
+      [
+        "Gather four Cultist's diary pages by excavating in the Dungeon of Disorder. Read and right-click transcribe each page.",
+        {
+          "image": "TODO",
+          "items": [
+            "Cultist's diary page 1",
+            "Cultist's diary page 2",
+            "Cultist's diary page 3",
+            "Cultist's diary page 4"
+          ],
+          "lorehound": true
+        }
+      ],
+      "Enter the northeast chamber in the Dungeon of Disorder and take chalk from the box of chalk, take a set of three red candles from the box of candles.",
+      "\"Repair\" the ritual circle in the centre of the room to fix it.",
+      "\"Replace\" each of the three Melted red candles and light each candle after placing it.",
+      "\"Chant-over\" the east candle and select \"Et Daemonium Renascitur\" from the dialogue.",
+      "\"Chant-over\" the north candle and select \"Ceterum Aperuerit Ianuam\" from the dialogue.",
+      "\"Chant-over\" the west candle and select \"Ordo Animam Capit\" from the dialogue.",
+      "Enter the portal that appears to complete the mystery."
+    ]
+  },
+  {
+    "name": "Contract Claws",
+    "infobox": "This mystery is very complex. Please view the Contact Claws wiki page for details and completion instructions.",
+    "requirements": {
+      "level": 29,
+      "stats": {
+        "Prayer": 35
+      },
+      "mysteries": ["Embrace the Chaos"],
+      "ironman": {
+        "stats": {
+          "Farming": 49,
+          "Construction": 60
+        },
+        "quests": ["Bringing Home the Bacon"],
+        "other": ["33 Fishing or 28 Hunter, or partial completion of Back to my Roots"]
+      },
+      "steps": ["Complete the Contact Claws mystery (refer to the Runescape wiki for full details)."]
+    }
+  },
+  {
+    "name": "Secrets of the Monolith",
+    "digsite": "The Monolith",
+    "requirements": {
+      "level": 40,
+      "boostable": false,
+      "qualification": "Assistant"
+    },
+    "rewards": {
+      "xp": 2000,
+      "other": ["Increased monolith energy (+100)"],
+      "steps": [
+        "Talk to Acting Guildmaster Reiniger.",
+        "A cutscene will play at the mysterious monolith that will start the mystery. Follow the mini-tutorial to finish the mystery."
+      ]
+    }
+  },
+  {
+    "name": "Queen of the Icyene",
+    "requirements": {
+      "level": 42,
+      "boostable": true
+    },
+    "rewards": {
+      "xp": 2100
+    },
+    "steps": [
+      [
+        "Gather four Queen's journal pages by excavating from the prodromoi remains or monoceros remains at the Everlight digsite. Read and right-click transcribe each page.",
+        {
+          "image": "TODO",
+          "items": [
+            "Queen's journal page 1",
+            "Queen's journal page 2",
+            "Queen's journal page 3",
+            "Queen's journal page 4"
+          ],
+          "lorehound": true
+        }
+      ],
+      "Talk to Vanescula Drakan at the Everlight digsite base camp to complete the mystery."
+    ]
+  },
+  {
+    "name": "Fallen Angels",
+    "requirements": {
+      "level": 42,
+      "boostable": true
+    },
+    "rewards": {
+      "xp": 2100
+    },
+    "steps": [
+      [
+        "Excavate either the prodromoi remains, monoceros remains excavation hotspots or keramos material caches in Everlight to find the icyene remains.",
+        {
+          "image": "TODO",
+          "items": ["Icyene remains"]
+        }
+      ],
+      [
+        "Excavate the prodromoi remains until you find a Frying pan (damaged). Alternatively, you can get a free frying pan from restoring the Statue of Hebe, requiring a restored hallowed lantern artefact, ten white marble and level 40 Construction.",
+        {
+          "items": ["Frying pan (damaged)"]
+        }
+      ],
+      "Speak to Vanescula Drakan about the Fallen Angels mystery.",
+      "Head south of Vanescula, climb down the cliff to the Icyene Graveyard area, and click on the Empty Grave to re-bury the remains and the frying pan.",
+      "Climb back up the cliff and speak to Vanescula once more to complete the mystery."
+    ]
+  }
+]

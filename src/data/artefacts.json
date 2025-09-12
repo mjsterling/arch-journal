@@ -137,12 +137,7 @@
       "Goldrune": 14,
       "Orthenglass": 18
     },
-    "collections": [
-      "Museum - Zamorakian I",
-      "Zamorakian I",
-      "Showy Fings",
-      "Knowledge is Power"
-    ],
+    "collections": ["Museum - Zamorakian I", "Zamorakian I", "Showy Fings", "Knowledge is Power"],
     "mysteries": ["Eyes in Their Stars"]
   },
   {
@@ -158,11 +153,7 @@
       "Vellum": 6,
       "Cadmium red": 14
     },
-    "collections": [
-      "Museum - Zamorakian I",
-      "Zamorakian I",
-      "Anarchic Abstraction"
-    ]
+    "collections": ["Museum - Zamorakian I", "Zamorakian I", "Anarchic Abstraction"]
   },
   {
     "name": "Legatus Maximus figurine",
@@ -176,12 +167,7 @@
       "Goldrune": 8,
       "Zarosian insignia": 14
     },
-    "collections": [
-      "Museum - Zarosian I",
-      "Zarosian I",
-      "Showy Fings",
-      "Magic Man"
-    ]
+    "collections": ["Museum - Zarosian I", "Zarosian I", "Showy Fings", "Magic Man"]
   },
   {
     "name": "'Solem in Umbra' painting",
@@ -195,11 +181,7 @@
       "Tyrian purple": 14,
       "White oak": 10
     },
-    "collections": [
-      "Museum - Zarosian I",
-      "Zarosian I",
-      "Imperial Impressionism"
-    ]
+    "collections": ["Museum - Zarosian I", "Zarosian I", "Imperial Impressionism"]
   },
   {
     "name": "Imp mask",
@@ -241,7 +223,7 @@
       "Leather scraps": 6,
       "Chaotic brimstone": 8,
       "Demonhide": 12,
-      "Third age iron": 6
+      "Third-age iron": 6
     },
     "collections": ["Museum - Zamorakian I", "Hat Hoarder", "Zamorakian I"],
     "achievements": ["How Do You Do, Fellow Demon"]
@@ -347,12 +329,7 @@
       "Goldrune": 18,
       "Ancient vis": 12
     },
-    "collections": [
-      "Museum - Zarosian II",
-      "Zarosian II",
-      "Blingy Fings",
-      "Magic Man"
-    ],
+    "collections": ["Museum - Zarosian II", "Zarosian II", "Blingy Fings", "Magic Man"],
     "mysteries": ["Time Served"]
   },
   {
@@ -410,11 +387,7 @@
       "Everlight silvthril": 30,
       "White oak": 22
     },
-    "collections": [
-      "Museum - Saradominist I",
-      "Saradominist I",
-      "Wise Am the Music Man"
-    ],
+    "collections": ["Museum - Saradominist I", "Saradominist I", "Wise Am the Music Man"],
     "misc": [
       "Restoring the Statue of Mesomedes for the No Secrets Left to Steal achievement and the Hand of Glory (Everlight"
     ]
@@ -430,12 +403,7 @@
       "Everlight silvthril": 28,
       "Goldrune": 24
     },
-    "collections": [
-      "Museum - Saradominist I",
-      "Saradominist I",
-      "Wise Am the Music Man",
-      "Smoky Fings"
-    ],
+    "collections": ["Museum - Saradominist I", "Saradominist I", "Wise Am the Music Man", "Smoky Fings"],
     "quests": ["That Old Black Magic"]
   },
   {
@@ -450,11 +418,7 @@
       "White oak": 20,
       "Samite silk": 16
     },
-    "collections": [
-      "Museum - Saradominist I",
-      "Saradominist I",
-      "Wise Am the Music Man"
-    ]
+    "collections": ["Museum - Saradominist I", "Saradominist I", "Wise Am the Music Man"]
   },
   {
     "name": "Folded-arm figurine (female)",
@@ -494,12 +458,7 @@
       "Ancient vis": 18,
       "Blood of Orcus": 18
     },
-    "collections": [
-      "Museum - Zarosian II",
-      "Zarosian II",
-      "Magic Man",
-      "Imperial Sorcery"
-    ],
+    "collections": ["Museum - Zarosian II", "Zarosian II", "Magic Man", "Imperial Sorcery"],
     "mysteries": ["Vault of Shadows"]
   },
   {
@@ -749,11 +708,7 @@
       "Vellum": 10,
       "Cadmium red": 34
     },
-    "collections": [
-      "Museum - Zamorakian II",
-      "Zamorakian II",
-      "Anarchic Abstraction"
-    ]
+    "collections": ["Museum - Zamorakian II", "Zamorakian II", "Anarchic Abstraction"]
   },
   {
     "name": "'Lust' metal sculpture",
@@ -902,11 +857,7 @@
       "Star of Saradomin": 26,
       "Bronze bar": 1
     },
-    "collections": [
-      "Museum - Saradominist II",
-      "Saradominist II",
-      "Blingy Fings"
-    ]
+    "collections": ["Museum - Saradominist II", "Saradominist II", "Blingy Fings"]
   },
   {
     "name": "Silver Dominion medal",
@@ -920,11 +871,7 @@
       "Star of Saradomin": 26,
       "Silver bar": 1
     },
-    "collections": [
-      "Museum - Saradominist II",
-      "Saradominist II",
-      "Blingy Fings"
-    ]
+    "collections": ["Museum - Saradominist II", "Saradominist II", "Blingy Fings"]
   },
   {
     "name": "Ceremonial dragonkin device",
@@ -951,15 +898,9 @@
       "Everlight silvthril": 20,
       "Star of Saradomin": 18
     },
-    "collections": [
-      "Museum - Saradominist II",
-      "Saradominist II",
-      "Smoky Fings"
-    ],
+    "collections": ["Museum - Saradominist II", "Saradominist II", "Smoky Fings"],
     "mysteries": ["Hallowed Be..."],
-    "misc": [
-      "Restoring the statue of Padosan and getting the gold Dominion medal."
-    ]
+    "misc": ["Restoring the statue of Padosan and getting the gold Dominion medal."]
   },
   {
     "name": "Ikovian gerege",
@@ -972,14 +913,8 @@
       "Third-age iron": 36,
       "Wings of War": 30
     },
-    "collections": [
-      "Museum - Armadylean I",
-      "Armadylean I",
-      "Knowledge is Power"
-    ],
-    "misc": [
-      "Accessing the Stormguard Citadel (not consumed, but required every time and can be added to tool belt)."
-    ]
+    "collections": ["Museum - Armadylean I", "Armadylean I", "Knowledge is Power"],
+    "misc": ["Accessing the Stormguard Citadel (not consumed, but required every time and can be added to tool belt)."]
   },
   {
     "name": "Toy glider",
@@ -1034,9 +969,7 @@
       "Sapphire": 1
     },
     "collections": ["Museum - Saradominist II", "Saradominist II"],
-    "misc": [
-      "Creating the Cup of Nectar at the top of the Everlight lighthouse (level 105 Archaeology required)."
-    ]
+    "misc": ["Creating the Cup of Nectar at the top of the Everlight lighthouse (level 105 Archaeology required)."]
   },
   {
     "name": "Patera bowl",
@@ -1119,11 +1052,7 @@
       "Samite silk": 10,
       "Tyrian purple": 50
     },
-    "collections": [
-      "Museum - Zarosian II",
-      "Zarosian II",
-      "Imperial Impressionism"
-    ]
+    "collections": ["Museum - Zarosian II", "Zarosian II", "Imperial Impressionism"]
   },
   {
     "name": "Avian song-egg player",
@@ -1137,11 +1066,7 @@
       "Armadylean yellow": 32,
       "Diamond": 1
     },
-    "collections": [
-      "Museum - Armadylean I",
-      "Armadylean I",
-      "Wise Am the Music Man"
-    ]
+    "collections": ["Museum - Armadylean I", "Armadylean I", "Wise Am the Music Man"]
   },
   {
     "name": "Keshik drum",
@@ -1156,11 +1081,7 @@
       "White oak": 20,
       "Leather scraps": 16
     },
-    "collections": [
-      "Museum - Armadylean I",
-      "Armadylean I",
-      "Wise Am the Music Man"
-    ]
+    "collections": ["Museum - Armadylean I", "Armadylean I", "Wise Am the Music Man"]
   },
   {
     "name": "Morin khuur",
@@ -1173,11 +1094,7 @@
       "Armadylean yellow": 36,
       "White oak": 32
     },
-    "collections": [
-      "Museum - Armadylean I",
-      "Armadylean I",
-      "Wise Am the Music Man"
-    ]
+    "collections": ["Museum - Armadylean I", "Armadylean I", "Wise Am the Music Man"]
   },
   {
     "name": "Ekeleshuun blinder mask",
@@ -1191,11 +1108,7 @@
       "Malachite green": 20,
       "Vellum": 24
     },
-    "collections": [
-      "Museum - Bandosian I",
-      "Green Gobbo Goodies I",
-      "Hat Problem"
-    ]
+    "collections": ["Museum - Bandosian I", "Green Gobbo Goodies I", "Hat Problem"]
   },
   {
     "name": "Narogoshuun 'Hob-da-Gob' ball",
@@ -1489,9 +1402,7 @@
       "Clockwork": 1
     },
     "collections": ["Museum - Saradominist III", "Saradominist III"],
-    "misc": [
-      "Trading to Reldo for the Andvaranaut relic (Sticky Fingers relic power)."
-    ]
+    "misc": ["Trading to Reldo for the Andvaranaut relic (Sticky Fingers relic power)."]
   },
   {
     "name": "Fishing trident",
@@ -1505,11 +1416,7 @@
       "Third-age iron": 30,
       "Goldrune": 22
     },
-    "collections": [
-      "Museum - Saradominist III",
-      "Saradominist III",
-      "Hitty Fings"
-    ]
+    "collections": ["Museum - Saradominist III", "Saradominist III", "Hitty Fings"]
   },
   {
     "name": "Hawkeye lens multi-vision scope",
@@ -1549,15 +1456,8 @@
       "Vellum": 40,
       "Blood of Orcus": 36
     },
-    "collections": [
-      "Museum - Zarosian III",
-      "Zarosian III",
-      "Magic Man",
-      "Imperial Sorcery"
-    ],
-    "misc": [
-      "Accessing the blood door in Kharid-et while standing near the dial."
-    ]
+    "collections": ["Museum - Zarosian III", "Zarosian III", "Magic Man", "Imperial Sorcery"],
+    "misc": ["Accessing the blood door in Kharid-et while standing near the dial."]
   },
   {
     "name": "Necromantic focus",
@@ -1571,12 +1471,7 @@
       "Blood of Orcus": 26,
       "Ancient vis": 30
     },
-    "collections": [
-      "Museum - Zarosian III",
-      "Zarosian III",
-      "Knowledge is Power",
-      "Imperial Sorcery"
-    ],
+    "collections": ["Museum - Zarosian III", "Zarosian III", "Knowledge is Power", "Imperial Sorcery"],
     "quests": ["Tomes of the Warlock"],
     "misc": ["One is used in the recipe for an Enchantment of affliction."]
   },
@@ -1634,11 +1529,7 @@
       "Malachite green": 24,
       "Goldrune": 28
     },
-    "collections": [
-      "Museum - Bandosian I",
-      "Green Gobbo Goodies II",
-      "Hitty Fings"
-    ]
+    "collections": ["Museum - Bandosian I", "Green Gobbo Goodies II", "Hitty Fings"]
   },
   {
     "name": "High priest mitre",
@@ -1652,12 +1543,7 @@
       "Malachite green": 24,
       "Samite silk": 28
     },
-    "collections": [
-      "Museum - Bandosian I",
-      "Green Gobbo Goodies II",
-      "Hat Problem",
-      "Magic Man"
-    ]
+    "collections": ["Museum - Bandosian I", "Green Gobbo Goodies II", "Hat Problem", "Magic Man"]
   },
   {
     "name": "High priest orb",
@@ -1671,11 +1557,7 @@
       "Malachite green": 24,
       "Goldrune": 28
     },
-    "collections": [
-      "Museum - Bandosian I",
-      "Green Gobbo Goodies II",
-      "Hitty Fings"
-    ]
+    "collections": ["Museum - Bandosian I", "Green Gobbo Goodies II", "Hitty Fings"]
   },
   {
     "name": "'Torment' metal sculpture",
@@ -1704,11 +1586,7 @@
       "Vellum": 12,
       "Cadmium red": 42
     },
-    "collections": [
-      "Museum - Zamorakian III",
-      "Zamorakian III",
-      "Anarchic Abstraction"
-    ]
+    "collections": ["Museum - Zamorakian III", "Zamorakian III", "Anarchic Abstraction"]
   },
   {
     "name": "Ceremonial dragonkin tablet",
@@ -1775,11 +1653,7 @@
       "Orthenglass": 36,
       "Diamond": 1
     },
-    "collections": [
-      "Museum - Armadylean II",
-      "Armadylean II",
-      "Wise Am the Music Man"
-    ]
+    "collections": ["Museum - Armadylean II", "Armadylean II", "Wise Am the Music Man"]
   },
   {
     "name": "Amphora",
@@ -1806,11 +1680,7 @@
       "Star of Saradomin": 24,
       "Goldrune": 26
     },
-    "collections": [
-      "Museum - Saradominist III",
-      "Saradominist III",
-      "Showy Fings"
-    ],
+    "collections": ["Museum - Saradominist III", "Saradominist III", "Showy Fings"],
     "misc": ["Restoring the Statue of Tromple."]
   },
   {
@@ -2017,14 +1887,8 @@
       "Quintessence": 46,
       "Vellum": 44
     },
-    "collections": [
-      "Museum - Armadylean II",
-      "Armadylean II",
-      "Knowledge is Power"
-    ],
-    "misc": [
-      "One is required (along with a golem heart) to create a golem framework and is consumed in the process."
-    ],
+    "collections": ["Museum - Armadylean II", "Armadylean II", "Knowledge is Power"],
+    "misc": ["One is required (along with a golem heart) to create a golem framework and is consumed in the process."],
     "researchers": ["Elissa Giovanni"]
   },
   {
@@ -2083,9 +1947,7 @@
       "Soapstone": 34
     },
     "collections": ["Museum - Dragonkin I", "Dragonkin I"],
-    "misc": [
-      "Trading with Bob the Cat for Evil Bob's Catspaw relic (requires a catspeak amulet)."
-    ]
+    "misc": ["Trading with Bob the Cat for Evil Bob's Catspaw relic (requires a catspeak amulet)."]
   },
   {
     "name": "Dragonkin calendar",
@@ -2127,9 +1989,7 @@
     },
     "collections": ["Museum - Bandosian II", "Green Gobbo Goodies III"],
     "mysteries": ["You Have Chosen..."],
-    "misc": [
-      "One is used for the Stick It to Da Boss Man achievement (not consumed)."
-    ]
+    "misc": ["One is used for the Stick It to Da Boss Man achievement (not consumed)."]
   },
   {
     "name": "'Forged in War' sculpture",
@@ -2184,15 +2044,8 @@
       "Ancient vis": 20,
       "Blood of Orcus": 32
     },
-    "collections": [
-      "Museum - Zarosian III",
-      "Zarosian III",
-      "Magic Man",
-      "Imperial Sorcery"
-    ],
-    "misc": [
-      "Accessing the smoke door in Kharid-et while standing near the dial."
-    ]
+    "collections": ["Museum - Zarosian III", "Zarosian III", "Magic Man", "Imperial Sorcery"],
+    "misc": ["Accessing the smoke door in Kharid-et while standing near the dial."]
   },
   {
     "name": "Vigorem vial",
@@ -2333,11 +2186,7 @@
       "Third-age iron": 34,
       "Eye of Dagon": 20
     },
-    "collections": [
-      "Museum - Bandosian III",
-      "Green Gobbo Goodies III",
-      "Hat Problem"
-    ]
+    "collections": ["Museum - Bandosian III", "Green Gobbo Goodies III", "Hat Problem"]
   },
   {
     "name": "Saragorgak star crown",
@@ -2351,11 +2200,7 @@
       "Third-age iron": 34,
       "Star of Saradomin": 20
     },
-    "collections": [
-      "Museum - Bandosian III",
-      "Green Gobbo Goodies III",
-      "Hat Hoarder"
-    ]
+    "collections": ["Museum - Bandosian III", "Green Gobbo Goodies III", "Hat Hoarder"]
   },
   {
     "name": "'Possession' metal sculpture",
@@ -2412,11 +2257,7 @@
       "Samite silk": 16,
       "Vellum": 16
     },
-    "collections": [
-      "Museum - Saradominist IV",
-      "Radiant Renaissance",
-      "Saradominist IV"
-    ],
+    "collections": ["Museum - Saradominist IV", "Radiant Renaissance", "Saradominist IV"],
     "mysteries": ["Hallowed Be..."]
   },
   {
@@ -2432,11 +2273,7 @@
       "Samite silk": 16,
       "Vellum": 16
     },
-    "collections": [
-      "Museum - Saradominist IV",
-      "Radiant Renaissance",
-      "Saradominist IV"
-    ]
+    "collections": ["Museum - Saradominist IV", "Radiant Renaissance", "Saradominist IV"]
   },
   {
     "name": "'The Pride of Padosan' painting",
@@ -2451,11 +2288,7 @@
       "Samite silk": 16,
       "Vellum": 16
     },
-    "collections": [
-      "Museum - Saradominist IV",
-      "Saradominist IV",
-      "Radiant Renaissance"
-    ]
+    "collections": ["Museum - Saradominist IV", "Saradominist IV", "Radiant Renaissance"]
   },
   {
     "name": "Meditation pipe",
@@ -2523,15 +2356,8 @@
       "Ancient vis": 24,
       "Blood of Orcus": 40
     },
-    "collections": [
-      "Museum - Zarosian III",
-      "Zarosian III",
-      "Magic Man",
-      "Imperial Sorcery"
-    ],
-    "misc": [
-      "Accessing the shadow door in The Vault of Shadows while standing near the dial."
-    ]
+    "collections": ["Museum - Zarosian III", "Zarosian III", "Magic Man", "Imperial Sorcery"],
+    "misc": ["Accessing the shadow door in The Vault of Shadows while standing near the dial."]
   },
   {
     "name": "Portable phylactery",
@@ -2617,11 +2443,7 @@
       "Star of Saradomin": 50,
       "Vellum": 60
     },
-    "collections": [
-      "Museum - Saradominist IV",
-      "Saradominist IV",
-      "Knowledge is Power"
-    ]
+    "collections": ["Museum - Saradominist IV", "Saradominist IV", "Knowledge is Power"]
   },
   {
     "name": "'The Eudoxian Elements' tablet",
@@ -2634,11 +2456,7 @@
       "White marble": 60,
       "Goldrune": 50
     },
-    "collections": [
-      "Museum - Saradominist IV",
-      "Saradominist IV",
-      "Knowledge is Power"
-    ]
+    "collections": ["Museum - Saradominist IV", "Saradominist IV", "Knowledge is Power"]
   },
   {
     "name": "Drogokishuun hook sword",
@@ -2878,11 +2696,7 @@
       "Yu'biusk clay": 66,
       "Animal furs": 60
     },
-    "collections": [
-      "Hat Hoarder",
-      "Museum - Bandosian III",
-      "Red Rum Relics III"
-    ]
+    "collections": ["Hat Hoarder", "Museum - Bandosian III", "Red Rum Relics III"]
   },
   {
     "name": "Kal-i-kra mace",
@@ -3065,11 +2879,7 @@
       "Tyrian purple": 74,
       "Zarosian insignia": 20
     },
-    "collections": [
-      "Museum - Zarosian IV",
-      "Zarosian IV",
-      "Imperial Impressionism"
-    ]
+    "collections": ["Museum - Zarosian IV", "Zarosian IV", "Imperial Impressionism"]
   },
   {
     "name": "'Da Boss Man' sculpture",
@@ -3083,12 +2893,7 @@
       "Malachite green": 44,
       "Soapstone": 44
     },
-    "collections": [
-      "Museum - Bandosian III",
-      "Green Gobbo Goodies III",
-      "Knowledge is Power",
-      "Red Rum Relics III"
-    ]
+    "collections": ["Museum - Bandosian III", "Green Gobbo Goodies III", "Knowledge is Power", "Red Rum Relics III"]
   },
   {
     "name": "Horogothgar cooking pot",
