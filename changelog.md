@@ -1,5 +1,9 @@
 # Changelog
 
+**v1.3.0 - 13/09/2025**
+
+- Added 'mats needed for damaged artefacts' to artefact screen
+
 **v1.2.3 - 13/09/2025**
 
 - Significant overhaul of mobile views to improve usability and compactness

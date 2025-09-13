@@ -7,6 +7,7 @@ import { useLazySearch } from '@/data/hooks';
 import { Checkbox } from '@/components';
 import { ArtefactHotspot } from '@/components/ArtefactHotspot';
 import { Collapsible } from '@/components/Collapsible';
+import { DamagedMatsNeeded } from '@/components/DamagedMatsNeeded';
 
 export default function Artefacts() {
   useEffect(() => {
@@ -136,6 +137,9 @@ export default function Artefacts() {
             </button>
           ) : null}
         </div>
+      </Collapsible>
+      <Collapsible label="Mats needed for damaged artefacts">
+        <DamagedMatsNeeded />
       </Collapsible>
 
       <div className="w-full h-full flex flex-col gap-4">
