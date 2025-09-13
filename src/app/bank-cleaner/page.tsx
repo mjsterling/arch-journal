@@ -6,6 +6,7 @@ import { AdjustmentsHorizontalIcon, MagnifyingGlassIcon, XMarkIcon } from '@hero
 import { useLazySearch } from '@/data/hooks';
 import { Collapsible } from '@/components/Collapsible';
 import { useBankCleaner } from './useBankCleaner';
+import { DamagedMatsNeeded } from '@/components/DamagedMatsNeeded';
 
 export default function BankCleaner() {
   const { artefacts } = useArtefacts();
@@ -95,6 +96,10 @@ export default function BankCleaner() {
           toggle={() => setHideZeroCountArtefacts((prev) => !prev)}
         />
       </Collapsible>
+      <Collapsible label="Mats needed for damaged artefacts">
+        <DamagedMatsNeeded mode="bank-cleaner" />
+      </Collapsible>
+
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-4 px-6 py-6 md:px-12 md:py-6">
         {sortedArtefacts.map((artefact) => (
           <BankCleanerArtefactCard key={`bank_cleaner__${artefact.name}`} artefact={artefact} />

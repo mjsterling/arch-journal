@@ -139,7 +139,7 @@ export default function Artefacts() {
         </div>
       </Collapsible>
       <Collapsible label="Mats needed for damaged artefacts">
-        <DamagedMatsNeeded />
+        <DamagedMatsNeeded mode="artefacts" />
       </Collapsible>
 
       <div className="w-full h-full flex flex-col gap-4">
