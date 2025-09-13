@@ -13,14 +13,15 @@ export const SingleRewardDisplay: SingleRewardDisplay = ({
     <div
       key={`${selectedCollectionData.name}_${reward}`}
       onContextMenu={createWikiContextMenu(reward)}
-      className="flex flex-col items-center text-orange-100 px-2 cursor-help"
+      className="flex flex-row md:flex-col items-center text-orange-100 
+      gap-x-2 px-2 cursor-help"
     >
       <Icon
         src={`/assets/collections/${reward.replace(/ /g, '_')}.${
           reward === 'Tetracompass piece' || reward === 'Elder Trove' ? 'gif' : 'png'
         }`}
         alt={reward}
-        className="h-8 w-8 object-contain"
+        className="h-6 md:h-8 w-6 md:w-8 object-contain"
       />
       <p className="text-base font-semibold">
         {reward} {amount > 1 ? `x ${Intl.NumberFormat('en-AU').format(amount! * numberOfRecurringCompletions)}` : ''}

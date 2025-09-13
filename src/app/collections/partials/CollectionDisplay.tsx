@@ -7,7 +7,7 @@ export const CollectionDisplay: React.FC = () => {
   const { showCompletedCollections } = useSettings();
   const { sort, groupedCollections, collections } = useCollectionsPageData();
   return (
-    <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-2 md:px-12 md:py-6">
+    <div className="w-full h-full flex flex-col gap-4 sm:px-6">
       {sort === CollectionSortOptions.LevelToComplete
         ? collections.map((collection) => <CollectionCard key={collection.name} collection={collection} />)
         : Object.entries(groupedCollections).map(([key, { isComplete, collections }]) => (

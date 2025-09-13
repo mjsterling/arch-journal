@@ -6,13 +6,13 @@ export const Checkbox = ({ label, checked, toggle }: { label: string; checked: b
       value={checked ? 'checked' : 'unchecked'}
       className={[
         'rounded-md border border-orange-100 cursor-pointer',
-        'bg-transparent text-orange-100',
-        'transition-colors ease-in-out h-6 w-6 flex justify-center items-center',
+        'bg-transparent text-orange-100 text-nowrap!',
+        'transition-colors ease-in-out min-h-6 max-h-6 min-w-6 max-w-6 flex justify-center items-center',
       ].join(' ')}
       onClick={toggle}
     >
-      {checked ? <CheckIcon className="w-5 h-5 text-orange-100" /> : null}
+      {checked ? <CheckIcon className="min-w-5 max-w-5 min-h-5 max-h-5 text-orange-100" /> : null}
     </button>
-    {label}
+    <span className="text-nowrap!">{label}</span>
   </div>
 );

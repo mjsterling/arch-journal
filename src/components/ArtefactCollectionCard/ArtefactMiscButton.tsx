@@ -84,7 +84,7 @@ export const ArtefactMiscButton: ArtefactMiscButton = ({ artefact, type, typeKey
       className={[
         'relative flex flex-col gap-1 items-center justify-center',
         'rounded-md h-full',
-        'min-h-13 min-w-13 max-h-13 max-w-13',
+        'min-h-9 min-w-9 max-h-9 max-w-9 md:min-h-13 md:min-w-13 md:max-h-13 md:max-w-13',
         'transition-all duration-200 gap-1',
         'border-2 z-0 hover:z-10',
         status === 'Not Found'
@@ -99,7 +99,11 @@ export const ArtefactMiscButton: ArtefactMiscButton = ({ artefact, type, typeKey
       ].join(' ')}
       title={typeKey}
     >
-      <Icon src={image} alt={typeKey} className="min-h-10 min-w-10 max-h-10 max-w-10 object-contain transition-all" />
+      <Icon
+        src={image}
+        alt={typeKey}
+        className="min-h-6 min-w-6 max-h-6 max-w-6 md:min-h-9 md:min-w-9 md:max-h-9 md:max-w-9 object-contain transition-all"
+      />
     </button>
   );
 };

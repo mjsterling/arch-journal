@@ -1,10 +1,12 @@
 'use client';
 import { useMemo, useEffect, useState } from 'react';
-import { type Artefact, useArtefacts, useContextMenu, useSettings } from '@/data/providers';
+import { type Artefact, useArtefacts, useSettings } from '@/data/providers';
 import { ArtefactStates } from '@/data/constants';
-import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import { AdjustmentsHorizontalIcon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import { useLazySearch } from '@/data/hooks';
-import { ArtefactCard, Checkbox, Icon } from '@/components';
+import { Checkbox } from '@/components';
+import { ArtefactHotspot } from '@/components/ArtefactHotspot';
+import { Collapsible } from '@/components/Collapsible';
 
 export default function Artefacts() {
   useEffect(() => {
@@ -36,8 +38,6 @@ export default function Artefacts() {
     handleSearch,
     clearSearch,
   } = useLazySearch<Artefact>(artefacts);
-
-  const { createHotspotContextMenu, createMaterialContextMenu } = useContextMenu();
 
   const artefactsByHotspot = useMemo(() => {
     const _artefactsByHotspot: {
@@ -108,9 +108,20 @@ export default function Artefacts() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-col sm:flex-row items-center gap-4 justify-between px-6 py-6 md:px-12 md:py-6">
-        <div className="flex flex-row gap-2 border border-orange-100 rounded-md p-2">
+    <>
+      <Collapsible
+        label={
+          <span className="flex gap-2">
+            <AdjustmentsHorizontalIcon className="w-5 h-5 text-orange-100" /> Sort/Filter
+          </span>
+        }
+      >
+        <Checkbox
+          label="Show completed artefacts"
+          checked={showCompletedArtefacts}
+          toggle={toggleShowCompletedArtefacts}
+        />
+        <div className="flex flex-row gap-2 border border-orange-100 rounded-md p-2 w-full">
           <MagnifyingGlassIcon className="w-6 h-6 text-orange-100" />
           <input
             type="text"
@@ -125,13 +136,9 @@ export default function Artefacts() {
             </button>
           ) : null}
         </div>
-        <Checkbox
-          label="Show completed artefacts?"
-          checked={showCompletedArtefacts}
-          toggle={toggleShowCompletedArtefacts}
-        />
-      </div>
-      <div className="w-full h-full flex flex-col gap-4 sm:px-6 py-2 md:px-12 md:py-6">
+      </Collapsible>
+
+      <div className="w-full h-full flex flex-col gap-4">
         {searchQuery && (
           <div className="flex flex-row gap-2 items-center text-orange-100 italic">
             Showing {filteredArtefacts.length} of {artefacts.length} artefacts
@@ -140,51 +147,17 @@ export default function Artefacts() {
 
         {Object.entries(artefactsByHotspot).map(([hotspot, { artefacts, completed }]) =>
           completed && !showCompletedArtefacts && !searchQuery ? null : (
-            <div key={`${hotspot}_container`} className="relative w-full mt-2">
-              <span className="flex flex-col w-full md:flex-row justify-between items-center py-4 gap-y-1">
-                <h2
-                  className={['text-xl text-orange-100 font-semibold cursor-help', completed ? 'opacity-50' : ''].join(
-                    ' '
-                  )}
-                  key={`${hotspot}_title`}
-                  onContextMenu={createHotspotContextMenu(
-                    hotspot,
-                    completed,
-                    () => markAllAsNotFound(hotspot),
-                    () => markAllAsCompleted(hotspot)
-                  )}
-                >
-                  {hotspot}
-                </h2>
-                <div className="flex gap-3 items-center text-orange-100">
-                  {!completed &&
-                    Object.entries(hotspotMaterials(hotspot)).map(([material, amount]) => (
-                      <div
-                        key={`${material}_${amount}`}
-                        className="flex flex-row gap-1.5 items-center"
-                        onContextMenu={createMaterialContextMenu(material)}
-                      >
-                        <Icon
-                          src={`/assets/materials/${material.replace(/ /g, '_')}.png`}
-                          alt={material}
-                          className="h-6 w-6 object-contain object-center"
-                        />
-                        <p className="text-orange-100 font-semibold text-base">{amount}</p>
-                      </div>
-                    ))}
-                </div>
-              </span>
-
-              {artefacts.map((artefact) => (
-                <ArtefactCard
-                  highlighted={artefact.name === highlightedArtefact}
-                  key={artefact.name}
-                  artefact={artefact}
-                  alwaysShow={searchQuery.length > 0}
-                  combined={true}
-                />
-              ))}
-            </div>
+            <ArtefactHotspot
+              key={hotspot}
+              hotspot={hotspot}
+              artefacts={artefacts}
+              markAllAsNotFound={markAllAsNotFound}
+              markAllAsCompleted={markAllAsCompleted}
+              hotspotMaterials={hotspotMaterials}
+              searchQuery={searchQuery}
+              highlightedArtefact={highlightedArtefact}
+              completed={completed}
+            />
           )
         )}
         {searchQuery && filteredArtefacts.length === 0 && (
@@ -193,6 +166,6 @@ export default function Artefacts() {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }

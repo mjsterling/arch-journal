@@ -6,7 +6,7 @@ export const MaterialStorageInput: MaterialStorageInput = ({ material, amount, b
   const { createMaterialContextMenu } = useContextMenu();
   return (
     <div
-      className="flex flex-row justify-between items-center pl-4 md:pl-0 mx-auto w-full max-w-[400px] md:max-w-full md:flex md:flex-col md:items-center md:max-w-full overflow-hidden gap-2 border md:pt-2 border-orange-100"
+      className="flex flex-row justify-between items-center pl-4 md:pl-0 mx-auto w-full sm:max-w-[400px] md:flex md:flex-col md:items-center md:max-w-full overflow-hidden gap-2 border md:pt-2 border-orange-100"
       style={{ backgroundColor, borderColor }}
     >
       <div className="flex gap-4 items-center">
@@ -22,7 +22,7 @@ export const MaterialStorageInput: MaterialStorageInput = ({ material, amount, b
       <input
         value={amount}
         onChange={(e) => updateMaterialStorage(material, Number(e.target.value))}
-        className="text-xl py-2 text-center bg-gray-800 text-orange-100 w-30 md:w-40 md:w-full"
+        className="text-xl py-2 text-center bg-gray-800 text-orange-100 w-25 sm:w-30 md:w-full"
       />
     </div>
   );

@@ -79,7 +79,7 @@ export default function MaterialStorage() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full gap-4">
-      <div className="flex w-full justify-end sticky top-0 pt-20 -mt-16 lg:pt-36 lg:-mt-32 bg-gray-900 py-4">
+      <div className="flex w-full justify-end sticky top-0 pt-18 -mt-16 lg:pt-36 lg:-mt-32 bg-gray-900 py-4">
         {alt1Active ? (
           <button
             className="text-orange-100 font-semibold cursor-pointer hover:scale-102 transition-transform text-base border-orange-100 border-2 rounded-md px-3 py-1"

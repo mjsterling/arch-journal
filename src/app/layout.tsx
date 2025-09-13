@@ -34,7 +34,7 @@ export default function RootLayout({
               <SettingsProvider>
                 <div className="h-full min-h-screen w-full bg-gray-900!">
                   <Header />
-                  <div className="h-full w-full p-6 md:px-12 lg:px-16">{children}</div>
+                  <div className="flex flex-col gap-4 h-full w-full p-6 md:px-12">{children}</div>
                 </div>
               </SettingsProvider>
             </ArtefactProvider>

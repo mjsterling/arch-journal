@@ -12,7 +12,7 @@ export const CollectionSort: React.FC = () => {
         { key: CollectionSortOptions.LevelToComplete, label: 'Level' },
         { key: CollectionSortOptions.Collector, label: 'Collector' },
         { key: CollectionSortOptions.Digsite, label: 'Digsite' },
-        { key: CollectionSortOptions.Name, label: 'Alphabetical' },
+        { key: CollectionSortOptions.Name, label: 'A-Z' },
       ]}
       value={sort}
       setValue={setSort}

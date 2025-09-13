@@ -8,7 +8,7 @@ export function HeaderLogo() {
         alt="ScapeTools"
         className="min-h-10 min-w-40 hidden md:flex"
       />
-      <Icon src="/assets/logo/ScapeTools_pickaxe_orange.png" alt="ScapeTools" className="min-h-9 min-w-9 md:hidden" />
+      <Icon src="/assets/logo/ScapeTools_pickaxe_orange.png" alt="ScapeTools" className="min-h-7 min-w-7 md:hidden" />
     </a>
   );
 }

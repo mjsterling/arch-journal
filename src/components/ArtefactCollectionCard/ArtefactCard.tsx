@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
-import { ArtefactStates, Collections, DigsiteNames, Digsites } from '@/data/constants';
+import { ArtefactStates, DigsiteNames, Digsites } from '@/data/constants';
 import { Artefact, useArtefacts, useContextMenu, useSettings } from '@/data/providers';
-import { ArtefactCollectionButton, Icon, LevelSiteDisplay, ArtefactMiscButton, CardContainer } from '@/components';
+import { Icon, LevelSiteDisplay, CardContainer } from '@/components';
 import { useHideCard } from '@/data/hooks';
 import { wiki } from '@/data/utils';
+import { ArtefactButtons } from './ArtefactButtons';
 
 export function ArtefactCard(props: {
   artefact: Artefact;
@@ -39,18 +40,14 @@ export function ArtefactCard(props: {
       combined={combined}
       onContextMenu={onContextMenu}
     >
-      <div className="flex justify-between md:justify-start items-center mb-4 md:mb-0 gap-4 w-full font-semibold text-orange-100">
-        <Icon
-          src={artefact.image}
-          alt={artefact.name}
-          className="h-8 w-8 md:h-10 md:w-10 object-contain transition-all"
-        />
-        <div className="flex flex-col items-center md:items-start gap-1">
+      {/* DESKTOP */}
+      <div className="hidden md:flex justify-start items-center mb-0 gap-4 w-full font-semibold text-orange-100">
+        <Icon src={artefact.image} alt={artefact.name} className="h-10 w-10 object-contain transition-all" />
+        <div className="flex flex-col items-start gap-1">
           <p
-            className={[
-              'text-center md:text-left lg:text-nowrap sm:text-lg',
-              highlighted ? 'text-yellow-500' : 'text-orange-100',
-            ].join(' ')}
+            className={['text-lg text-left lg:text-nowrap', highlighted ? 'text-yellow-500' : 'text-orange-100'].join(
+              ' '
+            )}
           >
             {artefact.name}
           </p>
@@ -70,79 +67,33 @@ export function ArtefactCard(props: {
             ))}
           </div>
         </div>
-        <div className="flex justify-end md:hidden">
+      </div>
+      <ArtefactButtons className="hidden md:flex" artefact={artefact} />
+      <LevelSiteDisplay className="hidden md:flex" level={artefact.level} sites={digsiteInfo} />
+      {/* MOBILE */}
+      <div className="flex md:hidden flex-col items-start gap-1 w-full font-semibold text-orange-100">
+        <div className="flex flex-row justify-between w-full items-center gap-4">
+          <div className="flex flex-row gap-2">
+            <Icon
+              src={artefact.image}
+              alt={artefact.name}
+              className="flex md:hidden min-h-5 min-w-5 max-h-5 max-w-5 object-contain transition-all"
+            />
+            <p
+              className={[
+                'text-sm sm:text-base text-left text-wrap lg:text-nowrap md:text-lg',
+                highlighted ? 'text-yellow-500' : 'text-orange-100',
+              ].join(' ')}
+            >
+              {artefact.name}
+            </p>
+          </div>
           <LevelSiteDisplay level={artefact.level} sites={digsiteInfo} />
         </div>
+        <div className="flex flex-row justify-between w-full items-center gap-4">
+          <ArtefactButtons className="[&]:flex [&]:md:hidden [&]:flex-nowrap" artefact={artefact} />
+        </div>
       </div>
-      <div className="flex flex-row flex-wrap md:flex-nowrap gap-2 justify-center lg:justify-start">
-        {Object.entries(artefact.collections).map(([name, status]) => {
-          const { collector, image } = Collections.find((collection) => collection.name === name) ?? {
-            collector: '',
-            image: '',
-            shortName: '',
-          };
-          return (
-            <ArtefactCollectionButton
-              mode="artefactPage"
-              key={`ArtefactButton_${artefact.name}__${name}`}
-              artefact={artefact}
-              collection={name}
-              collector={collector}
-              image={image}
-              status={status}
-            />
-          );
-        })}
-        {Object.entries(artefact.mysteries).map(([name, status]) => {
-          return (
-            <ArtefactMiscButton
-              key={`ArtefactButton_${artefact.name}__${name}`}
-              artefact={artefact}
-              type="mysteries"
-              typeKey={name}
-              image={'/assets/collections/mysteries.png'}
-              status={status}
-            />
-          );
-        })}
-        {Object.entries(artefact.researchers).map(([name, status]) => {
-          return (
-            <ArtefactMiscButton
-              key={`ArtefactButton_${artefact.name}__${name}`}
-              artefact={artefact}
-              type="researchers"
-              typeKey={name}
-              image={'/assets/collections/researchers.png'}
-              status={status}
-            />
-          );
-        })}
-        {Object.entries(artefact.quests).map(([name, status]) => {
-          return (
-            <ArtefactMiscButton
-              key={`ArtefactButton_${artefact.name}__${name}`}
-              artefact={artefact}
-              type="quests"
-              typeKey={name}
-              image={'/assets/collections/quests.png'}
-              status={status}
-            />
-          );
-        })}
-        {Object.entries(artefact.misc).map(([name, status]) => {
-          return (
-            <ArtefactMiscButton
-              key={`ArtefactButton_${artefact.name}__${name}`}
-              artefact={artefact}
-              type="misc"
-              typeKey={name}
-              image={'/assets/collections/misc.png'}
-              status={status}
-            />
-          );
-        })}
-      </div>
-      <LevelSiteDisplay className="hidden md:flex" level={artefact.level} sites={digsiteInfo} />
     </CardContainer>
   );
 }

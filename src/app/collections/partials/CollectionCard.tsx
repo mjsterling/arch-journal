@@ -6,7 +6,8 @@ import { ArtefactCollectionButton, LevelSiteDisplay, CardContainer, Icon } from 
 import { useHideCard } from '@/data/hooks';
 import { useCollectionsPageData } from '../data';
 import { useRouter } from 'next/navigation';
-import { shortNumber, wiki } from '@/data/utils';
+import { wiki } from '@/data/utils';
+import { CollectionRewards } from './CollectionRewards';
 
 export const CollectionCard: CollectionCard = ({ collection, combined = false }) => {
   const { highlightedCollection } = useCollectionsPageData();
@@ -31,87 +32,107 @@ export const CollectionCard: CollectionCard = ({ collection, combined = false })
   if (hidden) return null;
 
   return (
-    <CardContainer
-      name={collection.name}
-      isComplete={collection.isComplete}
-      isHighlighted={isHighlighted}
-      digsiteInfo={digsiteInfo}
-      combined={combined}
-      onContextMenu={onContextMenu}
-      opacity={opacity}
-    >
-      <div className="flex w-full px-3 lg:px-0 justify-between md:justify-start items-center mb-4 md:mb-0 gap-4 lg:w-[440px] font-semibold text-orange-100">
-        <Icon
-          src={collection.image}
-          alt={collection.name}
-          className="h-8 w-8 lg:h-10 lg:w-10 object-contain sm:block"
-        />
-        <div className="flex flex-col items-center md:items-start gap-1">
-          <p
-            className={[
-              'text-center md:text-left text-wrap text-lg',
-              isHighlighted ? 'text-yellow-500' : 'text-orange-100',
-            ].join(' ')}
-          >
-            {collection.name.replace('Museum -', 'M.')}
-          </p>
-          <div className="flex gap-3 items-center md:items-start">
-            {collection.reward &&
-              !collection.isComplete &&
-              Object.entries(collection.reward).map(([name, amount]) => (
-                <div className="flex gap-1 items-center" key={`${collection}_Reward_${name}`}>
-                  <Icon
-                    src={`/assets/collections/${name.replace(/ /g, '_')}.${
-                      name === 'Tetracompass piece' || name === 'Elder Trove' ? 'gif' : 'png'
-                    }`}
-                    alt={name}
-                    title={name}
-                    contextMenu
-                    className="h-5 w-5 object-contain cursor-help"
+    <>
+      {/* MOBILE */}
+      <CardContainer
+        opacity={opacity}
+        name={collection.name}
+        isComplete={collection.isComplete}
+        isHighlighted={isHighlighted}
+        digsiteInfo={digsiteInfo}
+        combined={combined}
+        onContextMenu={onContextMenu}
+        className="[&]:md:hidden"
+      >
+        <div className="flex flex-col items-start gap-1 w-full font-semibold text-orange-100">
+          <div className="flex flex-row justify-between w-full items-center gap-4 pt-1 pb-2">
+            <div className="flex flex-row gap-2">
+              <Icon
+                src={collection.image}
+                alt={collection.name}
+                className="flex md:hidden min-h-5 min-w-5 max-h-5 max-w-5 object-contain transition-all"
+              />
+              <p
+                className={[
+                  'text-xs sm:text-sm text-left text-wrap lg:text-nowrap md:text-base lg:text-lg',
+                  isHighlighted ? 'text-yellow-500' : 'text-orange-100',
+                ].join(' ')}
+              >
+                {collection.name}
+              </p>
+            </div>
+            <LevelSiteDisplay level={collection.levelToComplete} sites={digsiteInfo} />
+          </div>
+          <div className="flex w-full flex-row flex-wrap items-center gap-2 justify-start">
+            {collection.artefacts &&
+              collection.artefacts.map((artefact: Artefact) => {
+                return (
+                  <ArtefactCollectionButton
+                    mode="collectionPage"
+                    artefact={artefact}
+                    key={artefact.name}
+                    collection={collection.name}
+                    collector={collection.collector}
+                    image={artefact.image}
+                    status={artefact.collections[collection.name]}
                   />
-                  <span className="text-sm text-orange-100">{amount ? shortNumber(amount) : ''}</span>
-                </div>
-              ))}
-            {(!collection.reward || collection.isComplete) &&
-              Object.entries(collection.recurringReward).map(([name, amount]) => (
-                <div className="flex gap-1 items-center text-sm" key={`${collection}_Reward_${name}`}>
-                  <Icon
-                    src={`/assets/collections/${name.replace(/ /g, '_')}.${
-                      name === 'Tetracompass piece' || name === 'Elder Trove' ? 'gif' : 'png'
-                    }`}
-                    alt={name}
-                    title={name}
-                    contextMenu
-                    className="h-5 w-5 object-contain cursor-help"
-                  />
-                  <span className="text-sm text-orange-100">{amount ? shortNumber(amount) : ''}</span>
-                </div>
-              ))}
+                );
+              })}
           </div>
         </div>
-        <div className="flex justify-end md:hidden">
-          <LevelSiteDisplay level={collection.levelToComplete!} sites={digsiteInfo} />
+      </CardContainer>
+      {/* DESKTOP */}
+      <CardContainer
+        className="[&]:hidden [&]:md:flex"
+        name={collection.name}
+        isComplete={collection.isComplete}
+        isHighlighted={isHighlighted}
+        digsiteInfo={digsiteInfo}
+        combined={combined}
+        onContextMenu={onContextMenu}
+        opacity={opacity}
+      >
+        <div className="flex w-full px-3 lg:px-0 justify-between md:justify-start items-center mb-4 md:mb-0 gap-4 lg:w-[440px] font-semibold text-orange-100">
+          <Icon
+            src={collection.image}
+            alt={collection.name}
+            className="h-8 w-8 lg:h-10 lg:w-10 object-contain sm:block"
+          />
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <p
+              className={[
+                'text-center md:text-left text-wrap text-lg',
+                isHighlighted ? 'text-yellow-500' : 'text-orange-100',
+              ].join(' ')}
+            >
+              {collection.name.replace('Museum -', 'M.')}
+            </p>
+            <CollectionRewards collection={collection} />
+          </div>
+          <div className="flex justify-end md:hidden">
+            <LevelSiteDisplay level={collection.levelToComplete!} sites={digsiteInfo} />
+          </div>
         </div>
-      </div>
-      <div className="flex w-full h-fit flex-row flex-wrap items-center gap-2 justify-center lg:justify-start">
-        {collection.artefacts &&
-          collection.artefacts.map((artefact: Artefact) => {
-            return (
-              <ArtefactCollectionButton
-                mode="collectionPage"
-                artefact={artefact}
-                key={artefact.name}
-                collection={collection.name}
-                collector={collection.collector}
-                image={artefact.image}
-                status={artefact.collections[collection.name]}
-              />
-            );
-          })}
-      </div>
+        <div className="flex w-full h-fit flex-row flex-wrap items-center gap-2 justify-center lg:justify-start">
+          {collection.artefacts &&
+            collection.artefacts.map((artefact: Artefact) => {
+              return (
+                <ArtefactCollectionButton
+                  mode="collectionPage"
+                  artefact={artefact}
+                  key={artefact.name}
+                  collection={collection.name}
+                  collector={collection.collector}
+                  image={artefact.image}
+                  status={artefact.collections[collection.name]}
+                />
+              );
+            })}
+        </div>
 
-      <LevelSiteDisplay className="hidden md:flex" level={collection.levelToComplete!} sites={digsiteInfo} />
-    </CardContainer>
+        <LevelSiteDisplay level={collection.levelToComplete!} sites={digsiteInfo} />
+      </CardContainer>
+    </>
   );
 };
 

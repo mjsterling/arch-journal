@@ -9,7 +9,8 @@ export const ModeSelect: ModeSelect = ({ mode, setMode, selectedCollectionIsComp
         disabled={selectedCollectionIsComplete}
         onClick={() => setMode('first')}
       >
-        First Completion
+        <span className="md:hidden">First</span>
+        <span className="hidden md:inline">First Completion</span>
       </button>
       <button
         className={[
@@ -18,7 +19,8 @@ export const ModeSelect: ModeSelect = ({ mode, setMode, selectedCollectionIsComp
         ].join(' ')}
         onClick={() => setMode('recurring')}
       >
-        Recurring Completions
+        <span className="md:hidden">Recurring</span>
+        <span className="hidden md:inline">Recurring Completions</span>
       </button>
     </div>
   );

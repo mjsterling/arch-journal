@@ -22,30 +22,33 @@ export default function Planner() {
   } = usePlannerData();
 
   return (
-    <div className="flex flex-col gap-8 text-orange-100 w-full max-w-[1000px] mx-auto px-6 py-6 md:px-12 md:py-6">
+    <div className="flex flex-col gap-4 md:gap-8 items-center text-orange-100 w-full max-w-[1000px] mx-auto">
       <CollectionSearch
         activeCollection={activeCollection}
         setActiveCollection={setActiveCollection}
         collections={collections}
       />
-      <RadioGroup
-        options={[
-          {
-            key: 'first',
-            label: 'First Completion',
-            disabled: selectedCollectionIsComplete,
-          },
-          { key: 'recurring', label: 'Recurring Completions' },
-        ]}
-        value={mode}
-        setValue={setMode as React.Dispatch<React.SetStateAction<string>>}
-      />
-
+      <div className="flex flex-row justify-center w-full py-2">
+        <RadioGroup
+          options={[
+            {
+              key: 'first',
+              label: 'First Completion',
+              labelMobile: 'First',
+              disabled: selectedCollectionIsComplete,
+            },
+            { key: 'recurring', label: 'Recurring Completions', labelMobile: 'Recurring' },
+          ]}
+          value={mode}
+          setValue={setMode as React.Dispatch<React.SetStateAction<string>>}
+        />
+      </div>
       {selectedCollectionData && (
         <>
           {mode === 'recurring' && (
             <div className="flex flex-row gap-4 justify-center items-center">
-              <span className="text-lg font-semibold">Number of Completions:</span>
+              <span className="text-base md:hidden font-semibold"># of completions:</span>
+              <span className="hidden md:inline text-lg font-semibold">Number of Completions:</span>
               <input
                 value={numberOfRecurringCompletions}
                 onChange={(e) => setNumberOfRecurringCompletions(Number(e.target.value.replace(/[^0-9]/g, '') || 0))}
@@ -63,36 +66,43 @@ export default function Planner() {
               {selectedCollectionData.artefacts.map((artefact) => (
                 <li
                   key={artefact.name}
-                  className="grid grid-cols-[64px_1.2fr_2fr] grid-rows-2 sm:grid-rows-1 gap-4 justify-start items-center bg-[#FFF1] rounded-md p-4"
+                  className="flex flex-col md:flex-row gap-4 justify-start items-center bg-[#FFF1] rounded-md py-2 my:py-4 p-4"
                 >
-                  {mode === 'first' ? (
-                    <ArtefactCollectionButton
-                      mode="collectionPage"
-                      artefact={artefact}
-                      collection={selectedCollectionData.name}
-                      collector={selectedCollectionData.collector}
-                      image={artefact.image}
-                      status={artefact.collections[selectedCollectionData.name]}
-                    />
-                  ) : (
-                    <Icon src={artefact.image} alt={artefact.name} className="h-8 w-8 cursor-help ml-3" contextMenu />
-                  )}
-                  <span className="text-lg font-semibold col-span-2 sm:col-span-1">
-                    {artefact.name}
-                    {mode === 'recurring' && (
-                      <>
-                        &nbsp;
-                        <span>x {Intl.NumberFormat('en-AU').format(numberOfRecurringCompletions)}</span>
-                      </>
+                  <div className="flex flex-row justify-start w-full gap-4 items-center">
+                    {mode === 'first' ? (
+                      <ArtefactCollectionButton
+                        mode="collectionPage"
+                        artefact={artefact}
+                        collection={selectedCollectionData.name}
+                        collector={selectedCollectionData.collector}
+                        image={artefact.image}
+                        status={artefact.collections[selectedCollectionData.name]}
+                      />
+                    ) : (
+                      <Icon
+                        src={artefact.image}
+                        alt={artefact.name}
+                        className="min-h-6 md:min-h-8 min-w-6 md:min-w-8 max-h-6 md:max-h-8 max-w-6 md:max-w-8 cursor-help"
+                        contextMenu
+                      />
                     )}
-                  </span>
-                  <div className="flex flex-row gap-8 justify-center sm:justify-end items-center col-span-3 sm:col-span-1">
+                    <span className="text-sm md:text-lg font-semibold col-span-2 md:col-span-1">
+                      {artefact.name}
+                      {mode === 'recurring' && (
+                        <>
+                          &nbsp;
+                          <span>x {Intl.NumberFormat('en-AU').format(numberOfRecurringCompletions)}</span>
+                        </>
+                      )}
+                    </span>
+                  </div>
+                  <div className="flex flex-row gap-3 md:gap-8 justify-start md:justify-end md:ml-auto items-center col-span-3 md:col-span-1 w-full">
                     {Object.entries(artefact.materials)
                       .sort(([name1], [name2]) => (name1 > name2 ? 1 : -1))
                       .map(([material, amount]) => (
                         <div
                           className={[
-                            'flex flex-col gap-1',
+                            'flex flex-row md:flex-col gap-1',
                             mode === 'first' &&
                             (artefact.collections[selectedCollectionData.name] === ArtefactStates.Restored ||
                               artefact.collections[selectedCollectionData.name] === ArtefactStates.Completed)
@@ -105,7 +115,7 @@ export default function Planner() {
                             <Icon
                               src={`/assets/materials/${material.replace(/ /g, '_')}.png`}
                               alt={material}
-                              className="h-8 w-8 object-contain object-center cursor-help"
+                              className="min-h-6 md:min-h-8 min-w-6 md:min-w-8 max-h-6 md:max-h-8 max-w-6 md:max-w-8 object-contain object-center cursor-help"
                               onContextMenu={
                                 materialStorage.hasOwnProperty(material)
                                   ? createMaterialContextMenu(material)
@@ -113,7 +123,7 @@ export default function Planner() {
                               }
                             />
                           </div>
-                          <span className="w-full text-center font-semibold">
+                          <span className="w-full text-center text-sm md:text-base font-semibold">
                             {amount * (mode === 'recurring' ? numberOfRecurringCompletions : 1)}
                           </span>
                         </div>
@@ -123,11 +133,11 @@ export default function Planner() {
               ))}
             </ul>
             <div className="flex flex-col gap-8 w-full">
-              <div className="flex flex-col justify-center items-center w-full max-w-[1000px] mx-auto grid-rows-1 gap-6 py-8 bg-[#FFF1] rounded-md p-4">
+              <div className="flex flex-col justify-center items-center w-full max-w-[1000px] mx-auto grid-rows-1 gap-6 md:py-8 bg-[#FFF1] rounded-md p-4">
                 <span className="col-span-2 text-lg font-semibold">
                   {mode === 'first' ? 'Remaining Materials' : 'Total Materials'}
                 </span>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-6 justify-center items-center">
+                <div className="w-full grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-4 justify-center items-center">
                   {selectedCollectionMaterials?.map((material) => (
                     <MaterialDisplay {...material} key={material.name} />
                   ))}

@@ -30,7 +30,7 @@ export function ArtefactCollectionButton({
     () => ({
       base: 'relative flex flex-col gap-1 items-center justify-center',
       rounded: 'rounded-md h-full',
-      size: 'min-h-13 min-w-13 max-h-13 max-w-13',
+      size: 'min-h-9 min-w-9 max-h-9 max-w-9 md:min-h-13 md:min-w-13 md:max-h-13 md:max-w-13',
       transition: 'transition-all duration-200 gap-1',
       border: 'border-2 z-0 hover:z-10',
 
@@ -98,7 +98,7 @@ export function ArtefactCollectionButton({
       <Icon
         src={image}
         alt={mode === 'artefactPage' ? collection : artefact.name}
-        className="min-h-9 min-w-9 max-h-9 max-w-9 object-contain transition-all"
+        className="min-h-6 min-w-6 max-h-6 max-w-6 md:min-h-9 md:min-w-9 md:max-h-9 md:max-w-9 object-contain transition-all"
       />
     </button>
   );

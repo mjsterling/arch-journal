@@ -1,5 +1,9 @@
 # Changelog
 
+**v1.2.3 - 13/09/2025**
+
+- Significant overhaul of mobile views to improve usability and compactness
+
 **v1.2.2 - 17/08/2025**
 
 - Fixed collections not disappearing when completed
