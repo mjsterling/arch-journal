@@ -1,5 +1,9 @@
 # Changelog
 
+**v1.3.1 - 14/09/2025**
+
+- Significantly improved performance of artefact bank scanner
+
 **v1.3.0 - 13/09/2025**
 
 - Added 'mats needed for damaged artefacts' to artefact screen
