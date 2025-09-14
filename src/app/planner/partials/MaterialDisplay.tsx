@@ -19,7 +19,7 @@ export const MaterialDisplay: MaterialDisplay = (material) => {
       <div
         className={[
           'font-medium w-full text-left md:text-center text-nowrap',
-          !material.isArchMaterial ? 'text-white' : material.diff <= 0 ? 'text-orange-500' : 'text-green-600',
+          !material.isArchMaterial ? 'text-white' : material.diff < 0 ? 'text-orange-500' : 'text-green-600',
         ].join(' ')}
       >
         {material.name}
@@ -28,7 +28,7 @@ export const MaterialDisplay: MaterialDisplay = (material) => {
       <span
         className={[
           'w-full text-right md:text-center font-semibold',
-          !material.isArchMaterial ? 'text-white' : material.diff <= 0 ? 'text-orange-500' : 'text-green-600',
+          !material.isArchMaterial ? 'text-white' : material.diff < 0 ? 'text-orange-500' : 'text-green-600',
         ].join(' ')}
       >
         {material.isArchMaterial ? Intl.NumberFormat('en-AU').format(material.storage) : ''}
