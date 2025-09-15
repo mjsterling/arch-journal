@@ -42,7 +42,7 @@ export function DamagedMatsNeeded({ mode = 'artefacts' }: { mode: 'artefacts' | 
     return _materialsNeeded;
   }, [artefacts, mode]);
   return (
-    <div className="flex flex-col gap-1 md:gap-4 md:grid md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+    <div className="flex flex-col gap-0 md:gap-4 md:grid md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
       {Object.entries(materialsNeeded)
         .filter(([, amount]) => amount > 0)
         .sort(([name1], [name2]) => name1.localeCompare(name2))
