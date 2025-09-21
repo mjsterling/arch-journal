@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ArtefactStates, Collections as CollectionData, type Materials, MaterialsList } from '@/data/constants';
 import { useArtefacts, useContextMenu, useGlobalState } from '@/data/providers';
 import { CollectionSearch, MaterialDisplay, RewardDisplay } from './partials';
-import { ArtefactCollectionButton, Icon, RadioGroup } from '@/components';
+import { ArtefactCollectionButton, Checkbox, Icon, RadioGroup } from '@/components';
 
 export default function Planner() {
   const { createMaterialContextMenu, createWikiContextMenu } = useContextMenu();
@@ -11,6 +11,8 @@ export default function Planner() {
   const {
     activeCollection,
     setActiveCollection,
+    toggleArtefact,
+    toggledArtefacts,
     collections,
     mode,
     setMode,
@@ -66,7 +68,10 @@ export default function Planner() {
               {selectedCollectionData.artefacts.map((artefact) => (
                 <li
                   key={artefact.name}
-                  className="flex flex-col md:flex-row gap-4 justify-start items-center bg-[#FFF1] rounded-md py-2 my:py-4 p-4"
+                  className={[
+                    'flex flex-col md:flex-row gap-4 justify-start items-center bg-[#FFF1] rounded-md py-2 my:py-4 p-4',
+                    toggledArtefacts[artefact.name] && mode === 'recurring' ? 'opacity-50' : '',
+                  ].join(' ')}
                 >
                   <div className="flex flex-row justify-start w-full gap-4 items-center">
                     {mode === 'first' ? (
@@ -79,12 +84,19 @@ export default function Planner() {
                         status={artefact.collections[selectedCollectionData.name]}
                       />
                     ) : (
-                      <Icon
-                        src={artefact.image}
-                        alt={artefact.name}
-                        className="min-h-6 md:min-h-8 min-w-6 md:min-w-8 max-h-6 md:max-h-8 max-w-6 md:max-w-8 cursor-help"
-                        contextMenu
-                      />
+                      <>
+                        <Checkbox
+                          label=""
+                          checked={toggledArtefacts[artefact.name] || false}
+                          toggle={() => toggleArtefact(artefact.name)}
+                        />
+                        <Icon
+                          src={artefact.image}
+                          alt={artefact.name}
+                          className="min-h-6 md:min-h-8 min-w-6 md:min-w-8 max-h-6 md:max-h-8 max-w-6 md:max-w-8 cursor-help"
+                          contextMenu
+                        />
+                      </>
                     )}
                     <span className="text-sm md:text-lg font-semibold col-span-2 md:col-span-1">
                       {artefact.name}
@@ -96,19 +108,24 @@ export default function Planner() {
                       )}
                     </span>
                   </div>
+
                   <div className="flex flex-row gap-3 md:gap-8 justify-start md:justify-end md:ml-auto items-center col-span-3 md:col-span-1 w-full">
                     {Object.entries(artefact.materials)
                       .sort(([name1], [name2]) => (name1 > name2 ? 1 : -1))
                       .map(([material, amount]) => (
                         <div
-                          className={[
-                            'flex flex-row md:flex-col gap-1',
-                            mode === 'first' &&
-                            (artefact.collections[selectedCollectionData.name] === ArtefactStates.Restored ||
-                              artefact.collections[selectedCollectionData.name] === ArtefactStates.Completed)
-                              ? 'opacity-20'
-                              : '',
-                          ].join(' ')}
+                          className={
+                            toggledArtefacts[artefact.name] && mode === 'recurring'
+                              ? 'hidden'
+                              : [
+                                  'flex flex-row md:flex-col gap-1',
+                                  mode === 'first' &&
+                                  (artefact.collections[selectedCollectionData.name] === ArtefactStates.Restored ||
+                                    artefact.collections[selectedCollectionData.name] === ArtefactStates.Completed)
+                                    ? 'opacity-20'
+                                    : '',
+                                ].join(' ')
+                          }
                           key={`${artefact.name}_${material}`}
                         >
                           <div className="flex justify-center items-center">
@@ -157,6 +174,10 @@ const usePlannerData = () => {
 
   const [mode, setMode] = useState<'first' | 'recurring'>('first');
   const [numberOfRecurringCompletions, setNumberOfRecurringCompletions] = useState<number>(1);
+  const [toggledArtefacts, setToggledArtefacts] = useState<{ [key: string]: boolean }>({});
+  const toggleArtefact = (artefactName: string) => {
+    setToggledArtefacts((prev) => ({ ...prev, [artefactName]: !prev[artefactName] }));
+  };
   const collections = useMemo(
     () =>
       CollectionData.map((collection) => {
@@ -191,12 +212,15 @@ const usePlannerData = () => {
 
   const selectedCollectionMaterials = useMemo(() => {
     if (!selectedCollectionData) return null;
-    const materials = Object.entries(selectedCollectionData.artefacts).reduce((acc, [, artefact]) => {
+    const activeArtefacts = selectedCollectionData.artefacts.filter((artefact) =>
+      mode === 'first'
+        ? artefact.collections[selectedCollectionData.name] === ArtefactStates.Damaged
+        : !toggledArtefacts[artefact.name]
+    );
+    if (activeArtefacts.length === 0) return [];
+    const materials = Object.entries(activeArtefacts).reduce((acc, [, artefact]) => {
       Object.entries(artefact.materials).forEach(([material, amount]) => {
-        if (
-          (mode === 'first' && artefact.collections[selectedCollectionData.name] === ArtefactStates.Completed) ||
-          artefact.collections[selectedCollectionData.name] === ArtefactStates.Restored
-        ) {
+        if (mode === 'first' && artefact.collections[selectedCollectionData.name] !== ArtefactStates.Damaged) {
           return acc;
         } else {
           if (acc[material]) {
@@ -220,7 +244,7 @@ const usePlannerData = () => {
           amount,
         };
       });
-  }, [selectedCollectionData, mode, numberOfRecurringCompletions, materialStorage]);
+  }, [selectedCollectionData, toggledArtefacts, mode, numberOfRecurringCompletions, materialStorage]);
 
   return {
     collections,
@@ -233,5 +257,7 @@ const usePlannerData = () => {
     selectedCollectionMaterials,
     numberOfRecurringCompletions,
     setNumberOfRecurringCompletions,
+    toggleArtefact,
+    toggledArtefacts,
   };
 };
