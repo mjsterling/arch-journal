@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 export function useBankCleaner() {
   const { artefacts, setArtefacts } = useArtefacts();
   const [scanning, setScanning] = useState(false);
-  const [prefetching, setPrefetching] = useState(false);
   const [cache, setCache] = useState<{ [key: string]: { base64: string; width: number; height: number } }>({});
 
   const readArtefact = async (imageUrl: string) => {
@@ -102,8 +101,10 @@ export function useBankCleaner() {
     setArtefacts([...newArtefacts]);
   };
 
+  const [prefetch, setPrefetch] = useState<'idle' | 'loading' | 'done'>('idle');
   const prefetchImages = async () => {
-    setPrefetching(true);
+    if (prefetch !== 'idle') return;
+    setPrefetch('loading');
     const newCache: { [key: string]: { base64: string; width: number; height: number } } = {};
     await Promise.all(
       artefacts.map(async (artefact) => {
@@ -120,12 +121,12 @@ export function useBankCleaner() {
       })
     );
     setCache(newCache);
-    setPrefetching(false);
+    setPrefetch('done');
   };
 
   useEffect(() => {
     prefetchImages();
-  }, []);
+  });
 
-  return { scanning, prefetching, importArtefacts, clearAll };
+  return { scanning, prefetch, importArtefacts, clearAll };
 }

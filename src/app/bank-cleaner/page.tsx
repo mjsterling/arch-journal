@@ -32,7 +32,7 @@ export default function BankCleaner() {
     if (window.alt1) setAlt1Active(true);
   }, []);
 
-  const { scanning, prefetching, clearAll, importArtefacts } = useBankCleaner();
+  const { scanning, prefetch, clearAll, importArtefacts } = useBankCleaner();
 
   return (
     <div className="flex flex-col gap-4">
@@ -42,11 +42,11 @@ export default function BankCleaner() {
             <button
               className="text-orange-100 font-semibold cursor-pointer hover:scale-102 transition-transform text-base border-orange-100 border-2 rounded-md px-3 py-1"
               onClick={importArtefacts}
-              disabled={scanning || prefetching}
+              disabled={scanning || prefetch !== 'done'}
             >
               {scanning
                 ? 'Scan in progress, please wait'
-                : prefetching
+                : prefetch !== 'done'
                 ? 'Loading scanner, please wait'
                 : 'Scan for Artefacts'}
             </button>

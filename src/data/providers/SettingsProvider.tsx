@@ -57,8 +57,8 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     setSettingsLoaded(true);
   };
 
-  useEffect(saveSettings, [settings]);
-  useEffect(loadSettings, []);
+  useEffect(saveSettings, [settings, settingsLoaded]);
+  useEffect(loadSettings, [settingsLoaded]);
 
   const importData = (text: string) => {
     try {

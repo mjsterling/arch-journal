@@ -95,7 +95,7 @@ const useSortedCollections: (sort: CollectionSortOptions, leaguesMode: boolean) 
               return 0;
           }
         }),
-    [artefacts, sort]
+    [artefacts, leaguesMode, sort]
   );
 };
 

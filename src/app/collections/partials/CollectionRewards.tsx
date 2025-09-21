@@ -9,7 +9,7 @@ export function CollectionRewards({ collection }: { collection: Collection }) {
   const chronotes = useMemo(() => {
     const baseChronotes =
       collection.reward && !collection.isComplete
-        ? collection.reward?.Chronotes!
+        ? collection.reward.Chronotes!
         : collection.recurringReward.Chronotes!;
     const artefactChronotes = artefacts
       .filter((artefact) => artefact.collections[collection.name])
