@@ -12,7 +12,8 @@ export function HeaderSettingsMenu({
   settingsMenuOpen: boolean;
 }) {
   const [importModalOpen, setImportModalOpen] = useState(false);
-  const { colorblindMode, importData, exportData, toggleColorblindMode } = useSettings();
+  const { colorblindMode, leaguesMode, importData, exportData, toggleColorblindMode, toggleLeaguesMode } =
+    useSettings();
   const [dataImported, setDataImported] = useState(false);
   const [dataExported, setDataExported] = useState(false);
   useEffect(() => {
@@ -60,7 +61,7 @@ export function HeaderSettingsMenu({
       onClick={closeMenu}
       style={{
         height: 'fit-content',
-        maxHeight: settingsMenuOpen ? '280px' : '0',
+        maxHeight: settingsMenuOpen ? '340px' : '0',
         paddingTop: settingsMenuOpen ? '8px' : '0',
         paddingBottom: settingsMenuOpen ? '1rem' : '0',
       }}
@@ -71,6 +72,9 @@ export function HeaderSettingsMenu({
         </div>
         <div className="flex gap-4 justify-end items-center text-orange-100 w-full py-2">
           <Checkbox checked={colorblindMode} toggle={toggleColorblindMode} label="Colorblind mode" />
+        </div>
+        <div className="flex gap-4 justify-end items-center text-orange-100 w-full py-2">
+          <Checkbox checked={leaguesMode} toggle={toggleLeaguesMode} label="Leagues mode (Excavator relic)" />
         </div>
         <button
           className="cursor-pointer flex gap-2 ml-auto text-orange-100 border disabled:border-0 disabled:opacity-50 px-2 py-1 rounded-sm border-orange-100"

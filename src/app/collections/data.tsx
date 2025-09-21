@@ -1,5 +1,5 @@
 import { ArtefactStates, Collection, Collections as CollectionData, CollectionSortOptions } from '@/data/constants';
-import { useArtefacts } from '@/data/providers';
+import { useArtefacts, useSettings } from '@/data/providers';
 import { createContext, useState, useEffect, useMemo, useContext } from 'react';
 
 export const CollectionsPage = createContext<CollectionsPageContext>({
@@ -14,9 +14,10 @@ export const CollectionsPage = createContext<CollectionsPageContext>({
 export const useCollectionsPageData = () => useContext(CollectionsPage);
 
 export const useCollectionsPageBuilder = () => {
+  const { leaguesMode } = useSettings();
   const [sort, setSort] = useState<CollectionSortOptions>(CollectionSortOptions.LevelToComplete);
   const { highlightedCollection, setHighlightedCollection } = useHighlightedCollection();
-  const collections = useSortedCollections(sort);
+  const collections = useSortedCollections(sort, leaguesMode);
   const groupedCollections = useGroupedCollections(collections, sort);
 
   return {
@@ -52,38 +53,48 @@ const useHighlightedCollection = () => {
   };
 };
 
-const useSortedCollections: (sort: CollectionSortOptions) => CollectionWithInfo[] = (sort) => {
+const useSortedCollections: (sort: CollectionSortOptions, leaguesMode: boolean) => CollectionWithInfo[] = (
+  sort,
+  leaguesMode
+) => {
   const { artefacts } = useArtefacts();
   return useMemo(
     () =>
-      CollectionData.map((collection) => {
-        const artefactsInCollection = artefacts.filter((artefact) =>
-          Object.keys(artefact.collections).includes(collection.name)
-        );
+      JSON.parse(JSON.stringify(CollectionData))
+        .map((collection: Collection) => {
+          const artefactsInCollection = artefacts.filter((artefact) =>
+            Object.keys(artefact.collections).includes(collection.name)
+          );
 
-        return {
-          ...collection,
-          artefacts: artefactsInCollection,
-          digsite: artefactsInCollection[0]?.digsite ?? 'Unknown',
-          levelToComplete: Math.max(...artefactsInCollection.map((artefact) => artefact.level)),
-          isComplete: artefactsInCollection.every(
-            (artefact) => artefact.collections[collection.name] === ArtefactStates.Completed
-          ),
-        };
-      }).sort((a, b) => {
-        switch (sort) {
-          case CollectionSortOptions.LevelToComplete:
-            return a.levelToComplete - b.levelToComplete;
-          case CollectionSortOptions.Collector:
-            return a.collector.localeCompare(b.collector) || a.name.localeCompare(b.name);
-          case CollectionSortOptions.Digsite:
-            return a.digsite.localeCompare(b.digsite) || a.name.localeCompare(b.name);
-          case CollectionSortOptions.Name:
-            return a.name.localeCompare(b.name) || a.levelToComplete - b.levelToComplete;
-          default:
-            return 0;
-        }
-      }),
+          if (leaguesMode) {
+            if (collection.reward) collection.reward.Chronotes! *= 5;
+            if (collection.recurringReward) collection.recurringReward.Chronotes! *= 5;
+          }
+
+          return {
+            ...collection,
+            artefacts: artefactsInCollection,
+            digsite: artefactsInCollection[0]?.digsite ?? 'Unknown',
+            levelToComplete: Math.max(...artefactsInCollection.map((artefact) => artefact.level)),
+            isComplete: artefactsInCollection.every(
+              (artefact) => artefact.collections[collection.name] === ArtefactStates.Completed
+            ),
+          };
+        })
+        .sort((a, b) => {
+          switch (sort) {
+            case CollectionSortOptions.LevelToComplete:
+              return a.levelToComplete - b.levelToComplete;
+            case CollectionSortOptions.Collector:
+              return a.collector.localeCompare(b.collector) || a.name.localeCompare(b.name);
+            case CollectionSortOptions.Digsite:
+              return a.digsite.localeCompare(b.digsite) || a.name.localeCompare(b.name);
+            case CollectionSortOptions.Name:
+              return a.name.localeCompare(b.name) || a.levelToComplete - b.levelToComplete;
+            default:
+              return 0;
+          }
+        }),
     [artefacts, sort]
   );
 };

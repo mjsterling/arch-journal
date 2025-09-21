@@ -6,6 +6,7 @@ import { ArtefactStates } from '../constants/Artefact';
 import { CollectionNames } from '../constants/Collections';
 import { Materials } from '../constants/Materials';
 import { DigsiteNames } from '../constants/Digsites';
+import { useSettings } from './SettingsProvider';
 
 export enum Screens {
   Artefacts = 'Artefacts',
@@ -57,11 +58,23 @@ const artefactContext = createContext<{
 }>({ artefacts: [], setArtefact: () => {}, setArtefacts: () => {}, isComplete: () => false });
 
 export function ArtefactProvider({ children }: { children: React.ReactNode }) {
+  const { leaguesMode } = useSettings();
   const [artefacts, setArtefacts] = useState<Artefact[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const importArtefacts = () => {
     setLoading(true);
-    const artefactData = artefactDataRaw as RawArtefact[];
+    let artefactData = JSON.parse(JSON.stringify(artefactDataRaw as RawArtefact[]));
+
+    if (leaguesMode) {
+      console.log('Leagues mode enabled');
+      artefactData = artefactData.map((artefact: Artefact) => {
+        const newArtefact = { ...artefact, chronotes: Math.ceil(artefact.chronotes! * 5) };
+        for (const material in newArtefact.materials) {
+          newArtefact.materials[material as Materials] = Math.ceil(newArtefact.materials[material as Materials]! / 2);
+        }
+        return newArtefact;
+      });
+    }
     const artefactState = window.localStorage.getItem('arch-journal-artefacts');
     let artefactStateParsed: Array<{
       name: string;
@@ -78,7 +91,7 @@ export function ArtefactProvider({ children }: { children: React.ReactNode }) {
     if (artefactState) {
       artefactStateParsed = JSON.parse(artefactState);
     }
-    const mappedArtefactData: Artefact[] = artefactData.map((artefact) => {
+    const mappedArtefactData: Artefact[] = artefactData.map((artefact: Artefact) => {
       const artefactState = {
         collections: {} as { [P in CollectionNames]: ArtefactStates },
         mysteries: {} as { [key: string]: ArtefactStates },
@@ -132,7 +145,7 @@ export function ArtefactProvider({ children }: { children: React.ReactNode }) {
     setLoading(false);
   };
 
-  useEffect(importArtefacts, []);
+  useEffect(importArtefacts, [leaguesMode]);
   const setArtefact = (newArtefact: Artefact) => {
     const index = artefacts.findIndex((a) => a.name === newArtefact.name);
     const newArtefacts = [...artefacts.slice(0, index), newArtefact, ...artefacts.slice(index + 1)];

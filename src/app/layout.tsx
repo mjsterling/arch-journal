@@ -29,16 +29,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${raleway.variable} antialiased`}>
         <ContextMenuProvider>
-          <GlobalStateProvider>
-            <ArtefactProvider>
-              <SettingsProvider>
+          <SettingsProvider>
+            <GlobalStateProvider>
+              <ArtefactProvider>
                 <div className="h-full min-h-screen w-full bg-gray-900!">
                   <Header />
                   <div className="flex flex-col gap-4 h-full w-full p-6 md:px-12">{children}</div>
                 </div>
-              </SettingsProvider>
-            </ArtefactProvider>
-          </GlobalStateProvider>
+              </ArtefactProvider>
+            </GlobalStateProvider>
+          </SettingsProvider>
         </ContextMenuProvider>
       </body>
       <GoogleAnalytics gaId="G-THXNPBP1V5" />

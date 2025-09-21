@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 type Settings = {
   colorblindMode: boolean;
+  leaguesMode: boolean;
   showCompletedArtefacts: boolean;
   showCompletedCollections: boolean;
   importData(text: string): boolean;
@@ -11,9 +12,11 @@ type Settings = {
   toggleColorblindMode: () => void;
   toggleShowCompletedArtefacts: () => void;
   toggleShowCompletedCollections: () => void;
+  toggleLeaguesMode: () => void;
 };
 
 const SettingsContext = createContext<Settings>({
+  leaguesMode: false,
   colorblindMode: false,
   showCompletedArtefacts: false,
   showCompletedCollections: false,
@@ -22,25 +25,40 @@ const SettingsContext = createContext<Settings>({
   toggleColorblindMode: () => {},
   toggleShowCompletedArtefacts: () => {},
   toggleShowCompletedCollections: () => {},
+  toggleLeaguesMode: () => {},
 });
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
   const [settings, setSettings] = useState({
     colorblindMode: false,
+    leaguesMode: false,
     showCompletedArtefacts: false,
     showCompletedCollections: false,
   });
-  useEffect(() => {
-    const storedMode = window.localStorage.getItem('arch-journal-settings-colorblindMode');
-    setSettings((prev) => ({ ...prev, colorblindMode: storedMode === 'true' }));
-  }, []);
+  const [settingsLoaded, setSettingsLoaded] = useState(false);
   const toggleColorblindMode = () => {
     setSettings((prev) => ({ ...prev, colorblindMode: !prev.colorblindMode }));
   };
-
-  useEffect(() => {
+  const toggleLeaguesMode = () => {
+    setSettings((prev) => ({ ...prev, leaguesMode: !prev.leaguesMode }));
+  };
+  const saveSettings = () => {
+    if (!settingsLoaded) return;
+    console.log('saving settings');
     window.localStorage.setItem('arch-journal-settings', JSON.stringify(settings));
-  }, [settings]);
+  };
+  const loadSettings = () => {
+    if (settingsLoaded) return;
+    console.log('loading settings ');
+    const savedSettings = window.localStorage.getItem('arch-journal-settings');
+    if (savedSettings) {
+      setSettings(JSON.parse(savedSettings));
+    }
+    setSettingsLoaded(true);
+  };
+
+  useEffect(saveSettings, [settings]);
+  useEffect(loadSettings, []);
 
   const importData = (text: string) => {
     try {
@@ -99,6 +117,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
         toggleShowCompletedArtefacts,
         toggleShowCompletedCollections,
         toggleColorblindMode,
+        toggleLeaguesMode,
       }}
     >
       {children}
