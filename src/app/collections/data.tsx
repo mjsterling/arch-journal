@@ -81,7 +81,7 @@ const useSortedCollections: (sort: CollectionSortOptions, leaguesMode: boolean) 
             ),
           };
         })
-        .sort((a, b) => {
+        .sort((a: Collection, b: Collection) => {
           switch (sort) {
             case CollectionSortOptions.LevelToComplete:
               return a.levelToComplete - b.levelToComplete;

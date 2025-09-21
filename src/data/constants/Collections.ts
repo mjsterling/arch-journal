@@ -3,10 +3,11 @@ import { Artefact } from '../providers/ArtefactProvider';
 export type Collection = {
   name: string;
   collector: string;
+  digsite: string;
   image: string;
   shortName?: string;
   artefacts?: Artefact[];
-  levelToComplete?: number;
+  levelToComplete: number;
   isComplete?: boolean;
   reward?: {
     [key: string]: number | undefined;
