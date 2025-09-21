@@ -69,11 +69,11 @@ export default function Planner() {
                 <li
                   key={artefact.name}
                   className={[
-                    'flex flex-col md:flex-row gap-4 justify-start items-center bg-[#FFF1] rounded-md py-2 my:py-4 p-4',
+                    'flex flex-col md:flex-row gap-2 justify-start items-center bg-[#FFF1] rounded-md py-2 my:py-4 p-4',
                     toggledArtefacts[artefact.name] && mode === 'recurring' ? 'opacity-50' : '',
                   ].join(' ')}
                 >
-                  <div className="flex flex-row justify-start w-full gap-4 items-center">
+                  <div className="flex flex-row justify-start w-full gap-2 items-center">
                     {mode === 'first' ? (
                       <ArtefactCollectionButton
                         mode="collectionPage"
@@ -89,6 +89,7 @@ export default function Planner() {
                           label=""
                           checked={toggledArtefacts[artefact.name] || false}
                           toggle={() => toggleArtefact(artefact.name)}
+                          className="scale-75 md:scale-100"
                         />
                         <Icon
                           src={artefact.image}

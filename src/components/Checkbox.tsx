@@ -1,7 +1,17 @@
 import { CheckIcon } from '@heroicons/react/16/solid';
 
-export const Checkbox = ({ label, checked, toggle }: { label: string; checked: boolean; toggle: () => void }) => (
-  <div className="flex gap-2 items-center text-orange-100">
+export const Checkbox = ({
+  label,
+  checked,
+  toggle,
+  className,
+}: {
+  label: string;
+  checked: boolean;
+  toggle: () => void;
+  className?: string;
+}) => (
+  <div className={`flex gap-2 items-center text-orange-100 ${className}`}>
     <button
       value={checked ? 'checked' : 'unchecked'}
       className={[
