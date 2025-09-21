@@ -81,7 +81,7 @@ const useSortedCollections: (sort: CollectionSortOptions, leaguesMode: boolean) 
             ),
           };
         })
-        .sort((a: Collection, b: Collection) => {
+        .sort((a: Collection & { digsite: string }, b: Collection & { digsite: string }) => {
           switch (sort) {
             case CollectionSortOptions.LevelToComplete:
               return a.levelToComplete - b.levelToComplete;
