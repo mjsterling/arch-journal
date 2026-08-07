@@ -134,6 +134,16 @@ export default function MaterialStorage() {
             borderColor={Digsites[DigsiteNames.Daemonheim].borderColor}
           />
         ))}
+        <MaterialStorageTitle title="Guthixian Materials" />
+        {MaterialsByType.Guthixian.map((material) => (
+          <MaterialStorageInput
+            key={material}
+            material={material}
+            amount={materialStorage[material]}
+            backgroundColor={Digsites[DigsiteNames.Moonrise].backgroundColor}
+            borderColor={Digsites[DigsiteNames.Moonrise].borderColor}
+          />
+        ))}
         <MaterialStorageTitle title="Saradominist Materials" />
         {MaterialsByType.Saradominist.map((material) => (
           <MaterialStorageInput

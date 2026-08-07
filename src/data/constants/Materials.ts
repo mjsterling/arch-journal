@@ -3,9 +3,12 @@ export type Materials =
   | 'Ancient vis'
   | 'Animal furs'
   | 'Armadylean yellow'
+  | 'Banded limestone'
   | 'Blood of Orcus'
+  | 'Burnt umber'
   | 'Cadmium red'
   | 'Carbon black'
+  | 'Cashmere'
   | 'Chaotic brimstone'
   | 'Cobalt blue'
   | 'Compass rose'
@@ -18,6 +21,7 @@ export type Materials =
   | 'Goldrune'
   | 'Hellfire metal'
   | 'Imperial steel'
+  | 'Ivory'
   | 'Keramos'
   | 'Leather scraps'
   | 'Malachite green'
@@ -30,6 +34,7 @@ export type Materials =
   | 'Star of Saradomin'
   | 'Stormguard steel'
   | 'Third-age iron'
+  | 'Triskelion'
   | 'Tyrian purple'
   | 'Vellum'
   | 'Vulcanised rubber'
@@ -45,9 +50,12 @@ export const MaterialsList: Materials[] = [
   'Ancient vis',
   'Animal furs',
   'Armadylean yellow',
+  'Banded limestone',
   'Blood of Orcus',
+  'Burnt umber',
   'Cadmium red',
   'Carbon black',
+  'Cashmere',
   'Chaotic brimstone',
   'Cobalt blue',
   'Compass rose',
@@ -60,6 +68,7 @@ export const MaterialsList: Materials[] = [
   'Goldrune',
   'Hellfire metal',
   'Imperial steel',
+  'Ivory',
   'Keramos',
   'Leather scraps',
   'Malachite green',
@@ -72,6 +81,7 @@ export const MaterialsList: Materials[] = [
   'Star of Saradomin',
   'Stormguard steel',
   'Third-age iron',
+  'Triskelion',
   'Tyrian purple',
   'Vellum',
   'Vulcanised rubber',
@@ -111,6 +121,13 @@ export const MaterialsByType: { [key: string]: Materials[] } = {
     "Yu'biusk clay",
   ],
   Dragonkin: ['Dragon metal', 'Orgone', 'Compass rose', 'Carbon black', 'Felt'],
+  Guthixian: [
+    'Banded limestone',
+    'Burnt umber',
+    'Cashmere',
+    'Ivory',
+    'Triskelion',
+  ],
   Saradominist: [
     'Keramos',
     'White marble',

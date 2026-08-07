@@ -57,6 +57,27 @@ export const Collections = [
     },
   },
   {
+    name: "Guthixian I",
+    collector: 'Artiefax',
+    image: '/assets/collectors/Artiefax.png',
+    reward: {
+      "Guardian's tear": 1,
+      Chronotes: 4248,
+    },
+    recurringReward: {
+      Chronotes: 4248,  
+    }
+  },
+  {
+    name: "Guthixian II",
+    collector: 'Artiefax',
+    image: '/assets/collectors/Artiefax.png',
+    recurringReward: {
+      "Tetracompass piece": 1,
+      Chronotes: 4628,
+    }
+  },
+  {
     name: 'Blingy Fings',
     collector: 'Chief Tess',
     image: '/assets/collectors/Chief_Tess.png',
@@ -577,7 +598,24 @@ export const Collections = [
       Chronotes: 7215,
     },
   },
-
+  {
+    name: 'Museum - Guthixian I',
+    collector: 'Velucia',
+    image: '/assets/collectors/Velucia.png',
+    shortName: 'M - Guthix I',
+    recurringReward: {
+      Chronotes: 5310,
+    },
+  },
+  {
+    name: 'Museum - Guthixian II',
+    collector: 'Velucia',
+    image: '/assets/collectors/Velucia.png',
+    shortName: 'M - Guthix II',
+    recurringReward: {
+      Chronotes: 5785,
+    },
+  },
   {
     name: 'Museum - Saradominist I',
     collector: 'Velucia',

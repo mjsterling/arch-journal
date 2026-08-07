@@ -7,6 +7,7 @@ export enum DigsiteNames {
   Senntisten = 'Senntisten',
   Stormguard = 'Stormguard Citadel',
   Warforge = 'Warforge',
+  Moonrise = 'Moonrise',
 }
 
 export const Digsites: DigsiteInfo = {
@@ -40,8 +41,8 @@ export const Digsites: DigsiteInfo = {
   },
   [DigsiteNames.Warforge]: {
     icon: '/assets/digsites/Warforge_digsite.png',
-    backgroundColor: '#407d0a33',
-    borderColor: '#407d0a',
+    backgroundColor: '#cc580033',
+    borderColor: '#cc5800',
     textColor: '#8cff1a',
     url: 'https://runescape.wiki/w/Warforge_Dig_Site',
   },
@@ -65,6 +66,13 @@ export const Digsites: DigsiteInfo = {
     borderColor: '#853801',
     textColor: '#ff8c1a',
     url: 'https://runescape.wiki/w/Orthen_Dig_Site',
+  },
+  [DigsiteNames.Moonrise]: {
+    icon: '/assets/digsites/Moonrise_digsite.png',
+    backgroundColor: '#58A33033',
+    borderColor: '#58A330',
+    textColor: '#95ff5c',
+    url: 'https://runescape.wiki/w/Moonrise_Dig_Site',
   },
 };
 

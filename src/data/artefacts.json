@@ -421,6 +421,45 @@
     "collections": ["Museum - Saradominist I", "Saradominist I", "Wise Am the Music Man"]
   },
   {
+    "name": "Lunar calendar",
+    "digsite": "Moonrise",
+    "hotspot": "Lunar wheel debris",
+    "level": 52,
+    "chronotes": 468,
+    "xp": 1773.3,
+    "materials": {
+      "Banded limestone": 28,
+      "Triskelion": 24
+    },
+    "collections": ["Museum - Guthixian I", "Guthixian I"]
+  },
+  {
+    "name": "Wolf statuette",
+    "digsite": "Moonrise",
+    "hotspot": "Lunar wheel debris",
+    "level": 52,
+    "chronotes": 468,
+    "xp": 1773.3,
+    "materials": {
+      "Banded limestone": 26,
+      "Ivory": 26
+    },
+    "collections": ["Museum - Guthixian I", "Guthixian I"]
+  },
+  {
+    "name": "Ivory sickle",
+    "digsite": "Moonrise",
+    "hotspot": "Lunar wheel debris",
+    "level": 52,
+    "chronotes": 468,
+    "xp": 1773.3,
+    "materials": {
+      "Ivory": 28,
+      "Triskelion": 24
+    },
+    "collections": ["Museum - Guthixian I", "Guthixian I"]
+  },
+  {
     "name": "Folded-arm figurine (female)",
     "digsite": "Everlight",
     "hotspot": "Ceramics studio debris",
@@ -445,6 +484,33 @@
       "Goldrune": 24
     },
     "collections": ["Museum - Saradominist I", "Saradominist I"]
+  },
+  {
+    "name": "Nakkirian seal",
+    "digsite": "Moonrise",
+    "hotspot": "Arbour rubble",
+    "level": 59,
+    "chronotes": 552,
+    "xp": 2263.3,
+    "materials": {
+      "Ivory": 34,
+      "White oak": 28,
+      "Soft clay": 1
+    },
+    "collections": ["Museum - Guthixian I", "Guthixian I"]
+  },
+  {
+    "name": "Royal Game of Ba",
+    "digsite": "Moonrise",
+    "hotspot": "Arbour rubble",
+    "level": 59,
+    "chronotes": 552,
+    "xp": 2263.3,
+    "materials": {
+      "White oak": 32,
+      "Triskelion": 30
+    },
+    "collections": ["Museum - Guthixian I", "Guthixian I"]
   },
   {
     "name": "'Incite Fear' spell scroll",
@@ -769,6 +835,48 @@
     "mysteries": ["Secrets of the Inquisition"]
   },
   {
+    "name": "Backstrap loom",
+    "digsite": "Moonrise",
+    "hotspot": "Weaver's hut debris",
+    "level": 66,
+    "chronotes": 580,
+    "xp": 3733.3,
+    "materials": {
+      "White oak": 30,
+      "Burnt umber": 18,
+      "Cashmere": 16
+    },
+    "collections": ["Museum - Guthixian I", "Guthixian I"]
+  },
+  {
+    "name": "Animal doll",
+    "digsite": "Moonrise",
+    "hotspot": "Weaver's hut debris",
+    "level": 66,
+    "chronotes": 580,
+    "xp": 3733.3,
+    "materials": {
+      "Cashmere": 24,
+      "White oak": 24,
+      "Ivory": 16
+    },
+    "collections": ["Museum - Guthixian I", "Guthixian I"]
+  },
+  {
+    "name": "Initiate's kaunake",
+    "digsite": "Moonrise",
+    "hotspot": "Weaver's hut debris",
+    "level": 66,
+    "chronotes": 580,
+    "xp": 3733.3,
+    "materials": {
+      "Cashmere": 30,
+      "Burnt umber": 20,
+      "Leather scraps": 14
+    },
+    "collections": ["Museum - Guthixian I", "Guthixian I"]
+  },
+  {
     "name": "Funerary urn of miasma",
     "digsite": "Senntisten",
     "hotspot": "Citizen remains",
@@ -1053,6 +1161,34 @@
       "Tyrian purple": 50
     },
     "collections": ["Museum - Zarosian II", "Zarosian II", "Imperial Impressionism"]
+  },
+  {
+    "name": "Incense burner",
+    "digsite": "Moonrise",
+    "hotspot": "Shrine debris",
+    "level": 75,
+    "chronotes": 584,
+    "xp": 5830,
+    "materials": {
+      "Banded limestone": 24,
+      "White oak": 18,
+      "Cashmere": 20
+    },
+    "collections": ["Museum - Guthixian II", "Guthixian II"]
+  },
+  {
+    "name": "Offering bowl",
+    "digsite": "Moonrise",
+    "hotspot": "Shrine debris",
+    "level": 75,
+    "chronotes": 584,
+    "xp": 5830,
+    "materials": {
+      "Banded limestone": 22,
+      "Triskelion": 20,
+      "Burnt umber": 20
+    },
+    "collections": ["Museum - Guthixian II", "Guthixian II"]
   },
   {
     "name": "Avian song-egg player",
@@ -1360,6 +1496,49 @@
     "collections": ["Museum - Zarosian II", "Hat Hoarder", "Zarosian II"]
   },
   {
+    "name": "Bloodwine",
+    "digsite": "Moonrise",
+    "hotspot": "Cauldron debris",
+    "level": 82,
+    "chronotes": 668,
+    "xp": 7777.8,
+    "materials": {
+      "Leather scraps": 32,
+      "Triskelion": 20,
+      "Cashmere": 20,
+      "Grapes": 1
+    },
+    "collections": ["Museum - Guthixian II", "Guthixian II"]
+  },
+  {
+    "name": "Reagent jar",
+    "digsite": "Moonrise",
+    "hotspot": "Cauldron debris",
+    "level": 82,
+    "chronotes": 668,
+    "xp": 7777.8,
+    "materials": {
+      "Leather scraps": 20,
+      "Banded limestone": 22,
+      "Burnt umber": 30
+    },
+    "collections": ["Museum - Guthixian II", "Guthixian II"]
+  },
+  {
+    "name": "Ninbaradari mural",
+    "digsite": "Moonrise",
+    "hotspot": "Cauldron debris",
+    "level": 82,
+    "chronotes": 668,
+    "xp": 7777.8,
+    "materials": {
+      "Burnt umber": 30,
+      "Banded limestone": 22,
+      "Triskelion": 20
+    },
+    "collections": ["Museum - Guthixian II", "Guthixian II"]
+  },
+  {
     "name": "Thorobshuun battle standard",
     "digsite": "Warforge",
     "hotspot": "Goblin dorm debris",
@@ -1516,6 +1695,34 @@
       "Felt": 40
     },
     "collections": ["Museum - Dragonkin VI", "Dragonkin VI"]
+  },
+  {
+    "name": "Bloodletting dagger",
+    "digsite": "Moonrise",
+    "hotspot": "Blood altar",
+    "level": 88,
+    "chronotes": 722,
+    "xp": 10111.1,
+    "materials": {
+      "Ivory": 28,
+      "Cashmere": 24,
+      "Soapstone": 26
+    },
+    "collections": ["Museum - Guthixian II", "Guthixian II"]
+  },
+  {
+    "name": "Fang of Kayazu",
+    "digsite": "Moonrise",
+    "hotspot": "Blood altar",
+    "level": 88,
+    "chronotes": 722,
+    "xp": 10111.1,
+    "materials": {
+      "Ivory": 38,
+      "Burnt umber": 20,
+      "Soapstone": 20
+    },
+    "collections": ["Museum - Guthixian II", "Guthixian II"]
   },
   {
     "name": "High priest crozier",

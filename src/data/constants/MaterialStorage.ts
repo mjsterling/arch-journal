@@ -28,6 +28,12 @@ export const emptyMaterialStorage = {
   "Compass rose": 0,
   "Carbon black": 0,
   Felt: 0,
+  // Guthixian materials
+  "Banded limestone": 0,
+  "Burnt umber": 0,
+  Cashmere: 0,
+  Ivory: 0,
+  Triskelion: 0,
   // Saradominist materials
   Keramos: 0,
   "White marble": 0,
