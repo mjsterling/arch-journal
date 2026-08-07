@@ -43,7 +43,7 @@ export const Digsites: DigsiteInfo = {
     icon: '/assets/digsites/Warforge_digsite.png',
     backgroundColor: '#cc580033',
     borderColor: '#cc5800',
-    textColor: '#8cff1a',
+    textColor: '#ed4f00',
     url: 'https://runescape.wiki/w/Warforge_Dig_Site',
   },
   [DigsiteNames.Senntisten]: {
